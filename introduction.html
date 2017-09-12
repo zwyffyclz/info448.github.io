@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-09-11">
+<meta name="date" content="2017-09-12">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -516,6 +516,15 @@ Note that if you are unfamiliar with Android devices, you should be sure to play
 <p class="alert alert-info">
 Note that older Android applications were developed using <a href="http://ant.apache.org/">Apache ANT</a>. The build script was stored in the <code>build.xml</code> file, with <code>build.properties</code> and <code>local.properties</code> containing global and local build settings. While Gradle is more common these days, you should be aware of ANT for legacy purposes.
 </p>
+<div class="alert alert-info">
+<p>It is also possible to use Gradle to <a href="http://developer.android.com/tools/building/building-cmdline.html">build and install your app from the command-line</a> if you want. You’ll need to make sure that you have a device (either physical or virtual) connected and running. Then from inside the project folder, you can build and install your app with</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># use the provided Gradle wrapper to run the `installDebug` script</span>
+<span class="kw">./gradlew</span> installDebug</code></pre></div>
+<p>You can also launch the app from the command-line with the command</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># use adb to start</span>
+<span class="kw">adb</span> shell am start -n package.name/.ActivityName</code></pre></div>
+You can run both these commands in sequence by connecting them with an <code>&amp;&amp;</code> (which short-circuits, so it will only launch if the build was successful).
+</div>
 </div>
 </div>
 <div id="logging-adb" class="section level2">
