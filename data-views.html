@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Android Development: Lecture Notes</title>
+  <meta name="description" content="Lecture Notes for INFO 448: Android Development.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Android Development: Lecture Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://info448.github.io/" />
+  
+  <meta property="og:description" content="Lecture Notes for INFO 448: Android Development." />
+  <meta name="github-repo" content="info448/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Android Development: Lecture Notes" />
+  
+  <meta name="twitter:description" content="Lecture Notes for INFO 448: Android Development." />
+  
+
+<meta name="author" content="Joel Ross">
+
+
+<meta name="date" content="2017-09-08">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="resources-and-layouts.html">
+<link rel="next" href="material-design.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98444716-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./" class="title">Android Development</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Book</a></li>
+<li class="part"><span><b>I Lectures</b></span></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#android-history"><i class="fa fa-check"></i><b>1.1</b> Android History</a><ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#android-versions"><i class="fa fa-check"></i><b>1.1.1</b> Android Versions</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#legal-battles"><i class="fa fa-check"></i><b>1.1.2</b> Legal Battles</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#android-architecture-and-code"><i class="fa fa-check"></i><b>1.2</b> Android Architecture and Code</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#programming-languages"><i class="fa fa-check"></i><b>1.2.1</b> Programming Languages</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#building-apps"><i class="fa fa-check"></i><b>1.2.2</b> Building Apps</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#development-tools"><i class="fa fa-check"></i><b>1.3</b> Development Tools</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#hardware"><i class="fa fa-check"></i><b>1.3.1</b> Hardware</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#software"><i class="fa fa-check"></i><b>1.3.2</b> Software</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#hello-world"><i class="fa fa-check"></i><b>1.4</b> Hello World</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#the-emulator"><i class="fa fa-check"></i><b>1.4.1</b> The Emulator</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#project-contents"><i class="fa fa-check"></i><b>1.4.2</b> Project Contents</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="activities.html"><a href="activities.html"><i class="fa fa-check"></i><b>2</b> Activities and Logging</a><ul>
+<li class="chapter" data-level="2.1" data-path="activities.html"><a href="activities.html#making-activities"><i class="fa fa-check"></i><b>2.1</b> Making Activities</a></li>
+<li class="chapter" data-level="2.2" data-path="activities.html"><a href="activities.html#the-activity-lifecycle"><i class="fa fa-check"></i><b>2.2</b> The Activity Lifecycle</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="activities.html"><a href="activities.html#overriding-the-callback-methods"><i class="fa fa-check"></i><b>2.2.1</b> Overriding the Callback Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="activities.html"><a href="activities.html#logging-adb"><i class="fa fa-check"></i><b>2.3</b> Logging &amp; ADB</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="activities.html"><a href="activities.html#log-methods"><i class="fa fa-check"></i><b>2.3.1</b> Log Methods</a></li>
+<li class="chapter" data-level="2.3.2" data-path="activities.html"><a href="activities.html#logcat"><i class="fa fa-check"></i><b>2.3.2</b> Logcat</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="activities.html"><a href="activities.html#basic-events"><i class="fa fa-check"></i><b>2.4</b> Basic Events</a></li>
+<li class="chapter" data-level="2.5" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>2.5</b> Multiple Activities</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="activities.html"><a href="activities.html#intents-and-context"><i class="fa fa-check"></i><b>2.5.1</b> Intents and Context</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i><b>2.6</b> Back &amp; Tasks</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i><b>2.6.1</b> Up Navigation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html"><i class="fa fa-check"></i><b>3</b> Resources and Layouts</a><ul>
+<li class="chapter" data-level="3.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#resources"><i class="fa fa-check"></i><b>3.1</b> Resources</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#alternative-resources"><i class="fa fa-check"></i><b>3.1.1</b> Alternate Resources</a></li>
+<li class="chapter" data-level="3.1.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#xml-details"><i class="fa fa-check"></i><b>3.1.2</b> XML Details</a></li>
+<li class="chapter" data-level="3.1.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#r"><i class="fa fa-check"></i><b>3.1.3</b> R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views"><i class="fa fa-check"></i><b>3.2</b> Views</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#view-properties"><i class="fa fa-check"></i><b>3.2.1</b> View Properties</a></li>
+<li class="chapter" data-level="3.2.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#practice"><i class="fa fa-check"></i><b>3.2.2</b> Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#layouts"><i class="fa fa-check"></i><b>3.3</b> Layouts</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#linearlayout"><i class="fa fa-check"></i><b>3.3.1</b> LinearLayout</a></li>
+<li class="chapter" data-level="3.3.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#relativelayout"><i class="fa fa-check"></i><b>3.3.2</b> RelativeLayout</a></li>
+<li class="chapter" data-level="3.3.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#constraintlayout"><i class="fa fa-check"></i><b>3.3.3</b> ConstraintLayout</a></li>
+<li class="chapter" data-level="3.3.4" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#other-layouts"><i class="fa fa-check"></i><b>3.3.4</b> Other Layouts</a></li>
+<li class="chapter" data-level="3.3.5" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#combining-and-inflating-layouts"><i class="fa fa-check"></i><b>3.3.5</b> Combining and Inflating Layouts</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-views.html"><a href="data-views.html"><i class="fa fa-check"></i><b>4</b> Data-Driven Views</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-views.html"><a href="data-views.html#inputs"><i class="fa fa-check"></i><b>4.1</b> Inputs</a></li>
+<li class="chapter" data-level="4.2" data-path="data-views.html"><a href="data-views.html#listviews-and-adapters"><i class="fa fa-check"></i><b>4.2</b> ListViews and Adapters</a></li>
+<li class="chapter" data-level="4.3" data-path="data-views.html"><a href="data-views.html#network-data"><i class="fa fa-check"></i><b>4.3</b> Network Data</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="material-design.html"><a href="material-design.html"><i class="fa fa-check"></i><b>5</b> Material Design</a><ul>
+<li class="chapter" data-level="5.1" data-path="material-design.html"><a href="material-design.html#resources-1"><i class="fa fa-check"></i><b>5.1</b> Resources:</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fragments.html"><a href="fragments.html"><i class="fa fa-check"></i><b>6</b> Fragments</a><ul>
+<li class="chapter" data-level="6.1" data-path="fragments.html"><a href="fragments.html#creating-a-fragment"><i class="fa fa-check"></i><b>6.1</b> Creating a Fragment</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="fragments.html"><a href="fragments.html#activity-to-fragment-communication"><i class="fa fa-check"></i><b>6.1.1</b> Activity-to-Fragment Communication</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="fragments.html"><a href="fragments.html#dynamic-fragments"><i class="fa fa-check"></i><b>6.2</b> Dynamic Fragments</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="fragments.html"><a href="fragments.html#instantiating-fragments"><i class="fa fa-check"></i><b>6.2.1</b> Instantiating Fragments</a></li>
+<li class="chapter" data-level="6.2.2" data-path="fragments.html"><a href="fragments.html#transactions"><i class="fa fa-check"></i><b>6.2.2</b> Transactions</a></li>
+<li class="chapter" data-level="6.2.3" data-path="fragments.html"><a href="fragments.html#inter-fragment-communication"><i class="fa fa-check"></i><b>6.2.3</b> Inter-Fragment Communication</a></li>
+<li class="chapter" data-level="6.2.4" data-path="fragments.html"><a href="fragments.html#the-back-stack"><i class="fa fa-check"></i><b>6.2.4</b> The Back Stack</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="intents.html"><a href="intents.html"><i class="fa fa-check"></i><b>7</b> Intents</a><ul>
+<li class="chapter" data-level="7.1" data-path="intents.html"><a href="intents.html#intents-for-another-activity-explicit"><i class="fa fa-check"></i><b>7.1</b> Intents for Another Activity (Explicit)</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="intents.html"><a href="intents.html#extras"><i class="fa fa-check"></i><b>7.1.1</b> Extras</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="intents.html"><a href="intents.html#intents-for-another-app-implicit"><i class="fa fa-check"></i><b>7.2</b> Intents for Another App (Implicit)</a></li>
+<li class="chapter" data-level="7.3" data-path="intents.html"><a href="intents.html#intents-for-a-response"><i class="fa fa-check"></i><b>7.3</b> Intents for a Response</a></li>
+<li class="chapter" data-level="7.4" data-path="intents.html"><a href="intents.html#listening-for-intents"><i class="fa fa-check"></i><b>7.4</b> Listening for Intents</a></li>
+<li class="chapter" data-level="7.5" data-path="intents.html"><a href="intents.html#broadcasts-and-receivers"><i class="fa fa-check"></i><b>7.5</b> Broadcasts and Receivers</a></li>
+<li class="chapter" data-level="7.6" data-path="intents.html"><a href="intents.html#an-example-sms"><i class="fa fa-check"></i><b>7.6</b> An Example: SMS</a></li>
+<li class="chapter" data-level="7.7" data-path="intents.html"><a href="intents.html#shareactionprovider"><i class="fa fa-check"></i><b>7.7</b> ShareActionProvider</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="ui-components.html"><a href="ui-components.html"><i class="fa fa-check"></i><b>8</b> UI Components</a><ul>
+<li class="chapter" data-level="8.1" data-path="ui-components.html"><a href="ui-components.html#the-action-bar"><i class="fa fa-check"></i><b>8.1</b> The Action Bar</a></li>
+<li class="chapter" data-level="8.2" data-path="ui-components.html"><a href="ui-components.html#menus"><i class="fa fa-check"></i><b>8.2</b> Menus</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="ui-components.html"><a href="ui-components.html#context-menus"><i class="fa fa-check"></i><b>8.2.1</b> Context Menus</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="ui-components.html"><a href="ui-components.html#dialogs"><i class="fa fa-check"></i><b>8.3</b> Dialogs</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="ui-components.html"><a href="ui-components.html#dialogfragments"><i class="fa fa-check"></i><b>8.3.1</b> DialogFragments</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="ui-components.html"><a href="ui-components.html#toasts"><i class="fa fa-check"></i><b>8.4</b> Toasts</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="ui-components-ii.html"><a href="ui-components-ii.html"><i class="fa fa-check"></i><b>9</b> UI Components II</a><ul>
+<li class="chapter" data-level="9.1" data-path="ui-components-ii.html"><a href="ui-components-ii.html#notifications"><i class="fa fa-check"></i><b>9.1</b> Notifications</a></li>
+<li class="chapter" data-level="9.2" data-path="ui-components-ii.html"><a href="ui-components-ii.html#settings"><i class="fa fa-check"></i><b>9.2</b> Settings</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="ui-components-ii.html"><a href="ui-components-ii.html#sharedpreferences"><i class="fa fa-check"></i><b>9.2.1</b> SharedPreferences</a></li>
+<li class="chapter" data-level="9.2.2" data-path="ui-components-ii.html"><a href="ui-components-ii.html#preference-settings"><i class="fa fa-check"></i><b>9.2.2</b> Preference Settings</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html"><i class="fa fa-check"></i><b>10</b> Providers and Loaders</a><ul>
+<li class="chapter" data-level="10.1" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#content-providers-intro"><i class="fa fa-check"></i><b>10.1</b> Content Providers</a></li>
+<li class="chapter" data-level="10.2" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#cursors"><i class="fa fa-check"></i><b>10.2</b> Cursors</a></li>
+<li class="chapter" data-level="10.3" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#loaders"><i class="fa fa-check"></i><b>10.3</b> Loaders</a></li>
+<li class="chapter" data-level="10.4" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#other-provider-actions"><i class="fa fa-check"></i><b>10.4</b> Other Provider Actions</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#adding-words"><i class="fa fa-check"></i><b>10.4.1</b> Adding Words</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>11</b> Databases and Providers</a><ul>
+<li class="chapter" data-level="11.1" data-path="databases.html"><a href="databases.html#review-providers-and-loaders"><i class="fa fa-check"></i><b>11.1</b> Review: Providers and Loaders</a></li>
+<li class="chapter" data-level="11.2" data-path="databases.html"><a href="databases.html#sqlite-databases"><i class="fa fa-check"></i><b>11.2</b> SQLite Databases</a></li>
+<li class="chapter" data-level="11.3" data-path="databases.html"><a href="databases.html#implementing-contentprovider"><i class="fa fa-check"></i><b>11.3</b> Implementing <code>ContentProvider</code></a><ul>
+<li class="chapter" data-level="11.3.1" data-path="databases.html"><a href="databases.html#uris-and-types"><i class="fa fa-check"></i><b>11.3.1</b> URIs and Types</a></li>
+<li class="chapter" data-level="11.3.2" data-path="databases.html"><a href="databases.html#query-methods"><i class="fa fa-check"></i><b>11.3.2</b> Query Methods</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="files-and-permissions.html"><a href="files-and-permissions.html"><i class="fa fa-check"></i><b>12</b> Files and Permissions</a><ul>
+<li class="chapter" data-level="12.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#file-storage-locations"><i class="fa fa-check"></i><b>12.1</b> File Storage Locations</a></li>
+<li class="chapter" data-level="12.2" data-path="files-and-permissions.html"><a href="files-and-permissions.html#permissions"><i class="fa fa-check"></i><b>12.2</b> Permissions</a></li>
+<li class="chapter" data-level="12.3" data-path="files-and-permissions.html"><a href="files-and-permissions.html#external-storage"><i class="fa fa-check"></i><b>12.3</b> External Storage</a></li>
+<li class="chapter" data-level="12.4" data-path="files-and-permissions.html"><a href="files-and-permissions.html#internal-storage-cache"><i class="fa fa-check"></i><b>12.4</b> Internal Storage &amp; Cache</a></li>
+<li class="chapter" data-level="12.5" data-path="files-and-permissions.html"><a href="files-and-permissions.html#example-saving-pictures"><i class="fa fa-check"></i><b>12.5</b> Example: Saving Pictures</a></li>
+<li class="chapter" data-level="12.6" data-path="files-and-permissions.html"><a href="files-and-permissions.html#sharing-files"><i class="fa fa-check"></i><b>12.6</b> Sharing Files</a><ul>
+<li class="chapter" data-level="12.6.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#bonus-sharing-with-a-fileprovider"><i class="fa fa-check"></i><b>12.6.1</b> Bonus: Sharing with a <code>FileProvider</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="location.html"><a href="location.html"><i class="fa fa-check"></i><b>13</b> Location</a><ul>
+<li class="chapter" data-level="13.1" data-path="location.html"><a href="location.html#localization-techniques"><i class="fa fa-check"></i><b>13.1</b> Localization Techniques</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="location.html"><a href="location.html#gps"><i class="fa fa-check"></i><b>13.1.1</b> GPS</a></li>
+<li class="chapter" data-level="13.1.2" data-path="location.html"><a href="location.html#cell-tower-localization"><i class="fa fa-check"></i><b>13.1.2</b> Cell Tower Localization</a></li>
+<li class="chapter" data-level="13.1.3" data-path="location.html"><a href="location.html#wifi-localization"><i class="fa fa-check"></i><b>13.1.3</b> WiFi Localization</a></li>
+<li class="chapter" data-level="13.1.4" data-path="location.html"><a href="location.html#representing-location"><i class="fa fa-check"></i><b>13.1.4</b> Representing Location</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="location.html"><a href="location.html#android-location"><i class="fa fa-check"></i><b>13.2</b> Android Location</a><ul>
+<li class="chapter" data-level="13.2.1" data-path="location.html"><a href="location.html#google-play-services"><i class="fa fa-check"></i><b>13.2.1</b> Google Play Services</a></li>
+<li class="chapter" data-level="13.2.2" data-path="location.html"><a href="location.html#accessing-location"><i class="fa fa-check"></i><b>13.2.2</b> Accessing Location</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="services.html"><a href="services.html"><i class="fa fa-check"></i><b>14</b> Services</a><ul>
+<li class="chapter" data-level="14.1" data-path="services.html"><a href="services.html#intentservices"><i class="fa fa-check"></i><b>14.1</b> IntentServices</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="services.html"><a href="services.html#the-service-lifecycle"><i class="fa fa-check"></i><b>14.1.1</b> The Service Lifecycle</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="services.html"><a href="services.html#example-a-music-service"><i class="fa fa-check"></i><b>14.2</b> Example: A Music Service</a><ul>
+<li class="chapter" data-level="14.2.1" data-path="services.html"><a href="services.html#mediaplayer"><i class="fa fa-check"></i><b>14.2.1</b> MediaPlayer</a></li>
+<li class="chapter" data-level="14.2.2" data-path="services.html"><a href="services.html#creating-a-service"><i class="fa fa-check"></i><b>14.2.2</b> Creating a Service</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="services.html"><a href="services.html#foreground-services"><i class="fa fa-check"></i><b>14.3</b> Foreground Services</a></li>
+<li class="chapter" data-level="14.4" data-path="services.html"><a href="services.html#bound-services"><i class="fa fa-check"></i><b>14.4</b> Bound Services</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="sensors.html"><a href="sensors.html"><i class="fa fa-check"></i><b>15</b> Sensors</a><ul>
+<li class="chapter" data-level="15.1" data-path="sensors.html"><a href="sensors.html#motion-sensors"><i class="fa fa-check"></i><b>15.1</b> Motion Sensors</a><ul>
+<li class="chapter" data-level="15.1.1" data-path="sensors.html"><a href="sensors.html#accessing-sensors"><i class="fa fa-check"></i><b>15.1.1</b> Accessing Sensors</a></li>
+<li class="chapter" data-level="15.1.2" data-path="sensors.html"><a href="sensors.html#composite-sensors"><i class="fa fa-check"></i><b>15.1.2</b> Composite Sensors</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="sensors.html"><a href="sensors.html#rotation"><i class="fa fa-check"></i><b>15.2</b> Rotation</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="sensors.html"><a href="sensors.html#coordinates"><i class="fa fa-check"></i><b>15.2.1</b> Coordinates</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>16</b> Animation and Graphics</a><ul>
+<li class="chapter" data-level="16.1" data-path="animation.html"><a href="animation.html#drawing-graphics"><i class="fa fa-check"></i><b>16.1</b> Drawing Graphics</a><ul>
+<li class="chapter" data-level="16.1.1" data-path="animation.html"><a href="animation.html#custom-views"><i class="fa fa-check"></i><b>16.1.1</b> Custom Views</a></li>
+<li class="chapter" data-level="16.1.2" data-path="animation.html"><a href="animation.html#surfaceviews"><i class="fa fa-check"></i><b>16.1.2</b> SurfaceViews</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="animation.html"><a href="animation.html#touch-and-gestures"><i class="fa fa-check"></i><b>16.2</b> Touch and Gestures</a><ul>
+<li class="chapter" data-level="16.2.1" data-path="animation.html"><a href="animation.html#advanced-gestures"><i class="fa fa-check"></i><b>16.2.1</b> Advanced Gestures</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="animation.html"><a href="animation.html#property-animation"><i class="fa fa-check"></i><b>16.3</b> Property Animation</a></li>
+</ul></li>
+<li class="part"><span><b>II Additional Topics (Labs)</b></span></li>
+<li class="chapter" data-level="17" data-path="accessibility.html"><a href="accessibility.html"><i class="fa fa-check"></i><b>17</b> Accessibility</a><ul>
+<li class="chapter" data-level="17.1" data-path="accessibility.html"><a href="accessibility.html#universal-usability"><i class="fa fa-check"></i><b>17.1</b> Universal Usability</a></li>
+<li class="chapter" data-level="17.2" data-path="accessibility.html"><a href="accessibility.html#implementing-accessibility"><i class="fa fa-check"></i><b>17.2</b> Implementing Accessibility</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="accessibility.html"><a href="accessibility.html#supporting-vision-impairment"><i class="fa fa-check"></i><b>17.2.1</b> Supporting Vision Impairment</a></li>
+<li class="chapter" data-level="17.2.2" data-path="accessibility.html"><a href="accessibility.html#supporting-alternative-inputs"><i class="fa fa-check"></i><b>17.2.2</b> Supporting Alternative Inputs</a></li>
+<li class="chapter" data-level="17.2.3" data-path="accessibility.html"><a href="accessibility.html#supporting-internationalization"><i class="fa fa-check"></i><b>17.2.3</b> Supporting Internationalization</a></li>
+<li class="chapter" data-level="17.2.4" data-path="accessibility.html"><a href="accessibility.html#further-testing"><i class="fa fa-check"></i><b>17.2.4</b> Further Testing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>18</b> Styles &amp; Themes</a><ul>
+<li class="chapter" data-level="18.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>18.1</b> Defining Styles</a><ul>
+<li class="chapter" data-level="18.1.1" data-path="styles-themes.html"><a href="styles-themes.html#style-inheritance"><i class="fa fa-check"></i><b>18.1.1</b> Style Inheritance</a></li>
+<li class="chapter" data-level="18.1.2" data-path="styles-themes.html"><a href="styles-themes.html#built-in-styles"><i class="fa fa-check"></i><b>18.1.2</b> Built-in Styles</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>18.2</b> Themes</a><ul>
+<li class="chapter" data-level="18.2.1" data-path="styles-themes.html"><a href="styles-themes.html#material-themes"><i class="fa fa-check"></i><b>18.2.1</b> Material Themes</a></li>
+<li class="chapter" data-level="18.2.2" data-path="styles-themes.html"><a href="styles-themes.html#theme-attributes"><i class="fa fa-check"></i><b>18.2.2</b> Theme Attributes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html"><i class="fa fa-check"></i><b>19</b> Fragments: ViewPager</a><ul>
+<li class="chapter" data-level="19.1" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>19.1</b> Define a SearchFragment</a></li>
+<li class="chapter" data-level="19.2" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>19.2</b> Add the ViewPager and Adapter</a></li>
+<li class="chapter" data-level="19.3" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>19.3</b> Add User Interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="bluetooth.html"><a href="bluetooth.html"><i class="fa fa-check"></i><b>20</b> Bluetooth</a></li>
+<li class="chapter" data-level="21" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>21</b> Maps</a><ul>
+<li class="chapter" data-level="21.1" data-path="maps.html"><a href="maps.html#create-a-map-activity"><i class="fa fa-check"></i><b>21.1</b> Create a Map Activity</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="maps.html"><a href="maps.html#getting-an-api-key"><i class="fa fa-check"></i><b>21.1.1</b> Getting an API Key</a></li>
+<li class="chapter" data-level="21.1.2" data-path="maps.html"><a href="maps.html#the-supportmapfragment"><i class="fa fa-check"></i><b>21.1.2</b> The <code>SupportMapFragment</code></a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="maps.html"><a href="maps.html#specifying-the-user-interface"><i class="fa fa-check"></i><b>21.2</b> Specifying the User Interface</a></li>
+<li class="chapter" data-level="21.3" data-path="maps.html"><a href="maps.html#markers-and-drawings"><i class="fa fa-check"></i><b>21.3</b> Markers and Drawings</a><ul>
+<li class="chapter" data-level="21.3.1" data-path="maps.html"><a href="maps.html#drawing-shapes"><i class="fa fa-check"></i><b>21.3.1</b> Drawing Shapes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="memory.html"><a href="memory.html"><i class="fa fa-check"></i><b>22</b> Memory Management</a><ul>
+<li class="chapter" data-level="22.1" data-path="memory.html"><a href="memory.html#memory-allocation"><i class="fa fa-check"></i><b>22.1</b> Memory Allocation</a></li>
+<li class="chapter" data-level="22.2" data-path="memory.html"><a href="memory.html#the-memory-monitor"><i class="fa fa-check"></i><b>22.2</b> The Memory Monitor</a><ul>
+<li class="chapter" data-level="22.2.1" data-path="memory.html"><a href="memory.html#garbage-collection"><i class="fa fa-check"></i><b>22.2.1</b> Garbage Collection</a></li>
+</ul></li>
+<li class="chapter" data-level="22.3" data-path="memory.html"><a href="memory.html#memory-leaks"><i class="fa fa-check"></i><b>22.3</b> Memory Leaks</a></li>
+</ul></li>
+<li class="chapter" data-level="23" data-path="multi-touch.html"><a href="multi-touch.html"><i class="fa fa-check"></i><b>23</b> Multi-Touch</a><ul>
+<li class="chapter" data-level="23.1" data-path="multi-touch.html"><a href="multi-touch.html#identifying-fingers"><i class="fa fa-check"></i><b>23.1</b> Identifying Fingers</a></li>
+<li class="chapter" data-level="23.2" data-path="multi-touch.html"><a href="multi-touch.html#drawing-touches"><i class="fa fa-check"></i><b>23.2</b> Drawing Touches</a></li>
+<li class="chapter" data-level="23.3" data-path="multi-touch.html"><a href="multi-touch.html#moving-fingers"><i class="fa fa-check"></i><b>23.3</b> Moving Fingers</a></li>
+<li class="chapter" data-level="23.4" data-path="multi-touch.html"><a href="multi-touch.html#other-multi-touch-gestures"><i class="fa fa-check"></i><b>23.4</b> Other Multi-Touch Gestures</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="java-review.html"><a href="java-review.html"><i class="fa fa-check"></i><b>A</b> Java Review</a><ul>
+<li class="chapter" data-level="A.1" data-path="java-review.html"><a href="java-review.html#building-apps-with-gradle"><i class="fa fa-check"></i><b>A.1</b> Building Apps with Gradle</a></li>
+<li class="chapter" data-level="A.2" data-path="java-review.html"><a href="java-review.html#class-basics"><i class="fa fa-check"></i><b>A.2</b> Class Basics</a></li>
+<li class="chapter" data-level="A.3" data-path="java-review.html"><a href="java-review.html#inheritance"><i class="fa fa-check"></i><b>A.3</b> Inheritance</a></li>
+<li class="chapter" data-level="A.4" data-path="java-review.html"><a href="java-review.html#interfaces"><i class="fa fa-check"></i><b>A.4</b> Interfaces</a></li>
+<li class="chapter" data-level="A.5" data-path="java-review.html"><a href="java-review.html#polymorphism"><i class="fa fa-check"></i><b>A.5</b> Polymorphism</a></li>
+<li class="chapter" data-level="A.6" data-path="java-review.html"><a href="java-review.html#abstract-methods-and-classes"><i class="fa fa-check"></i><b>A.6</b> Abstract Methods and Classes</a></li>
+<li class="chapter" data-level="A.7" data-path="java-review.html"><a href="java-review.html#generics"><i class="fa fa-check"></i><b>A.7</b> Generics</a></li>
+<li class="chapter" data-level="A.8" data-path="java-review.html"><a href="java-review.html#nested-classes"><i class="fa fa-check"></i><b>A.8</b> Nested Classes</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Swing Framework</a><ul>
+<li class="chapter" data-level="B.1" data-path="java-swing.html"><a href="java-swing.html#events"><i class="fa fa-check"></i><b>B.1</b> Events</a></li>
+<li class="chapter" data-level="B.2" data-path="java-swing.html"><a href="java-swing.html#layouts-and-composites"><i class="fa fa-check"></i><b>B.2</b> Layouts and Composites</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="java-threads-http.html"><a href="java-threads-http.html"><i class="fa fa-check"></i><b>C</b> Threads and HTTP Requests</a><ul>
+<li class="chapter" data-level="C.1" data-path="java-threads-http.html"><a href="java-threads-http.html#concurrency"><i class="fa fa-check"></i><b>C.1</b> Concurrency</a><ul>
+<li class="chapter" data-level="C.1.1" data-path="java-threads-http.html"><a href="java-threads-http.html#an-example-algorithm-races"><i class="fa fa-check"></i><b>C.1.1</b> An Example: Algorithm Races!</a></li>
+<li class="chapter" data-level="C.1.2" data-path="java-threads-http.html"><a href="java-threads-http.html#threading-the-race"><i class="fa fa-check"></i><b>C.1.2</b> Threading the Race</a></li>
+</ul></li>
+<li class="chapter" data-level="C.2" data-path="java-threads-http.html"><a href="java-threads-http.html#http-requests"><i class="fa fa-check"></i><b>C.2</b> HTTP Requests</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="kotlin.html"><a href="kotlin.html"><i class="fa fa-check"></i><b>D</b> Special Topics: Kotlin</a><ul>
+<li class="chapter" data-level="D.1" data-path="kotlin.html"><a href="kotlin.html#kotlin-syntax"><i class="fa fa-check"></i><b>D.1</b> Kotlin Syntax</a><ul>
+<li class="chapter" data-level="D.1.1" data-path="kotlin.html"><a href="kotlin.html#variables"><i class="fa fa-check"></i><b>D.1.1</b> Variables</a></li>
+<li class="chapter" data-level="D.1.2" data-path="kotlin.html"><a href="kotlin.html#functions"><i class="fa fa-check"></i><b>D.1.2</b> Functions</a></li>
+<li class="chapter" data-level="D.1.3" data-path="kotlin.html"><a href="kotlin.html#classes"><i class="fa fa-check"></i><b>D.1.3</b> Classes</a></li>
+</ul></li>
+<li class="chapter" data-level="D.2" data-path="kotlin.html"><a href="kotlin.html#kotlin-for-android"><i class="fa fa-check"></i><b>D.2</b> Kotlin for Android</a><ul>
+<li class="chapter" data-level="D.2.1" data-path="kotlin.html"><a href="kotlin.html#the-android-extension"><i class="fa fa-check"></i><b>D.2.1</b> The Android Extension</a></li>
+<li class="chapter" data-level="D.2.2" data-path="kotlin.html"><a href="kotlin.html#anko"><i class="fa fa-check"></i><b>D.2.2</b> Anko</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>E</b> Publishing</a><ul>
+<li class="chapter" data-level="E.1" data-path="publishing.html"><a href="publishing.html#signing-an-app"><i class="fa fa-check"></i><b>E.1</b> Signing an App</a><ul>
+<li><a href="publishing.html#release-.apk">Release <code>.apk</code></a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Android Development: Lecture Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-views" class="section level1">
+<h1><span class="header-section-number">Lecture 4</span> Data-Driven Views</h1>
+<p class="alert alert-danger">
+This chapter is out of date and will be updated soon.
+</p>
+<p>This lecture discusses how to use Views to support user interaction and dynamic content, building on the previous lecture as while drawing on concepts introduced in the <a href="java-threads-http.html#java-threads-http">Threads and HTTP Requests Appendix</a>.</p>
+<p class="alert alert-info">
+This lecture references code found at <a href="https://github.com/info448-s17/lecture04-inputs-lists" class="uri">https://github.com/info448-s17/lecture04-inputs-lists</a>.
+</p>
+<div id="inputs" class="section level2">
+<h2><span class="header-section-number">4.1</span> Inputs</h2>
+<p>The previous lecture discussed <strong>Views</strong> and ViewGroups (<strong>Layouts</strong>), and introduced some basic Views such as <code>TextView</code>, <code>ImageView</code>, and <code>Button</code>.</p>
+<p>A <code>Button</code> is an example of an <a href="https://developer.android.com/guide/topics/ui/controls.html">Input Control</a>. These are simple (single-purpose; not necessarily lacking complexity) widgets that allow for user input. There are many such widgets in addition to <code>Button</code>, mostly found in the <a href="https://developer.android.com/reference/android/widget/package-summary.html"><code>android.widget</code></a> package. Many correspond to HTML <code>&lt;input&gt;</code> elements, but Android provided additional widgets at well.</p>
+<p>Launch the lecture code’s <code>MainActivity</code> with a content View of <code>R.id.input_control_layout</code> to see an example of many widgets (as well as a demonstration of a more complex layout!). These widgets include:</p>
+<ul>
+<li><a href="https://developer.android.com/guide/topics/ui/controls/button.html">Button</a>, a widget that affords clicking. Buttons can display text, images or both.</li>
+<li><a href="https://developer.android.com/reference/android/widget/EditText.html">EditText</a>, a widget for user text entry. Note that you can use the <code>android:inputType</code> property to <a href="https://developer.android.com/training/keyboard-input/style.html">specify the type</a> of the input similar to an HTML <code>&lt;input&gt;</code>.</li>
+<li><a href="https://developer.android.com/guide/topics/ui/controls/checkbox.html">Checkbox</a>, a widget for selecting an on-off state</li>
+<li><a href="https://developer.android.com/guide/topics/ui/controls/radiobutton.html">RadioButton</a>, a widget for selecting from a set of choices. Put <code>RadioButton</code> elements inside a <code>RadioGroup</code> element to make the buttons mutually exclusive.</li>
+<li><a href="https://developer.android.com/guide/topics/ui/controls/togglebutton.html">ToggleButton</a>, another widget for selecting an on-off state.</li>
+<li><a href="https://developer.android.com/reference/android/widget/Switch.html">Switch</a>, yet another widget for selecting an on-off state. This is just a <code>ToggleButton</code> with a slider UI. It was introduced in API 14 and is the “modern” way of supporting on-off input.</li>
+<li><a href="https://developer.android.com/guide/topics/ui/controls/spinner.html">Spinner</a>, a widget for picking from an array of choices, similar to a drop-down menu. Note that you should define the choices as a resource (e.g., in <code>strrings.xml</code>).</li>
+<li><a href="https://developer.android.com/guide/topics/ui/controls/pickers.html">Pickers</a>: a compound control around some specific input (dates, times, etc). These are typically used in pop-up dialogs, which will be discussed in a future lecture.</li>
+<li>…and more! See the <a href="http://developer.android.com/reference/android/widget/package-summary.html"><code>android.widget</code></a> package for further options.</li>
+</ul>
+<p>All these input controls basically work the same way: you define (instantiate) them in the layout resource, then access them in Java in order to define interaction behavior.</p>
+<p>There are two ways of interacting with controls (and Views in general) from the Java code:</p>
+<ol style="list-style-type: decimal">
+<li>Calling <strong>methods</strong> on the View to manipulate it. This represents “outside to inside” communication (with respect to the View).</li>
+<li>Listening for <strong>events</strong> produced by the View and responding to then. This represents “inside to outside” communication (with respect to the View).</li>
+</ol>
+<p>An example of the second, event-driven approach was introduced in [Lecture 2]{#basic-events}. This involved <em>registering a listener</em> for the event (after acquiring a reference to the View with <code>findViewById()</code>) and then specifying a <strong>callback method</strong> (by instantiating the Listener interface) that wiould be “called back to” when the event occurs.</p>
+<ul>
+<li><p>It is also possible to specify the callback method in the XML resource itself by using e.g., the <code>android:onClick</code> attribute. This value of this attribute should be the <em>name</em> of the callback method: It is also possible to</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;Button</span>
+<span class="ot">    android:layout_width=</span><span class="st">&quot;wrap_content&quot;</span>
+<span class="ot">    android:layout_height=</span><span class="st">&quot;wrap_content&quot;</span>
+<span class="ot">    android:onClick=</span><span class="st">&quot;handleButtonClick&quot;</span> <span class="kw">/&gt;</span></code></pre></div>
+<p>The callback method is declared in the Java code as taking in a <code>View</code> parameter (which will be a reference to whatever View caused the event to occur) and returning <code>void</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">void</span> <span class="fu">handleButtonClick</span>(View view) { }</code></pre></div></li>
+<li><p>We will utilize a mix of both of these strategies (defining callbacks in both the Java and the XML) in this class.</p>
+<p class="alert">
+<em>Author’s Opinion</em>: It is arguable about which approach is “better”. Specifying the callback method in the Java code helps keep the appearance and behavior separate, and avoids introducing hidden dependencies for resources (the Activity must provide the required callback). However, as buttons are made to be pressed, it isn’t unreasonable to give a “name” in the XML resource as to what the button will do, especially as the corresponding Java method may just be a “launcher” method that calls something else. Specifying the callback in the XML resource may often seem faster and easier, and we will use whichever option best supports clarity of our code.
+</p></li>
+</ul>
+<p>Event callbacks are used to respond to all kind of input control widgets. CheckBoxes use an <code>onClick</code> callback, ToggleButtons use <code>onCheckedChanged</code>, etc. Other common events can be found in the <a href="https://developer.android.com/reference/android/view/View.html#nestedclasses">View documentation</a>, and are handled via listeners such as <code>OnDragListener</code> (for drags), <code>OnHoverListener</code> (for “hover” events), <code>OnKeyListener</code> (for when user types), or <code>OnLayoutChangeListener</code> (for when layout changes display).</p>
+<p>In addition to listening for events, it is possible to call methods directly on referenced Views to access their state. In addition to generic View methods such as <code>isVisible()</code> or <code>hasFocus()</code>, it is possible to inquire directly about the state of the input provided. For example, the <code>isChecked()</code> method returns whether or not a checkbox is ticked.</p>
+<p>This is also a good way of getting access to inputted content from the Java Code. For example, call <code>getText()</code> on an <code>EditText</code> control in order to fetch the contents of that View.</p>
+<ul>
+<li>For practice, try to log out the contents of the included <code>EditText</code> control when the <code>Button</code> is pressed!</li>
+</ul>
+<p>Between listening for events and querying for state, we can fully interact with input controls. Check the official documentation for more details on how to use specific individual widgets.</p>
+</div>
+<div id="listviews-and-adapters" class="section level2">
+<h2><span class="header-section-number">4.2</span> ListViews and Adapters</h2>
+<p class="alert">
+The remainder of the lecture utilizes the <code>list_layout</code> Layout in the lecture code. Modify <code>MainActivity</code> so that it uses this resource as its <code>viewContent</code>.
+</p>
+<p>Having covered basic controls, this section will now look at some more advanced interactive Views. In particular, it will discuss how to utilize a <a href="https://developer.android.com/guide/topics/ui/layout/listview.html">ListView</a><a href="#fn13" class="footnoteRef" id="fnref13"><sup>13</sup></a>, which is a <code>ViewGroup</code> that displays a scrollable list of items! A <code>ListView</code> is basically a <code>LinearLayout</code> inside of a <code>ScrollView</code> (which is a <code>ViewGroup</code> that can be scrolled). Each element within the LinearLayout is another <code>View</code> (usually a Layout) representing a particular item in a list.</p>
+<p>But the <code>ListView</code> does extra work beyond just nesting Views: it keeps track of what items are already displayed on the screen, inflating only the visible items (plus a few extra on the top and bottom as buffers). Then as the user scrolls, the ListView takes the disappearing views and <em>recycles</em> them (altering their content, but not reinflating from scratch) in order to reuse them for the new items that appear. This lets it save memory, provide better performance, and overall work more smoothly. See <a href="https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView#row-view-recycling">this tutorial</a> for diagrams and further explanation of this recycling behavior.</p>
+<ul>
+<li>Note that a more advanced and flexible version of this behavior is offered by the <a href="https://developer.android.com/guide/topics/ui/layout/recyclerview.html"><code>RecyclerView</code></a>. See also <a href="https://developer.android.com/training/material/lists-cards.html">this guide</a> for more details.</li>
+</ul>
+<p>The <code>ListView</code> control uses a <strong>Model-View-Controller (MVC)</strong> architecture. This is a deisgn pattern common to UI systems which organizes programs into three parts:</p>
+<ol style="list-style-type: decimal">
+<li>The <strong>Model</strong>, which is the data or information in the system</li>
+<li>The <strong>View</strong>, which is the display or representation of that data</li>
+<li>The <strong>Controller</strong>, which acts as an intermediary between the Model and View and hooks them together.</li>
+</ol>
+<p>The MVC pattern can be found all over Android. At a high level, the resources provide <em>models</em> and <em>views</em> (separately), while the Java Activities act as <em>controllers</em>.</p>
+<ul>
+<li><em>Fun fact</em>: The Model-View-Controller pattern was originally developed as part of the <a href="http://heim.ifi.uio.no/~trygver/themes/mvc/mvc-index.html">Smalltalk</a> language, which was the first Object-Oriented language!</li>
+</ul>
+<p>Thus in order to utilize a <code>ListView</code>, we’ll have some data to be displayed (the <em>model</em>), the <em>views</em> (Layouts) to be shown, and the <code>ListView</code> itself will connect these together act as the <em>controller</em>. Specifically, the <code>ListView</code> is a subclass of <a href="https://developer.android.com/reference/android/widget/AdapterView.html"><code>AdapterView</code></a>, which is a View backed by a data source—the <code>AdapterView</code> exists to hook the View and the data together (a controller!)</p>
+<ul>
+<li>There are other <code>AdapterViews</code> as well. For example, <a href="https://developer.android.com/guide/topics/ui/layout/gridview.html"><code>GridView</code></a> works exactly the same way as a <code>ListView</code>, but lays out items in a scrollable grid rather than a scrollable list.</li>
+</ul>
+<p>In order to use a <code>ListView</code>, we need to get the pieces in place:</p>
+<ol style="list-style-type: decimal">
+<li><p>First we specify the <strong>model</strong>: some raw data. We will start with a simple <code>String[]</code>, filling it with placeholder data:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String[] data = <span class="kw">new</span> String[<span class="dv">99</span>];
+<span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">99</span>; i&gt;<span class="dv">0</span>; i--){
+    data[<span class="dv">99</span>-i] = i+ <span class="st">&quot; bottles of beer on the wall&quot;</span>;
+}</code></pre></div>
+<p>While we could define this data as <a href="https://developer.android.com/guide/topics/resources/string-resource.html#StringArray">an XML resource</a>, we’ll create it dynamically for testing (and to make it changeable later!)</p></li>
+<li><p>Next we specify the <strong>view</strong>: a <code>View</code> to show for each datum in the list. Define an XML layout resource for that (<code>list_item</code> is a good name and a common idiom).</p>
+<p>For simplicity’s sake we don’t need to specify a full Layout, just a basic <code>TextView</code>. Have the width <code>match_parent</code> and the height <code>wrap_content</code>. <em>Don’t forget an <code>id</code>!</em></p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;TextView</span><span class="ot"> xmlns:android=</span><span class="st">&quot;http://schemas.android.com/apk/res/android&quot;</span>
+<span class="ot">    android:id=</span><span class="st">&quot;@+id/txtItem&quot;</span>
+<span class="ot">    android:layout_width=</span><span class="st">&quot;match_parent&quot;</span>
+<span class="ot">    android:layout_height=</span><span class="st">&quot;wrap_content&quot;</span> <span class="kw">/&gt;</span></code></pre></div>
+<p>To make it look better, you can specify <code>android:minHeight=&quot;?android:attr/listPreferredItemHeight&quot;</code> (using the framework’s preferred height for lists), and some <code>center_vertical</code> gravity. The <code>android:lines</code> property is also useful if you need more space.</p></li>
+<li><p>Finally, we specify the <strong>controller</strong>: the <code>ListView</code> itself. Add that item to the Activity’s Layout resource (<em>practice</em>: what should its dimensions be?)</p></li>
+</ol>
+<p>To finish the controller <code>ListView</code>, we ned to provide it with an <a href="https://developer.android.com/guide/topics/ui/declaring-layout.html#AdapterViews"><code>Adapter</code></a><a href="#fn14" class="footnoteRef" id="fnref14"><sup>14</sup></a> which will connect the <em>model</em> to the <em>view</em>. The Adapter does the “translation” work between model and view, performing a mapping from data types (e.g., a <code>String</code>) and View types (e.g., a <code>TextView</code>).</p>
+<p>Specifically, we will use an <a href="https://developer.android.com/reference/android/widget/ArrayAdapter.html"><code>ArrayAdapter</code></a>, which is one of the simplest Adapters to use (and because we have an array of data!) An <code>ArrayAdapter</code> creates Views by calling <code>.toString()</code> on each item in the array, and setting that <code>String</code> as the content of a <code>TextView</code>!</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ArrayAdapter&lt;String&gt; adapter = <span class="kw">new</span> ArrayAdapter&lt;String&gt;(<span class="kw">this</span>,
+    R.<span class="fu">layout</span>.<span class="fu">list_item_layout</span>, R.<span class="fu">layout</span>.<span class="fu">list_item_txtView</span>, myStringArray);</code></pre></div>
+<ul>
+<li>Note the parameters of the constructor: a <code>Context</code>, the item layout resource, the TextView reource, and the data array. Also note that this instance utilizes <em>generics</em>, since we’re using an array of <code>Strings</code> (as opposed to an array of <code>Dogs</code> or some other type).</li>
+</ul>
+<p>We acquire a reference to the <code>ListView</code> with <code>findViewById()</code>, and call <code>ListView#setAdapter()</code> to attach the adapter to that controller.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ListView listView = (ListView)<span class="fu">findViewById</span>(R.<span class="fu">id</span>.<span class="fu">listview</span>);
+listView.<span class="fu">setAdapter</span>(adapter);</code></pre></div>
+<p>And that’s all that is needed to create a scrollable list of data!</p>
+<p>Each item in this list is selectable (can have an <code>onClick</code> callback). This allows us to click on any item in order to (for example) view more details about the item. Utilize the <code>AdapterView#setOnItemClickListener(OnItemClickListener)</code> function to register the callback.</p>
+<ul>
+<li>The <code>postion</code> parameter in the <code>onItemClick()</code> callback is the index of the item which was clicked. Use <code>(Type)parent.getItemAtPosition(position)</code> to access the data value associated with that View.</li>
+</ul>
+<p>Additionally, each item does have an individual layout, so we can customize these appearances (e.g., if our layout also wanted to include pictures). See <a href="https://github.com/codepath/android_guides/wiki/Using-an-ArrayAdapter-with-ListView#row-view-recycling">this tutorial</a> for an example on making a custom adapter to fill in multiple <code>Views</code> with data from a list!</p>
+<p class="alert alert-info">
+And remember, a <code>GridView</code> is basically the same thing (in fact, we can just change over that and have everything work, if we use <em>polymorphism</em>!)
+</p>
+<!--### **break**-->
+</div>
+<div id="network-data" class="section level2">
+<h2><span class="header-section-number">4.3</span> Network Data</h2>
+<p>In the previous section we created a <code>ListView</code> utilizing an adapter to display a list of Strings. But <a href="java-threads-http.html#java-threads-http">Appendix C</a> provides an implementation for fetching data from the Internet which gave us a list of Strings. Can we combine these? You betchya!</p>
+<p>The lecture code provides a <code>MovieDownloader</code> class containing the exact same networking code utilized in the Appendix. We can then simply specify that the <em>model</em> <code>String[]</code> should be the result of the <code>downloadMovieData()</code> method, rather than manually created with a loop.</p>
+<p class="alert alert-warning">
+If you test this code, you’ll notice that it doesn’t work! The program will crash with a <code>NetworkOnMainThreadException</code>.
+</p>
+<p>Android apps run by default on the <strong><em>Main Thread</em></strong> (also called the <strong><em>UI Thread</em></strong>). This thread is in charge of all user interactions—handling button presses, scrolls, drags, etc.—but also UI <em>output</em> like drawing and displaying text! See <a href="https://developer.android.com/guide/components/processes-and-threads.html#Threads">Android Threads</a> for more details.</p>
+<ul>
+<li>A thread is a piece of a program that is independently scheduled by the processor. Computers do exactly one thing at a time, but make it look like they are doing lots of tasks simultaneously by switching between them (i.e., between processes) really fast. Threads are a way that we can break up a single application or process into little “sub-process” that can be run simultaneously—by switching back and forth periodically so everyone has a chance to work</li>
+</ul>
+<p>Within a single thread, all method calls are <strong>synchronous</strong>—that is, one has to finish before the next occurs. You can’t get to step 4 without finishing step 3. With an event-driven system like Android, each method call is fast enough that this isn’t a problem (you’re done handling one click by the time the next occurs). But long, drawn-out processes like network access (or processing bitmaps, or accessing a database), could cause other tasks to have to wait. It’s like a traffic jam!</p>
+<ul>
+<li>Tasks such as network access are <strong>blocking</strong> method calls, which stop the Thread from continuing. A blocked <em>Main Thread</em> will lead to the infamous <strong>“Application not responding” (ANR)</strong> error!</li>
+</ul>
+<p>Thus we need to move the network code <em>off</em> the Main Thread, onto a <strong>background thread</strong>, thereby allowing it to run without blocking the user interaction that occurs on the Main Thread. To do this, we will use a class called <a href="https://developer.android.com/reference/android/os/AsyncTask.html"><code>ASyncTask</code></a><a href="#fn15" class="footnoteRef" id="fnref15"><sup>15</sup></a> to perform a task (such as network access) asynchronously—without waiting for other Threads.</p>
+<p class="alert alert-info">
+Learning Android Development involves knowing about what classes exist, and can be used to solve problems, but how were we able to learn about the existing of this highly useful (and specialized) <code>ASyncTask</code> class? We started from the official API Guide on <a href="https://developer.android.com/guide/components/processes-and-threads.html">Processes and Threads Guide</a><a href="#fn16" class="footnoteRef" id="fnref16"><sup>16</sup></a>, which introduces this class! Thus to learn about new Android options, <em>read the docs</em>.
+</p>
+<p>Note that an <code>ASyncTask</code> background thread will be <em>tied to the lifecycle of the Activity</em>: if we close the Activity, the network connection will die as well. A better but <em>much</em> more complex solution would be to use a <code>Service</code>—which is covered in a future lecture. But since this example just involves getting a small amount of data, we don’t really care if the network connection gets dropped.</p>
+<p><code>ASyncTask</code> can be fairly complicated, but is a good candidate to practice learning from the API documentation. Looking at that documentation, the first thing you should notice (or would if the API was a little more readable) is that <code>ASyncTask</code> is <strong><code>abstract</code></strong>, meaning you’ll need to <em>subclass</em> it in order to use it. Thus you can subclass it as an <em>inner</em> class inside the Activity that will use it (<code>MovieDownloadTask</code> is a good name).</p>
+<p>You should also notice that <code>ASyncTask</code> is a <em>generic</em> class with three (3) generic parameters: the type of the Parameter to the task, the type of the Progress measurement reported by the task, and the type of the task’s Result. We can fill in what types of Parameter and Result we want from our asynchronous method (e.g., take in a <code>String</code> and return a <code>String[]</code>), and use the <code>Void</code> type for the Progress measurement (since we won’t be tracking that).</p>
+<p>When we “run” an AsyncTask, it will do four (4) things, represented by four methods:</p>
+<ol style="list-style-type: decimal">
+<li><code>onPreExecute()</code> is called <em>on the UI thread</em> before we run the task. This method can be used to perform any setup for the task.</li>
+<li><code>doInBackground(Params...)</code> is called <em>on the background thread</em> to do the work we want to be performed asynchronously. We <strong>must</strong> override this method (it’s <code>abstract</code>!) The params and return type for the method need to match the <code>ASyncTask</code> generic types.</li>
+<li><code>onProgressUpdate()</code> can be indirectly called <em>on the UI thread</em> if we want to update our progress (e.g., update a progress bar). Note that UI changes can <strong>only</strong> be made on the UI thread!</li>
+<li><code>onPostExecute(Result)</code> is called <em>on the UI thread</em> to process any task results, which are passed as parameters to this method when <code>doInBackground</code> is finished.</li>
+</ol>
+<p>The <code>doInBackground()</code> is what occurs on the background thread (and is the heart of the task), so we put our network accessing method call in there.</p>
+<p>We can then <em>instantiate</em> a new <code>ASyncTask</code> object in the Activity’s <code>onCreate()</code> callback, and call <code>ASyncTask#execute(params)</code> to start the task running on its own thread.</p>
+<p class="alert alert-warning">
+If you test this code, you’ll notice that it still doesn’t work! The program will crash with a <code>SecurityException</code>.
+</p>
+<p>As a <a href="https://developer.android.com/guide/topics/permissions/index.html">security feature</a>, Android apps by default have very limited access to the overall operating system (e.g., to do anything other than show a layout). An app can’t use the Internet (which might consume people’s data plans!) without explicit permission from the user. This permission is given by the user at <em>install time</em>.</p>
+<p>In order to get permission, the app needs to ask for it (“Mother may I…”). We do that by declaring that the app uses the Internet in the <code>Manifest.xml</code> file (which has all the details of our app!)</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;uses-permission</span><span class="ot"> android:name=</span><span class="st">&quot;android.permission.INTERNET&quot;</span><span class="kw">/&gt;</span>
+<span class="co">&lt;!-- put this ABOVE the &lt;application&gt; tag --&gt;</span></code></pre></div>
+<p>Note that Marshmallow introduced a <a href="https://developer.android.com/training/permissions/requesting.html">new security model</a> in which users grant permissions at <em>run-time</em>, not install time, and can revoke permissions whenever they want. To handle this, you need to add code to request “dangerous” permissions (like Location, Phone, or SMS access; Internet is <em>not</em> dangerous) each time you use it.</p>
+<ul>
+<li>For “normal” permissions (e.g., Internet), you declare the permission need in the Manifest.</li>
+<li>For “dangerous” permissions (e.g., Location), you declare the permission need in the Manifest <strong>and</strong> request permission programmatically in code each time you want to use it.</li>
+</ul>
+<p>Once we’ve requested permission (and have been granted that permission by virtue of the user installing our application), we can finally connect to the Internet to download data. We can log out the request results to provide it.</p>
+<p>In order to get the downloaded data into a ListView, we utilize the <code>doPostExecute()</code> method. This method is run on the <em>UI Thread</em> so we can use it to update the View (we can <em>only</em> change the View on the UI Thread, to avoid collisions). It also gets the results returned by <code>doInBackground()</code> passed to it!</p>
+<p>We take that passed in <code>String[]</code> and put that into the <code>ListView</code>. Specifically, we feed it into the <code>Adapter</code>, which then works to populate the views.</p>
+<ul>
+<li>First clear out any previous data items in the adapter using <code>adapter.clear()</code>.</li>
+<li>Then use <code>adapter.add()</code> or (<code>adapter.addAll()</code>) to add each of the new data items to the Adapter’s model.</li>
+<li>You can call <code>notifyDataSetChanged()</code> on the Adapter to make sure that the View knows the data has changed, but this method is already called by the <code>.add()</code> method so isn’t necessary in this situation.</li>
+</ul>
+<p>To finalize the app: we can enable the user to search for different movies by copying the <code>EditText</code> and <code>Button</code> Views from the previous <code>input_layout</code> resource, accessing the text from the former when the later is pressed. We can then pass the <code>EditText</code> content String into the <code>ASyncTask#execute()</code> function (since we’ve declared that the generic <code>ASyncTask</code> takes that type as the first Parameter).</p>
+<ul>
+<li>We can actually pass in multiple <code>String</code> arguments using the <code>String... params</code> spread operator syntax (representing an arbitrary number of items of that type). See <a href="https://docs.oracle.com/javase/tutorial/java/javaOO/arguments.html#varargs">here</a> for details. The value that the <code>ASyncTask</code> methods <em>actually</em> get is an array of the arguments.</li>
+</ul>
+<p>In the end, we are able to downlod data from the Internet and show an interactive list of that data in the app! We’ve done a whirl-wind tour of Android in this process: Layouts in the XML, Adapters in the Activity, Threading in a new class, Security in the Manifest… bringing lots of parts together to provide a particular piece of functionality.</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="13">
+<li id="fn13"><p><a href="https://developer.android.com/guide/topics/ui/layout/listview.html" class="uri">https://developer.android.com/guide/topics/ui/layout/listview.html</a><a href="data-views.html#fnref13">↩</a></p></li>
+<li id="fn14"><p><a href="https://developer.android.com/reference/android/widget/Adapter.html" class="uri">https://developer.android.com/reference/android/widget/Adapter.html</a><a href="data-views.html#fnref14">↩</a></p></li>
+<li id="fn15"><p><a href="https://developer.android.com/reference/android/os/AsyncTask.html" class="uri">https://developer.android.com/reference/android/os/AsyncTask.html</a><a href="data-views.html#fnref15">↩</a></p></li>
+<li id="fn16"><p><a href="https://developer.android.com/guide/components/processes-and-threads.html" class="uri">https://developer.android.com/guide/components/processes-and-threads.html</a><a href="data-views.html#fnref16">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="resources-and-layouts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="material-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["github", "facebook", "twitter", "google"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/info48/book/edit/master/data-views.Rmd",
+"text": "Edit"
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

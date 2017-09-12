@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Android Development: Lecture Notes</title>
+  <meta name="description" content="Lecture Notes for INFO 448: Android Development.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Android Development: Lecture Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://info448.github.io/" />
+  <meta property="og:image" content="https://info448.github.io/img/android_icon_transparent.png" />
+  <meta property="og:description" content="Lecture Notes for INFO 448: Android Development." />
+  <meta name="github-repo" content="info448/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Android Development: Lecture Notes" />
+  
+  <meta name="twitter:description" content="Lecture Notes for INFO 448: Android Development." />
+  <meta name="twitter:image" content="https://info448.github.io/img/android_icon_transparent.png" />
+
+<meta name="author" content="Joel Ross">
+
+
+<meta name="date" content="2017-09-11">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
+<link rel="prev" href="index.html">
+<link rel="next" href="resources-and-layouts.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98444716-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./" class="title">Android Development</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Book</a></li>
+<li class="part"><span><b>I Lectures</b></span></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#android-history"><i class="fa fa-check"></i><b>1.1</b> Android History</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#android-versions"><i class="fa fa-check"></i>Android Versions</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#legal-battles"><i class="fa fa-check"></i>Legal Battles</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#building-apps"><i class="fa fa-check"></i><b>1.2</b> Building Apps</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#running-the-app"><i class="fa fa-check"></i>Running the App</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#app-source-code"><i class="fa fa-check"></i><b>1.3</b> App Source Code</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#xml-resources"><i class="fa fa-check"></i>XML Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#the-manifest"><i class="fa fa-check"></i>The Manifest</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#java-activities"><i class="fa fa-check"></i>Java Activities</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#gradle-scripts"><i class="fa fa-check"></i>Gradle Scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#logging-adb"><i class="fa fa-check"></i><b>1.4</b> Logging &amp; ADB</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#log-methods"><i class="fa fa-check"></i>Log Methods</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#logcat"><i class="fa fa-check"></i>Logcat</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#toast"><i class="fa fa-check"></i>Toast</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#adding-interaction"><i class="fa fa-check"></i><b>1.5</b> Adding Interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html"><i class="fa fa-check"></i><b>2</b> Resources and Layouts</a><ul>
+<li class="chapter" data-level="2.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#resources"><i class="fa fa-check"></i><b>2.1</b> Resources</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#r"><i class="fa fa-check"></i>R</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#alternative-resources"><i class="fa fa-check"></i>Alternative Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views"><i class="fa fa-check"></i><b>2.2</b> Views</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#view-properties"><i class="fa fa-check"></i>View Properties</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views-and-java"><i class="fa fa-check"></i>Views and Java</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#layouts"><i class="fa fa-check"></i><b>2.3</b> Layouts</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#linearlayout"><i class="fa fa-check"></i>LinearLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#relativelayout"><i class="fa fa-check"></i>RelativeLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#constraintlayout"><i class="fa fa-check"></i>ConstraintLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#other-layouts"><i class="fa fa-check"></i>Other Layouts</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#combining-and-inflating-layouts"><i class="fa fa-check"></i>Combining and Inflating Layouts</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#inputs"><i class="fa fa-check"></i><b>2.4</b> Inputs</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="activities.html"><a href="activities.html"><i class="fa fa-check"></i><b>3</b> Activities</a><ul>
+<li class="chapter" data-level="3.1" data-path="activities.html"><a href="activities.html#making-activities"><i class="fa fa-check"></i><b>3.1</b> Making Activities</a></li>
+<li class="chapter" data-level="3.2" data-path="activities.html"><a href="activities.html#the-activity-lifecycle"><i class="fa fa-check"></i><b>3.2</b> The Activity Lifecycle</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#overriding-the-callback-methods"><i class="fa fa-check"></i>Overriding the Callback Methods</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#saving-and-restoring-activity-state"><i class="fa fa-check"></i>Saving and Restoring Activity State</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="activities.html"><a href="activities.html#context"><i class="fa fa-check"></i><b>3.3</b> Context</a></li>
+<li class="chapter" data-level="3.4" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>3.4</b> Multiple Activities</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#intents"><i class="fa fa-check"></i>Intents</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i>Back &amp; Tasks</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i>Up Navigation</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Additional Topics (Labs)</b></span></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="java-review.html"><a href="java-review.html"><i class="fa fa-check"></i><b>A</b> Java Review</a><ul>
+<li class="chapter" data-level="A.1" data-path="java-review.html"><a href="java-review.html#building-apps-with-gradle"><i class="fa fa-check"></i><b>A.1</b> Building Apps with Gradle</a></li>
+<li class="chapter" data-level="A.2" data-path="java-review.html"><a href="java-review.html#class-basics"><i class="fa fa-check"></i><b>A.2</b> Class Basics</a></li>
+<li class="chapter" data-level="A.3" data-path="java-review.html"><a href="java-review.html#inheritance"><i class="fa fa-check"></i><b>A.3</b> Inheritance</a></li>
+<li class="chapter" data-level="A.4" data-path="java-review.html"><a href="java-review.html#interfaces"><i class="fa fa-check"></i><b>A.4</b> Interfaces</a></li>
+<li class="chapter" data-level="A.5" data-path="java-review.html"><a href="java-review.html#polymorphism"><i class="fa fa-check"></i><b>A.5</b> Polymorphism</a></li>
+<li class="chapter" data-level="A.6" data-path="java-review.html"><a href="java-review.html#abstract-methods-and-classes"><i class="fa fa-check"></i><b>A.6</b> Abstract Methods and Classes</a></li>
+<li class="chapter" data-level="A.7" data-path="java-review.html"><a href="java-review.html#generics"><i class="fa fa-check"></i><b>A.7</b> Generics</a></li>
+<li class="chapter" data-level="A.8" data-path="java-review.html"><a href="java-review.html#nested-classes"><i class="fa fa-check"></i><b>A.8</b> Nested Classes</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Java Swing Framework</a><ul>
+<li class="chapter" data-level="B.1" data-path="java-swing.html"><a href="java-swing.html#events"><i class="fa fa-check"></i><b>B.1</b> Events</a></li>
+<li class="chapter" data-level="B.2" data-path="java-swing.html"><a href="java-swing.html#layouts-and-composites"><i class="fa fa-check"></i><b>B.2</b> Layouts and Composites</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Android Development: Lecture Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">Lecture 1</span> Introduction</h1>
+<p>This course focuses on <strong>Android Development</strong>. But what is Android?</p>
+<p>Android is an <a href="https://en.wikipedia.org/wiki/Operating_system">operating system</a>. That is, it’s software that connects hardware to software and provides general services. But more than that, it’s a <em>mobile specific</em> operating system: an OS designed to work on <em>mobile</em> (read: handheld, wearable, carry-able) devices.</p>
+<p>Note that the term “Android” also is used to refer to the “platform” (e.g., devices that use the OS) as well as the ecosystem that surrounds it. This includes the device manufacturers who use the platform, and the applications that can be built and run on this platform. So “Android Development” technically means developing applications that run on the specific OS, it also gets generalized to refer to developing any kind of software that interacts with the platform.</p>
+<div id="android-history" class="section level2">
+<h2><span class="header-section-number">1.1</span> Android History</h2>
+<p>If you’re going to develop systems for Android, it’s good to have some familiarity with the platform and its history, if only to give you perspective on how and why the framework is designed the way it is:</p>
+<ul>
+<li><p><strong>2003</strong>: The platform was originally founded by a start-up “Android Inc.” which aimed to build a mobile OS operating system (similar to what <a href="https://en.wikipedia.org/wiki/Symbian">Nokia’s Symbian</a> was doing at the time)</p></li>
+<li><p><strong>2005</strong>: Android was acquired by Google, who was looking to get into mobile</p></li>
+<li><p><strong>2007</strong>: Google announces the <a href="https://www.openhandsetalliance.com/">Open Handset Alliance</a>, a group of tech companies working together to develop “open standards” for mobile platforms. Members included phone manufacturers like HTC, Samsung, and Sony; mobile carriers like T-Mobile, Sprint, and NTT DoCoMo; hardware manufacturers like Broadcom and Nvidia; and others. The Open Handset Alliance now (2017) includes 86 companies.</p>
+<p>Note this is the same year the first iPhone came out!</p></li>
+<li><p><strong>2008</strong>: First Android device is released: the <a href="https://en.wikipedia.org/wiki/HTC_Dream">HTC Dream</a> (a.k.a. T-Mobile G1)</p>
+<p><em>Specs:</em> 528Mhz ARM chip; 256MB memory; 320x480 resolution capacitive touch; slide-out keyboard! Author’s opinion: a fun little device.</p></li>
+<li><p><strong>2010</strong>: First <a href="https://en.wikipedia.org/wiki/Google_Nexus">Nexus</a> device is released: the <a href="https://en.wikipedia.org/wiki/Nexus_One">Nexus One</a>. These are Google-developed “flagship” devices, intended to show off the capabilities of the platform.</p>
+<p><em>Specs:</em> 1Ghz Scorpion; 512MB memory; .37&quot; at 480x800 AMOLED capacitive touch. For comparison, the <a href="https://en.wikipedia.org/wiki/IPhone_7">iPhone 7 Plus</a> (2016) has: 2.34Ghz dual core A10 64bit Fusion; 3GB RAM; 5.5&quot; at 1920x1080 display.</p>
+<p>(As of 2016, this program has been superseded by the <a href="https://en.wikipedia.org/wiki/Pixel_(smartphone)">Pixel</a> range of devices).</p></li>
+<li><p><strong>2014</strong>: Android Wear, a version of Android for wearable devices (watches) is announced.</p></li>
+<li><p><strong>2016</strong>: Daydream, a virtual reality (VR) platform for Android is announced.</p></li>
+</ul>
+<p>In short, Google keeps pushing the platform wider so it includes more and more capabilities.</p>
+<p>Android is incredibly popular! (see e.g., <a href="https://www.netmarketshare.com/operating-system-market-share.aspx?qprid=8&amp;qpcustomd=1">here</a>, <a href="https://www.theverge.com/2017/2/16/14634656/android-ios-market-share-blackberry-2016">here</a>, and <a href="https://www.businessinsider.com/iphone-v-android-market-share-2014-5">here</a>)</p>
+<ul>
+<li>In any of these analyses there are some questions about what exactly is counted… but what we care about is that there are <em>a lot</em> of Android devices out there! And more than that: there are a lot of <strong>different</strong> devices!</li>
+</ul>
+<div id="android-versions" class="section level3 unnumbered">
+<h3>Android Versions</h3>
+<p>Android has gone through a large number of “versions” since it’s release:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="left">Version</th>
+<th align="left">Nickname</th>
+<th align="left">API Level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Sep 2008</td>
+<td align="left">1.0</td>
+<td align="left">Android</td>
+<td align="left">1</td>
+</tr>
+<tr class="even">
+<td align="left">Apr 2009</td>
+<td align="left">1.5</td>
+<td align="left">Cupcake</td>
+<td align="left">3</td>
+</tr>
+<tr class="odd">
+<td align="left">Sep 2009</td>
+<td align="left">1.6</td>
+<td align="left">Donut</td>
+<td align="left">4</td>
+</tr>
+<tr class="even">
+<td align="left">Oct 2009</td>
+<td align="left">2.0</td>
+<td align="left">Eclair</td>
+<td align="left">5</td>
+</tr>
+<tr class="odd">
+<td align="left">May 2010</td>
+<td align="left">2.2</td>
+<td align="left">Froyo</td>
+<td align="left">8</td>
+</tr>
+<tr class="even">
+<td align="left">Dec 2010</td>
+<td align="left">2.3</td>
+<td align="left">Gingerbread</td>
+<td align="left">9</td>
+</tr>
+<tr class="odd">
+<td align="left">Feb 2011</td>
+<td align="left">3.0</td>
+<td align="left">Honeycomb</td>
+<td align="left">11</td>
+</tr>
+<tr class="even">
+<td align="left">Oct 2011</td>
+<td align="left">4.0</td>
+<td align="left">Ice Cream Sandwich</td>
+<td align="left">14</td>
+</tr>
+<tr class="odd">
+<td align="left">July 2012</td>
+<td align="left">4.1</td>
+<td align="left">Jelly Bean</td>
+<td align="left">16</td>
+</tr>
+<tr class="even">
+<td align="left">Oct 2013</td>
+<td align="left">4.4</td>
+<td align="left">KitKat</td>
+<td align="left">19</td>
+</tr>
+<tr class="odd">
+<td align="left">Nov 2014</td>
+<td align="left">5.0</td>
+<td align="left">Lollipop</td>
+<td align="left">21</td>
+</tr>
+<tr class="even">
+<td align="left">Oct 2015</td>
+<td align="left">6.0</td>
+<td align="left">Marshmallow</td>
+<td align="left">23</td>
+</tr>
+<tr class="odd">
+<td align="left">Aug 2016</td>
+<td align="left">7.0</td>
+<td align="left">Nougat</td>
+<td align="left">24</td>
+</tr>
+<tr class="even">
+<td align="left">Aug 2017</td>
+<td align="left">8.0</td>
+<td align="left">Oreo</td>
+<td align="left">26</td>
+</tr>
+</tbody>
+</table>
+<p>Each different “version” is nicknamed after a dessert, in alphabetical order. But as developers, what we care about is the <strong>API Level</strong>, which indicates what different programming <em>interfaces</em> (classes and methods) are available to use.</p>
+<ul>
+<li>You can check out an interactive version of the history through Marshmallow at <a href="https://www.android.com/history/" class="uri">https://www.android.com/history/</a></li>
+<li>For current usage breakdown, see <a href="https://developer.android.com/about/dashboards/" class="uri">https://developer.android.com/about/dashboards/</a></li>
+</ul>
+<p>Additionally, Android is an “open source” project released through the “Android Open Source Project”, or <a href="https://source.android.com/">ASOP</a>. You can find the latest version of the operating system code at <a href="https://source.android.com/" class="uri">https://source.android.com/</a>; it is very worthwhile to actually dig around in the source code sometimes!</p>
+<p>While new versions are released fairly often, this doesn’t mean that all or even many devices update to the latest version. Instead, users get updated phones historically by purchasing new devices (every 18m on average in US). Beyond that, updates—including security updates—have to come through the mobile carriers, meaning that most devices are never updated beyond the version that they are purchases with.</p>
+<ul>
+<li><p>This is a problem from a consumer perspective, particularly in terms of security! There are some efforts on Google’s part to to work around this limitation by moving more and more platform services out of the base operating system into a separate “App” called Google Play Services, as well as to divorce the OS from hardware requirements through the new <a href="https://android-developers.googleblog.com/2017/05/here-comes-treble-modular-base-for.html">Project Treble</a>.</p></li>
+<li><p>But what this means for developers is that you can’t expect devices to be running the latest version of the operating system—the range of versions you need to support is much greater than even web development! Android applications must be written for <strong>heterogeneous devices</strong>.</p></li>
+</ul>
+</div>
+<div id="legal-battles" class="section level3 unnumbered">
+<h3>Legal Battles</h3>
+<p>When discussing Android history, we would be remiss if we didn’t mention some of the legal battles surrounding Android. The biggest of these is <a href="https://www.eff.org/cases/oracle-v-google"><strong>Oracle v Google</strong></a>. In a nutshell, Oracle claims that the <em>Java API</em> is copyrighted (that the method signatures themselves and how they work are protected), so because Google uses that API in Android, Google is violating the copyright. In 2012 a California federal judge decided in Google favor (that one can’t copyright an API). This was then reversed by the Federal Circuit court in 2014. The verdict was appealed to the US Supreme Court in 2015, who refused to hear the case. It then went back to the the district court, which ruled in 2016 that Google’s use of the API was fair use. This ruling is again under appear. See <a href="https://www.eff.org/cases/oracle-v-google" class="uri">https://www.eff.org/cases/oracle-v-google</a> for a summary, as well as <a href="https://arstechnica.com/series/series-oracle-v-google/" class="uri">https://arstechnica.com/series/series-oracle-v-google/</a></p>
+<ul>
+<li>One interesting side effect of this battle: the Android Nougat and later uses the <a href="https://openjdk.java.net/">OpenJDK</a> implementation of Java, instead of Google’s own in-violation-but-fair-use implementation <a href="https://venturebeat.com/2015/12/29/google-confirms-next-android-version-wont-use-oracles-proprietary-java-apis/">see here</a>. This change <em>shouldn’t</em> have any impact on you as a developer, but it’s worth keeping an eye out for potentially differences between Android and Java SE.</li>
+</ul>
+<p>There have been other legal challenges as well. While not directly about Android, the other major relevant court battle is <a href="https://arstechnica.com/series/apple-v-samsung/"><strong>Apple v Samsung</strong></a>. In this case, Apple claims that Samsung infringed on their intellectual property (their design patents). This has gone back and forth in terms of damages and what is considered infringing; as of this writing, the latest development is that the Supreme Court heard the case and <a href="https://www.nytimes.com/2016/12/06/technology/samsung-apple-smartphone-patent-supreme-court.html?_r=0">sided with Samsung</a> that infringing design patents shouldn’t lead to damages in terms of the entire device… it’s complicated (the author is not a lawyer).</p>
+<p>So overall: Android is a growing, evolving platform that is embedded in and affecting the social infrastructures around information technology in numerous ways.</p>
+</div>
+</div>
+<div id="building-apps" class="section level2">
+<h2><span class="header-section-number">1.2</span> Building Apps</h2>
+<p>While Android applications can be developed using any programming environment, the official and best IDE for Android programming is <a href="https://developer.android.com/studio/index.html"><strong>Android Studio</strong></a>. This is a fork of JetBrain’s IntelliJ IDEA application—a Java IDE customized for Android development. You will need to download and install this IDE.</p>
+<ul>
+<li><p>Be sure to download the Android Studio bundle that includes the <strong>Android SDK</strong> (Standard Development Kit): the tools and libraries needed for Android development. In particular, the SDK comes with a number of useful <a href="https://developer.android.com/studio/command-line/index.html">command-line tools</a>. These include:</p>
+<ul>
+<li><strong><code>adb</code></strong>, the “<strong>Android Device Bridge</strong>”, which is a connection between your computer and the device (physical <em>or</em> virtual). This tool is used for console output!</li>
+<li><strong><code>emulator</code></strong>, which runs the Android emulator: a virtual machine of an Android device. <!-- - <s>`android`</s> (_deprecated/removed_): a tool that does SDK/AVD (Android Virtual Device) management. Basically, this command-line utility did everything that the IDE did, but from the command-line! It has recently been removed from the IDE. --></li>
+</ul>
+<p>I recommend making sure that you have the SDK tools (the <code>tools</code> and <code>platform-tools</code> folder) available on your computer’s <code>PATH</code> so you can use them from the command-line. By default, the SDK is found at <code>/Users/$USER/Library/Android/sdk</code> on a Mac, and at <code>C:\Users\$USERNAME\AppData\Local\Android\sdk</code> on Windows. While these tools are all built into the IDE, they can be useful fallbacks for debugging or automation.</p></li>
+</ul>
+<div id="creating-a-project" class="section level3 unnumbered">
+<h3>Creating a Project</h3>
+<p>To begin your first application, launch Android Studio (it may take a few minutes to open). From the Welcome screen, choose to “Start a new Android Studio Project”. This will open up a wizard to walk you through setting up the project.</p>
+<ul>
+<li><p>The “Company domain” should be a unique domain for you. For this course, you should include your UW NetID, e.g., <code>joelross.uw.edu</code>.</p></li>
+<li><p>Make a mental note of the project location so you can find your work later (e.g., if it’s in <code>Desktop</code> or <code>Documents</code>).</p></li>
+<li><p>On the next screen, you will need to pick the <em>Minimum SDK</em> level that you wish to support—that is, what is the oldest version of Android your application will be able to run on? For this course, unless otherwise specified, you should target API 15 Ice Cream Sandwich (4.0.3) as a minimum, allowing your application to run on pretty much any Android device.</p>
+<p class="alert alert-info">
+Note that the Minimum SDK is different than the <strong>Target SDK</strong>, which is the version of Android your application has been tested and designed against. The Target SDK indicates what set of API features you have considered/coded against, even if your app can fall back to older devices that don’t include those features. In many ways, the Target SDK is the “highest SDK I’ve worked with”. For most of this course we will target either API 21 (Lollipop) or API 23 (Marshmallow).
+</p></li>
+<li><p>On the next screen, select to start with an <em>Empty Activity</em>. <strong>Activities</strong> are the basic component of Android, each of which acts as a “screen” or “page” in your app. Activities are discussed in more detail in the next lecture.</p></li>
+<li><p>Stick with the default name (<code>MainActivity</code>) on the next screen, and hit “Finish”. Android Studio will take a few minutes to create your project and get everything set up. (Keep an eye on the bottom status bar to wait for everything to be finished). Once it is done, you have a complete (if simple) app!</p></li>
+</ul>
+</div>
+<div id="running-the-app" class="section level3 unnumbered">
+<h3>Running the App</h3>
+<p>You can run your app by clicking the “Play” or “Run” button at the top of the IDE. But you’ll need an Android Device to run the app on… luckily, Android Studio comes with one: a virtual <a href="https://developer.android.com/studio/run/emulator.html">Android Emulator</a>. This virtual machine models emulates a generic device with hardware you can specify, though it does have some limitations (e.g., no cellular service, no bluetooth, etc).</p>
+<ul>
+<li><p>While it has improved recently, the emulator historically does not work very well on Windows—it runs very, very slowly. The best way to speed the emulator up on any operating system is to make sure you have enabled <a href="https://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager">HAXM</a> (Intel’s Acceleration Manager which allows the emulator to utilize your GPU for rendering): this speeds things up considerably.</p>
+<p>You can usually install this through Android Studio: go to <code>Tools &gt; Android &gt; SDK Manager</code> to open up the SDK manager for downloading different versions of the Android SDK and other support software. Under “SDK Tools”, find “Intel x86 Emulator Accelerator (HAXM installer)”, check it, and hit “OK” to download. Note that you may need to do additional installation/configuration manually, see the guides (<a href="https://software.intel.com/en-us/android/articles/installation-instructions-for-intel-hardware-accelerated-execution-manager-mac-os-x">Mac</a>, <a href="https://software.intel.com/en-us/android/articles/installation-instructions-for-intel-hardware-accelerated-execution-manager-windows">Windows</a>).</p></li>
+<li><p>It is of course also possible to run your app on a <a href="https://developer.android.com/studio/run/device.html">physical device</a>. These are the best for development (they are the fastest, easiest way to test code), though you’ll need a USB cable to be able to wire your device to your computer. Any device will work for this course; you don’t even need cellular service (just WiFi should work).</p>
+<p>You will need to turn on <a href="http://developer.android.com/tools/device.html">developer options</a> in order to install development apps on your device!</p></li>
+</ul>
+<p>In order to create an emulator for your machine, go to <code>Tools &gt; Android &gt; AVD Manager</code> to open up the <em>Android Virtual Device</em> Manager. You can then choose “Create Virtual Device…” in order to launch the wizard to specify a new emulator.</p>
+<ul>
+<li><p>The <strong>Nexus 5</strong> is a good choice of hardware profile for making sure you support “older” devices. The Nexus 5X or Pixel are also reasonable device profiles to test against.</p></li>
+<li><p>For now, you’ll want to use a system image for Lollipop API 21 or 22, and almost certainly on x86 (Intel) hardware. Make sure to select one that includes the Google APIs (so you have access to special Google classes).</p></li>
+<li><p>The advanced settings can be used to specify things like the camera and whether it accepts keyboard input (should be on by default). These settings can always be changed later.</p></li>
+</ul>
+<p>After the emulator boots, you can slide to unlock it… and your app should be loaded and started shortly thereafter!</p>
+<p class="alert alert-warning">
+Note that if you are unfamiliar with Android devices, you should be sure to play around with the interface to get used to the interaction language, e.g., how to click/swipe/drag/long-click elements to use an app.
+</p>
+<!-- Break here? -->
+</div>
+</div>
+<div id="app-source-code" class="section level2">
+<h2><span class="header-section-number">1.3</span> App Source Code</h2>
+<p>Android Studio will create a bunch of project files by default—almost all of which are use for something. By default, it will show your project using the <strong>Android</strong> view, which organizes the files thematically. If you instead change to the <strong>Project</strong> view you can see what the actual file system looks like (though we’ll usually stick with the Android view).</p>
+<div class="figure">
+<img src="img/introduction/android-studio-view.png" alt="Android Studio. The view chooser is marked in red." />
+<p class="caption">Android Studio. The “view” chooser is marked in red.</p>
+</div>
+<p>In the Android view, files are organized as follows:</p>
+<ul>
+<li><code>app/</code> folder contains our application source code
+<ul>
+<li><code>manifests/</code> contains the <strong>Android Manifest</strong> files, which is sort of like a “config” file for the app</li>
+<li><code>java/</code> contains the <strong>Java</strong> source code for your project. This is where the “logic” of the application goes</li>
+<li><code>res/</code> contains <strong>XML resource</strong> files used in the app. This is where we will put layout/appearance information</li>
+</ul></li>
+<li><code>Gradle Scripts</code> contains scripts for the <a href="https://gradle.org/">Gradle</a> build tool, which is used to help compile the source code for installation on an device.</li>
+</ul>
+<p>Each of these components will be discussed in more detail below.</p>
+<div id="xml-resources" class="section level3 unnumbered">
+<h3>XML Resources</h3>
+<p>The <code>res/</code> folder contains <strong>resource</strong> files. Resource files are used to define the <em>user interface</em> and other media assets (images, etc). for the application. Using separate files to define the application’s interface than those used for the application’s logic (the Java code) helps keep appearance and behavior separated. To compare to web programming: the resources contain the HTML/CSS content, while the Java code will contain what would normally by written in JavaScript.</p>
+<p>The vast majority of resource files are specified in <a href="https://en.wikipedia.org/wiki/XML"><strong>XML</strong></a> (E<strong>X</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage). XML has the exact same syntax as HTML, but you get to make up your own tags what whatever semantic values you want. Except we’ll be using the tags that Android made up and provided: so defining an Android application interface will be a lot like defining a web page, but with a new set of elements. Note that this course expects you to have some familiarity with HTML or XML, but if not you should be able to infer the syntactical structure from the examples.</p>
+<p>There are a large number of different kinds of resources, which are organized into different folders:</p>
+<div class="list-condensed">
+<ul>
+<li><code>res/drawable/</code>: contains graphics (PNG, JPEG, etc) that will be “drawn” on the screen</li>
+<li><code>res/layout/</code>: contains user interface XML layout files for the app’s content</li>
+<li><code>res/mipmap/</code>: contains launcher icon files in different resolutions to support different devices</li>
+<li><code>res/values/</code>: contains XML definitions for general constants</li>
+</ul>
+</div>
+<p>There are other kinds of resources as well: see <a href="https://developer.android.com/guide/topics/resources/available-resources.html">Available Resources</a> or Lecture 2 for details.</p>
+<p>The most common resource you’ll work out are the <strong>layout</strong> resources, which are XML files that specify the visual layout of the component (like the HTML for a web page).</p>
+<p>If you open a layout file (e.g., <code>activity_main.xml</code>) in Android Studio, by default it will be shown in a “Design” view. This view lets you use a graphical system to lay out your application, similar to what you might do with a PowerPoint slide. <em>Click the “Text” tab at the bottom to switch to the XML code view.</em></p>
+<ul>
+<li>Using the design view is frowned upon by many developers for historical resources, even as it becomes more powerful with successive versions of Android Studio. It’s often cleaner and more effective to write out the layouts and content in direct XML code. This is the same difference between writing your own HTML and using something like FrontPage or DreamWeaver or Wix to create a page. While those are legitimate applications, they are seen as less “professional”. This course will focus on the XML code for creating layouts, rather than utilizing the design tool. See <a href="">here</a> for more on its features.</li>
+</ul>
+<p>In the code view, you can see the XML: tags, attributes, values. Elements are nested inside one another. The provided XML code defines a layout (a <code>&lt;android.support.constraint.ConstraintLayout&gt;</code>) to organize things, and inside that is a <code>&lt;TextView&gt;</code> (a <a href="https://developer.android.com/reference/android/view/View.html">View</a> representing some text).</p>
+<ul>
+<li>Note that most of the element attributes_ are <strong>namespaced</strong>, e.g. with an <code>android:</code> prefix, to avoid any potential conflicts (so we know we’re talking about Android’s <code>text</code> instead of something else).</li>
+</ul>
+<p>The <code>android:text</code> attribute of the <code>&lt;TextView&gt;</code> contains some text. You can change that and <em>re-run the app</em> to see it update!</p>
+<p>You will be able to specify what your app looks like by creating these XML layout files. For example, try replacing the <code>&lt;TextView&gt;</code> with a <code>&lt;Button&gt;</code>:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;Button</span>
+<span class="ot">     android:id=</span><span class="st">&quot;@+id/my_button&quot;</span>
+<span class="ot">     android:layout_width=</span><span class="st">&quot;wrap_content&quot;</span>
+<span class="ot">     android:layout_height=</span><span class="st">&quot;wrap_content&quot;</span>
+<span class="ot">     android:text=</span><span class="st">&quot;Click Me!&quot;</span>
+     <span class="kw">/&gt;</span></code></pre></div>
+<p>This XML defines a Button. The <code>android:text</code> attribute in this case specifies what text is shown on the button. Lecture 2 will describe in more detail the meaning of the other attributes, but you should be able to make a pretty good educated guess based on the names.</p>
+<ul>
+<li>(You can keep the <code>app:</code> scoped attributes if you want the button to stay in the center of the screen. Positioning will be discussed in Lecture 2).</li>
+</ul>
+</div>
+<div id="the-manifest" class="section level3 unnumbered">
+<h3>The Manifest</h3>
+<p>Besides <em>resource files</em>, the other XML you may need to edit is the <strong>Manifest File</strong> <code>AndroidManifest.xml</code>, found in the <code>manifest/</code> folder in the Android project view. The <a href="https://developer.android.com/guide/topics/manifest/manifest-intro.html">Manifest</a> acts like a “configuration” file for the application, specifying application-level details such as the app’s name, icon, and permissions.</p>
+<p>For example, you can change the displayed name of the app by modifying the <code>android:label</code> attribute of the <code>&lt;application&gt;</code> element. By default, the label is a <strong>reference</strong> to <em>another resource</em> found in the <code>res/values/strings.xml</code> file, which contains definitions for string “constants”. Ideally all user-facing strings—including things like button text—should be defined as these constants.</p>
+<p>You will usually need to make at least one change to the Manifest for each app (e.g., tweaking the display name), so you should be familiar with it.</p>
+</div>
+<div id="java-activities" class="section level3 unnumbered">
+<h3>Java Activities</h3>
+<p>Besides using XML for specifying layouts, Android applications are written in <strong>Java</strong>, with the source code found in the <code>java/</code> folder in the Android project view (in a nested folder structure based on your app’s package name). The Java code handles program control and logic, as well as data storage and manipulation.</p>
+<p>Writing Android code will feel a lot writing any other Java program: you create classes, define methods, instantiate objects, and call methods on those objects. But because you’re working within a <a href="https://martinfowler.com/bliki/InversionOfControl.html"><strong>framework</strong></a>, there is a set of code that <em>already exists</em> to call specific methods. As a developer, your task will be to fill in what these methods do in order to run your specific application.</p>
+<ul>
+<li>In web terms, this is closer to working with Angular (a framework) than jQuery (a library).</li>
+</ul>
+<p>So while you can and will implement “normal” Java classes and models in your code, you will most frequently be utilizing classes a specific set of classes required by the framework, giving Android applications a common structure.</p>
+<p>The most basic component in an Android program is an <strong>Activity</strong>, which represents a single screen in the app (see Lecture 3 for more details). The default provided <code>MainActivity</code> class is an example of this: the class <em>extends</em> <a href="http://developer.android.com/reference/android/app/Activity.html"><code>Activity</code></a> (actually it extends a subclass that supports Material Design components), allowing you to make your own customizations to the app’s behavior within the Android framework.</p>
+<p>In this class, we <em>override</em> the inherited <code>onCreate()</code> method that is called by the framework when the Activity starts—this method thus acts a little bit like the constructor for a class (though see Lecture 3 for a more nuanced discussion).</p>
+<p>We call the super method to make sure the framework does it stuff, and then <code>setContentView()</code> to specify what the content (appearance) of the Activity should be. This is passed in a value from something called <code>R</code>. <code>R</code> is a class that is <strong>generated at compile time</strong> and contains constants that are defined by the XML “resource” files! Those files are converted into Java variables, which we can access through the <code>R</code> class. Thus <code>R.layout.activity_main</code> refers to the <code>activity_main</code> layout found in the <code>res/layouts/</code> folder. That is how Android knows what layout file to show on the screen.</p>
+<div id="dalvik" class="section level4 unnumbered">
+<h4>Dalvik</h4>
+<p>On a desktop, Java code needs to be compiled into bytecode and runs on a virtual machine (the <a href="https://en.wikipedia.org/wiki/Java_virtual_machine">Java Virtual Machine (JVM)</a>). <em>Pre-Lollipop (5.0)</em>, Android code ran on a a virtual machine called <a href="https://en.wikipedia.org/wiki/Dalvik_(software)"><strong>Dalvik</strong></a>.</p>
+<ul>
+<li>Fun fact for people with a Computer Science background: Dalvik uses a <a href="https://en.wikipedia.org/wiki/Register_machine">register-based architecture</a> rather than a stack-based one!</li>
+</ul>
+<p>A developer would write <em>Java code</em>, which would then be compiled into <em>JVM bytecode</em>, which would then be translated into <em>DVM</em> (Dalvik Virtual Machine) bytecode, that could be run on Android devices. This DVM bytecode is stored in <code>.dex</code> or <code>.odex</code> (“[Optimized] Dalvik Executable”) files, which is what was loaded onto the device. The process of converting from Java code to <code>dex</code> files is called <strong>“dexing”</strong> (so code that has been compiled and converted is called “dexed”).</p>
+<p>Dalvik does include JIT (“Just In Time”) compilation to native code that runs much faster than the code interpreted by the virtual machine, similar to the <a href="http://www.oracle.com/technetwork/articles/javase/index-jsp-136373.html">Java HotSpot</a>. This native code is faster because no translation step is needed to talk to the actual hardware (via the OS).</p>
+<p>However, <em>from Lollipop (5.0) on</em>, Android instead uses <a href="https://source.android.com/devices/tech/dalvik/">Android Runtime (ART)</a> to run code. ART’s biggest benefit is that it compiles the <code>.dex</code> bytecode into native code <em>at installation</em> using AOT (“Ahead of Time”) compilation. ART continues to accept <code>.dex</code> bytecode for backwards compatibility (so the same dexing process occurs), but the code that is actually installed and run on a device is native. This allows for applications to have faster execution, but at the cost of longer install times—and since you only install an application once, this is a pretty good trade.</p>
+<p>After being built, an Android application (the source, dexed bytecode, and any non-code resources such as images) are packaged into an <strong><code>.apk</code></strong> file. This are basically zip files (it uses the same gzip compression); if you rename the file to be <code>.zip</code> and you can uncompress it! The <code>.apk</code> file is then <a href="https://en.wikipedia.org/wiki/Digital_signature">cryptographically signed</a> to specify its authenticity, and either “side-loaded” onto the device or uploaded to an App Store for deployment.</p>
+<ul>
+<li><p>In short: the signed <code>.apk</code> file is basically the “executable” version of your program!</p></li>
+<li><p>Note that the Android application framework code (e.g., the base <code>Activity</code> class) is actually “pre-DEXed” (pre-compiled) on the device; when you write code, you’re compiling against empty code stubs (rather than needing to include those classes in your <code>.apk</code>)! That said, any other 3rd-party libraries you include will be copied into your built app, which can increase its file size both for installation and on the device.</p></li>
+<li><p>Usefully, since Android code is written for a virtual machine anyway, Android apps can be developed and built on any computer’s operating system (unlike some other mobile OS…).</p></li>
+</ul>
+</div>
+</div>
+<div id="gradle-scripts" class="section level3 unnumbered">
+<h3>Gradle Scripts</h3>
+<p>To summarize, after writing your Java and XML source code, in order to “build” and run your app you need to:</p>
+<ol style="list-style-type: decimal">
+<li>Generate Java source files (e.g., <code>R</code>) from the XML resource files</li>
+<li>Compile the Java code into JVM bytecode</li>
+<li>“dex” the JVM bytecode into Dalvik bytecode</li>
+<li>Pack code and other assets into an <code>.apk</code></li>
+<li>Cryptographically sign the APK file to authorize it</li>
+<li>Transfer the <code>.apk</code> to your device, install, and run it!</li>
+</ol>
+<p>This is a lot of steps! Luckily the IDE handles it for us using an <em>automated build tool</em> called <a href="https://gradle.org/"><strong>Gradle</strong></a>. Such tools let you, in effect, specify a single command that will do all of these steps at once.</p>
+<p>It is possible to customize the build script by modifying the Gradle script files, found in the <code>Gradle Scripts</code> folder in the Android project view. There are a lot of these by default:</p>
+<div class="list-condensed">
+<ul>
+<li><code>build.gradle</code>: Top-level Gradle build; project-level (for building!)</li>
+<li><code>app/build.gradle</code>: Gradle build specific to the app. <strong>Use this one to customize your project!</strong>, such as for adding dependencies or external libraries.
+<ul>
+<li>For example, we can change the <em>Target SDK</em> in here.</li>
+</ul></li>
+<li><code>proguard-rules.pro</code>: config for release version (minimization, obfuscation, etc).</li>
+<li><code>gradle.properties</code>: Gradle-specific build settings, shared</li>
+<li><code>local.properties</code>: settings local to this machine only</li>
+<li><code>settings.gradle</code>: Gradle-specific build settings, shared</li>
+</ul>
+</div>
+<p class="alert alert-info">
+Note that older Android applications were developed using <a href="http://ant.apache.org/">Apache ANT</a>. The build script was stored in the <code>build.xml</code> file, with <code>build.properties</code> and <code>local.properties</code> containing global and local build settings. While Gradle is more common these days, you should be aware of ANT for legacy purposes.
+</p>
+</div>
+</div>
+<div id="logging-adb" class="section level2">
+<h2><span class="header-section-number">1.4</span> Logging &amp; ADB</h2>
+<p>In Android, we can’t use <code>System.out.println()</code> because we don’t actually have a console to print to! More specifically, the device (which is where the application is running) doesn’t have access to <a href="https://en.wikipedia.org/wiki/Standard_streams#Standard_output_.28stdout.29">standard out</a> (<code>stdout</code>), which is what Java means by <code>System.out</code>.</p>
+<ul>
+<li>It is possible to get access to <code>stdout</code> with <code>adb</code> using <code>adb shell stop; adb shell setprop log.redirect-stdio true; adb shell start</code>, but this is definitely not ideal.</li>
+</ul>
+<p>Instead, Android provides a <a href="https://developer.android.com/studio/debug/am-logcat.html">Logging</a> system that we can use to write out debugging information, and which is automatically accessible over the <code>adb</code> (Android Debugging Bridge). Logged messages can be filtered, categorized, sorted, etc. Logging can also be disabled in production builds for performance reasons (though it often isn’t, because people make mistakes).</p>
+<p>To perform this logging, we’ll use the <a href="https://developer.android.com/reference/android/util/Log.html"><code>android.util.Log</code></a><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> class. This class includes a number of <code>static</code> methods, which all basically wrap around <code>println</code> to print to the device’s log file, which is then accessible through the <code>adb</code>.</p>
+<ul>
+<li><p>You will need to <strong><code>import</code></strong> the <code>Log</code> class!</p>
+<p class="alert alert-info">
+You can have Android Studio automatically add the <code>import</code> for a class by selecting that class name and hitting <code>alt-return</code> (you will be prompted if the class name is ambiguous). For better results, turn on <em>“Add unambiguous imports on the fly”</em> in the IDE Preferences.
+</p></li>
+</ul>
+<p>The device’s log file is stored persistently… sort of. It’s a 16k file, but it is shared across the <em>entire</em> system. Since every single app and piece of the system writes to it, it fills up fast. Hence filtering/searching becomes important, and you tend to watch the log (and debug your app) in real time!</p>
+<div id="log-methods" class="section level3 unnumbered">
+<h3>Log Methods</h3>
+<p><code>Log</code> provides methods that correspond to different level of priority (importance) of the messages being recorded. From low to high priority:</p>
+<ul>
+<li><strong><code>Log.v()</code></strong>: VERBOSE output. This is the most detailed, for everyday messages. This is often the go-to, default level for logging. Ideally, <code>Log.v()</code> calls should only be compiled into an application during development, and removed for production versions.</li>
+<li><strong><code>Log.d()</code></strong>: DEBUG output. This is intended for lower-level, less detailed messages (but still code-level, that is referring to specific programming messages). These messages can be compiled into the code but are removed at runtime in production builds through Gradle.</li>
+<li><strong><code>Log.i()</code></strong>: INFO output. This is intended for “high-level” information, such at the user level (rather than specifics about code).</li>
+<li><strong><code>Log.w()</code></strong>: WARN output. For warnings</li>
+<li><strong><code>Log.e()</code></strong>: ERROR output. For errors</li>
+<li>Also if you look at the <a href="https://developer.android.com/reference/android/util/Log.html">API</a>… <code>Log.wtf()</code>!</li>
+</ul>
+<p>These different levels are used to help “filter out the noise”. So you can look just at errors, at errors and warnings, at error, warn, and info… all the way down to seeing <em>everything</em> with verbose. A huge amount of information is logged, so filtering really helps!</p>
+<p>Each <code>Log</code> method takes two <code>Strings</code> as parameters. The second is the message to print. The first is a “tag”—a String that’s prepended to the output which you can search and filter on. This tag is usually the App or Class name (e.g., “AndroidDemo”, “MainActivity”). A common practice is to declare a <code>TAG</code> constant you can use throughout the class:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> String TAG = <span class="st">&quot;MainActivity&quot;</span>;</code></pre></div>
+</div>
+<div id="logcat" class="section level3 unnumbered">
+<h3>Logcat</h3>
+<p>You can view the logs via <code>adb</code> (the debugging bridge) and a service called <code>Logcat</code> (from “log” and “conCATenation”, since it concatenates the logs). The easiest way to check Logcat is to use Android Studio. The Logcat browser panel is usually found at the bottom of the screen after you launch an application. It “tails” the log, showing the latest output as it appears.</p>
+<p>You can use the dropdown box to filter by priority, and the search box to search (e.g., by tag if you want). Android Studio also lets you filter to only show the current application, which is hugely awesome. Note that you may see a lot of Logs that you didn’t produce, including possibly Warnings (e.g., I see a lot of stuff about how OpenGL connects to the graphics card). <em>This is normal</em>!</p>
+<p>It is also possible to view Logcat through the command-line using <code>adb</code>, and includes complex filtering arguments. See <a href="https://developer.android.com/studio/command-line/logcat.html">Logcat Command-line Tool</a> for more details.</p>
+<ul>
+<li>Something else to test: Cause the app to throw a runtime <code>Exception</code>! For example, you could make a new local array and try to access an item out of bounds. Or just <code>throw new RuntimeException()</code> (which is slightly less interesting). <em>Can you see the <strong>Stack Trace</strong> in the logs?</em></li>
+</ul>
+<p>Logging is fantastic and one of the the best techniques we have for debugging, both in how Activities are being used or for any kind of bug (also <code>RuntimeExceptions</code>). It harkens back to printline debugging, which is still a legitimate debugging process.</p>
+<p class="alert alert-info">
+Note that Android Studio does have a built-in <a href="https://developer.android.com/studio/debug/index.html">debugger</a> if you’re comfortable with such systems.
+</p>
+</div>
+<div id="toast" class="section level3 unnumbered">
+<h3>Toast</h3>
+<p>Logs are great for debugging output, but remember that they are only visible for <em>developers</em> (you need to have your phone plugged into the IDE or SDK!) If you want to produce an error or warning message for the <em>user</em>, you need to use a different technique.</p>
+<p>One simple, quick way of giving some short visual feedback is to use what is called a <a href="http://developer.android.com/guide/topics/ui/notifiers/toasts.html"><strong>Toast</strong></a>. This is a tiny little text box that pops up at the bottom of the screen for a moment to quickly display a message.</p>
+<ul>
+<li>It’s called a “Toast” because it pops up!</li>
+</ul>
+<p>Toasts are pretty simple to implement, as with the following example (from the official documentation):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Toast toast = Toast.<span class="fu">makeText</span>(<span class="kw">this</span>, <span class="st">&quot;Hello toast!&quot;</span>, Toast.<span class="fu">LENGTH_SHORT</span>);
+toast.<span class="fu">show</span>();
+
+<span class="co">//as one line. Don&#39;t forget to show()!</span>
+Toast.<span class="fu">makeText</span>(<span class="kw">this</span>, <span class="st">&quot;Hello toast!&quot;</span>, Toast.<span class="fu">LENGTH_SHORT</span>).<span class="fu">show</span>();</code></pre></div>
+<p>Toasts are created by using the <code>Toast.makeText()</code> factory method (instead of calling a constructor). This method takes three parameters: the <em>Context</em>, or what is producing the Toast (see Chapter 3), the text to display, and an <code>int</code> constant representing the length the Toast should appear.</p>
+<p>Toasts are intended to be a way to provide information to the user (e.g., giving them quick feedback), but they can possibly be useful for testing too (though in the end, Logcat is going to be your best bet for debugging, especially when trying to solve crashes or see more complex output).</p>
+</div>
+</div>
+<div id="adding-interaction" class="section level2">
+<h2><span class="header-section-number">1.5</span> Adding Interaction</h2>
+<p>Finally, we’ve created a button and discussed how to show visual information to the user… so let’s hook those together!</p>
+<p>As with JavaScript, in order to have our button do something, we need to register a <em>callback function</em> that can be executed when the button is clicked. In Java, these callback functions are supplied by “listener” objects who can respond to <em>events</em> (see <a href="java-swing.html#java-swing">Appendix B</a> for a more detailed discussion).</p>
+<p>First, we need to get access to a variable that represents the <code>Button</code> we defined in the XML—similar to what you do with <code>document.getElementById()</code> in JavaScript. The method to access an element in Android is called <a href="https://developer.android.com/reference/android/app/Activity.html#findViewById(int)"><code>findViewById()</code></a>, and can be called directly on the <code>Activity</code>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Button button = (Button)<span class="fu">findViewById</span>(R.<span class="fu">id</span>.<span class="fu">my_button</span>);</code></pre></div>
+<p>As an argument, we pass in a value defined in the <em>auto-generated</em> <code>R</code> class that represents the button’s <code>id</code> value—this is based on what we put in the <code>&lt;Button&gt;</code>’s <code>android:id</code> attribute. The exact format is discussed in Lecture 2.</p>
+<ul>
+<li>Note that the method returns a <code>View</code> (a superclass of <code>Button</code>), so we almost always <em>typecast</em> the result. See Lecture 2 for more on the <code>View</code> class.</li>
+</ul>
+<p>We can then register a listener (callback) by calling the <code>setOnClickListener()</code> method and passing in an <strong>anonymous class</strong> to act as the listener:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">button.<span class="fu">setOnClickListener</span>(<span class="kw">new</span> View.<span class="fu">OnClickListener</span>() {
+   <span class="kw">public</span> <span class="dt">void</span> <span class="fu">onClick</span>(View v) {
+        <span class="co">// Perform action on click</span>
+   }
+});</code></pre></div>
+<p class="alert alert-info">
+<strong>Tab completion</strong> is your friend!! Try just typing the <code>button.</code>, and then selecting the method name from the provided list. Similarly, you can begin to type <code>new OnClick</code> and then tab-complete the rest of the class definition. The Android Studio IDE makes this ubiquitous boilerplate code easy to produce.
+</p>
+<p>Finally, we can fill in the method to have it log out or toast something when clicked!</p>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><a href="http://developer.android.com/reference/android/util/Log.html" class="uri">http://developer.android.com/reference/android/util/Log.html</a><a href="introduction.html#fnref1">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="resources-and-layouts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["github", "facebook", "twitter", "google"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/info448/book/edit/master/introduction.Rmd",
+"text": "Edit"
+},
+"download": ["android-development.pdf", "android-development.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
