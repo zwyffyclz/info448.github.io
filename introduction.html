@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-09-25">
+<meta name="date" content="2017-09-26">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -228,7 +228,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p><strong>2008</strong>: First Android device is released: the <a href="https://en.wikipedia.org/wiki/HTC_Dream">HTC Dream</a> (a.k.a. T-Mobile G1)</p>
 <p><em>Specs:</em> 528Mhz ARM chip; 256MB memory; 320x480 resolution capacitive touch; slide-out keyboard! Author’s opinion: a fun little device.</p></li>
 <li><p><strong>2010</strong>: First <a href="https://en.wikipedia.org/wiki/Google_Nexus">Nexus</a> device is released: the <a href="https://en.wikipedia.org/wiki/Nexus_One">Nexus One</a>. These are Google-developed “flagship” devices, intended to show off the capabilities of the platform.</p>
-<p><em>Specs:</em> 1Ghz Scorpion; 512MB memory; .37&quot; at 480x800 AMOLED capacitive touch. For comparison, the <a href="https://en.wikipedia.org/wiki/IPhone_7">iPhone 7 Plus</a> (2016) has: 2.34Ghz dual core A10 64bit Fusion; 3GB RAM; 5.5&quot; at 1920x1080 display.</p>
+<p><em>Specs:</em> 1Ghz Scorpion; 512MB memory; .37&quot; at 480x800 AMOLED capacitive touch. For comparison, the <a href="https://en.wikipedia.org/wiki/IPhone_8">iPhone 8 Plus</a> (2017) has: ~2.54Ghz hex-core A11 Bionic 64bit; 3GB RAM; 5.5&quot; at 1920x1080 display.</p>
 <p>(As of 2016, this program has been superseded by the <a href="https://en.wikipedia.org/wiki/Pixel_(smartphone)">Pixel</a> range of devices).</p></li>
 <li><p><strong>2014</strong>: Android Wear, a version of Android for wearable devices (watches) is announced.</p></li>
 <li><p><strong>2016</strong>: Daydream, a virtual reality (VR) platform for Android is announced.</p></li>
@@ -351,7 +351,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="legal-battles" class="section level3 unnumbered">
 <h3>Legal Battles</h3>
-<p>When discussing Android history, we would be remiss if we didn’t mention some of the legal battles surrounding Android. The biggest of these is <a href="https://www.eff.org/cases/oracle-v-google"><strong>Oracle v Google</strong></a>. In a nutshell, Oracle claims that the <em>Java API</em> is copyrighted (that the method signatures themselves and how they work are protected), so because Google uses that API in Android, Google is violating the copyright. In 2012 a California federal judge decided in Google favor (that one can’t copyright an API). This was then reversed by the Federal Circuit court in 2014. The verdict was appealed to the US Supreme Court in 2015, who refused to hear the case. It then went back to the the district court, which ruled in 2016 that Google’s use of the API was fair use. This ruling is again under appear. See <a href="https://www.eff.org/cases/oracle-v-google" class="uri">https://www.eff.org/cases/oracle-v-google</a> for a summary, as well as <a href="https://arstechnica.com/series/series-oracle-v-google/" class="uri">https://arstechnica.com/series/series-oracle-v-google/</a></p>
+<p>When discussing Android history, we would be remiss if we didn’t mention some of the legal battles surrounding Android. The biggest of these is <a href="https://www.eff.org/cases/oracle-v-google"><strong>Oracle v Google</strong></a>. In a nutshell, Oracle claims that the <em>Java API</em> is copyrighted (that the method signatures themselves and how they work are protected), so because Google uses that API in Android, Google is violating the copyright. In 2012 a California federal judge decided in Google favor (that one can’t copyright an API). This was then reversed by the Federal Circuit court in 2014. The verdict was appealed to the US Supreme Court in 2015, who refused to hear the case. It then went back to the the district court, which ruled in 2016 that Google’s use of the API was fair use. This ruling is again under appeal. See <a href="https://www.eff.org/cases/oracle-v-google" class="uri">https://www.eff.org/cases/oracle-v-google</a> for a summary, as well as <a href="https://arstechnica.com/series/series-oracle-v-google/" class="uri">https://arstechnica.com/series/series-oracle-v-google/</a></p>
 <ul>
 <li>One interesting side effect of this battle: the Android Nougat and later uses the <a href="https://openjdk.java.net/">OpenJDK</a> implementation of Java, instead of Google’s own in-violation-but-fair-use implementation <a href="https://venturebeat.com/2015/12/29/google-confirms-next-android-version-wont-use-oracles-proprietary-java-apis/">see here</a>. This change <em>shouldn’t</em> have any impact on you as a developer, but it’s worth keeping an eye out for potentially differences between Android and Java SE.</li>
 </ul>
@@ -445,7 +445,7 @@ Note that if you are unfamiliar with Android devices, you should be sure to play
 </ul>
 <p>In the code view, you can see the XML: tags, attributes, values. Elements are nested inside one another. The provided XML code defines a layout (a <code>&lt;android.support.constraint.ConstraintLayout&gt;</code>) to organize things, and inside that is a <code>&lt;TextView&gt;</code> (a <a href="https://developer.android.com/reference/android/view/View.html">View</a> representing some text).</p>
 <ul>
-<li>Note that most of the element attributes_ are <strong>namespaced</strong>, e.g. with an <code>android:</code> prefix, to avoid any potential conflicts (so we know we’re talking about Android’s <code>text</code> instead of something else).</li>
+<li>Note that most of the element attributes are <strong>namespaced</strong>, e.g. with an <code>android:</code> prefix, to avoid any potential conflicts (so we know we’re talking about Android’s <code>text</code> instead of something else).</li>
 </ul>
 <p>The <code>android:text</code> attribute of the <code>&lt;TextView&gt;</code> contains some text. You can change that and <em>re-run the app</em> to see it update!</p>
 <p>You will be able to specify what your app looks like by creating these XML layout files. For example, try replacing the <code>&lt;TextView&gt;</code> with a <code>&lt;Button&gt;</code>:</p>
@@ -502,7 +502,7 @@ Note that if you are unfamiliar with Android devices, you should be sure to play
 <li>Compile the Java code into JVM bytecode</li>
 <li>“dex” the JVM bytecode into Dalvik bytecode</li>
 <li>Pack code and other assets into an <code>.apk</code></li>
-<li>Cryptographically sign the APK file to authorize it</li>
+<li>Cryptographically sign the <code>.apk</code> file to authorize it</li>
 <li>Transfer the <code>.apk</code> to your device, install, and run it!</li>
 </ol>
 <p>This is a lot of steps! Luckily the IDE handles it for us using an <em>automated build tool</em> called <a href="https://gradle.org/"><strong>Gradle</strong></a>. Such tools let you, in effect, specify a single command that will do all of these steps at once.</p>
