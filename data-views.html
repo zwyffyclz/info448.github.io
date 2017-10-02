@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-09-26">
+<meta name="date" content="2017-10-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -310,7 +310,7 @@ Volley’s main “competitor” is the <a href="http://square.github.io/retrofi
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//silly example: get 20 random dinosaur names</span>
 String url = <span class="st">&quot;http://dinoipsum.herokuapp.com/api/?format=text&amp;words=20&amp;paragraphs=1&quot;</span>;
 
-Request myRequest = <span class="kw">new</span> <span class="fu">StringRequest</span>(Request.<span class="fu">Method</span>.<span class="fu">GET</span>, urlString,
+Request myRequest = <span class="kw">new</span> <span class="fu">StringRequest</span>(Request.<span class="fu">Method</span>.<span class="fu">GET</span>, url,
         <span class="kw">new</span> Response.<span class="fu">Listener</span>&lt;String&gt;() {
             <span class="kw">public</span> <span class="dt">void</span> <span class="fu">onResponse</span>(String response) {
                 Log.<span class="fu">v</span>(TAG, response);
