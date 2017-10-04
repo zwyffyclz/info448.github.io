@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-10-03">
+<meta name="date" content="2017-10-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -368,7 +368,7 @@ You can use the <code>JsonObjectRequest</code> class to download data as a JSON 
     <span class="co">//call this &quot;factory&quot; method to access the Singleton</span>
     <span class="kw">public</span> <span class="dt">static</span> RequestSingleton <span class="fu">getInstance</span>(Context ctx) {
         <span class="co">//only create the singleton if it doesn&#39;t exist yet</span>
-        <span class="kw">if</span>(<span class="kw">this</span>.<span class="fu">instance</span> == <span class="kw">null</span>){
+        <span class="kw">if</span>(instance == <span class="kw">null</span>){
             instance = <span class="kw">new</span> <span class="fu">RequestSingleton</span>(ctx);
         }
 
@@ -378,6 +378,11 @@ You can use the <code>JsonObjectRequest</code> class to download data as a JSON 
     <span class="co">//get queue from singleton for direct action</span>
     <span class="kw">public</span> RequestQueue <span class="fu">getRequestQueue</span>() {
         <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">requestQueue</span>;
+    }
+
+    <span class="co">//convenience wrapper method</span>
+    <span class="kw">public</span> &lt;T&gt; <span class="dt">void</span> <span class="fu">add</span>(Request&lt;T&gt; req) {
+        requestQueue.<span class="fu">add</span>(req);
     }
 }</code></pre></div>
 <p>This structure will let you make multiple network requests from multiple components of your app, but without trying to have multiple “dispatchers” taking up memory.</p>
