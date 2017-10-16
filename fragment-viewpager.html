@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
-
-<link rel="next" href="introduction.html">
+<link rel="prev" href="styles-themes.html">
+<link rel="next" href="java-review.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -256,23 +256,74 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Android Development: Lecture Notes</h1>
-<h4 class="author"><em><a href="http://faculty.washington.edu/joelross/">Joel Ross</a></em></h4>
-<h4 class="date"><em>October 15, 2017</em></h4>
-</div>
-<div id="about-this-book" class="section level1 unnumbered">
-<h1>About this Book</h1>
-<p>This book compiles lecture notes and tutorials for the <strong>INFO 448 Mobile Development: Android</strong> course taught at the <a href="https://ischool.uw.edu/">University of Washington Information School</a> (most recently in <a href="https://canvas.uw.edu/courses/1160645">Autumn 2017</a>). The goal of these notes is to provide learning materials for students in the course or anyone else who wishes to learn the basics of developing Android applications. These notes cover the tools, programming languages, and architectures needed to develop applications for the Android platform.</p>
-<p>This course expects you to have “journeyman”-level skills in Java (apprenticeship done, not yet master). It uses a number of intermediate concepts (like generics and inheritance) without much fanfare or explanation (though see <a href="java-review.html#java-review">the appendix</a>). It also assumes some familiarity with developing interactive applications (e.g., <a href="https://info343.github.io">client-side web applications</a>).</p>
-<p>These notes are primarily adapted from the <a href="https://developer.android.com/develop/index.html">official Android developer documentation</a>, compiling and synthesizing those guidelines for pedagogical purposes (and the author’s own interpretation/biases). Please refer to that documentation for the latest information and official guidance.</p>
-<!-- TODO: Include previous course offerings? -->
-<!-- TODO: Include author contact info? -->
-<p class="alert alert-warning">
-This book is currently in <strong>alpha</strong> status. Visit us on <a href="https://github.com/info343/book">GitHub</a> to contribute improvements.
+<div id="fragment-viewpager" class="section level1">
+<h1><span class="header-section-number">Lecture 8</span> Fragments: ViewPager</h1>
+<p>In this chapter, you will practice working with Fragments and layouts. Specifically, you will modify the Movie application from <a href="fragments.html#fragments">Lecture 6</a> so that it uses a <a href="https://developer.android.com/training/animation/screen-slide.html"><strong>ViewPager</strong></a>, an interactive View offered by the Android Support Library that will allow you to “page” (swipe) through different Fragments. You will modify the application so that the user can swipe through a “search” screen, the list of search results, and the details about a particular movie.</p>
+<p class="alert alert-info">
+The code for this tutorial can be found at <a href="https://github.com/info448/lab-viewpager" class="uri">https://github.com/info448/lab-viewpager</a>. Note that it is also possible to complete this tutorial directly on top of the <code>complete</code> branch of the Lecture 6 demo code.
 </p>
-<p><img src="img/index/by-nc-sa.png" alt="Creative Commons License" /> This book is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<p class="alert alert-warning">
+IMPORTANT NOTE: you should <strong>not</strong> modify the provided <code>MovieListFragment</code> or the <code>DetailFragment</code> classes (those Fragments are self-contained and so can be used in multiple layouts!). You will need to create one new Fragment though, and make substantial modifications to the <code>MainActivity</code>
+</p>
+<div id="define-a-searchfragment" class="section level2">
+<h2><span class="header-section-number">8.1</span> Define a SearchFragment</h2>
+<p>Your <code>ViewPager</code> will need to support three different Fragments. While the <code>MovieFragment</code> and <code>DetailFragment</code> have been defined already, you will need to create a third.</p>
+<p>Create a new Fragment called <strong><code>SearchFragment</code></strong> (use the <code>File &gt; New &gt; Fragment &gt; Fragment (Blank)</code> menu in Android Studio). Your <code>SearchFragment</code> will need to include the following components</p>
+<ol style="list-style-type: decimal">
+<li><p>The layout for the Fragment should contain the search <code>EditText</code> and <code>Button</code> <em>taken from</em> the <code>activity_main</code> layout. You can add some <code>layout_gravity</code> to center the inputs. You should also remove the <code>onClick</code> XML attribute, as click handling will be specified in the Java.</p></li>
+<li><p>In the <code>SearchFragment</code> class, be sure to define a <code>newInstance()</code> factory method. The method doesn’t need to take any arguments (and thus you don’t need to specify an argument bundle).</p>
+<ul>
+<li>Typing <code>newInstance</code> will allow Android Studio to tab-complete the method!</li>
+</ul></li>
+<li><p>The <code>SearchFragment</code> will need to communicate with other Fragments, and thus you will need to define an <code>interface</code> (e.g., <code>OnSearchListener</code>) that the containing Activity can implement. This interface should support a single public method (e.g., <code>onSearchSubmitted(String searchTerm)</code>) which will allow the Fragment to pass the entered search term to the Activity.</p>
+<ul>
+<li>Remember to check that the containing Activity implements the interface in the Fragment’s <code>onAttach()</code> callback.</li>
+</ul></li>
+<li><p>Finally, in the <code>onCreateView()</code> callback, add a click listener to the button so that when it is clicked, it calls the <code>onSeachSubmitted()</code> callback function on the containing Activity (which you’ve established has that method!)</p>
+<ul>
+<li>Remember that you can call <code>findViewById()</code> on the <em>root view</em>.</li>
+</ul></li>
+</ol>
+</div>
+<div id="add-the-viewpager-and-adapter" class="section level2">
+<h2><span class="header-section-number">8.2</span> Add the ViewPager and Adapter</h2>
+<p>Your <code>MainActivity</code> will need to contain a <a href="https://developer.android.com/reference/android/support/v4/view/ViewPager.html"><code>ViewPager</code></a> View (since all the other Views have been moved to Fragments!).</p>
+<p>Add a <code>android.support.v4.view.ViewPager</code> element in the <code>activity_main.xml</code> layout resource, finding this View in the Activity’s <code>onCreate()</code> callback. This will replace the previous <code>FrameLayout</code> that was used as a container.</p>
+<p>Just like with a <code>ListView</code>, a <code>ViewPager</code> requires a (custom) <strong>adapter</strong> in order to map from which “page” is shown to the Fragment that is rendered. Add a new inner class (e.g., <code>MoviePagerAdapter</code>) that subclasses <a href="https://developer.android.com/reference/android/support/v4/app/FragmentStatePagerAdapter.html"><code>FragmentStatePagerAdapter</code></a>.</p>
+<ul>
+<li><p>As in the <a href="https://developer.android.com/training/animation/screen-slide.html#viewpager">documentation example</a>, You will need to provide a constructor that takes in a (Support) <code>FragmentManager</code>, and calls the appropriate super constructor.</p></li>
+<li>The <code>getItem()</code> function returns <em>which</em> Fragment is shown for a particular page number. You should implement this function so that page 0 shows a <code>SearchFragment</code>, page 1 shows a <code>MovieListFragment</code>, and page 2 shows a <code>DetailsFragment</code>.
+<ul>
+<li>You can declare each of these three Fragments as <strong>instance variables</strong>, then simply return them from this method.</li>
+<li>It’s okay to “hard-code” this logic for the purposes of this demonstration.</li>
+</ul></li>
+<li><p>The <code>getCount()</code> function returns how many pages the Pager supports. Note that you will need to include some logic for this: before a search has occurred, there is only one page! After the search, there are two pages (the search and the results), and after a result option is selected there are three pages (the search, the results, and the details).</p></li>
+<li><p>Finally, we will be “replacing” Fragments inside the Pager as the user interacts with the app (e.g., changing the <code>MovieListFragment</code> to one with different search results)—such as by changing the objects that the instance variables refer to. However, the ViewPager “preloads” adjacent Fragment pages as an optimization technique; thus it “caches” the Fragments and won’t actually load any updated Views.</p>
+<p>As a work-around, override the <code>getItemPosition()</code> function (which is called whenever the Pager needs to determine if an item’s position has changed):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">int</span> <span class="fu">getItemPosition</span>(Object object) {
+    <span class="kw">return</span> POSITION_NONE;
+}</code></pre></div>
+<p>Note that this is a memory-intensive workaround (but works for demonstration purposes); for a cleaner solution, see <a href="http://stackoverflow.com/questions/7263291/viewpager-pageradapter-not-updating-the-view/8024557#8024557">this discussion</a>.</p></li>
+</ul>
+<p>Once you’ve defined the your adapter, instantiate it in the Activity’s <code>onCreate()</code> callback, and use <code>ViewPager#setAdapter()</code> to specify the Pager’s adapter.</p>
+<p>If you also instantiate a <code>SearchFragment</code> in the <code>onCreate()</code> callback, then you should be able to run the application and see that Fragment appear as a page (though there is nothing else to swipe to yet).</p>
+</div>
+<div id="add-user-interaction" class="section level2">
+<h2><span class="header-section-number">8.3</span> Add User Interaction</h2>
+<p>Finally, you will need to adjust the Fragment callback methods inside the Activity (e.g., <code>onSearchSubmitted()</code> and <code>onMovieSelected()</code>) so that they interact with the ViewPager. This will involve removing previous code (the ViewPager does not need to utilize FragmentTransactions).</p>
+<p>When the search term is submitted from the <code>SearchFragment</code>, your Activity should instantiate a new (potentially different) <code>MovieListFragment</code> result list for that search term. The PagerAdapter should return an appropriate page count depending on whether a result list has been instantiated or not.</p>
+<ul>
+<li>However, simply creating a different Fragment will not cause the Adapter to change—you need to let the Adapter know that the <em>model</em> it is adapting into a <em>view</em> has changed! You can do this by calling the <code>notifyDataSetChanged()</code> method on the adapter.</li>
+</ul>
+<p>After you’ve modified (and notified!) the Adapter, you can change which page is displayed using the <a href="https://developer.android.com/reference/android/support/v4/view/ViewPager.html#setCurrentItem(int)"><code>ViewPager#setCurrentItem()</code></a> method. This will let you take the user to the “results” page!</p>
+<p>Similarly, modify the movie selection callback so that when a movie is selected from the list, your Activity instantiates a new (potentially different) <code>DetailFragment</code>. Remember to notify the adapter that the data set has changed, and to change which page is currently shown.</p>
+<ul>
+<li>This will replace the previous behavior of the callback.</li>
+</ul>
+<p>Once you’ve made these changes, you should be able to search for movies, see the results, and view the details for movies. Swipe left and right to navigate between pages!</p>
+<!-- Remember to `commit` and `push` your changes to GitHub and submit this lab once completed. -->
 
+</div>
 </div>
 
 
@@ -283,8 +334,8 @@ This book is currently in <strong>alpha</strong> status. Visit us on <a href="ht
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="styles-themes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="java-review.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -313,7 +364,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info448/book/edit/master/index.Rmd",
+"link": "https://github.com/info448/book/edit/master/viewpager.Rmd",
 "text": "Edit"
 },
 "download": ["android-development.pdf", "android-development.epub"],
