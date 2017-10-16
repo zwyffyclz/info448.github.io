@@ -12,7 +12,7 @@
   <meta property="og:title" content="Android Development: Lecture Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info448.github.io/" />
-  
+  <meta property="og:image" content="https://info448.github.io/img/android_icon_transparent.png" />
   <meta property="og:description" content="Lecture Notes for INFO 448: Android Development." />
   <meta name="github-repo" content="info448/book" />
 
@@ -20,20 +20,20 @@
   <meta name="twitter:title" content="Android Development: Lecture Notes" />
   
   <meta name="twitter:description" content="Lecture Notes for INFO 448: Android Development." />
-  
+  <meta name="twitter:image" content="https://info448.github.io/img/android_icon_transparent.png" />
 
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-09-08">
+<meta name="date" content="2017-10-17">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
-  
+  <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
 <link rel="prev" href="fragments.html">
-<link rel="next" href="ui-components.html">
+<link rel="next" href="styles-themes.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -117,220 +117,123 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="part"><span><b>I Lectures</b></span></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#android-history"><i class="fa fa-check"></i><b>1.1</b> Android History</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#android-versions"><i class="fa fa-check"></i><b>1.1.1</b> Android Versions</a></li>
-<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#legal-battles"><i class="fa fa-check"></i><b>1.1.2</b> Legal Battles</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#android-versions"><i class="fa fa-check"></i>Android Versions</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#legal-battles"><i class="fa fa-check"></i>Legal Battles</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#android-architecture-and-code"><i class="fa fa-check"></i><b>1.2</b> Android Architecture and Code</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#programming-languages"><i class="fa fa-check"></i><b>1.2.1</b> Programming Languages</a></li>
-<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#building-apps"><i class="fa fa-check"></i><b>1.2.2</b> Building Apps</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#building-apps"><i class="fa fa-check"></i><b>1.2</b> Building Apps</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#running-the-app"><i class="fa fa-check"></i>Running the App</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#development-tools"><i class="fa fa-check"></i><b>1.3</b> Development Tools</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#hardware"><i class="fa fa-check"></i><b>1.3.1</b> Hardware</a></li>
-<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#software"><i class="fa fa-check"></i><b>1.3.2</b> Software</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#app-source-code"><i class="fa fa-check"></i><b>1.3</b> App Source Code</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#xml-resources"><i class="fa fa-check"></i>XML Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#the-manifest"><i class="fa fa-check"></i>The Manifest</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#java-activities"><i class="fa fa-check"></i>Java Activities</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#gradle-scripts"><i class="fa fa-check"></i>Gradle Scripts</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#hello-world"><i class="fa fa-check"></i><b>1.4</b> Hello World</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#the-emulator"><i class="fa fa-check"></i><b>1.4.1</b> The Emulator</a></li>
-<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#project-contents"><i class="fa fa-check"></i><b>1.4.2</b> Project Contents</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#logging-adb"><i class="fa fa-check"></i><b>1.4</b> Logging &amp; ADB</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#log-methods"><i class="fa fa-check"></i>Log Methods</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#logcat"><i class="fa fa-check"></i>Logcat</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#toast"><i class="fa fa-check"></i>Toast</a></li>
 </ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#adding-interaction"><i class="fa fa-check"></i><b>1.5</b> Adding Interaction</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="activities.html"><a href="activities.html"><i class="fa fa-check"></i><b>2</b> Activities and Logging</a><ul>
-<li class="chapter" data-level="2.1" data-path="activities.html"><a href="activities.html#making-activities"><i class="fa fa-check"></i><b>2.1</b> Making Activities</a></li>
-<li class="chapter" data-level="2.2" data-path="activities.html"><a href="activities.html#the-activity-lifecycle"><i class="fa fa-check"></i><b>2.2</b> The Activity Lifecycle</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="activities.html"><a href="activities.html#overriding-the-callback-methods"><i class="fa fa-check"></i><b>2.2.1</b> Overriding the Callback Methods</a></li>
+<li class="chapter" data-level="2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html"><i class="fa fa-check"></i><b>2</b> Resources and Layouts</a><ul>
+<li class="chapter" data-level="2.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#resources"><i class="fa fa-check"></i><b>2.1</b> Resources</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#r"><i class="fa fa-check"></i>R</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#alternative-resources"><i class="fa fa-check"></i>Alternative Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="activities.html"><a href="activities.html#logging-adb"><i class="fa fa-check"></i><b>2.3</b> Logging &amp; ADB</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="activities.html"><a href="activities.html#log-methods"><i class="fa fa-check"></i><b>2.3.1</b> Log Methods</a></li>
-<li class="chapter" data-level="2.3.2" data-path="activities.html"><a href="activities.html#logcat"><i class="fa fa-check"></i><b>2.3.2</b> Logcat</a></li>
+<li class="chapter" data-level="2.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views"><i class="fa fa-check"></i><b>2.2</b> Views</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#view-properties"><i class="fa fa-check"></i>View Properties</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views-and-java"><i class="fa fa-check"></i>Views and Java</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#practice"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="activities.html"><a href="activities.html#basic-events"><i class="fa fa-check"></i><b>2.4</b> Basic Events</a></li>
-<li class="chapter" data-level="2.5" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>2.5</b> Multiple Activities</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="activities.html"><a href="activities.html#intents-and-context"><i class="fa fa-check"></i><b>2.5.1</b> Intents and Context</a></li>
+<li class="chapter" data-level="2.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#layouts"><i class="fa fa-check"></i><b>2.3</b> Layouts</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#linearlayout"><i class="fa fa-check"></i>LinearLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#relativelayout"><i class="fa fa-check"></i>RelativeLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#constraintlayout"><i class="fa fa-check"></i>ConstraintLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#other-layouts"><i class="fa fa-check"></i>Other Layouts</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#combining-and-inflating-layouts"><i class="fa fa-check"></i>Combining and Inflating Layouts</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i><b>2.6</b> Back &amp; Tasks</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i><b>2.6.1</b> Up Navigation</a></li>
+<li class="chapter" data-level="2.4" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#inputs"><i class="fa fa-check"></i><b>2.4</b> Inputs</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="activities.html"><a href="activities.html"><i class="fa fa-check"></i><b>3</b> Activities</a><ul>
+<li class="chapter" data-level="3.1" data-path="activities.html"><a href="activities.html#making-activities"><i class="fa fa-check"></i><b>3.1</b> Making Activities</a></li>
+<li class="chapter" data-level="3.2" data-path="activities.html"><a href="activities.html#the-activity-lifecycle"><i class="fa fa-check"></i><b>3.2</b> The Activity Lifecycle</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#overriding-the-callback-methods"><i class="fa fa-check"></i>Overriding the Callback Methods</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#saving-and-restoring-activity-state"><i class="fa fa-check"></i>Saving and Restoring Activity State</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html"><i class="fa fa-check"></i><b>3</b> Resources and Layouts</a><ul>
-<li class="chapter" data-level="3.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#resources"><i class="fa fa-check"></i><b>3.1</b> Resources</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#alternative-resources"><i class="fa fa-check"></i><b>3.1.1</b> Alternate Resources</a></li>
-<li class="chapter" data-level="3.1.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#xml-details"><i class="fa fa-check"></i><b>3.1.2</b> XML Details</a></li>
-<li class="chapter" data-level="3.1.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#r"><i class="fa fa-check"></i><b>3.1.3</b> R</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views"><i class="fa fa-check"></i><b>3.2</b> Views</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#view-properties"><i class="fa fa-check"></i><b>3.2.1</b> View Properties</a></li>
-<li class="chapter" data-level="3.2.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#practice"><i class="fa fa-check"></i><b>3.2.2</b> Practice</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#layouts"><i class="fa fa-check"></i><b>3.3</b> Layouts</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#linearlayout"><i class="fa fa-check"></i><b>3.3.1</b> LinearLayout</a></li>
-<li class="chapter" data-level="3.3.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#relativelayout"><i class="fa fa-check"></i><b>3.3.2</b> RelativeLayout</a></li>
-<li class="chapter" data-level="3.3.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#constraintlayout"><i class="fa fa-check"></i><b>3.3.3</b> ConstraintLayout</a></li>
-<li class="chapter" data-level="3.3.4" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#other-layouts"><i class="fa fa-check"></i><b>3.3.4</b> Other Layouts</a></li>
-<li class="chapter" data-level="3.3.5" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#combining-and-inflating-layouts"><i class="fa fa-check"></i><b>3.3.5</b> Combining and Inflating Layouts</a></li>
+<li class="chapter" data-level="3.3" data-path="activities.html"><a href="activities.html#context"><i class="fa fa-check"></i><b>3.3</b> Context</a></li>
+<li class="chapter" data-level="3.4" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>3.4</b> Multiple Activities</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#activity-intents"><i class="fa fa-check"></i>Intents</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i>Back &amp; Tasks</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i>Up Navigation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-views.html"><a href="data-views.html"><i class="fa fa-check"></i><b>4</b> Data-Driven Views</a><ul>
-<li class="chapter" data-level="4.1" data-path="data-views.html"><a href="data-views.html#inputs"><i class="fa fa-check"></i><b>4.1</b> Inputs</a></li>
-<li class="chapter" data-level="4.2" data-path="data-views.html"><a href="data-views.html#listviews-and-adapters"><i class="fa fa-check"></i><b>4.2</b> ListViews and Adapters</a></li>
-<li class="chapter" data-level="4.3" data-path="data-views.html"><a href="data-views.html#network-data"><i class="fa fa-check"></i><b>4.3</b> Network Data</a></li>
+<li class="chapter" data-level="4.1" data-path="data-views.html"><a href="data-views.html#listviews-and-adapters"><i class="fa fa-check"></i><b>4.1</b> ListViews and Adapters</a></li>
+<li class="chapter" data-level="4.2" data-path="data-views.html"><a href="data-views.html#networking-with-volley"><i class="fa fa-check"></i><b>4.2</b> Networking with Volley</a><ul>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#using-volley"><i class="fa fa-check"></i>Using Volley</a></li>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#requestqueue-singletons"><i class="fa fa-check"></i>RequestQueue Singletons</a></li>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#downloading-images"><i class="fa fa-check"></i>Downloading Images</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="material-design.html"><a href="material-design.html"><i class="fa fa-check"></i><b>5</b> Material Design</a><ul>
-<li class="chapter" data-level="5.1" data-path="material-design.html"><a href="material-design.html#resources-1"><i class="fa fa-check"></i><b>5.1</b> Resources:</a></li>
+<li class="chapter" data-level="5.1" data-path="material-design.html"><a href="material-design.html#the-material-design-language"><i class="fa fa-check"></i><b>5.1</b> The Material Design Language</a></li>
+<li class="chapter" data-level="5.2" data-path="material-design.html"><a href="material-design.html#material-styles-icons"><i class="fa fa-check"></i><b>5.2</b> Material Styles &amp; Icons</a></li>
+<li class="chapter" data-level="5.3" data-path="material-design.html"><a href="material-design.html#design-support-libraries"><i class="fa fa-check"></i><b>5.3</b> Design Support Libraries</a><ul>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#widgets"><i class="fa fa-check"></i>Widgets</a></li>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#coordinator-layout"><i class="fa fa-check"></i>Coordinator Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="material-design.html"><a href="material-design.html#animations"><i class="fa fa-check"></i><b>5.4</b> Animations</a><ul>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#property-animation"><i class="fa fa-check"></i>Property Animation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="fragments.html"><a href="fragments.html"><i class="fa fa-check"></i><b>6</b> Fragments</a><ul>
 <li class="chapter" data-level="6.1" data-path="fragments.html"><a href="fragments.html#creating-a-fragment"><i class="fa fa-check"></i><b>6.1</b> Creating a Fragment</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="fragments.html"><a href="fragments.html#activity-to-fragment-communication"><i class="fa fa-check"></i><b>6.1.1</b> Activity-to-Fragment Communication</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#activity-to-fragment-communication"><i class="fa fa-check"></i>Activity-to-Fragment Communication</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="fragments.html"><a href="fragments.html#dynamic-fragments"><i class="fa fa-check"></i><b>6.2</b> Dynamic Fragments</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="fragments.html"><a href="fragments.html#instantiating-fragments"><i class="fa fa-check"></i><b>6.2.1</b> Instantiating Fragments</a></li>
-<li class="chapter" data-level="6.2.2" data-path="fragments.html"><a href="fragments.html#transactions"><i class="fa fa-check"></i><b>6.2.2</b> Transactions</a></li>
-<li class="chapter" data-level="6.2.3" data-path="fragments.html"><a href="fragments.html#inter-fragment-communication"><i class="fa fa-check"></i><b>6.2.3</b> Inter-Fragment Communication</a></li>
-<li class="chapter" data-level="6.2.4" data-path="fragments.html"><a href="fragments.html#the-back-stack"><i class="fa fa-check"></i><b>6.2.4</b> The Back Stack</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#instantiating-fragments"><i class="fa fa-check"></i>Instantiating Fragments</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#transactions"><i class="fa fa-check"></i>Transactions</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#inter-fragment-communication"><i class="fa fa-check"></i>Inter-Fragment Communication</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#the-back-stack"><i class="fa fa-check"></i>The Back Stack</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="fragments.html"><a href="fragments.html#dialogs"><i class="fa fa-check"></i><b>6.3</b> Dialogs</a><ul>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#dialogfragments"><i class="fa fa-check"></i>DialogFragments</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="intents.html"><a href="intents.html"><i class="fa fa-check"></i><b>7</b> Intents</a><ul>
 <li class="chapter" data-level="7.1" data-path="intents.html"><a href="intents.html#intents-for-another-activity-explicit"><i class="fa fa-check"></i><b>7.1</b> Intents for Another Activity (Explicit)</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="intents.html"><a href="intents.html#extras"><i class="fa fa-check"></i><b>7.1.1</b> Extras</a></li>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#extras"><i class="fa fa-check"></i>Extras</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="intents.html"><a href="intents.html#intents-for-another-app-implicit"><i class="fa fa-check"></i><b>7.2</b> Intents for Another App (Implicit)</a></li>
 <li class="chapter" data-level="7.3" data-path="intents.html"><a href="intents.html#intents-for-a-response"><i class="fa fa-check"></i><b>7.3</b> Intents for a Response</a></li>
 <li class="chapter" data-level="7.4" data-path="intents.html"><a href="intents.html#listening-for-intents"><i class="fa fa-check"></i><b>7.4</b> Listening for Intents</a></li>
 <li class="chapter" data-level="7.5" data-path="intents.html"><a href="intents.html#broadcasts-and-receivers"><i class="fa fa-check"></i><b>7.5</b> Broadcasts and Receivers</a></li>
-<li class="chapter" data-level="7.6" data-path="intents.html"><a href="intents.html#an-example-sms"><i class="fa fa-check"></i><b>7.6</b> An Example: SMS</a></li>
-<li class="chapter" data-level="7.7" data-path="intents.html"><a href="intents.html#shareactionprovider"><i class="fa fa-check"></i><b>7.7</b> ShareActionProvider</a></li>
+<li class="chapter" data-level="7.6" data-path="intents.html"><a href="intents.html#menus"><i class="fa fa-check"></i><b>7.6</b> Menus</a><ul>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#action-views"><i class="fa fa-check"></i>Action Views</a></li>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#context-menus"><i class="fa fa-check"></i>Context Menus</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="ui-components.html"><a href="ui-components.html"><i class="fa fa-check"></i><b>8</b> UI Components</a><ul>
-<li class="chapter" data-level="8.1" data-path="ui-components.html"><a href="ui-components.html#the-action-bar"><i class="fa fa-check"></i><b>8.1</b> The Action Bar</a></li>
-<li class="chapter" data-level="8.2" data-path="ui-components.html"><a href="ui-components.html#menus"><i class="fa fa-check"></i><b>8.2</b> Menus</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="ui-components.html"><a href="ui-components.html#context-menus"><i class="fa fa-check"></i><b>8.2.1</b> Context Menus</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="ui-components.html"><a href="ui-components.html#dialogs"><i class="fa fa-check"></i><b>8.3</b> Dialogs</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="ui-components.html"><a href="ui-components.html#dialogfragments"><i class="fa fa-check"></i><b>8.3.1</b> DialogFragments</a></li>
-</ul></li>
-<li class="chapter" data-level="8.4" data-path="ui-components.html"><a href="ui-components.html#toasts"><i class="fa fa-check"></i><b>8.4</b> Toasts</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="ui-components-ii.html"><a href="ui-components-ii.html"><i class="fa fa-check"></i><b>9</b> UI Components II</a><ul>
-<li class="chapter" data-level="9.1" data-path="ui-components-ii.html"><a href="ui-components-ii.html#notifications"><i class="fa fa-check"></i><b>9.1</b> Notifications</a></li>
-<li class="chapter" data-level="9.2" data-path="ui-components-ii.html"><a href="ui-components-ii.html#settings"><i class="fa fa-check"></i><b>9.2</b> Settings</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="ui-components-ii.html"><a href="ui-components-ii.html#sharedpreferences"><i class="fa fa-check"></i><b>9.2.1</b> SharedPreferences</a></li>
-<li class="chapter" data-level="9.2.2" data-path="ui-components-ii.html"><a href="ui-components-ii.html#preference-settings"><i class="fa fa-check"></i><b>9.2.2</b> Preference Settings</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html"><i class="fa fa-check"></i><b>10</b> Providers and Loaders</a><ul>
-<li class="chapter" data-level="10.1" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#content-providers-intro"><i class="fa fa-check"></i><b>10.1</b> Content Providers</a></li>
-<li class="chapter" data-level="10.2" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#cursors"><i class="fa fa-check"></i><b>10.2</b> Cursors</a></li>
-<li class="chapter" data-level="10.3" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#loaders"><i class="fa fa-check"></i><b>10.3</b> Loaders</a></li>
-<li class="chapter" data-level="10.4" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#other-provider-actions"><i class="fa fa-check"></i><b>10.4</b> Other Provider Actions</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#adding-words"><i class="fa fa-check"></i><b>10.4.1</b> Adding Words</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>11</b> Databases and Providers</a><ul>
-<li class="chapter" data-level="11.1" data-path="databases.html"><a href="databases.html#review-providers-and-loaders"><i class="fa fa-check"></i><b>11.1</b> Review: Providers and Loaders</a></li>
-<li class="chapter" data-level="11.2" data-path="databases.html"><a href="databases.html#sqlite-databases"><i class="fa fa-check"></i><b>11.2</b> SQLite Databases</a></li>
-<li class="chapter" data-level="11.3" data-path="databases.html"><a href="databases.html#implementing-contentprovider"><i class="fa fa-check"></i><b>11.3</b> Implementing <code>ContentProvider</code></a><ul>
-<li class="chapter" data-level="11.3.1" data-path="databases.html"><a href="databases.html#uris-and-types"><i class="fa fa-check"></i><b>11.3.1</b> URIs and Types</a></li>
-<li class="chapter" data-level="11.3.2" data-path="databases.html"><a href="databases.html#query-methods"><i class="fa fa-check"></i><b>11.3.2</b> Query Methods</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="files-and-permissions.html"><a href="files-and-permissions.html"><i class="fa fa-check"></i><b>12</b> Files and Permissions</a><ul>
-<li class="chapter" data-level="12.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#file-storage-locations"><i class="fa fa-check"></i><b>12.1</b> File Storage Locations</a></li>
-<li class="chapter" data-level="12.2" data-path="files-and-permissions.html"><a href="files-and-permissions.html#permissions"><i class="fa fa-check"></i><b>12.2</b> Permissions</a></li>
-<li class="chapter" data-level="12.3" data-path="files-and-permissions.html"><a href="files-and-permissions.html#external-storage"><i class="fa fa-check"></i><b>12.3</b> External Storage</a></li>
-<li class="chapter" data-level="12.4" data-path="files-and-permissions.html"><a href="files-and-permissions.html#internal-storage-cache"><i class="fa fa-check"></i><b>12.4</b> Internal Storage &amp; Cache</a></li>
-<li class="chapter" data-level="12.5" data-path="files-and-permissions.html"><a href="files-and-permissions.html#example-saving-pictures"><i class="fa fa-check"></i><b>12.5</b> Example: Saving Pictures</a></li>
-<li class="chapter" data-level="12.6" data-path="files-and-permissions.html"><a href="files-and-permissions.html#sharing-files"><i class="fa fa-check"></i><b>12.6</b> Sharing Files</a><ul>
-<li class="chapter" data-level="12.6.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#bonus-sharing-with-a-fileprovider"><i class="fa fa-check"></i><b>12.6.1</b> Bonus: Sharing with a <code>FileProvider</code></a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="location.html"><a href="location.html"><i class="fa fa-check"></i><b>13</b> Location</a><ul>
-<li class="chapter" data-level="13.1" data-path="location.html"><a href="location.html#localization-techniques"><i class="fa fa-check"></i><b>13.1</b> Localization Techniques</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="location.html"><a href="location.html#gps"><i class="fa fa-check"></i><b>13.1.1</b> GPS</a></li>
-<li class="chapter" data-level="13.1.2" data-path="location.html"><a href="location.html#cell-tower-localization"><i class="fa fa-check"></i><b>13.1.2</b> Cell Tower Localization</a></li>
-<li class="chapter" data-level="13.1.3" data-path="location.html"><a href="location.html#wifi-localization"><i class="fa fa-check"></i><b>13.1.3</b> WiFi Localization</a></li>
-<li class="chapter" data-level="13.1.4" data-path="location.html"><a href="location.html#representing-location"><i class="fa fa-check"></i><b>13.1.4</b> Representing Location</a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="location.html"><a href="location.html#android-location"><i class="fa fa-check"></i><b>13.2</b> Android Location</a><ul>
-<li class="chapter" data-level="13.2.1" data-path="location.html"><a href="location.html#google-play-services"><i class="fa fa-check"></i><b>13.2.1</b> Google Play Services</a></li>
-<li class="chapter" data-level="13.2.2" data-path="location.html"><a href="location.html#accessing-location"><i class="fa fa-check"></i><b>13.2.2</b> Accessing Location</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="services.html"><a href="services.html"><i class="fa fa-check"></i><b>14</b> Services</a><ul>
-<li class="chapter" data-level="14.1" data-path="services.html"><a href="services.html#intentservices"><i class="fa fa-check"></i><b>14.1</b> IntentServices</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="services.html"><a href="services.html#the-service-lifecycle"><i class="fa fa-check"></i><b>14.1.1</b> The Service Lifecycle</a></li>
-</ul></li>
-<li class="chapter" data-level="14.2" data-path="services.html"><a href="services.html#example-a-music-service"><i class="fa fa-check"></i><b>14.2</b> Example: A Music Service</a><ul>
-<li class="chapter" data-level="14.2.1" data-path="services.html"><a href="services.html#mediaplayer"><i class="fa fa-check"></i><b>14.2.1</b> MediaPlayer</a></li>
-<li class="chapter" data-level="14.2.2" data-path="services.html"><a href="services.html#creating-a-service"><i class="fa fa-check"></i><b>14.2.2</b> Creating a Service</a></li>
-</ul></li>
-<li class="chapter" data-level="14.3" data-path="services.html"><a href="services.html#foreground-services"><i class="fa fa-check"></i><b>14.3</b> Foreground Services</a></li>
-<li class="chapter" data-level="14.4" data-path="services.html"><a href="services.html#bound-services"><i class="fa fa-check"></i><b>14.4</b> Bound Services</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="sensors.html"><a href="sensors.html"><i class="fa fa-check"></i><b>15</b> Sensors</a><ul>
-<li class="chapter" data-level="15.1" data-path="sensors.html"><a href="sensors.html#motion-sensors"><i class="fa fa-check"></i><b>15.1</b> Motion Sensors</a><ul>
-<li class="chapter" data-level="15.1.1" data-path="sensors.html"><a href="sensors.html#accessing-sensors"><i class="fa fa-check"></i><b>15.1.1</b> Accessing Sensors</a></li>
-<li class="chapter" data-level="15.1.2" data-path="sensors.html"><a href="sensors.html#composite-sensors"><i class="fa fa-check"></i><b>15.1.2</b> Composite Sensors</a></li>
-</ul></li>
-<li class="chapter" data-level="15.2" data-path="sensors.html"><a href="sensors.html#rotation"><i class="fa fa-check"></i><b>15.2</b> Rotation</a><ul>
-<li class="chapter" data-level="15.2.1" data-path="sensors.html"><a href="sensors.html#coordinates"><i class="fa fa-check"></i><b>15.2.1</b> Coordinates</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>16</b> Animation and Graphics</a><ul>
-<li class="chapter" data-level="16.1" data-path="animation.html"><a href="animation.html#drawing-graphics"><i class="fa fa-check"></i><b>16.1</b> Drawing Graphics</a><ul>
-<li class="chapter" data-level="16.1.1" data-path="animation.html"><a href="animation.html#custom-views"><i class="fa fa-check"></i><b>16.1.1</b> Custom Views</a></li>
-<li class="chapter" data-level="16.1.2" data-path="animation.html"><a href="animation.html#surfaceviews"><i class="fa fa-check"></i><b>16.1.2</b> SurfaceViews</a></li>
-</ul></li>
-<li class="chapter" data-level="16.2" data-path="animation.html"><a href="animation.html#touch-and-gestures"><i class="fa fa-check"></i><b>16.2</b> Touch and Gestures</a><ul>
-<li class="chapter" data-level="16.2.1" data-path="animation.html"><a href="animation.html#advanced-gestures"><i class="fa fa-check"></i><b>16.2.1</b> Advanced Gestures</a></li>
-</ul></li>
-<li class="chapter" data-level="16.3" data-path="animation.html"><a href="animation.html#property-animation"><i class="fa fa-check"></i><b>16.3</b> Property Animation</a></li>
+<li class="chapter" data-level="7.7" data-path="intents.html"><a href="intents.html#an-intent-example-sms"><i class="fa fa-check"></i><b>7.7</b> An Intent Example: SMS</a></li>
 </ul></li>
 <li class="part"><span><b>II Additional Topics (Labs)</b></span></li>
-<li class="chapter" data-level="17" data-path="accessibility.html"><a href="accessibility.html"><i class="fa fa-check"></i><b>17</b> Accessibility</a><ul>
-<li class="chapter" data-level="17.1" data-path="accessibility.html"><a href="accessibility.html#universal-usability"><i class="fa fa-check"></i><b>17.1</b> Universal Usability</a></li>
-<li class="chapter" data-level="17.2" data-path="accessibility.html"><a href="accessibility.html#implementing-accessibility"><i class="fa fa-check"></i><b>17.2</b> Implementing Accessibility</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="accessibility.html"><a href="accessibility.html#supporting-vision-impairment"><i class="fa fa-check"></i><b>17.2.1</b> Supporting Vision Impairment</a></li>
-<li class="chapter" data-level="17.2.2" data-path="accessibility.html"><a href="accessibility.html#supporting-alternative-inputs"><i class="fa fa-check"></i><b>17.2.2</b> Supporting Alternative Inputs</a></li>
-<li class="chapter" data-level="17.2.3" data-path="accessibility.html"><a href="accessibility.html#supporting-internationalization"><i class="fa fa-check"></i><b>17.2.3</b> Supporting Internationalization</a></li>
-<li class="chapter" data-level="17.2.4" data-path="accessibility.html"><a href="accessibility.html#further-testing"><i class="fa fa-check"></i><b>17.2.4</b> Further Testing</a></li>
+<li class="chapter" data-level="8" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>8</b> Styles &amp; Themes</a><ul>
+<li class="chapter" data-level="8.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>8.1</b> Defining Styles</a><ul>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#style-inheritance"><i class="fa fa-check"></i>Style Inheritance</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#built-in-styles"><i class="fa fa-check"></i>Built-in Styles</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#styles-for-text-views"><i class="fa fa-check"></i>Styles for Text Views</a></li>
 </ul></li>
+<li class="chapter" data-level="8.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>8.2</b> Themes</a><ul>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#material-themes"><i class="fa fa-check"></i>Material Themes</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#theme-attributes"><i class="fa fa-check"></i>Theme Attributes</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>18</b> Styles &amp; Themes</a><ul>
-<li class="chapter" data-level="18.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>18.1</b> Defining Styles</a><ul>
-<li class="chapter" data-level="18.1.1" data-path="styles-themes.html"><a href="styles-themes.html#style-inheritance"><i class="fa fa-check"></i><b>18.1.1</b> Style Inheritance</a></li>
-<li class="chapter" data-level="18.1.2" data-path="styles-themes.html"><a href="styles-themes.html#built-in-styles"><i class="fa fa-check"></i><b>18.1.2</b> Built-in Styles</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>18.2</b> Themes</a><ul>
-<li class="chapter" data-level="18.2.1" data-path="styles-themes.html"><a href="styles-themes.html#material-themes"><i class="fa fa-check"></i><b>18.2.1</b> Material Themes</a></li>
-<li class="chapter" data-level="18.2.2" data-path="styles-themes.html"><a href="styles-themes.html#theme-attributes"><i class="fa fa-check"></i><b>18.2.2</b> Theme Attributes</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="19" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html"><i class="fa fa-check"></i><b>19</b> Fragments: ViewPager</a><ul>
-<li class="chapter" data-level="19.1" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>19.1</b> Define a SearchFragment</a></li>
-<li class="chapter" data-level="19.2" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>19.2</b> Add the ViewPager and Adapter</a></li>
-<li class="chapter" data-level="19.3" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>19.3</b> Add User Interaction</a></li>
-</ul></li>
-<li class="chapter" data-level="20" data-path="bluetooth.html"><a href="bluetooth.html"><i class="fa fa-check"></i><b>20</b> Bluetooth</a></li>
-<li class="chapter" data-level="21" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>21</b> Maps</a><ul>
-<li class="chapter" data-level="21.1" data-path="maps.html"><a href="maps.html#create-a-map-activity"><i class="fa fa-check"></i><b>21.1</b> Create a Map Activity</a><ul>
-<li class="chapter" data-level="21.1.1" data-path="maps.html"><a href="maps.html#getting-an-api-key"><i class="fa fa-check"></i><b>21.1.1</b> Getting an API Key</a></li>
-<li class="chapter" data-level="21.1.2" data-path="maps.html"><a href="maps.html#the-supportmapfragment"><i class="fa fa-check"></i><b>21.1.2</b> The <code>SupportMapFragment</code></a></li>
-</ul></li>
-<li class="chapter" data-level="21.2" data-path="maps.html"><a href="maps.html#specifying-the-user-interface"><i class="fa fa-check"></i><b>21.2</b> Specifying the User Interface</a></li>
-<li class="chapter" data-level="21.3" data-path="maps.html"><a href="maps.html#markers-and-drawings"><i class="fa fa-check"></i><b>21.3</b> Markers and Drawings</a><ul>
-<li class="chapter" data-level="21.3.1" data-path="maps.html"><a href="maps.html#drawing-shapes"><i class="fa fa-check"></i><b>21.3.1</b> Drawing Shapes</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="22" data-path="memory.html"><a href="memory.html"><i class="fa fa-check"></i><b>22</b> Memory Management</a><ul>
-<li class="chapter" data-level="22.1" data-path="memory.html"><a href="memory.html#memory-allocation"><i class="fa fa-check"></i><b>22.1</b> Memory Allocation</a></li>
-<li class="chapter" data-level="22.2" data-path="memory.html"><a href="memory.html#the-memory-monitor"><i class="fa fa-check"></i><b>22.2</b> The Memory Monitor</a><ul>
-<li class="chapter" data-level="22.2.1" data-path="memory.html"><a href="memory.html#garbage-collection"><i class="fa fa-check"></i><b>22.2.1</b> Garbage Collection</a></li>
-</ul></li>
-<li class="chapter" data-level="22.3" data-path="memory.html"><a href="memory.html#memory-leaks"><i class="fa fa-check"></i><b>22.3</b> Memory Leaks</a></li>
-</ul></li>
-<li class="chapter" data-level="23" data-path="multi-touch.html"><a href="multi-touch.html"><i class="fa fa-check"></i><b>23</b> Multi-Touch</a><ul>
-<li class="chapter" data-level="23.1" data-path="multi-touch.html"><a href="multi-touch.html#identifying-fingers"><i class="fa fa-check"></i><b>23.1</b> Identifying Fingers</a></li>
-<li class="chapter" data-level="23.2" data-path="multi-touch.html"><a href="multi-touch.html#drawing-touches"><i class="fa fa-check"></i><b>23.2</b> Drawing Touches</a></li>
-<li class="chapter" data-level="23.3" data-path="multi-touch.html"><a href="multi-touch.html#moving-fingers"><i class="fa fa-check"></i><b>23.3</b> Moving Fingers</a></li>
-<li class="chapter" data-level="23.4" data-path="multi-touch.html"><a href="multi-touch.html#other-multi-touch-gestures"><i class="fa fa-check"></i><b>23.4</b> Other Multi-Touch Gestures</a></li>
+<li class="chapter" data-level="9" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html"><i class="fa fa-check"></i><b>9</b> Fragments: ViewPager</a><ul>
+<li class="chapter" data-level="9.1" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>9.1</b> Define a SearchFragment</a></li>
+<li class="chapter" data-level="9.2" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>9.2</b> Add the ViewPager and Adapter</a></li>
+<li class="chapter" data-level="9.3" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>9.3</b> Add User Interaction</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="java-review.html"><a href="java-review.html"><i class="fa fa-check"></i><b>A</b> Java Review</a><ul>
@@ -343,32 +246,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="A.7" data-path="java-review.html"><a href="java-review.html#generics"><i class="fa fa-check"></i><b>A.7</b> Generics</a></li>
 <li class="chapter" data-level="A.8" data-path="java-review.html"><a href="java-review.html#nested-classes"><i class="fa fa-check"></i><b>A.8</b> Nested Classes</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Swing Framework</a><ul>
+<li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Java Swing Framework</a><ul>
 <li class="chapter" data-level="B.1" data-path="java-swing.html"><a href="java-swing.html#events"><i class="fa fa-check"></i><b>B.1</b> Events</a></li>
 <li class="chapter" data-level="B.2" data-path="java-swing.html"><a href="java-swing.html#layouts-and-composites"><i class="fa fa-check"></i><b>B.2</b> Layouts and Composites</a></li>
-</ul></li>
-<li class="chapter" data-level="C" data-path="java-threads-http.html"><a href="java-threads-http.html"><i class="fa fa-check"></i><b>C</b> Threads and HTTP Requests</a><ul>
-<li class="chapter" data-level="C.1" data-path="java-threads-http.html"><a href="java-threads-http.html#concurrency"><i class="fa fa-check"></i><b>C.1</b> Concurrency</a><ul>
-<li class="chapter" data-level="C.1.1" data-path="java-threads-http.html"><a href="java-threads-http.html#an-example-algorithm-races"><i class="fa fa-check"></i><b>C.1.1</b> An Example: Algorithm Races!</a></li>
-<li class="chapter" data-level="C.1.2" data-path="java-threads-http.html"><a href="java-threads-http.html#threading-the-race"><i class="fa fa-check"></i><b>C.1.2</b> Threading the Race</a></li>
-</ul></li>
-<li class="chapter" data-level="C.2" data-path="java-threads-http.html"><a href="java-threads-http.html#http-requests"><i class="fa fa-check"></i><b>C.2</b> HTTP Requests</a></li>
-</ul></li>
-<li class="chapter" data-level="D" data-path="kotlin.html"><a href="kotlin.html"><i class="fa fa-check"></i><b>D</b> Special Topics: Kotlin</a><ul>
-<li class="chapter" data-level="D.1" data-path="kotlin.html"><a href="kotlin.html#kotlin-syntax"><i class="fa fa-check"></i><b>D.1</b> Kotlin Syntax</a><ul>
-<li class="chapter" data-level="D.1.1" data-path="kotlin.html"><a href="kotlin.html#variables"><i class="fa fa-check"></i><b>D.1.1</b> Variables</a></li>
-<li class="chapter" data-level="D.1.2" data-path="kotlin.html"><a href="kotlin.html#functions"><i class="fa fa-check"></i><b>D.1.2</b> Functions</a></li>
-<li class="chapter" data-level="D.1.3" data-path="kotlin.html"><a href="kotlin.html#classes"><i class="fa fa-check"></i><b>D.1.3</b> Classes</a></li>
-</ul></li>
-<li class="chapter" data-level="D.2" data-path="kotlin.html"><a href="kotlin.html#kotlin-for-android"><i class="fa fa-check"></i><b>D.2</b> Kotlin for Android</a><ul>
-<li class="chapter" data-level="D.2.1" data-path="kotlin.html"><a href="kotlin.html#the-android-extension"><i class="fa fa-check"></i><b>D.2.1</b> The Android Extension</a></li>
-<li class="chapter" data-level="D.2.2" data-path="kotlin.html"><a href="kotlin.html#anko"><i class="fa fa-check"></i><b>D.2.2</b> Anko</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="E" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>E</b> Publishing</a><ul>
-<li class="chapter" data-level="E.1" data-path="publishing.html"><a href="publishing.html#signing-an-app"><i class="fa fa-check"></i><b>E.1</b> Signing an App</a><ul>
-<li><a href="publishing.html#release-.apk">Release <code>.apk</code></a></li>
-</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -392,49 +272,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="intents" class="section level1">
 <h1><span class="header-section-number">Lecture 7</span> Intents</h1>
-<p class="alert alert-danger">
-This chapter is out of date and will be updated soon.
-</p>
 <p>This lecture discusses how to use <a href="https://developer.android.com/guide/components/intents-filters.html"><strong>Intents</strong></a> to communicate between different Activities and Applications. The Intent system allows Activities to communicate, even though they don’t have references to each other (and thus we can’t just call a method on them).</p>
 <p class="alert alert-info">
-This lecture references code found at <a href="https://github.com/info448-s17/lecture08-intents" class="uri">https://github.com/info448-s17/lecture08-intents</a>. Note that you will need to have a working camera on your device. To enable the camera in the emulator, use the <code>Tools &gt; Android &gt; AVD</code> menu to modify the emulator, and select “webcam” for the front camera option. Confirm that it is enabled by launching the Camera app.
+This lecture references code found at <a href="https://github.com/info448/lecture07-intents" class="uri">https://github.com/info448/lecture07-intents</a>. Note that you will need to have a working camera on your device for this demo. To enable the camera in the emulator, use the <code>Tools &gt; Android &gt; AVD</code> menu to modify the emulator, and select “webcam” for the front camera option. Confirm that it is enabled by launching the Camera app.
 </p>
 <!-- Formatted, but not edited for content -->
 <p>An Intent is a <strong>message</strong> that is sent between app components, allowing them to communicate!</p>
 <ul>
-<li><p>Most object communication we do is via <em>direct method call</em>; you have a reference to an Object and then you call a method on it. We’ve also seen <em>event callbacks</em>, where on an event one of our callbacks gets executed by the system (really just a wrapper around <em>direct method call</em> via the Observer pattern)</p></li>
-<li><p>Intents step outside of this a little bit: they allow us to create objects that can be “given” to another component (read: Activity), who can then respond upon receiving that. Similar to an event callback, but working at a slightly higher system level.</p></li>
+<li><p>Most object communication we do is via <em>direct method call</em>; you have a reference to an Object and then you call a method on it. We’ve also seen <em>event callbacks</em>, where on an event one of our callbacks gets executed by the system—but this is really just a wrapper around <em>direct method call</em> via the Observer pattern.</p></li>
+<li><p>Intents work a bit differently: they allow us to create an object that can be “given” to another component (read: Activity), who can then respond upon receiving it. This is similar to an event callback, but working at a slightly higher system level.</p></li>
 </ul>
-<p>You can think of Intents as like letters you’d send through the mail: they are addressed to a particular target (e.g., another Activity—more properly a <code>Context</code>), and have room for some data called <strong>extras</strong> to go inside (held in a <code>Bundle</code>). When the envelope arrives, the recipient can get that data out and do something with it… and possibly sending a response back.</p>
+<p>Intents were previously introduced in <a href="activities.html#activity-intents">Lecture 3</a>. But to reiterate: you can think of Intents as like letters you’d send through the mail: they are addressed to a particular target (e.g., another Activity—more properly a <code>Context</code>), and have room for some data called <strong>extras</strong> to go inside (held in a <code>Bundle</code>). When the envelope arrives, the recipient can get that data out and do something with it… and possibly send a response back.</p>
 <p>Note that there are couple of different kinds of Intents; we’ll go through examples of each.</p>
 <div id="intents-for-another-activity-explicit" class="section level2">
 <h2><span class="header-section-number">7.1</span> Intents for Another Activity (Explicit)</h2>
-<p>The most basic kind of Intent is an Intent sent to a specific Activity/Context, such as for telling that Activity to open.</p>
-<p>An <a href="http://developer.android.com/reference/android/content/Intent.html"><code>Intent</code></a><a href="#fn21" class="footnoteRef" id="fnref21"><sup>21</sup></a> is an object we <em>can</em> instantiate: for example, we can create a <code>new Intent</code> in the event handler for when we click the button on <code>MainActivity</code>. The <code>Intent</code> class has a number of different constructors, but the one we’ll start with looks like:</p>
+<p>The most basic kind of Intent is an Intent sent to a specific Activity/Context, such as for telling that Activity to open. This was the same type of Intent introduced in Lecture 3.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//                         context,           target</span>
-Intent intent = <span class="kw">new</span> <span class="fu">Intent</span>(MainActivity.<span class="fu">this</span>, SecondActivity.<span class="fu">class</span>);</code></pre></div>
+Intent intent = <span class="kw">new</span> <span class="fu">Intent</span>(MainActivity.<span class="fu">this</span>, SecondActivity.<span class="fu">class</span>);
+<span class="fu">startActivity</span>(intent);</code></pre></div>
+<p>We instantiate the Intent (specifying the <code>Context</code>it should be delivered from and the <code>Class</code> it should be delivered to), and then use that message to start an Activity by delivering the intent via <code>startActivity()</code>.</p>
 <ul>
-<li><p>The first parameter refers to the current <a href="http://developer.android.com/reference/android/content/Context.html"><strong>Context</strong></a> in which the message should be delivered. The second parameter to this constructor is the <em>class</em> we want to send the Intent to (the <code>.class</code> property fetches a reference to the class type; this is metaprogramming!). Effectively, it is the “address” on the envelop for the message we’re sending.</p>
-<ul>
-<li>We’re using <code>MainActivity.this</code> as the context, because the <code>this</code> would refer to the anonymous listener class (for methods in <code>Main</code>, we can just use <code>this</code>).</li>
-</ul></li>
+<li>The <code>startActivity()</code> method effectively means “this is an Intent used to launch an Activity: whoever receives this Intent should start!” You can almost think of it as saying that the letters should be delivered to the “start activity” mailbox.</li>
 </ul>
-<p>After having instantiated the <code>new Intent</code>, we can use that message to start an Activity by calling the <a href="http://developer.android.com/reference/android/app/Activity.html#startActivity(android.content.Intent)"><code>startActivity()</code></a> method (inherited from <code>Activity</code>), passing it the <code>Intent</code>:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="fu">startActivity</span>(intent);</code></pre></div>
-<p>This method will “send” the message to the operating system, which will deliver the Intent to the appropriate Activity, telling that Activity to start as soon as it receives the message.</p>
-<ul>
-<li>And we can use the <strong>back</strong> button to go backwards! See the <a href="">Activities</a> lecture for details.</li>
-</ul>
-<p>This is called an <strong>Explicit Intent</strong> because we’re <em>explicit</em> about what target we want to receive it. It’s a letter to a specific Activity.</p>
-<div id="extras" class="section level3">
-<h3><span class="header-section-number">7.1.1</span> Extras</h3>
-<p>We can also specify some extra data inside our envelope. These data are referred to as <strong>Extras</strong>. This is a <code>Bundle</code> (so a set of primitive key-value pairs) that we can use to pass <em>limited</em> information around!</p>
+<p>This type of Intent is called an <strong>Explicit Intent</strong> because we’re <em>explicit</em> about what target we want to receive it. It’s a letter to a specific Activity.</p>
+<div id="extras" class="section level3 unnumbered">
+<h3>Extras</h3>
+<p>We can also specify some extra data inside our envelope. These data are referred to as <strong>Extras</strong>. This is a <code>Bundle</code> (a set of primitive key-value pairs) that we can use to pass <em>limited</em> information around!</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">intent.<span class="fu">putExtra</span>(<span class="st">&quot;package.name.key&quot;</span>,<span class="st">&quot;value&quot;</span>);</code></pre></div>
 <ul>
-<li>Docs say that best practice is to include the full package name on keys, so avoid any collisions or misreading of data. There are also some pre-defined values (constants) that you can use in the <code>Intent</code> class.</li>
+<li>The Android documentation notes that best practice is to include the full package name in Bundle keys, so avoid any collisions or misreading of data (since Intents can move outside of the Application). There are also some pre-defined key values (constants) that you can and will use in the <code>Intent</code> class.</li>
 </ul>
 <p>We can then get the extras from the Intent in the Activity that receives it:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//in onCreate();</span>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//in onCreate()</span>
 Bundle extras = <span class="fu">getIntent</span>().<span class="fu">getExtras</span>(); <span class="co">//All activities are started with an Intent!</span>
 String value = extras.<span class="fu">getString</span>(<span class="st">&quot;key&quot;</span>);</code></pre></div>
 <p>So we can have Activities communicate, and even share information between them! Yay!</p>
@@ -442,45 +311,42 @@ String value = extras.<span class="fu">getString</span>(<span class="st">&quot;k
 </div>
 <div id="intents-for-another-app-implicit" class="section level2">
 <h2><span class="header-section-number">7.2</span> Intents for Another App (Implicit)</h2>
-<p>We can send Intents to our own Activities, but we can even address them to other Apps. When calling on other apps, we usually use <strong>Implicit Intents</strong>.</p>
+<p>We can send Intents to our own Activities, but we can even address them to other applications. When calling on other apps, we usually use <strong>Implicit Intents</strong>.</p>
 <ul>
-<li>This is a little bit like letters that have <a href="http://www.theguardian.com/world/2015/jul/18/postman-turns-detective-to-deliver-letter-with-cryptic-address-in-ireland">weird addresses</a><a href="#fn22" class="footnoteRef" id="fnref22"><sup>22</sup></a>, but still get delivered. “For that guy at the end of the block with the red mailbox.”</li>
+<li>This is a little bit like letters that have <a href="http://www.theguardian.com/world/2015/jul/18/postman-turns-detective-to-deliver-letter-with-cryptic-address-in-ireland">weird addresses</a>, but still get delivered. “For that guy at the end of the block with the red mailbox.”</li>
 </ul>
-<p>An Implicit Intent includes an <strong>Action</strong> and some <strong>Data</strong>. The <strong>Action</strong> says what the target should <em>do</em> upon receiving the intent (a Command), and the <strong><em>Data</em></strong> gives more detail about what to run that action on.</p>
+<p>An Implicit Intent includes an <strong>Action</strong> and some <strong>Data</strong>. The <strong><em>Action</em></strong> says what the target should <em>do</em> with the intent (a Command), and the <strong><em>Data</em></strong> gives more detail about what to run that action on.</p>
 <ul>
-<li><p><strong>Actions</strong> can be things like <code>ACTION_VIEW</code> to view some data, or <code>ACTION_PICK</code> to choose an item from a list. See a full list under <a href="http://developer.android.com/reference/android/content/Intent.html">“Standard Action Activities”</a>.</p></li>
+<li><p><strong>Actions</strong> can be things like <code>ACTION_VIEW</code> to view some data, or <code>ACTION_PICK</code> to choose an item from a list. See a full list under <a href="https://developer.android.com/reference/android/content/Intent.html">“Standard Action Activities”</a>.</p></li>
 <li><p><code>ACTION_MAIN</code> is the most common (just start the Activity as if it were a “main” launching point). So when we don’t specify anything else, this is used!</p></li>
 <li><p><strong>Data</strong> gives detail about what to do with the action (e.g., the Uri to <code>VIEW</code> or the Contact to <code>DIAL</code>).</p></li>
 <li><p>Extras then support this data!</p></li>
 </ul>
-<p>For example, if we specify a <code>DIAL</code> action, then we’re saying that we want our Intent to be delivered to an App that is capable of dialing a telephone number. - <em>If there is more than one app that supports this action, the user will pick one!</em> This is key: we’re not saying exactly what app to use, just what kind of functionality we need to be supported! It’s a kind of abstraction!</p>
+<p>For example, if we specify a <code>DIAL</code> action, then we’re saying that we want our Intent to be delivered to an application that is capable of dialing a telephone number.</p>
+<ul>
+<li><em>If there is more than one app that supports this action, the user will pick one!</em> This is key: we’re not saying exactly what app to use, just what kind of functionality we need to be supported! It’s a kind of abstraction!</li>
+</ul>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Intent intent = <span class="kw">new</span> <span class="fu">Intent</span>(Intent.<span class="fu">ACTION_DIAL</span>);
 intent.<span class="fu">setData</span>(Uri.<span class="fu">parse</span>(<span class="st">&quot;tel:206-685-1622&quot;</span>));
 <span class="kw">if</span> (intent.<span class="fu">resolveActivity</span>(<span class="fu">getPackageManager</span>()) != <span class="kw">null</span>) {
   <span class="fu">startActivity</span>(intent);
 }</code></pre></div>
-<p>Here we’ve specified the <em>Action</em> (<code>ACTION_DIAL</code>) for our Intent, as well as some <em>Data</em> (a phone number, converted into a Uri). The <code>resolveActivity()</code> method looks up what Activity is going to receive our action–we check that it’s not null before trying to start it up.</p>
+<p>Here we’ve specified the <em>Action</em> (<code>ACTION_DIAL</code>) for our Intent, as well as some <em>Data</em> (a phone number, converted into a Uri). The <code>resolveActivity()</code> method looks up what Activity is going to receive our action—we check that it’s not null before trying to start it up.</p>
 <ul>
 <li>This should allow us to “dial out” !</li>
 </ul>
-<p>Note that we can open up all sorts of apps. See <a href="http://developer.android.com/guide/components/intents-common.html">Common Intents</a><a href="#fn23" class="footnoteRef" id="fnref23"><sup>23</sup></a> for a list of common implicit events (with examples!).</p>
+<p>Note that we can open up all sorts of apps. See <a href="https://developer.android.com/guide/components/intents-common.html">Common Intents</a><a href="#fn25" class="footnoteRef" id="fnref25"><sup>25</sup></a> for a list of common implicit events (with useful examples!).</p>
 </div>
 <div id="intents-for-a-response" class="section level2">
 <h2><span class="header-section-number">7.3</span> Intents for a Response</h2>
-<p>We’ve been using intents to start Activities, but what if we’d like to get a result <em>back</em> from the Activity? That is, what if we want to look up a Contact or take a Picture, and then be able to use the Contact or show the Picture?</p>
-<p>To do this, we’re going to create Intents in the same way, but use a different method to launch them: <a href="http://developer.android.com/guide/components/activities.html#StartingAnActivityForResult"><code>startActivityForResult()</code></a>. This will launch the resolved Activity. But once that Action is finished, the launched Activity will send <em>another</em> Intent back to us, which we can then react to in order to handle the result.</p>
+<p>We’ve been using Intents to start Activities, but what if we’d like to get a result <em>back</em> from the Activity? That is, what if we want to look up a Contact or take a Picture, and then be able to use the Contact’s number or show the Picture?</p>
+<p>To do this, we’re going to create Intents in the same way, but use a different method to launch them: <code>startActivityForResult()</code>. This will launch the resolved Activity. But once that Action is finished, the launched Activity will send <em>another</em> Intent back to us, which we can then react to in order to handle the result.</p>
 <ul>
 <li>This is a bit like including an “RSVP” note in a letter!</li>
 </ul>
-<p>For fun, let’s do it with the Camera–we’ll launch the Camera to take a picture, and then get the picture and show it in an <code>ImageView</code> we have.</p>
+<p>For fun, let’s do it with the Camera—we’ll <a href="http://developer.android.com/training/camera/photobasics.html">launch the Camera</a> to take a picture, and then get the picture and show it in an <code>ImageView</code> we have.</p>
 <ul>
-<li><p>Note that your Emulator will need to have Camera emulation on!</p></li>
-<li><p>See <a href="http://developer.android.com/training/camera/photobasics.html">Taking Photos Simply</a> for walkthrough.</p></li>
-</ul>
-<p>In the activity, we can specify an intent that uses the <code>MediaStore.ACTION_IMAGE_CAPTURE</code> action (the action for “take a still picture and return it”).</p>
-<ul>
-<li><p>The “request code” is used to distinguish this intent from others we may send (kind of like a “tag”).</p></li>
-<li><p>Note that we could pass an Extra for where we want to save the large picture file to. However, we’re going to leave that off and just work with the thumbnail for this demonstration. See the <a href="http://developer.android.com/training/camera/photobasics.html#TaskPath">guide</a><a href="#fn24" class="footnoteRef" id="fnref24"><sup>24</sup></a> for details; if time we can walk through it!</p></li>
+<li>Note that your Emulator will need to have Camera emulation on!</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">static</span> <span class="dt">final</span> <span class="dt">int</span> REQUEST_IMAGE_CAPTURE = <span class="dv">1</span>;
 
@@ -490,38 +356,44 @@ intent.<span class="fu">setData</span>(Uri.<span class="fu">parse</span>(<span c
         <span class="fu">startActivityForResult</span>(takePictureIntent, REQUEST_IMAGE_CAPTURE);
     }
 }</code></pre></div>
-<p>In order to handle the “response” Intent, we need to provide a callback that will get executed when that Intent arrives. Called <code>onActivityResult()</code>.</p>
 <ul>
-<li><p>We can get information about the Intent we’re receiving from the params. And we can get access to the returned data (e.g., the image) by getting the <code>&quot;data&quot;</code> field from the extras.</p></li>
-<li><p>Note that this is a <a href="http://developer.android.com/reference/android/graphics/Bitmap.html"><code>Bitmap</code></a>, which is the Android class representing a raster image. We’ll play with Bitmaps more in a couple weeks, because I like graphics.</p></li>
+<li><p>We start by specifying an Intent that uses the <code>MediaStore.ACTION_IMAGE_CAPTURE</code> action (the action for “take a still picture and return it”). We will then send this Intent for a result, similar to other ImplicitIntents.</p></li>
+<li><p>We also include a second argument: a “request code”. A request code is used to distinguish this Intent from others we may send (kind of like a tag). It let’s us know that the Result Intent (the “RSVP”) is for our “took a picture” letter, and not for some other Intent we sent.</p></li>
+<li><p>Note that we could pass an Extra for where we want to save the large picture file to. However, we’re going to leave that off and just work with the thumbnail for this demonstration. See the <a href="http://developer.android.com/training/camera/photobasics.html#TaskPath">guide</a><a href="#fn26" class="footnoteRef" id="fnref26"><sup>26</sup></a> for details; if time we can walk through it!</p></li>
 </ul>
+<p>In order to handle the “response” Intent, we need to provide a callback that will get executed when that Intent arrives. This callback is called <code>onActivityResult()</code>.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="fu">@Override</span>
 <span class="kw">protected</span> <span class="dt">void</span> <span class="fu">onActivityResult</span>(<span class="dt">int</span> requestCode, <span class="dt">int</span> resultCode, Intent data) {
     <span class="kw">if</span> (requestCode == REQUEST_IMAGE_CAPTURE &amp;&amp; resultCode == RESULT_OK) {
         Bundle extras = data.<span class="fu">getExtras</span>();
         Bitmap imageBitmap = (Bitmap) extras.<span class="fu">get</span>(<span class="st">&quot;data&quot;</span>);
-        mImageView.<span class="fu">setImageBitmap</span>(imageBitmap);
+        ImageView imageView = (ImageView) <span class="fu">findViewById</span>(R.<span class="fu">id</span>.<span class="fu">img_thumbnail</span>);
+        imageView.<span class="fu">setImageBitmap</span>(imageBitmap);
     }
 }</code></pre></div>
+<ul>
+<li><p>We can get information about the Intent we’re receiving from the params, including which Intent let to the result (the <code>requestCode</code> and the status of that request (the <code><em>response</em>Code</code>). We can get access to the returned data (e.g., the image) by getting the <code>&quot;data&quot;</code> value from the extras.</p></li>
+<li><p>Note that this is a <a href="http://developer.android.com/reference/android/graphics/Bitmap.html"><code>Bitmap</code></a>, which is the Android class representing a raster image. We’ll play with Bitmaps more in a couple weeks, because I like graphics.</p></li>
+</ul>
 </div>
 <div id="listening-for-intents" class="section level2">
 <h2><span class="header-section-number">7.4</span> Listening for Intents</h2>
-<p>We’re able to send implicit Intents that can be heard by other Apps, but what if we wanted to receive implicit Intents ourselves? What if <em>we</em> want to be able to handle phone dialing?!</p>
-<p>In order to receive an implicit Intent, we need to declare that our Activity is able to handle that request. Since we’re specifying an aspect of our application, we’ll do this in the <code>Manifest</code> using what is called an <code>&lt;intent-filter&gt;</code>.</p>
+<p>We’re able to send implicit Intents that can be heard by other Apps, but what if we wanted to receive Implicit Intents ourselves? What if <em>we</em> want to be able to handle phone dialing?!</p>
+<p>In order to receive an Implicit Intent, we need to declare that our Activity is able to handle that request. Since we’re specifying an aspect of our application, we’ll do this in the <code>Manifest</code> using what is called an <code>&lt;intent-filter&gt;</code>.</p>
 <ul>
 <li>The idea is that we’re “hearing” all the intents, and we’re “filtering” for the ones that are relevant to us. Like sorting out the junk mail.</li>
 </ul>
-<p>An <code>&lt;intent-filter&gt;</code> tag is nested inside the element that it applies to (e.g., the <code>&lt;activity&gt;</code>). In fact, you can see there is already one there: that responds to the <code>MAIN</code> action sent with the <code>LAUNCHER</code> category (meaning that it responds to intents from the app launcher).</p>
+<p>An <code>&lt;intent-filter&gt;</code> tag is nested inside the element that it applies to (e.g., the <code>&lt;activity&gt;</code>). In fact, you can see there is already one there: that responds to the <code>MAIN</code> action sent with the <code>LAUNCHER</code> category (meaning that it responds to Intents from the app launcher).</p>
 <p>Similarly, we can specify three “parts” of the filter:</p>
 <ul>
 <li><p>a <code>&lt;action android:name=&quot;action&quot;&gt;</code> filter, which describes the Action we can respond to.</p></li>
 <li><p>a <code>&lt;data ...&gt;</code> filter, which specifies aspects of the data we accept (e.g., only respond to Uri’s that look like telephone numbers)</p></li>
 <li><p>a <code>&lt;category android:name=&quot;category&quot;&gt;</code> filter, which is basically a “more information” piece. You can see the <a href="http://developer.android.com/reference/android/content/Intent.html">“Standard Categories”</a> in the documentation.</p></li>
-<li><p>Note that you <em>must</em> include the <code>DEFAULT</code> category to receive implicit intents. This is the category used by <code>startActivity()</code> and <code>startActivityForResult</code>.</p></li>
+<li><p>Note that you <em>must</em> include the <code>DEFAULT</code> category to receive Implicit Intents. This is the category used by <code>startActivity()</code> and <code>startActivityForResult()</code>.</p></li>
 </ul>
 <p>Note that you can include multiple actions, data, and category tags. You just need to make sure that you can handle all possible combinations selected from each type (they are “or” not “and” filters!)</p>
 <p>Responding to that dial command:</p>
-<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;activity</span><span class="ot"> android:name=</span><span class="st">&quot;SecondActivity&quot;</span><span class="kw">&gt;</span>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;activity</span><span class="ot"> android:name=</span><span class="st">&quot;.SecondActivity&quot;</span><span class="kw">&gt;</span>
   <span class="kw">&lt;intent-filter&gt;</span>
       <span class="kw">&lt;action</span><span class="ot"> android:name=</span><span class="st">&quot;android.intent.action.DIAL&quot;</span><span class="kw">/&gt;</span>
       <span class="kw">&lt;category</span><span class="ot"> android:name=</span><span class="st">&quot;android.intent.category.DEFAULT&quot;</span> <span class="kw">/&gt;</span>
@@ -532,16 +404,16 @@ intent.<span class="fu">setData</span>(Uri.<span class="fu">parse</span>(<span c
 </div>
 <div id="broadcasts-and-receivers" class="section level2">
 <h2><span class="header-section-number">7.5</span> Broadcasts and Receivers</h2>
-<p>There is one other kind of Intent I want to talk about: <a href="http://developer.android.com/reference/android/content/BroadcastReceiver.html"><strong>Broadcasts</strong></a>. A broadcast is a message that <em>any</em> app can receive. Unlike Explicit and Implicit Intents, broadcasts are heard by the entire system–anything you “shout” with a broadcast is publicly available (security concerns!)</p>
+<p>There is one other kind of Intent I want to talk about today: <a href="http://developer.android.com/reference/android/content/BroadcastReceiver.html"><strong>Broadcasts</strong></a>. A broadcast is a message that <em>any</em> app can receive. Unlike Explicit and Implicit Intents, broadcasts are heard by the entire system—anything you “shout” with a broadcast is publicly available (so think about security concerns when using these!)</p>
 <ul>
-<li>Mass mailings question mark?</li>
+<li>To extend the snail mail metaphor, these are mass mailings perhaps.</li>
 </ul>
-<p>Other than who receives them, broadcasts work the same as normal implicit intents! We create an <code>Intent</code> with an Action and Data (and Category and Extras…). But instead of using the <code>startActivity()</code> method, we use the <code>sendBroadcast()</code> method. That intent can now be heard by all <code>Activities</code> on the phone,</p>
+<p>Other than who receives them, broadcasts work the same as normal Implicit Intents! We create an <code>Intent</code> with an Action and Data (and Category and Extras…). But instead of using the <code>startActivity()</code> method, we use the <code>sendBroadcast()</code> method. That intent can now be heard by all <code>Activities</code> on the phone.</p>
 <ul>
-<li>We’ll skip a demo for time and motivation… we’ll generate broadcasts later in the course.</li>
+<li>We’ll skip a demo for lack of time and motivation… but we will generate broadcasts later in the course.</li>
 </ul>
-<p>But more common than sending broadcasts will be <em>receiving</em> broadcasts; that is, we want to listen and respond to System broadcasts that are produced (things like power events, wifi status, etc). Or more germane to this week’s homework–to incoming text messages!!</p>
-<p>We can receive broadcasts by using a <a href="http://developer.android.com/reference/android/content/BroadcastReceiver.html"><code>BroadcastReceiver</code></a>. This is a base class that is used by an class that can receive broadcast Intents. We <strong>subclass</strong> it and implement the <code>onReceive(Context, Intent)</code> callback in order to handle when broadcasts are received.</p>
+<p>Indeed, more common than sending broadcasts will be <em>receiving</em> broadcasts; that is, we want to listen and respond to System broadcasts that are produced (things like power events, wifi status, etc). This would also include listening for things like incoming phone calls or text messages!</p>
+<p>We can receive broadcasts by using a <a href="http://developer.android.com/reference/android/content/BroadcastReceiver.html"><code>BroadcastReceiver</code></a>. This is a base class that is used by any class that can receive broadcast Intents. We <strong>subclass</strong> it and implement the <code>onReceive(Context, Intent)</code> callback in order to handle when broadcasts are received.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">void</span> <span class="fu">onReceive</span>(Context context, Intent intent)
 {
     Log.<span class="fu">v</span>(<span class="st">&quot;TAG&quot;</span>, <span class="st">&quot;received! &quot;</span>+intent.<span class="fu">toString</span>());
@@ -549,8 +421,11 @@ intent.<span class="fu">setData</span>(Uri.<span class="fu">parse</span>(<span c
         Toast.<span class="fu">makeText</span>(context, <span class="st">&quot;Battery is low!&quot;</span>, Toast.<span class="fu">LENGTH_SHORT</span>).<span class="fu">show</span>();
     }
 }</code></pre></div>
+<ul>
+<li>While we can use Android Studio to produce this; we’re going to make it by hand to see all the steps.</li>
+</ul>
 <p>But in order to <strong>register</strong> our receiver (so that intents go past its desk), we also need to specify it in the <code>Manifest</code>. We do this by including a <code>&lt;receiver&gt;</code> attribute inside our <code>&lt;application&gt;</code>. Note that this is <em>not</em> an Activity, but a separate component! We can put an <code>&lt;intent-filter&gt;</code> inside of this to filter for broadcasts we care about.</p>
-<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;receiver</span><span class="ot"> android:name=</span><span class="st">&quot;.MyReceiver&quot;</span><span class="kw">&gt;</span>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;receiver</span><span class="ot"> android:name=</span><span class="st">&quot;.PowerReceiver&quot;</span><span class="kw">&gt;</span>
     <span class="kw">&lt;intent-filter&gt;</span>
         <span class="kw">&lt;action</span><span class="ot"> android:name=</span><span class="st">&quot;android.intent.action.ACTION_POWER_CONNECTED&quot;</span> <span class="kw">/&gt;</span>
         <span class="kw">&lt;action</span><span class="ot"> android:name=</span><span class="st">&quot;android.intent.action.ACTION_POWER_DISCONNECTED&quot;</span> <span class="kw">/&gt;</span>
@@ -559,52 +434,161 @@ intent.<span class="fu">setData</span>(Uri.<span class="fu">parse</span>(<span c
         <span class="co">&lt;!-- no category because not for an activity! --&gt;</span>
     <span class="kw">&lt;/intent-filter&gt;</span>
 <span class="kw">&lt;/receiver&gt;</span></code></pre></div>
-<p>We can test these power events easily using the latest version of the emulator. In the “extra options” button (the three dots at the bottom) in the emulator’s toolbar, we can get to the <code>Battery</code> tab where we can effectively change the battery status of the device (which our app can respond to!)</p>
-<ul>
-<li>Note that there is a <code>Phone</code> tab where you can send Text Messages to the emulator… you’ll need this for your homework this week.</li>
-</ul>
-<p>We can also <em>register</em> these receivers in code (rather than in the manifest). This is good for if we only want to temporarily listen for some kind of events, or if we want to determine the <code>intent-filter</code> on the fly.</p>
+<p>We can test these power events easily using the latest version of the emulator. In the “extra options” button (the three dots at the bottom) in the emulator’s toolbar, we can get to the <code>Battery</code> tab where we can effectively change the battery status of the device (which our app can respond to!). Remember to “disconnect” from the AC Charger!</p>
+<!-- - Note that there is a `Phone` tab where you can send Text Messages to the emulator... you'll need this for your homework this week. -->
+<p>We can also <em>register</em> these receivers in code (rather than in the manifest). This is good for if we only want to temporarily listen for some kind of events, or if we want to determine the <code>intent-filter</code> on the fly:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">IntentFilter batteryFilter = <span class="kw">new</span> <span class="fu">IntentFilter</span>();
 batteryFilter.<span class="fu">addAction</span>(Intent.<span class="fu">ACTION_BATTERY_LOW</span>);
 batteryFilter.<span class="fu">addAction</span>(Intent.<span class="fu">ACTION_BATTERY_OKAY</span>);
 batteryFilter.<span class="fu">addAction</span>(Intent.<span class="fu">ACTION_POWER_CONNECTED</span>);
 batteryFilter.<span class="fu">addAction</span>(Intent.<span class="fu">ACTION_POWER_DISCONNECTED</span>);
-<span class="kw">this</span>.<span class="fu">registerReceiver</span>(<span class="kw">new</span> <span class="fu">MyReceiver</span>(), batteryFilter);</code></pre></div>
+<span class="kw">this</span>.<span class="fu">registerReceiver</span>(<span class="kw">new</span> <span class="fu">PowerReceiver</span>(), batteryFilter);</code></pre></div>
 <ul>
-<li>We’re dynamically declaring an intent-filter as well! This can be used not just for <code>BroadcastReceivers</code>, but <code>Activities</code> too.</li>
+<li>We’re dynamically declaring an <code>intent-filter</code> as well! This can be used not just for <code>BroadcastReceivers</code>, but <code>Activities</code> too, if you dynamically want to change if an Activity can receive an Intent.</li>
 </ul>
 </div>
-<div id="an-example-sms" class="section level2">
-<h2><span class="header-section-number">7.6</span> An Example: SMS</h2>
-<p>One specific use of Intents is when working with text messages (SMS, Short Messaging Service, the most popular form of data communication in the world). While it is possile to fetch a list of messages usin a <code>ContentProvider</code>, it is also possible to send SMS as well. This will also let us show off one more type of <code>Intent</code>.</p>
+<div id="menus" class="section level2">
+<h2><span class="header-section-number">7.6</span> Menus</h2>
+<p>Intents let us perform all kinds of communications and actions. But to manage all these options, it would help to introduce some more user interface components—and so in this section we’ll talk about <a href="https://developer.android.com/guide/topics/ui/menus.html"><strong><em>Menus</em></strong></a>.</p>
+<p>Menus are primarily accessed through the <a href="https://developer.android.com/training/appbar/index.html"><strong>App Bar</strong></a> a.k.a. the <strong>Action Bar</strong>. This acts as the sort of “header” for your app, providing a dedicated space for navigation and interaction (e.g., through menus).</p>
+<ul>
+<li>The <a href="https://developer.android.com/reference/android/support/v7/app/ActionBar.html"><code>ActionBar</code></a><a href="#fn27" class="footnoteRef" id="fnref27"><sup>27</sup></a> is a specific type of <a href="https://developer.android.com/reference/android/support/v7/widget/Toolbar.html"><code>Toolbar</code></a> that is most frequently used as the App Bar, offering a particular “look and feel” common to Android applications. For this reason “App Bar” and “Action Bar” are often use interchangeably. However, it is possible to include Toolbars (and by extension, menus) wherever you want in a layout. See <a href="http://developer.android.com/training/appbar/setting-up.html">Setting up the App Bar</a> for details.</li>
+</ul>
+<p>The main use for the Action Bar is a place to hold <a href="https://developer.android.com/guide/topics/ui/menus.html"><strong><em>Menus</em></strong></a>. A Menu (specifically, an <a href="https://developer.android.com/guide/topics/ui/menus.html#options-menu"><strong>options menu</strong></a>) is a set of items (think: buttons) that appear in the Action Bar. Menus can be specified both in the <code>Activity</code> and in a <code>Fragment</code>; if declared in both places, they are combined into a single menu in the Action Bar. This allows you to easily make “context-specific” options menus that are only available for an appropriate Fragment, while keeping Fragments modular and self-contained.</p>
+<ul>
+<li><p>To give a Fragment a menu, call <code>setHasOptionsMenu(true)</code> in the Fragment’s <code>onCreate()</code> method.</p></li>
+<li><p><em>Fun fact:</em> before API 11, options menus appeared as buttons at the bottom of the screen!</p></li>
+</ul>
+<p>Menus, like all other user-facing elements, are defined as XML resources, specifically of type <strong><code>menu</code></strong>. You can create a new menu resource through Android studio using <code>File &gt; New &gt; Android resource file</code> and then choosing the <code>Menu</code> Resource type. This will create an XML file with a main <a href="https://developer.android.com/reference/android/view/Menu.html"><code>&lt;menu&gt;</code></a> element.</p>
+<p>Options can be added to the menu by specifying child XML elements, particularly <a href="https://developer.android.com/reference/android/view/MenuItem.html"><code>&lt;item&gt;</code></a> elements. Common <code>&lt;item&gt;</code> attributes include:</p>
+<ul>
+<li><strong><code>android:id</code></strong>: a unique id used to refer to the specific option in the Java code</li>
+<li><strong><code>android:title</code></strong> (<strong>required</strong> attribute): the text to display for the option. As user-facing text, the content should ideally be defined as an XML String resource.</li>
+<li><strong><code>app:showAsAction</code></strong>: whether or not the option should be listed in the Action Bar, or collapsed under a “three-dots” button. Note when working with the <code>appcompat</code> library, this option uses the <code>app</code> namespace (instead of <code>android</code>); you will need to include this namespace in the <code>&lt;menu&gt;</code> with the attribute <code>xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</code>.</li>
+<li><p><strong><code>android:icon</code></strong>: an image to use when showing the option as a button on the menu.</p>
+<p class="alert alert-info">
+You can use one of the many icons built into the Android, referenced as <code>&quot;@android:drawable/ic_*&quot;</code>. <a href="http://androiddrawables.com/">Android Drawables</a><a href="#fn28" class="footnoteRef" id="fnref28"><sup>28</sup></a> includes the full list, though not all drawables are publicly available through Android Studio.
+</p></li>
+<li><p><strong><code>android:orderInCategory</code></strong>: used to order the item in the menu (or in a group). This acts as a “priority” (default 0; low comes first). Such prioritizing can be useful if you want to add suggestions about whether Fragment options should come before or after the Activity options.</p></li>
+</ul>
+<p>See the <a href="https://developer.android.com/guide/topics/resources/menu-resource.html">Menu resources guide</a><a href="#fn29" class="footnoteRef" id="fnref29"><sup>29</sup></a> for the full list of options!</p>
+<p>It is possible to include <strong>one level</strong> of sub-menus (a <code>&lt;menu&gt;</code> element inside an <code>&lt;item&gt;</code> element). Menu items can also be grouped together by placing them inside of a <code>&lt;group&gt;</code> element. All items in a group will be shown or hidden together, and can be further ordered within that group. Grouped icons can also be made <a href="https://developer.android.com/guide/topics/ui/menus.html#checkable">checkable</a>.</p>
+<p>In order to show the menu in the running application, we need to tell the Action Bar which menu resource it should use (there may be a lot of resources). To do this, we override the <code>onCreateOptionsMenu()</code> callback in the Activity or Fragment, and then use the component’s <code>MenuInflater</code> object to expand the menu:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">onCreateOptionsMenu</span>(Menu menu) {
+    MenuInflater inflater = <span class="fu">getMenuInflater</span>();
+    inflater.<span class="fu">inflate</span>(R.<span class="fu">menu</span>.<span class="fu">main_menu</span>, menu); <span class="co">//inflate into this menu</span>
+    <span class="kw">return</span> <span class="kw">true</span>;
+}</code></pre></div>
+<ul>
+<li>This procedure is similar in concept to how a Fragment’s <code>onViewCreated()</code> method would inflate the Fragment into the Activity. In this case, the Menu is being inflated into the Action Bar.</li>
+</ul>
+<p>We can respond to the menu items being selected by overriding the <code>onOptionsItemSelected()</code> callback. By convention, we use a <code>switch</code> on the <code>item.getItemId()</code> to determine what item was selected, and then act accordingly.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">onOptionsItemSelected</span>(MenuItem item) {
+    <span class="kw">switch</span>(item.<span class="fu">getItemId</span>()){
+        <span class="kw">case</span> R.<span class="fu">id</span>.<span class="fu">menu_item1</span> :
+            <span class="co">//do thing;</span>
+            <span class="kw">return</span> <span class="kw">true</span>;
+        <span class="kw">default</span>:
+            <span class="kw">return</span> <span class="kw">super</span>.<span class="fu">onOptionsItemSelected</span>(item);
+    }
+}</code></pre></div>
+<ul>
+<li><p>On <code>default</code> (if the item selected isn’t handled by any cases), we pass the callback up to <code>super</code> for “higher-level” components to check. For example, if a the menu option isn’t handled by the Fragment (because the Fragment didn’t add it), the event can be passed up through the Framework for eventually handling by the Activity (who did add it).</p></li>
+<li><p>This method should return <code>true</code> if the selection even has been handled (and thus should not be considered by anyone else). Return <code>false</code> if you want other components (e.g., other Fragments) to be able to respond to this option as well.</p></li>
+</ul>
+<p>There are many other menu items that can be placed on Action Bar as well. We can also add <a href="https://developer.android.com/training/appbar/action-views.html">Action Views</a> that provide more complex interactions than just clicking buttons (for example, including a search bar). An <a href="https://developer.android.com/training/appbar/action-views.html#action-provider">Action Provider</a> (like <a href="https://developer.android.com/training/sharing/shareaction.html"><code>ShareActionProvider</code></a>) is an action with its own customized layout, expanding into a separate View when clicked. We wil discuss how to utilize these features in a <a href="intents.html#intents">future lecture</a>.</p>
+<div id="action-views" class="section level3 unnumbered">
+<h3>Action Views</h3>
+<p>In addition to these simple buttons, we can also include more complex expandable widgets called <a href="https://developer.android.com/training/appbar/action-views.html">Action Views</a>. The most common of these is a <a href="https://developer.android.com/reference/android/support/v7/widget/SearchView.html">SearchView</a>, which puts a “search field” in the App Bar!</p>
+<p>However, as a slightly simpler demo, we’ll set up a <a href="https://developer.android.com/training/sharing/shareaction.html"><code>ShareActionProvider</code></a>, which automatically provides a drop-down menu item with a complete list of apps that we can share our data with (e.g., the “quick share with these social media sites” button)y.</p>
+<ul>
+<li>For reference, I recommend looking at the <a href="http://developer.android.com/reference/android/support/v7/widget/ShareActionProvider.html">class documentation</a> for how to set this up (it’s much clearer than the training docs).</li>
+</ul>
+<p>We’ll start by adding another item to our menu’s XML. This will look like other items, except it will have an extra field <code>app:actionProviderClass</code> indicating that this item is an Action Provider (a widget that provides some actions)</p>
+<pre><code>```xml
+&lt;item
+    android:id=&quot;@+id/menu_item_share&quot;
+    android:title=&quot;Share&quot;
+    app:showAsAction=&quot;ifRoom&quot;
+    app:actionProviderClass=&quot;android.support.v7.widget.ShareActionProvider&quot;
+    /&gt;
+```</code></pre>
+<p>We’ll then add the item to our menu in <code>onCreateOptionsMenu()</code></p>
+<pre><code>```java
+MenuItem item = menu.findItem(R.id.menu_item_share);
+ShareActionProvider shareProvider = (ShareActionProvider)MenuItemCompat.getActionProvider(item);
+
+Intent intent = new Intent(Intent.ACTION_DIAL);
+intent.setData(Uri.parse(&quot;tel:206-685-1622&quot;));
+
+shareProvider.setShareIntent(intent);
+```
+
+- We get access to the item using `findItem()` (similar to `findViewById()`), and then cast it to a `ShareActonProvider` (make sure you&#39;re using the support version!)
+
+- We can then specify an _Implicit Intent_ that we want that &quot;Share Button&quot; to be able to perform. This would commonly use the `ACTION_SEND` action (like for sharing a picture or text), but we&#39;ll use the `DIAL` action because we have a couple of dialers but don&#39;t actually have many `SEND` responders on the emulator.</code></pre>
+<p>The Menu item will then list a dropdown with all of the different Activities that <code>resolve</code> to handling that implicit intent! And we’ve now deeply combined Intents and Menus!</p>
+</div>
+<div id="context-menus" class="section level3 unnumbered">
+<h3>Context Menus</h3>
+<p>In addition to options menus available in the Action Bar, we can also specify <a href="https://developer.android.com/guide/topics/ui/menus.html#context-menu">contextual menus</a> that pop up when the user long-presses on an element. This works similarly to using an options menu, but with a different set off callbacks:</p>
+<ul>
+<li><p>When setting up the the View layout (e.g., in an Activity’s <code>onCreate()</code>), we specify that an element has a context menu using the <code>registerForContextMenu()</code> method, passing it the <code>View</code> we want to be able to create the menu for.</p></li>
+<li><p>Specify the context menu to use through the <code>onCreateContextMenu()</code> callback. This works exactly like setting up an options menu.</p>
+<ul>
+<li>In fact, a context menu can even use <em>the same menu</em> as an options menu! This reuse is one of the advantages of defining the user interface as XML.</li>
+</ul></li>
+<li><p>And mirroring the options menu, respond to context menu items being selected with the <code>onContextItemSelected()</code> callback.</p></li>
+</ul>
+<p>This section has provided a very brief introduction to menus, but there are many more complex interactions that they support. I <em>highly</em> recommend that you read through <a href="https://developer.android.com/guide/topics/ui/menus.html">the guide</a> in order to learn what features may be available.</p>
+<p class="alert alert-info">
+If you ever are using an app and wonder “how did they add this interface feature?”, look it up! There is almost always a documented procedure and example for providing that kind of component.
+</p>
+</div>
+</div>
+<div id="an-intent-example-sms" class="section level2">
+<h2><span class="header-section-number">7.7</span> An Intent Example: SMS</h2>
+<p class="alert alert-info">
+An optional extra example, for the curious.
+</p>
+<p>One specific use of Intents is when working with text messages (SMS, Short Messaging Service, the most popular form of data communication in the world). In particular, Intents are used to send and receive SMS messages (you can get a list of messages already received using a <code>ContentProvided</code>, described in a later lecture).</p>
 <ul>
 <li><em>Important note:</em> the SMS APIs changed <em>drastically</em> in KitKat (API 19). So we’re going to make sure that is our minimum so we can get all the helpful methods and support newer stuff (check gradle to confirm!).</li>
 </ul>
-<p>The main thing to note about sending SMS is that as of KitKat, each system has a <em>default</em> messaging client—who is the only one who can actually send messages. Luckily, the API lets you get access to that messaging client’s services in order to send a message <em>through</em> it:</p>
+<p>The main thing to note about sending SMS is that as of KitKat, each system has a <em>default</em> messaging client—which is the only app that can actually send messages. Luckily, the API lets you get access to that messaging client’s services in order to send a message <em>through</em> it:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">SmsManager smsManager = SmsManager.<span class="fu">getDefault</span>();
 smsManager.<span class="fu">sendTextMessage</span>(<span class="st">&quot;5554&quot;</span>, <span class="kw">null</span>, <span class="st">&quot;This is a test message!&quot;</span>, <span class="kw">null</span>, <span class="kw">null</span>);
 <span class="co">//                         target,       message</span></code></pre></div>
-<p>We will need permission: <code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot; /&gt;</code></p>
-<p>If we look at the <a href="http://developer.android.com/reference/android/telephony/SmsManager.html#sendTextMessage(java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent)">documentation for this method</a><a href="#fn25" class="footnoteRef" id="fnref25"><sup>25</sup></a>, you can see that this works by looking at the inbox in the Messages app… but there is another way as well. Those last two parameters are for <a href="http://developer.android.com/reference/android/app/PendingIntent.html"><code>PendingIntents</code></a>: one for when messages are sent and one for when messages are delivered.</p>
 <ul>
-<li>What’s a <code>PendingIntent</code>? The details are not <em>super</em> readable… It’s basically a wrapper around an <code>Intent</code> that we give to <strong>another</strong> class. Then when that class receives our <code>PendingIntent</code> and reacts to it, it can run the <code>Intent</code> (command) we sent it with as if that <code>Activity</code> was us (whew).</li>
-<li>Basically we’re saying “when I call you, you can come pick me up using my car” kind of thing.</li>
-<li><p>Or like if you gave a stamped envelope to someone to put your letter or recommendation inside (do this!)</p></li>
+<li><code>5554</code> is the default “phone number” of the emulator (the port it is running on).</li>
+</ul>
+<p>We will also need permission: <code>&lt;uses-permission android:name=&quot;android.permission.SEND_SMS&quot; /&gt;</code> (in the Manifest)</p>
+<p>You can see that this works by looking at the inbox in the Messages app… but there is another way as well! If you look at <a href="http://developer.android.com/reference/android/telephony/SmsManager.html#sendTextMessage(java.lang.String, java.lang.String, java.lang.String, android.app.PendingIntent, android.app.PendingIntent)">the documentation for this method</a><a href="#fn30" class="footnoteRef" id="fnref30"><sup>30</sup></a>, you can see that the last two parameters are for <a href="http://developer.android.com/reference/android/app/PendingIntent.html"><code>PendingIntents</code></a>: one for when messages are sent and one for when messages are delivered.</p>
+<ul>
+<li><p>What’s a <code>PendingIntent</code>? The details are not <em>super</em> readable… It’s basically a wrapper around an <code>Intent</code> that we give to <strong>another</strong> class. Then when that class receives our <code>PendingIntent</code> and reacts to it, it can run the <code>Intent</code> (command) we sent it with as if that <code>Activity</code> were us (whew).</p>
+<ul>
+<li>This is like when you ask a professor for a letter of recommendation, and you give them the stamped envelope (which you should always do!). When they get the packet, then can then send their letter using <em>your</em> envelop and stamp!</li>
+<li>Alternatively: “I am mailing you my car keys, when you get them you can come pick me up”.</li>
+</ul></li>
 <li><p>So the idea is we specify what <code>Intent</code> should be delivered when the message is finished being sent (that <code>Intent</code> becomes “pending”). Effectively, this let’s us send Intents in response to some other kind of event.</p></li>
 </ul>
 <p>Let’s go ahead and set one up:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">final</span> String ACTION_SMS_STATUS = <span class="st">&quot;edu.uw.intentdemo.ACTION_SMS_STATUS&quot;</span>;
-...
+
+<span class="co">//...</span>
+
 Intent intent = <span class="kw">new</span> <span class="fu">Intent</span>(ACTION_SMS_STATUS);
 PendingIntent pendingIntent = PendingIntent.<span class="fu">getBroadcast</span>(MainActivity.<span class="fu">this</span>, <span class="dv">0</span>, intent, <span class="dv">0</span>);
 
 smsManager.<span class="fu">sendTextMessage</span>(<span class="st">&quot;5554&quot;</span>, <span class="kw">null</span>, <span class="st">&quot;This is a test message!&quot;</span>, pendingIntent, <span class="kw">null</span>);</code></pre></div>
 <p>We’re doing a couple of steps here:</p>
 <ul>
-<li>We’re defining out own custom Action. It’s just a <code>String</code>, but name-spaced to avoid conflicts</li>
-<li>We then create an <strong>implicit intent</strong> for this action</li>
-<li>And then create a <code>PendingIntent</code>. We’re using the <code>getBroadcast()</code> method to specify that the intent should be sent via a Broadcast (c.f. <code>getActivity()</code> for <code>startActivity()</code>).</li>
-<li>First param is <code>content</code> that should send the intent, then a request code (e.g., for result callbacks if we wanted), then the <code>Intent</code>, and finally any extra flags (none for now).</li>
+<li>We’re defining our own custom Action. It’s just a <code>String</code>, but name-spaced to avoid conflicts</li>
+<li>We then create an <strong>Implicit Intent</strong> for this action</li>
+<li>And then create a <code>PendingIntent</code>. We’re using the <code>getBroadcast()</code> method to specify that the Intent should be sent via a Broadcast (c.f. <code>getActivity()</code> for <code>startActivity()</code>).
+<ul>
+<li>First param is the Context that should send the Intent, then a request code (e.g., for result callbacks if we wanted), then the <code>Intent</code> we want to be pending, and finally any extra flags (none for now).</li>
+</ul></li>
 </ul>
 <p>We can then have our <code>BroadcastReceiver</code> respond to this <code>Intent</code> just like any other one!</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span>(intent.<span class="fu">getAction</span>() == MainActivity.<span class="fu">ACTION_SMS_STATUS</span>) {
@@ -619,45 +603,26 @@ smsManager.<span class="fu">sendTextMessage</span>(<span class="st">&quot;5554&q
 <li><strong>Don’t forget</strong> to add our custom intent to the <code>&lt;intent-filter&gt;</code>!</li>
 </ul>
 <p>We’ll see more with <code>PendingIntents</code> in the next chapter when we talk about notifications.</p>
-</div>
-<div id="shareactionprovider" class="section level2">
-<h2><span class="header-section-number">7.7</span> ShareActionProvider</h2>
-<p>But wait there’s more we can do with Intents One of the other things we can add to menus are <a href="http://developer.android.com/training/appbar/action-views.html">Action Views</a> that are expandable widgets in the action bar (e.g., search example). Or, to play around with Intents more, we can add an <a href="http://developer.android.com/training/appbar/action-views.html#action-provider">Action Provider</a> (like <a href="http://developer.android.com/training/sharing/shareaction.html"><code>ShareActionProvider</code></a>), which gives us a bunch of interaction built into the menu! This is the “quick share with these social media sites” button that we see commonly.</p>
-<ul>
-<li>We’d want to look at <a href="http://developer.android.com/reference/android/support/v7/widget/ShareActionProvider.html">class documentation</a> for how to set this up (it’s much clearer than the training docs).</li>
-</ul>
-<p>How to use it:</p>
-<ul>
-<li><p>We’re going to add another item to our menu’s XML. This will look like most items, except it will have an extra field <code>app:actionProviderClass</code></p>
-<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;item</span>
-<span class="ot">    android:id=</span><span class="st">&quot;@+id/menu_item_share&quot;</span>
-<span class="ot">    android:title=</span><span class="st">&quot;Share&quot;</span>
-<span class="ot">    app:showAsAction=</span><span class="st">&quot;ifRoom&quot;</span>
-<span class="ot">    app:actionProviderClass=</span><span class="st">&quot;android.support.v7.widget.ShareActionProvider&quot;</span>
-    <span class="kw">/&gt;</span></code></pre></div></li>
-<li><p>We’ll then add the item to our menu in <code>onCreateOptionsMenu()</code></p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">MenuItem item = menu.<span class="fu">findItem</span>(R.<span class="fu">id</span>.<span class="fu">menu_item_share</span>);
-mShareActionProvider = (ShareActionProvider) MenuItemCompat.<span class="fu">getActionProvider</span>(item);
-
-Intent intent = <span class="kw">new</span> <span class="fu">Intent</span>(Intent.<span class="fu">ACTION_DIAL</span>);
-intent.<span class="fu">setData</span>(Uri.<span class="fu">parse</span>(<span class="st">&quot;tel:206-685-1622&quot;</span>));
-
-mShareActionProvider.<span class="fu">setShareIntent</span>(intent);</code></pre></div></li>
-<li><p>We get access to the item using <code>findItem()</code>, and then cast it to a <code>ShareActonProvider</code> (make sure you’re using the support version!)</p></li>
-<li><p>We can then specify an <em>implicit Intent</em> that we want that “Share Button” to be able to perform. This would commonly use the <code>ACTION_SEND</code> action (like for sharing a picture or text), but we’ll use the <code>DIAL</code> action because we have a couple of dialers but don’t actually have many <code>SEND</code> responders on the emulator.</p></li>
-</ul>
-<p>The Menu item will then list a dropdown with all of the different Activities that <code>resolve</code> to handling that implicit intent!</p>
 
 </div>
+</div>
+
+
+
+<!-- Check AppCompat stuff
+     Clarify inheritance example (i.e., with "alert")
+     Implement solution
+ -->
 </div>
 <div class="footnotes">
 <hr />
-<ol start="21">
-<li id="fn21"><p><a href="http://developer.android.com/reference/android/content/Intent.html" class="uri">http://developer.android.com/reference/android/content/Intent.html</a><a href="intents.html#fnref21">↩</a></p></li>
-<li id="fn22"><p><a href="http://www.theguardian.com/world/2015/jul/18/postman-turns-detective-to-deliver-letter-with-cryptic-address-in-ireland" class="uri">http://www.theguardian.com/world/2015/jul/18/postman-turns-detective-to-deliver-letter-with-cryptic-address-in-ireland</a><a href="intents.html#fnref22">↩</a></p></li>
-<li id="fn23"><p><a href="http://developer.android.com/guide/components/intents-common.html" class="uri">http://developer.android.com/guide/components/intents-common.html</a><a href="intents.html#fnref23">↩</a></p></li>
-<li id="fn24"><p><a href="http://developer.android.com/training/camera/photobasics.html#TaskPath" class="uri">http://developer.android.com/training/camera/photobasics.html#TaskPath</a><a href="intents.html#fnref24">↩</a></p></li>
-<li id="fn25"><p><a href="https://developer.android.com/reference/android/telephony/SmsManager.html" class="uri">https://developer.android.com/reference/android/telephony/SmsManager.html</a><a href="intents.html#fnref25">↩</a></p></li>
+<ol start="25">
+<li id="fn25"><p><a href="https://developer.android.com/guide/components/intents-common.html" class="uri">https://developer.android.com/guide/components/intents-common.html</a><a href="intents.html#fnref25">↩</a></p></li>
+<li id="fn26"><p><a href="http://developer.android.com/training/camera/photobasics.html#TaskPath" class="uri">http://developer.android.com/training/camera/photobasics.html#TaskPath</a><a href="intents.html#fnref26">↩</a></p></li>
+<li id="fn27"><p><a href="http://developer.android.com/reference/android/support/v7/app/ActionBar.html" class="uri">http://developer.android.com/reference/android/support/v7/app/ActionBar.html</a><a href="intents.html#fnref27">↩</a></p></li>
+<li id="fn28"><p><a href="http://androiddrawables.com/" class="uri">http://androiddrawables.com/</a><a href="intents.html#fnref28">↩</a></p></li>
+<li id="fn29"><p><a href="https://developer.android.com/guide/topics/resources/menu-resource.html" class="uri">https://developer.android.com/guide/topics/resources/menu-resource.html</a><a href="intents.html#fnref29">↩</a></p></li>
+<li id="fn30"><p><a href="https://developer.android.com/reference/android/telephony/SmsManager.html" class="uri">https://developer.android.com/reference/android/telephony/SmsManager.html</a><a href="intents.html#fnref30">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -666,7 +631,7 @@ mShareActionProvider.<span class="fu">setShareIntent</span>(intent);</code></pre
         </div>
       </div>
 <a href="fragments.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ui-components.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="styles-themes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -695,10 +660,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info48/book/edit/master/intents.Rmd",
+"link": "https://github.com/info448/book/edit/master/intents.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["android-development.pdf", "android-development.epub"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -707,17 +672,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
