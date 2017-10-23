@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Android Development: Lecture Notes</title>
+  <meta name="description" content="Lecture Notes for INFO 448: Android Development.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Android Development: Lecture Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://info448.github.io/" />
+  <meta property="og:image" content="https://info448.github.io/img/android_icon_transparent.png" />
+  <meta property="og:description" content="Lecture Notes for INFO 448: Android Development." />
+  <meta name="github-repo" content="info448/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Android Development: Lecture Notes" />
+  
+  <meta name="twitter:description" content="Lecture Notes for INFO 448: Android Development." />
+  <meta name="twitter:image" content="https://info448.github.io/img/android_icon_transparent.png" />
+
+<meta name="author" content="Joel Ross">
+
+
+<meta name="date" content="2017-10-22">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
+<link rel="prev" href="intents.html">
+<link rel="next" href="styles-themes.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98444716-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./" class="title">Android Development</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Book</a></li>
+<li class="part"><span><b>I Lectures</b></span></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#android-history"><i class="fa fa-check"></i><b>1.1</b> Android History</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#android-versions"><i class="fa fa-check"></i>Android Versions</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#legal-battles"><i class="fa fa-check"></i>Legal Battles</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#building-apps"><i class="fa fa-check"></i><b>1.2</b> Building Apps</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#running-the-app"><i class="fa fa-check"></i>Running the App</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#app-source-code"><i class="fa fa-check"></i><b>1.3</b> App Source Code</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#xml-resources"><i class="fa fa-check"></i>XML Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#the-manifest"><i class="fa fa-check"></i>The Manifest</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#java-activities"><i class="fa fa-check"></i>Java Activities</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#gradle-scripts"><i class="fa fa-check"></i>Gradle Scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#logging-adb"><i class="fa fa-check"></i><b>1.4</b> Logging &amp; ADB</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#log-methods"><i class="fa fa-check"></i>Log Methods</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#logcat"><i class="fa fa-check"></i>Logcat</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#toast"><i class="fa fa-check"></i>Toast</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#adding-interaction"><i class="fa fa-check"></i><b>1.5</b> Adding Interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html"><i class="fa fa-check"></i><b>2</b> Resources and Layouts</a><ul>
+<li class="chapter" data-level="2.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#resources"><i class="fa fa-check"></i><b>2.1</b> Resources</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#r"><i class="fa fa-check"></i>R</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#alternative-resources"><i class="fa fa-check"></i>Alternative Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views"><i class="fa fa-check"></i><b>2.2</b> Views</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#view-properties"><i class="fa fa-check"></i>View Properties</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views-and-java"><i class="fa fa-check"></i>Views and Java</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#layouts"><i class="fa fa-check"></i><b>2.3</b> Layouts</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#linearlayout"><i class="fa fa-check"></i>LinearLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#relativelayout"><i class="fa fa-check"></i>RelativeLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#constraintlayout"><i class="fa fa-check"></i>ConstraintLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#other-layouts"><i class="fa fa-check"></i>Other Layouts</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#combining-and-inflating-layouts"><i class="fa fa-check"></i>Combining and Inflating Layouts</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#inputs"><i class="fa fa-check"></i><b>2.4</b> Inputs</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="activities.html"><a href="activities.html"><i class="fa fa-check"></i><b>3</b> Activities</a><ul>
+<li class="chapter" data-level="3.1" data-path="activities.html"><a href="activities.html#making-activities"><i class="fa fa-check"></i><b>3.1</b> Making Activities</a></li>
+<li class="chapter" data-level="3.2" data-path="activities.html"><a href="activities.html#the-activity-lifecycle"><i class="fa fa-check"></i><b>3.2</b> The Activity Lifecycle</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#overriding-the-callback-methods"><i class="fa fa-check"></i>Overriding the Callback Methods</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#saving-and-restoring-activity-state"><i class="fa fa-check"></i>Saving and Restoring Activity State</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="activities.html"><a href="activities.html#context"><i class="fa fa-check"></i><b>3.3</b> Context</a></li>
+<li class="chapter" data-level="3.4" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>3.4</b> Multiple Activities</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#activity-intents"><i class="fa fa-check"></i>Intents</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i>Back &amp; Tasks</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i>Up Navigation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-views.html"><a href="data-views.html"><i class="fa fa-check"></i><b>4</b> Data-Driven Views</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-views.html"><a href="data-views.html#listviews-and-adapters"><i class="fa fa-check"></i><b>4.1</b> ListViews and Adapters</a></li>
+<li class="chapter" data-level="4.2" data-path="data-views.html"><a href="data-views.html#networking-with-volley"><i class="fa fa-check"></i><b>4.2</b> Networking with Volley</a><ul>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#using-volley"><i class="fa fa-check"></i>Using Volley</a></li>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#requestqueue-singletons"><i class="fa fa-check"></i>RequestQueue Singletons</a></li>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#downloading-images"><i class="fa fa-check"></i>Downloading Images</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="material-design.html"><a href="material-design.html"><i class="fa fa-check"></i><b>5</b> Material Design</a><ul>
+<li class="chapter" data-level="5.1" data-path="material-design.html"><a href="material-design.html#the-material-design-language"><i class="fa fa-check"></i><b>5.1</b> The Material Design Language</a></li>
+<li class="chapter" data-level="5.2" data-path="material-design.html"><a href="material-design.html#material-styles-icons"><i class="fa fa-check"></i><b>5.2</b> Material Styles &amp; Icons</a></li>
+<li class="chapter" data-level="5.3" data-path="material-design.html"><a href="material-design.html#design-support-libraries"><i class="fa fa-check"></i><b>5.3</b> Design Support Libraries</a><ul>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#widgets"><i class="fa fa-check"></i>Widgets</a></li>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#coordinator-layout"><i class="fa fa-check"></i>Coordinator Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="material-design.html"><a href="material-design.html#animations"><i class="fa fa-check"></i><b>5.4</b> Animations</a><ul>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#property-animation"><i class="fa fa-check"></i>Property Animation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fragments.html"><a href="fragments.html"><i class="fa fa-check"></i><b>6</b> Fragments</a><ul>
+<li class="chapter" data-level="6.1" data-path="fragments.html"><a href="fragments.html#creating-a-fragment"><i class="fa fa-check"></i><b>6.1</b> Creating a Fragment</a><ul>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#activity-to-fragment-communication"><i class="fa fa-check"></i>Activity-to-Fragment Communication</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="fragments.html"><a href="fragments.html#dynamic-fragments"><i class="fa fa-check"></i><b>6.2</b> Dynamic Fragments</a><ul>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#instantiating-fragments"><i class="fa fa-check"></i>Instantiating Fragments</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#transactions"><i class="fa fa-check"></i>Transactions</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#inter-fragment-communication"><i class="fa fa-check"></i>Inter-Fragment Communication</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#the-back-stack"><i class="fa fa-check"></i>The Back Stack</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="fragments.html"><a href="fragments.html#dialogs"><i class="fa fa-check"></i><b>6.3</b> Dialogs</a><ul>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#dialogfragments"><i class="fa fa-check"></i>DialogFragments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="intents.html"><a href="intents.html"><i class="fa fa-check"></i><b>7</b> Intents</a><ul>
+<li class="chapter" data-level="7.1" data-path="intents.html"><a href="intents.html#intents-for-another-activity-explicit"><i class="fa fa-check"></i><b>7.1</b> Intents for Another Activity (Explicit)</a><ul>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#extras"><i class="fa fa-check"></i>Extras</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="intents.html"><a href="intents.html#intents-for-another-app-implicit"><i class="fa fa-check"></i><b>7.2</b> Intents for Another App (Implicit)</a></li>
+<li class="chapter" data-level="7.3" data-path="intents.html"><a href="intents.html#intents-for-a-response"><i class="fa fa-check"></i><b>7.3</b> Intents for a Response</a></li>
+<li class="chapter" data-level="7.4" data-path="intents.html"><a href="intents.html#listening-for-intents"><i class="fa fa-check"></i><b>7.4</b> Listening for Intents</a></li>
+<li class="chapter" data-level="7.5" data-path="intents.html"><a href="intents.html#broadcasts-and-receivers"><i class="fa fa-check"></i><b>7.5</b> Broadcasts and Receivers</a></li>
+<li class="chapter" data-level="7.6" data-path="intents.html"><a href="intents.html#menus"><i class="fa fa-check"></i><b>7.6</b> Menus</a><ul>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#action-views"><i class="fa fa-check"></i>Action Views</a></li>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#context-menus"><i class="fa fa-check"></i>Context Menus</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="intents.html"><a href="intents.html#an-intent-example-sms"><i class="fa fa-check"></i><b>7.7</b> An Intent Example: SMS</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="notifications-settings.html"><a href="notifications-settings.html"><i class="fa fa-check"></i><b>8</b> Notifications &amp; Settings</a><ul>
+<li class="chapter" data-level="8.1" data-path="notifications-settings.html"><a href="notifications-settings.html#dialogs-1"><i class="fa fa-check"></i><b>8.1</b> Dialogs</a><ul>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#dialogfragments-1"><i class="fa fa-check"></i>DialogFragments</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="notifications-settings.html"><a href="notifications-settings.html#notifications"><i class="fa fa-check"></i><b>8.2</b> Notifications</a></li>
+<li class="chapter" data-level="8.3" data-path="notifications-settings.html"><a href="notifications-settings.html#settings"><i class="fa fa-check"></i><b>8.3</b> Settings</a><ul>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#sharedpreferences"><i class="fa fa-check"></i>SharedPreferences</a></li>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#preference-settings"><i class="fa fa-check"></i>Preference Settings</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Additional Topics (Labs)</b></span></li>
+<li class="chapter" data-level="9" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>9</b> Styles &amp; Themes</a><ul>
+<li class="chapter" data-level="9.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>9.1</b> Defining Styles</a><ul>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#style-inheritance"><i class="fa fa-check"></i>Style Inheritance</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#built-in-styles"><i class="fa fa-check"></i>Built-in Styles</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#styles-for-text-views"><i class="fa fa-check"></i>Styles for Text Views</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>9.2</b> Themes</a><ul>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#material-themes"><i class="fa fa-check"></i>Material Themes</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#theme-attributes"><i class="fa fa-check"></i>Theme Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html"><i class="fa fa-check"></i><b>10</b> Fragments: ViewPager</a><ul>
+<li class="chapter" data-level="10.1" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>10.1</b> Define a SearchFragment</a></li>
+<li class="chapter" data-level="10.2" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>10.2</b> Add the ViewPager and Adapter</a></li>
+<li class="chapter" data-level="10.3" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>10.3</b> Add User Interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="bluetooth.html"><a href="bluetooth.html"><i class="fa fa-check"></i><b>11</b> Bluetooth</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="java-review.html"><a href="java-review.html"><i class="fa fa-check"></i><b>A</b> Java Review</a><ul>
+<li class="chapter" data-level="A.1" data-path="java-review.html"><a href="java-review.html#building-apps-with-gradle"><i class="fa fa-check"></i><b>A.1</b> Building Apps with Gradle</a></li>
+<li class="chapter" data-level="A.2" data-path="java-review.html"><a href="java-review.html#class-basics"><i class="fa fa-check"></i><b>A.2</b> Class Basics</a></li>
+<li class="chapter" data-level="A.3" data-path="java-review.html"><a href="java-review.html#inheritance"><i class="fa fa-check"></i><b>A.3</b> Inheritance</a></li>
+<li class="chapter" data-level="A.4" data-path="java-review.html"><a href="java-review.html#interfaces"><i class="fa fa-check"></i><b>A.4</b> Interfaces</a></li>
+<li class="chapter" data-level="A.5" data-path="java-review.html"><a href="java-review.html#polymorphism"><i class="fa fa-check"></i><b>A.5</b> Polymorphism</a></li>
+<li class="chapter" data-level="A.6" data-path="java-review.html"><a href="java-review.html#abstract-methods-and-classes"><i class="fa fa-check"></i><b>A.6</b> Abstract Methods and Classes</a></li>
+<li class="chapter" data-level="A.7" data-path="java-review.html"><a href="java-review.html#generics"><i class="fa fa-check"></i><b>A.7</b> Generics</a></li>
+<li class="chapter" data-level="A.8" data-path="java-review.html"><a href="java-review.html#nested-classes"><i class="fa fa-check"></i><b>A.8</b> Nested Classes</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Java Swing Framework</a><ul>
+<li class="chapter" data-level="B.1" data-path="java-swing.html"><a href="java-swing.html#events"><i class="fa fa-check"></i><b>B.1</b> Events</a></li>
+<li class="chapter" data-level="B.2" data-path="java-swing.html"><a href="java-swing.html#layouts-and-composites"><i class="fa fa-check"></i><b>B.2</b> Layouts and Composites</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Android Development: Lecture Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="notifications-settings" class="section level1">
+<h1><span class="header-section-number">Lecture 8</span> Notifications &amp; Settings</h1>
+<p>This lecture discusses some additional user interface components common to Android applications: <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html"><strong>Notifications</strong></a>, <a href="https://developer.android.com/guide/topics/ui/settings.html"><strong>Settings Menus</strong></a>. and <a href="https://developer.android.com/guide/topics/ui/dialogs.html"><strong>Dialogs</strong></a> This lecture aims to provide <em>exposure</em> rather than complete coverage to these concepts; for more options and examples, see the official Android documentation.</p>
+<p class="alert alert-info">
+This lecture references code found at <a href="https://github.com/info448/lecture08-notifications-settings" class="uri">https://github.com/info448/lecture08-notifications-settings</a>. <!--Note that this code builds upon the example developed in Lecture 8.-->
+</p>
+<div id="dialogs-1" class="section level2">
+<h2><span class="header-section-number">8.1</span> Dialogs</h2>
+<p>We have previously provided feedback to users via simple pop-ups such as <a href="https://developer.android.com/guide/topics/ui/notifiers/toasts.html">Toasts</a> or <a href="https://developer.android.com/training/snackbar/showing.html">Snackbars</a>. However, sometimes you would like to show a more complex “pop-up” View—perhaps one that requires additional interaction.</p>
+<p>A <a href="https://developer.android.com/guide/topics/ui/dialogs.html"><strong><em>Dialog</em></strong></a><a href="#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a> is a “pop-up” <a href="https://en.wikipedia.org/wiki/Modal_window">modal</a> (a view which doesn’t fill the screen) that either asks the user to make a decision or provides some additional information. At their most basic, Dialogs are similar to the <code>window.alert()</code> function and its variants used in JavaScript.</p>
+<p>There is a base <code>Dialog</code> class, but almost always we use a pre-defined subclass instead (similar to how we’ve use <code>AppCompatActivity</code>). <a href="https://developer.android.com/reference/android/support/v7/app/AlertDialog.html"><code>AlertDialog</code></a><a href="#fn32" class="footnoteRef" id="fnref32"><sup>32</sup></a> is the most common version: a simple message that includes buttons you can respond with (confirm, cancel, etc).</p>
+<p>We don’t actually instantiate an <code>AlertDialog</code> directly (in fact, it’s constructors are <code>protected</code> so inaccessible to us). Instead we use a helper <em>factory</em> class called an <a href="https://developer.android.com/reference/android/support/v7/app/AlertDialog.Builder.html"><code>AlertDialog.Builder</code></a>. There are a number of steps to use a builder to create a Dialog:</p>
+<ol style="list-style-type: decimal">
+<li><p>Instantiate a new builder for this particular dialog. The constructor takes in a <code>Context</code> under which to create the Dialog. Note that once the builder is initialized, you can create and recreate the same dialog with a single method call—that’s the benefit of using a factory.</p></li>
+<li><p>Call “setter” methods on the builder in order to specify the title, message, etc. for the dialog that will appear. This can be hard-coded text or a reference to an XML String resource (as a user-facing String, the later is more appropriate for published applications). Each setter method will return a reference to the builder, making it easy to chain them.</p></li>
+<li><p>Use appropriate setter methods to specify callbacks (via a <code>DialogInterface.OnClickListener</code>) for individual buttons. Note that the “positive” button normally has the text <code>&quot;OK&quot;</code>, but this can be customized.</p></li>
+<li><p>Finally, actually instantiate the <code>AlertDialog</code> with the <code>builder.create()</code> method, using the <strong><code>show()</code></strong> method to make the dialog appear on the screen!</p></li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">AlertDialog.<span class="fu">Builder</span> builder = <span class="kw">new</span> AlertDialog.<span class="fu">Builder</span>(<span class="kw">this</span>);
+builder.<span class="fu">setTitle</span>(<span class="st">&quot;Alert!&quot;</span>)
+       .<span class="fu">setMessage</span>(<span class="st">&quot;Danger Will Robinson!&quot;</span>);
+builder.<span class="fu">setPositiveButton</span>(<span class="st">&quot;I see it!&quot;</span>, <span class="kw">new</span> DialogInterface.<span class="fu">OnClickListener</span>() {
+  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">onClick</span>(DialogInterface dialog, <span class="dt">int</span> id) {
+    <span class="co">// User clicked OK button</span>
+  }
+});
+
+AlertDialog dialog = builder.<span class="fu">create</span>();
+dialog.<span class="fu">show</span>();</code></pre></div>
+<p class="alert alert-info">
+An important part of learning to develop Android applications is being able to read the API to discover effective options. For example, can you read the <a href="https://developer.android.com/reference/android/support/v7/app/AlertDialog.Builder.html">AlertDialog.Builder API</a> and determine how to add a “cancel” button to the alert?
+</p>
+<p>While <code>AlertDialog</code> is the most common Dialog, Android supports other subclasses as well. For example, <a href="https://developer.android.com/reference/android/app/DatePickerDialog.html"><code>DatePickerDialog</code></a> and <a href="https://developer.android.com/reference/android/app/TimePickerDialog.html"><code>TimePickerDialog</code></a> provide pre-defined user interfaces for picking a date or a time respectively. See the <a href="https://developer.android.com/guide/topics/ui/controls/pickers.html">Pickers guide</a> for details about how to utilize these.</p>
+<div id="dialogfragments-1" class="section level3 unnumbered">
+<h3>DialogFragments</h3>
+<p>The process described above will create and show a Dialog, but that dialog has a few problems in how it interacts with the rest of the Android framework—namely with the lifecycle of the Activity in which it is embedded.</p>
+<p>For example, if the device changes configurations (e.g., is rotated from portrait to landscape) then the Activity is destroyed and re-created (it’s <code>onCreate()</code> method will be called again). But if this happens while a Dialog is being shown, then a <code>android.view.WindowLeaked</code> error will occur and the Dialog is lost!</p>
+<p>To avoid these problems, we need to have a way of giving that Dialog its own lifecycle which can interact with the the Activity’s lifecycle… sort of like making it a <em>modular</em> piece of an Activity…</p>
+<p>That’s right, we need to make it a Fragment! Specifically, we will use a subclass of Fragment called <a href="http://developer.android.com/guide/topics/ui/dialogs.html#DialogFragment"><code>DialogFragment</code></a>, which is a Fragment that displays as a modal dialog floating above the Activity (no extra work needed).</p>
+<p>Just like with previous Fragment examples, we’ll need to create our own subclass of <code>DialogFragment</code>. It’s often easiest to make this a <em>nested class</em> if the Dialog won’t be doing a lot of work (e.g., shows a simple confirmation).</p>
+<p>Rather than specifying a Fragment layout through <code>onCreateView()</code>, we can instead override the <code>onCreateDialog()</code> callback to specify a <code>Dialog</code> object that will provide the view hierarchy for the Fragment. This Dialog can be created with the <code>AlertDialog.Builder</code> class as before!</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="kw">class</span> MyDialogFragment <span class="kw">extends</span> DialogFragment {
+
+    <span class="kw">public</span> <span class="dt">static</span> MyDialogFragment <span class="fu">newInstance</span>() {
+        Bundle args = <span class="kw">new</span> <span class="fu">Bundle</span>();
+        MyDialogFragment fragment = <span class="kw">new</span> <span class="fu">MyDialogFragment</span>();
+        fragment.<span class="fu">setArguments</span>(args);
+        <span class="kw">return</span> fragment;
+    }
+
+    <span class="kw">public</span> Dialog <span class="fu">onCreateDialog</span>(Bundle savedInstanceState) {
+        AlertDialog.<span class="fu">Builder</span> builder = <span class="kw">new</span> AlertDialog.<span class="fu">Builder</span>(<span class="fu">getActivity</span>());
+        <span class="co">//...</span>
+        AlertDialog dialog = builder.<span class="fu">create</span>();
+        <span class="kw">return</span> dialog;
+    }
+}</code></pre></div>
+<p>Finally, we can actually show this <code>DialogFragment</code> by instantiating it (remember to use a <code>newInstance()</code> factory method!) and then calling the <code>show()</code> method on it to make it show as a Dialog. The <code>show()</code> method takes in a <code>FragmentManager</code> used to manage this transaction. By using a DialogFragment, it is possible to change the device configuration (rotate the phone) and the Dialog is retained.</p>
+<p>Here’s the other neat trick: a <code>DialogFragment</code> is just a <code>Fragment</code>. That means we can use it <em>anywhere</em> we normally used Fragments… including embedding them into layouts! For example if you made a “DetailsFragment” subclass <code>DialogFragment</code> instead of <code>Fragment</code>, it would be able to be used in the exact same as before. It’s still a Fragment, just with extra features—one of which is a <code>show()</code> method that will show it as a Dialog!</p>
+<ul>
+<li>Use <code>setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_Holo_Light_Dialog)</code> to make the Fragment look a little more like a dialog.</li>
+</ul>
+<p class="alert alert-info">
+The truth is that Dialogs are not very commonly used in Android (compare to other GU systems). Apps are more likely to just dynamically change the Fragment or Activity being shown, rather than interrupt the user flow by creating a pop-up modal. And 80% of the Dialogs that <em>are</em> used are AlertDialogs. Nevertheless, it is worth being familiar with this process and the patterns it draws upon!
+</p>
+</div>
+</div>
+<div id="notifications" class="section level2">
+<h2><span class="header-section-number">8.2</span> Notifications</h2>
+<p>We can let the user know what is going on with the app by popping up a Toast or Dialog, but often we want to notify the user of something outside of the normal Activity UI (e.g., when the app isn’t running, or without getting in the way of other interactions). To do this, we can use <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html"><strong>Notifications</strong></a><a href="#fn33" class="footnoteRef" id="fnref33"><sup>33</sup></a>. These are specialized views that show up in the <em>notification area</em> (the icons at the top of the operating system display) and in the system’s <em>notification drawer</em>, which the user can get to at any point—even when outside the app—by swiping down on the screen.</p>
+<p>Android’s documentation for UI components is overall quite thorough and usable (after all, Google wants to make sure that developers can build effective apps, thereby making the platform worthwhile). And because there are so many different UI elements and they change all the time, in order to do real-world Android development you need to be able to read, synthesize, and apply this documentation. As such, this lecture will demonstrate how to utilize that documentation and apply it to create notifications. We will follow through the documentation to add a feature that when we click on the “notify” button, a notification will appear that reports how many times we’ve clicked that button.</p>
+<ul>
+<li><p>To follow along this, open up the Notifications documentation at <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html" class="uri">https://developer.android.com/guide/topics/ui/notifiers/notifications.html</a>.</p></li>
+<li><p>Looking at the documentation we see an overview to start. There is also a link to the <a href="https://material.google.com/patterns/notifications.html">Notification Design Guide</a>, which is a good place to go to figure out how to design <em>effective</em> notifications.</p></li>
+<li><p>There is a lot of text about how to make a Notification… I personally prefer to work off of sample code, modifying it until I have something that does what I want. So I suggest scrolling down <strong>slowly</strong> until you find an example you can copy/paste in, or at least reference. Then you can scroll back up later to get more detail about how that code works. The table of contents is also useful for this.</p></li>
+<li><p>Eventually you’ll find a subsection <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#SimpleNotification">“Creating a Simple Notification”</a>, which sounds like a great place to start!</p></li>
+</ul>
+<p>The first part of creating this Notification is using <code>NotificationCompat.Builder</code> (use the <code>v4</code> support version; the <code>v7</code> is now deprecated). We saw this kind of Builder class with <code>AlertBuilder</code>, and the same concept applies here: it is a class used to construct the Notification for us. We call setters to specify the properties of the Notification. Going through those settings:</p>
+<ul>
+<li><p>I don’t have a drawable resource to use for an icon, which makes me want to not include the icon specification. However, scrolling back up will reveal that a notification icon is <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Required">required</a>, so we will need to make one.</p>
+<p>We can produce an new Image Asset for the notification icon (<code>File &gt; New &gt; Image Asset</code>), just as we did previously with launcher icons and Material icons. Specify the “type” as <code>Notification</code>, give it an appropriate name, and pick a clipart of your choosing.</p></li>
+<li><p>We set the “title” and the content for the notification.</p></li>
+<li><p>Starting in API 26 (Oreo), we also are required to specify a <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#ManageChannels"><strong>notification channel</strong></a> (called a “notification category” in the user interface). These are used to help users manage notifications by grouping them together and allowing users to control the settings of that group—such as whether they are shown, what sounds they play, etc.</p>
+<p>Notification channels are identified by a String ID that is unique within the package. TODO….</p></li>
+</ul>
+<p>The next line makes an Intent. We’ve done that too… but why create an Intent for a Notification? If we scroll up and look where <code>Intent</code> is referenced, we can find out about <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Actions">Notification Actions</a>, which specify what happens when the user clicks on the Notification. Usually this opens the relevant application, and since <code>Intents</code> are messages to open Activities, it makes sense that clicking a Notification would send an <code>Intent</code>.</p>
+<p>The example Notification is also using the a <a href="https://developer.android.com/reference/android/support/v4/app/TaskStackBuilder.html"><code>TaskStackBuilder</code></a> to <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#NotificationResponse">construct an “artificial” backstack</a>. This is used to specify, for example, that if the user clicks on the Notification and jumps to a “detail” view (say), they can still hit the back button to return to the “master” view, as if they had navigated to the “detail” view from a normal usage of the application.</p>
+<ul>
+<li>We build this backstack not just with methods, but by integrating with the “parent-child” relationship we’ve otherwise set up between Activities (e.g., in the Manifest). In the Manifest, we had specified that <code>SecondActivity's</code> parent is <code>MainActivity</code>. This is what gave us the nice back button in the ActionBar. These sequence of <code>parentActivityName</code> attributes form a hierarchy that will be the “back navigation hierarchy.” We add the “endpoint” of the hierarchy to the builder using <code>addParentStack(MyResultActivity.class)</code>, and then finally put the <code>Intent</code> we actually want to use “on top” of the stack with <code>addNextIntent(resultIntent)</code>.</li>
+</ul>
+<p>The <code>TaskStackBuilder</code> is then used to produce a [<code>PendingIntent</code>]((<a href="http://developer.android.com/reference/android/app/PendingIntent.html" class="uri">http://developer.android.com/reference/android/app/PendingIntent.html</a>). What’s a <code>PendingIntent</code>? The details are not <em>super</em> readable… It’s basically a wrapper around an <code>Intent</code> that we give to <strong>another</strong> class. Then when that class receives our <code>PendingIntent</code> and reacts to it, it can run the <code>Intent</code> (command) we sent with it as if that <code>Activity</code> were us (whew). The Intent is “pending” delivery/activation by another service.</p>
+<ul>
+<li><p>This is like when you ask a professor for a letter of recommendation, and you give them the stamped envelope (which you should always do!). When they get the packet, then can then send their letter using <em>your</em> envelop and stamp!</p>
+<ul>
+<li>Alternatively: “I am mailing you my car keys, when you get them you should come pick me up”.</li>
+</ul></li>
+<li><p>The <code>TaskStackBuilder</code> produces a <code>PendingIntent</code> that “wraps” around the <code>Intent</code> we actually want to send when the notification is clicked. So when we select the notification, the Notification Drawer service can open up that <code>PendingIntent</code> packet, pull out the <code>Intent</code> we want to send, and then mail it off. And this Intent that the Notification Drawer sends is to wake up our Activity, and it is sent with <em>our</em> permissions (rather than the Drawer’s permissions), as if we had sent it ourselves!</p>
+<p>While it is <em>possible</em> to instantiate a PendingIntent directly, we instead get the PendingIntent by calling the <code>TaskStackBuilder#getPendingIntent()</code> method to build an appropriate object. Pass the method an <em>ID</em> to refer to that request (like we’ve done when sending Intents for Results), and a flag <code>PendingIntent.FLAG_CURRENT_UPDATE</code> so that if we re-issue the PendingIntent it update the existing one instead of replacing it with a new pending action.</p>
+<p>We can then assign that <code>PendingIntent</code> to the <em>Notification</em> builder (with <code>setContentIntent()</code>).</p></li>
+</ul>
+<p>Finally, we can use the <code>NotificationManager</code> (similar to the <code>FragmentManager</code>, <code>SmsManager</code>, etc.) to fetch the <em>notification service</em> (the “application” that handles all the notifications for the OS). We tell this manager to actually issue the built <code>Notification</code> object.</p>
+<ul>
+<li>We also pass the <code>notify()</code> method an <code>ID</code> number to refer to the particular Notification (not to the PendingIntent this time, but the Notification itself). Again, this will allow us to refer to and update that Notification later (as opposed to updating the PendingIntent for the Notification later).</li>
+</ul>
+<p>This allows us to have working Notifications! We can click the button to launch a Notification, and then click on the Notification to be taken to our app, which has a working back stack!</p>
+<p>We can also <strong>update</strong> this notification later, and it’s really straightforward: we simply re-issue a Notification with the same <strong><code>ID</code></strong> number, and it will “replace” the previous one!</p>
+<ul>
+<li>For example, we can have our text be based on some instance variable, and have the Notification track the number of clicks!</li>
+</ul>
+<p>You may notice that this notification doesn’t <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Heads-up">“pop up”</a> in a way you might expect. In order for a notification to visually intrude upon the user, its <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Priority">priority</a> must be high enough (it needs to be <code>NotificationCompat.PRIORITY_HIGH</code> or higher) <strong>and</strong> because it needs to use either sound <em>or</em> vibration (it needs to be <em>really important</em> to get a heads-up pop).</p>
+<ul>
+<li>We can make the Notification vibrate by using the <a href="http://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html#setVibrate(long[])"><code>setVibrate()</code></a> method, passing it an array of times (in milliseconds) at which to turn vibration on and off.</li>
+<li>Pattern is <code>[delay, vibrate, sleep, vibrate, sleep, ...]</code> <!-- - Will need permission to produce a vibration: `<uses-permission android:name="android.permission.VIBRATE" />` --></li>
+<li>We can also assign a default sound with (e.g.) <code>builder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);</code></li>
+<li><p>See the <a href="http://developer.android.com/design/patterns/notifications.html#correctly_set_and_manage_notification_priority">design guide</a> for best practices on specifying Notification priority.</p></li>
+<li><p>As of API 26 (Oreo), the concept of “priority” has been deprecated in favor of “importance”. Importance is specified on a per-channel basis. See <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#CreateChannel">Creating a Notification Channel</a>.</p>
+<p>(Note that you can use an <code>if</code> statement to check which API version the phone is running to determine which code to run!)</p></li>
+</ul>
+<p>As always, there are a number of other pieces/details we can specify, but I leave those to you to look up in the documentation.</p>
+<p class="alert alert-info">
+As the course focuses on development, this lecture references but does <strong>not</strong> discuss the UI Design guidelines. For example: what kind of text should you put in your Notification? <em>When</em> should you choose to use a notification? Android has lots of guidance on these questions in their <a href="https://material.io/guidelines/patterns/notifications.html">design documentation</a>. Major HCI and Mobile Design guidelines apply here as well (e.g., make actions obvious, give feedback, avoid irreversible actions, etc.).
+</p>
+</div>
+<div id="settings" class="section level2">
+<h2><span class="header-section-number">8.3</span> Settings</h2>
+<p>The last topic of this lecture is to support letting the user decide whether clicking the button should create notifications or not. For example, maybe sometimes the user just want to see Toasts! The cleanest way to support this kind of user preference is to create some <a href="https://developer.android.com/guide/topics/ui/settings.html">Settings</a> using <code>Preferences</code>.</p>
+<div id="sharedpreferences" class="section level3 unnumbered">
+<h3>SharedPreferences</h3>
+<p><a href="https://developer.android.com/guide/topics/data/data-storage.html#pref"><strong>Shared Preferences</strong></a><a href="#fn34" class="footnoteRef" id="fnref34"><sup>34</sup></a> are one way that we can <strong>persist</strong> data in an application <em>across application launches</em>—that is, the data is stored on disk rather than just in memory, so will not be lost if the application is destroyed. SharedPreferences store <em>key-value pairs</em> of primitives (Strings, ints, etc), similar to what we’ve been putting in <code>Bundles</code>. This data will be stored across application sessions: if I save some data to the Preferences and close the app, it will be there when I come back.</p>
+<ul>
+<li><p>Preferences are stored in an <strong>XML File</strong> in the file system. Basically we save lists of key-value pairs as a basic XML tree in a plain-text file (similar to the <code>values</code> resource files we’ve created). Note that this is <em>not a resource</em>, rather it is a file that happens to also be structured as XML.</p></li>
+<li><p>SharedPreferences are not great for intricate or extensive structured data (since it only stores key-value pairs, and only primitives at that). Use other options for more complex data persistence, such as putting the data into a database or using the file system—both of which are discussed in later lectures.</p></li>
+</ul>
+<p class="alert alert-warning">
+Even though they are <em>called</em> “Preferences”, they not just for “user preferences”! We can persist any small bits of primitive data in a SharedPreferences file.
+</p>
+<p>We can get access to a SharedPreferences file using the <code>.getSharedPreferences(String, int)</code> method. The first parameter <code>String</code> is the name of the SharedPreference file we want to access (we can have multiple XML files; just use <code>getPreferences()</code> to use a single default). The second parameter <code>int</code> is a flag about whether other apps should have access to that file. <code>MODE_PRIVATE</code> (<code>0</code>) is the default, <code>MODE_WORLD_READABLE</code> and <code>MODE_WORLD_WRITEABLE</code> are the other options.</p>
+<p>We can edit this XML file by calling <code>.edit()</code> on the <code>SharedPreferences</code> object to get a <code>SharedPreferences.Editor</code>, which is a <code>Bundle</code>-esque object we can <code>put</code> values into.</p>
+<ul>
+<li>We need to call <code>.commit()</code> on the editor to save our changes to the file system!</li>
+</ul>
+<p>Finally, we can just call <code>get()</code> methods on the <code>SharedPreferences</code> object in order to fetch data out of it! The second parameter of these methods is a default value for if a preference doesn’t exist yet, making it easy to avoid <code>null</code> errors.</p>
+<p><strong>For practice</strong>, try saving the notification count in the Activity’s <code>onStop()</code> function, and retrieving it in <code>onCreate()</code>. This will allow you to persist the count even when the Activity is destroyed.</p>
+</div>
+<div id="preference-settings" class="section level3 unnumbered">
+<h3>Preference Settings</h3>
+<p>While a SharedPreferences file acts a generic data store, it is called Shared <em>Preferences</em> because it’s most commonly used for “user preferences”—e.g., the “Settings” for an app.</p>
+<ul>
+<li>Yes, the term “preferences” can be used to mean either “shared preferences” or “user preferences” (or both if they are the same thing!) depending on the context.</li>
+</ul>
+<p>A “User Preference Menu” is a user-facing element, so we’ll want to define it as an <a href="https://developer.android.com/guide/topics/ui/settings.html#DefiningPrefs">XML resource</a>. But we’re not going to try and create our own layout and interaction: instead we’re just going to define the list of <a href="https://developer.android.com/reference/android/preference/Preference.html"><code>Preferences</code></a><a href="#fn35" class="footnoteRef" id="fnref35"><sup>35</sup></a> themselves as a resource!</p>
+<ul>
+<li>We can create a new resource using Android Studio’s New Resource wizard. The “type” for this is actually just <code>XML</code> (generic), though our “root element” will be a <code>&lt;PreferenceScreen&gt;</code> (thanks intelligent defaults!). By convention, the preferences resource is named <code>preferences.xml</code>.</li>
+</ul>
+<p>Inside the <code>&lt;PreferenceScreen&gt;</code>, we add more elements: one to represent each preference we want to let the user adjust (or each “line” of the Settings screen). We can define different types of <code>Preference</code> objects, such as <code>&lt;CheckBoxPreference&gt;</code>, <code>&lt;EditTextPreference&gt;</code>, <code>&lt;SwitchPreference&gt;</code>, or <code>&lt;ListPreference&gt;</code> (for a dialog of radio buttons). There are a couple of other options as well; see the <a href="https://developer.android.com/reference/android/preference/Preference.html"><code>Preference</code></a> base class.</p>
+<ul>
+<li><p>These elements should include the following XML attributes (among others):</p>
+<ul>
+<li><code>android:key</code> the key to use when storing the preference in the SharedPreferences file</li>
+<li><code>android:title</code> a user-visible name for the Preference</li>
+<li><code>android:defaultvalue</code> a default value for the preference (use <code>true</code> or <code>false</code> for checkboxes).</li>
+<li>More options cam be found in the the <a href="https://developer.android.com/reference/android/preference/Preference.html#lattrs"><code>Preference</code></a> documentation.</li>
+</ul></li>
+<li><p>We can further divide these Preferences to organize them: we can place them inside a <code>PreferenceCategory</code> tag (with its own <code>title</code> and <code>key</code>) in order to group them together.</p></li>
+<li><p>Finally we can specify that our Preferences have multiple screens by nesting <code>PreferenceScreen</code> elements. This produces “subscreens” (like submenus): when we click on the item it will take us to the next screen.</p></li>
+</ul>
+<p class="alert alert-info">
+Note that a cleaner (but more labor-intensive) way to do this if you have <em>lots</em> of settings is to use <a href="http://developer.android.com/guide/topics/ui/settings.html#PreferenceHeaders"><code>preference-headers</code></a> which allows for better multi-pane layouts… but since we’re not making any apps with that many settings this process is left as exercise for the reader.
+</p>
+<p>Once we have the Preferences all defined in XML, we just need to show them in our application! Since the Settings will be their own screen, we’ll need to make another Activity (though it won’t need a layout!). To actually render the Preferences XML, we’ll use the <code>PreferenceFragment</code> class (a specialized Fragment for showing lists of <code>Preference</code> objects); it’s usually easies to create this as a nested class in the Activity.</p>
+<ul>
+<li><p>For the Fragment, we don’t need to specify an <code>onCreateView()</code> method, instead we’re just going to load that <code>Preference</code> resource in the <code>onCreate()</code> method using <code>addPreferencesFromResource(R.xml.preferences)</code>. This will cause the <code>PreferenceFragment</code> to create the appropriate layout!</p></li>
+<li><p>For the Activity, we just need to have it load that Fragment via a FragmentTransaction:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="fu">getFragmentManager</span>().<span class="fu">beginTransaction</span>()
+                .<span class="fu">replace</span>(android.<span class="fu">R</span>.<span class="fu">id</span>.<span class="fu">content</span>, <span class="kw">new</span> <span class="fu">SettingsFragment</span>())
+                .<span class="fu">commit</span>();</code></pre></div>
+<ul>
+<li><p>The Activity doesn’t even need to load a layout: just specify a transaction! But if we want to include other stuff (e.g., an ActionBar), we’d need to structure the Activity and its layout in more detail.</p></li>
+<li><p>Note that the container for our Fragment is <code>android.R.id.content</code>. This refers to the “root element” of the current View—basically what <code>setContentView()</code> is normally inflating into.</p></li>
+</ul></li>
+<li><p>There is a <code>PreferenceActivity</code> class as well, but the official recommendation is <strong>do not use it</strong>. Many of its methods are deprecated, and since we’re using Fragments via the support library, we should stick with the Fragment process.</p></li>
+</ul>
+<p>Finally, how do we interact with these settings? Here’s the trick: a <code>preferences</code> XML resource is <strong>automatically</strong> associated with a <code>SharedPreferences</code> file! And in fact, every time we adjust a setting in the <code>PreferenceFragment</code>, the values in that file are edited as well! In effect, the <code>PreferenceFragment</code> <em>automatically</em> edits the SharedPreferences based on the user interaction. We never need to write to the file ourselves, just read from it (and we read from it in the exact same way we read any other SharedPreferences file, as described above).</p>
+<p>The <code>preference</code> XML corresponds to the “default” <code>SharedPreferences</code> file, which we’ll access via:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">SharedPreferences sharedPref = PreferenceManager.<span class="fu">getDefaultSharedPreferences</span>(<span class="kw">this</span>);</code></pre></div>
+<ul>
+<li>And then we have this object we can fetch data from with <code>getString()</code>, <code>getBoolean()</code>, etc.</li>
+</ul>
+<p>This will allow us to check the preferences before we show a notification!</p>
+<p>That’s the basics of using Settings. For more details see the <a href="https://developer.android.com/guide/topics/ui/settings.html">documentation</a>, as well as the <a href="https://developer.android.com/design/patterns/settings.html">design guide</a> for best practices on how to organize your Settings.</p>
+
+</div>
+</div>
+</div>
+
+
+
+<!-- Check AppCompat stuff
+     Clarify inheritance example (i.e., with "alert")
+     Implement solution
+ -->
+</div>
+<div class="footnotes">
+<hr />
+<ol start="31">
+<li id="fn31"><p><a href="https://developer.android.com/guide/topics/ui/dialogs.html" class="uri">https://developer.android.com/guide/topics/ui/dialogs.html</a><a href="notifications-settings.html#fnref31">↩</a></p></li>
+<li id="fn32"><p><a href="https://developer.android.com/reference/android/support/v7/app/AlertDialog.html" class="uri">https://developer.android.com/reference/android/support/v7/app/AlertDialog.html</a><a href="notifications-settings.html#fnref32">↩</a></p></li>
+<li id="fn33"><p><a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html" class="uri">https://developer.android.com/guide/topics/ui/notifiers/notifications.html</a><a href="notifications-settings.html#fnref33">↩</a></p></li>
+<li id="fn34"><p><a href="https://developer.android.com/guide/topics/data/data-storage.html#pref" class="uri">https://developer.android.com/guide/topics/data/data-storage.html#pref</a><a href="notifications-settings.html#fnref34">↩</a></p></li>
+<li id="fn35"><p><a href="https://developer.android.com/reference/android/preference/Preference.html" class="uri">https://developer.android.com/reference/android/preference/Preference.html</a><a href="notifications-settings.html#fnref35">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intents.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="styles-themes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["github", "facebook", "twitter", "google"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/info448/book/edit/master/notifications-settings.Rmd",
+"text": "Edit"
+},
+"download": ["android-development.pdf", "android-development.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
