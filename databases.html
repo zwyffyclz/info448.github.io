@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Android Development: Lecture Notes</title>
+  <meta name="description" content="Lecture Notes for INFO 448: Android Development.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Android Development: Lecture Notes" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://info448.github.io/" />
+  <meta property="og:image" content="https://info448.github.io/img/android_icon_transparent.png" />
+  <meta property="og:description" content="Lecture Notes for INFO 448: Android Development." />
+  <meta name="github-repo" content="info448/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Android Development: Lecture Notes" />
+  
+  <meta name="twitter:description" content="Lecture Notes for INFO 448: Android Development." />
+  <meta name="twitter:image" content="https://info448.github.io/img/android_icon_transparent.png" />
+
+<meta name="author" content="Joel Ross">
+
+
+<meta name="date" content="2017-11-01">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
+<link rel="prev" href="files-and-permissions.html">
+<link rel="next" href="styles-themes.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98444716-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./" class="title">Android Development</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Book</a></li>
+<li class="part"><span><b>I Lectures</b></span></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#android-history"><i class="fa fa-check"></i><b>1.1</b> Android History</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#android-versions"><i class="fa fa-check"></i>Android Versions</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#legal-battles"><i class="fa fa-check"></i>Legal Battles</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#building-apps"><i class="fa fa-check"></i><b>1.2</b> Building Apps</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#running-the-app"><i class="fa fa-check"></i>Running the App</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#app-source-code"><i class="fa fa-check"></i><b>1.3</b> App Source Code</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#xml-resources"><i class="fa fa-check"></i>XML Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#the-manifest"><i class="fa fa-check"></i>The Manifest</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#java-activities"><i class="fa fa-check"></i>Java Activities</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#gradle-scripts"><i class="fa fa-check"></i>Gradle Scripts</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#logging-adb"><i class="fa fa-check"></i><b>1.4</b> Logging &amp; ADB</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#log-methods"><i class="fa fa-check"></i>Log Methods</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#logcat"><i class="fa fa-check"></i>Logcat</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#toast"><i class="fa fa-check"></i>Toast</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#adding-interaction"><i class="fa fa-check"></i><b>1.5</b> Adding Interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html"><i class="fa fa-check"></i><b>2</b> Resources and Layouts</a><ul>
+<li class="chapter" data-level="2.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#resources"><i class="fa fa-check"></i><b>2.1</b> Resources</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#r"><i class="fa fa-check"></i>R</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#alternative-resources"><i class="fa fa-check"></i>Alternative Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views"><i class="fa fa-check"></i><b>2.2</b> Views</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#view-properties"><i class="fa fa-check"></i>View Properties</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views-and-java"><i class="fa fa-check"></i>Views and Java</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#layouts"><i class="fa fa-check"></i><b>2.3</b> Layouts</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#linearlayout"><i class="fa fa-check"></i>LinearLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#relativelayout"><i class="fa fa-check"></i>RelativeLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#constraintlayout"><i class="fa fa-check"></i>ConstraintLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#other-layouts"><i class="fa fa-check"></i>Other Layouts</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#combining-and-inflating-layouts"><i class="fa fa-check"></i>Combining and Inflating Layouts</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#inputs"><i class="fa fa-check"></i><b>2.4</b> Inputs</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="activities.html"><a href="activities.html"><i class="fa fa-check"></i><b>3</b> Activities</a><ul>
+<li class="chapter" data-level="3.1" data-path="activities.html"><a href="activities.html#making-activities"><i class="fa fa-check"></i><b>3.1</b> Making Activities</a></li>
+<li class="chapter" data-level="3.2" data-path="activities.html"><a href="activities.html#the-activity-lifecycle"><i class="fa fa-check"></i><b>3.2</b> The Activity Lifecycle</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#overriding-the-callback-methods"><i class="fa fa-check"></i>Overriding the Callback Methods</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#saving-and-restoring-activity-state"><i class="fa fa-check"></i>Saving and Restoring Activity State</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="activities.html"><a href="activities.html#context"><i class="fa fa-check"></i><b>3.3</b> Context</a></li>
+<li class="chapter" data-level="3.4" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>3.4</b> Multiple Activities</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#activity-intents"><i class="fa fa-check"></i>Intents</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i>Back &amp; Tasks</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i>Up Navigation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-views.html"><a href="data-views.html"><i class="fa fa-check"></i><b>4</b> Data-Driven Views</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-views.html"><a href="data-views.html#listviews-and-adapters"><i class="fa fa-check"></i><b>4.1</b> ListViews and Adapters</a></li>
+<li class="chapter" data-level="4.2" data-path="data-views.html"><a href="data-views.html#networking-with-volley"><i class="fa fa-check"></i><b>4.2</b> Networking with Volley</a><ul>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#using-volley"><i class="fa fa-check"></i>Using Volley</a></li>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#requestqueue-singletons"><i class="fa fa-check"></i>RequestQueue Singletons</a></li>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#downloading-images"><i class="fa fa-check"></i>Downloading Images</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="material-design.html"><a href="material-design.html"><i class="fa fa-check"></i><b>5</b> Material Design</a><ul>
+<li class="chapter" data-level="5.1" data-path="material-design.html"><a href="material-design.html#the-material-design-language"><i class="fa fa-check"></i><b>5.1</b> The Material Design Language</a></li>
+<li class="chapter" data-level="5.2" data-path="material-design.html"><a href="material-design.html#material-styles-icons"><i class="fa fa-check"></i><b>5.2</b> Material Styles &amp; Icons</a></li>
+<li class="chapter" data-level="5.3" data-path="material-design.html"><a href="material-design.html#design-support-libraries"><i class="fa fa-check"></i><b>5.3</b> Design Support Libraries</a><ul>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#widgets"><i class="fa fa-check"></i>Widgets</a></li>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#coordinator-layout"><i class="fa fa-check"></i>Coordinator Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="material-design.html"><a href="material-design.html#animations"><i class="fa fa-check"></i><b>5.4</b> Animations</a><ul>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#property-animation"><i class="fa fa-check"></i>Property Animation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="fragments.html"><a href="fragments.html"><i class="fa fa-check"></i><b>6</b> Fragments</a><ul>
+<li class="chapter" data-level="6.1" data-path="fragments.html"><a href="fragments.html#creating-a-fragment"><i class="fa fa-check"></i><b>6.1</b> Creating a Fragment</a><ul>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#activity-to-fragment-communication"><i class="fa fa-check"></i>Activity-to-Fragment Communication</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="fragments.html"><a href="fragments.html#dynamic-fragments"><i class="fa fa-check"></i><b>6.2</b> Dynamic Fragments</a><ul>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#instantiating-fragments"><i class="fa fa-check"></i>Instantiating Fragments</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#transactions"><i class="fa fa-check"></i>Transactions</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#inter-fragment-communication"><i class="fa fa-check"></i>Inter-Fragment Communication</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#the-back-stack"><i class="fa fa-check"></i>The Back Stack</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="fragments.html"><a href="fragments.html#dialogs"><i class="fa fa-check"></i><b>6.3</b> Dialogs</a><ul>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#dialogfragments"><i class="fa fa-check"></i>DialogFragments</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="intents.html"><a href="intents.html"><i class="fa fa-check"></i><b>7</b> Intents</a><ul>
+<li class="chapter" data-level="7.1" data-path="intents.html"><a href="intents.html#intents-for-another-activity-explicit"><i class="fa fa-check"></i><b>7.1</b> Intents for Another Activity (Explicit)</a><ul>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#extras"><i class="fa fa-check"></i>Extras</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="intents.html"><a href="intents.html#intents-for-another-app-implicit"><i class="fa fa-check"></i><b>7.2</b> Intents for Another App (Implicit)</a></li>
+<li class="chapter" data-level="7.3" data-path="intents.html"><a href="intents.html#intents-for-a-response"><i class="fa fa-check"></i><b>7.3</b> Intents for a Response</a></li>
+<li class="chapter" data-level="7.4" data-path="intents.html"><a href="intents.html#listening-for-intents"><i class="fa fa-check"></i><b>7.4</b> Listening for Intents</a></li>
+<li class="chapter" data-level="7.5" data-path="intents.html"><a href="intents.html#broadcasts-and-receivers"><i class="fa fa-check"></i><b>7.5</b> Broadcasts and Receivers</a></li>
+<li class="chapter" data-level="7.6" data-path="intents.html"><a href="intents.html#menus"><i class="fa fa-check"></i><b>7.6</b> Menus</a><ul>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#action-views"><i class="fa fa-check"></i>Action Views</a></li>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#context-menus"><i class="fa fa-check"></i>Context Menus</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="intents.html"><a href="intents.html#an-intent-example-sms"><i class="fa fa-check"></i><b>7.7</b> An Intent Example: SMS</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="notifications-settings.html"><a href="notifications-settings.html"><i class="fa fa-check"></i><b>8</b> Notifications &amp; Settings</a><ul>
+<li class="chapter" data-level="8.1" data-path="notifications-settings.html"><a href="notifications-settings.html#dialogs-1"><i class="fa fa-check"></i><b>8.1</b> Dialogs</a><ul>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#dialogfragments-1"><i class="fa fa-check"></i>DialogFragments</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="notifications-settings.html"><a href="notifications-settings.html#notifications"><i class="fa fa-check"></i><b>8.2</b> Notifications</a></li>
+<li class="chapter" data-level="8.3" data-path="notifications-settings.html"><a href="notifications-settings.html#settings"><i class="fa fa-check"></i><b>8.3</b> Settings</a><ul>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#sharedpreferences"><i class="fa fa-check"></i>SharedPreferences</a></li>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#preference-settings"><i class="fa fa-check"></i>Preference Settings</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="loaders.html"><a href="loaders.html"><i class="fa fa-check"></i><b>9</b> Providers and Loaders</a><ul>
+<li class="chapter" data-level="9.1" data-path="loaders.html"><a href="loaders.html#content-providers-intro"><i class="fa fa-check"></i><b>9.1</b> Content Providers</a></li>
+<li class="chapter" data-level="9.2" data-path="loaders.html"><a href="loaders.html#cursors"><i class="fa fa-check"></i><b>9.2</b> Cursors</a></li>
+<li class="chapter" data-level="9.3" data-path="loaders.html"><a href="loaders.html#loaders"><i class="fa fa-check"></i><b>9.3</b> Loaders</a></li>
+<li class="chapter" data-level="9.4" data-path="loaders.html"><a href="loaders.html#other-provider-actions"><i class="fa fa-check"></i><b>9.4</b> Other Provider Actions</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="files-and-permissions.html"><a href="files-and-permissions.html"><i class="fa fa-check"></i><b>10</b> Files and Permissions</a><ul>
+<li class="chapter" data-level="10.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#file-storage-locations"><i class="fa fa-check"></i><b>10.1</b> File Storage Locations</a></li>
+<li class="chapter" data-level="10.2" data-path="files-and-permissions.html"><a href="files-and-permissions.html#permissions"><i class="fa fa-check"></i><b>10.2</b> Permissions</a></li>
+<li class="chapter" data-level="10.3" data-path="files-and-permissions.html"><a href="files-and-permissions.html#external-storage"><i class="fa fa-check"></i><b>10.3</b> External Storage</a></li>
+<li class="chapter" data-level="10.4" data-path="files-and-permissions.html"><a href="files-and-permissions.html#internal-storage-cache"><i class="fa fa-check"></i><b>10.4</b> Internal Storage &amp; Cache</a></li>
+<li class="chapter" data-level="10.5" data-path="files-and-permissions.html"><a href="files-and-permissions.html#example-saving-pictures"><i class="fa fa-check"></i><b>10.5</b> Example: Saving Pictures</a></li>
+<li class="chapter" data-level="10.6" data-path="files-and-permissions.html"><a href="files-and-permissions.html#sharing-files"><i class="fa fa-check"></i><b>10.6</b> Sharing Files</a><ul>
+<li class="chapter" data-level="" data-path="files-and-permissions.html"><a href="files-and-permissions.html#bonus-sharing-with-a-fileprovider"><i class="fa fa-check"></i>Bonus: Sharing with a FileProvider</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>11</b> Providers and Databases</a><ul>
+<li class="chapter" data-level="11.1" data-path="databases.html"><a href="databases.html#review-providers-and-loaders"><i class="fa fa-check"></i><b>11.1</b> Review: Providers and Loaders</a></li>
+<li class="chapter" data-level="11.2" data-path="databases.html"><a href="databases.html#sqlite-databases"><i class="fa fa-check"></i><b>11.2</b> SQLite Databases</a></li>
+<li class="chapter" data-level="11.3" data-path="databases.html"><a href="databases.html#implementing-a-contentprovider"><i class="fa fa-check"></i><b>11.3</b> Implementing a ContentProvider</a><ul>
+<li class="chapter" data-level="" data-path="databases.html"><a href="databases.html#uris-and-types"><i class="fa fa-check"></i>URIs and Types</a></li>
+<li class="chapter" data-level="" data-path="databases.html"><a href="databases.html#query-methods"><i class="fa fa-check"></i>Query Methods</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Additional Topics (Labs)</b></span></li>
+<li class="chapter" data-level="12" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>12</b> Styles &amp; Themes</a><ul>
+<li class="chapter" data-level="12.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>12.1</b> Defining Styles</a><ul>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#style-inheritance"><i class="fa fa-check"></i>Style Inheritance</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#built-in-styles"><i class="fa fa-check"></i>Built-in Styles</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#styles-for-text-views"><i class="fa fa-check"></i>Styles for Text Views</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>12.2</b> Themes</a><ul>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#material-themes"><i class="fa fa-check"></i>Material Themes</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#theme-attributes"><i class="fa fa-check"></i>Theme Attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html"><i class="fa fa-check"></i><b>13</b> Fragments: ViewPager</a><ul>
+<li class="chapter" data-level="13.1" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>13.1</b> Define a SearchFragment</a></li>
+<li class="chapter" data-level="13.2" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>13.2</b> Add the ViewPager and Adapter</a></li>
+<li class="chapter" data-level="13.3" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>13.3</b> Add User Interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="bluetooth.html"><a href="bluetooth.html"><i class="fa fa-check"></i><b>14</b> Bluetooth</a></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="java-review.html"><a href="java-review.html"><i class="fa fa-check"></i><b>A</b> Java Review</a><ul>
+<li class="chapter" data-level="A.1" data-path="java-review.html"><a href="java-review.html#building-apps-with-gradle"><i class="fa fa-check"></i><b>A.1</b> Building Apps with Gradle</a></li>
+<li class="chapter" data-level="A.2" data-path="java-review.html"><a href="java-review.html#class-basics"><i class="fa fa-check"></i><b>A.2</b> Class Basics</a></li>
+<li class="chapter" data-level="A.3" data-path="java-review.html"><a href="java-review.html#inheritance"><i class="fa fa-check"></i><b>A.3</b> Inheritance</a></li>
+<li class="chapter" data-level="A.4" data-path="java-review.html"><a href="java-review.html#interfaces"><i class="fa fa-check"></i><b>A.4</b> Interfaces</a></li>
+<li class="chapter" data-level="A.5" data-path="java-review.html"><a href="java-review.html#polymorphism"><i class="fa fa-check"></i><b>A.5</b> Polymorphism</a></li>
+<li class="chapter" data-level="A.6" data-path="java-review.html"><a href="java-review.html#abstract-methods-and-classes"><i class="fa fa-check"></i><b>A.6</b> Abstract Methods and Classes</a></li>
+<li class="chapter" data-level="A.7" data-path="java-review.html"><a href="java-review.html#generics"><i class="fa fa-check"></i><b>A.7</b> Generics</a></li>
+<li class="chapter" data-level="A.8" data-path="java-review.html"><a href="java-review.html#nested-classes"><i class="fa fa-check"></i><b>A.8</b> Nested Classes</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Java Swing Framework</a><ul>
+<li class="chapter" data-level="B.1" data-path="java-swing.html"><a href="java-swing.html#events"><i class="fa fa-check"></i><b>B.1</b> Events</a></li>
+<li class="chapter" data-level="B.2" data-path="java-swing.html"><a href="java-swing.html#layouts-and-composites"><i class="fa fa-check"></i><b>B.2</b> Layouts and Composites</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Android Development: Lecture Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="databases" class="section level1">
+<h1><span class="header-section-number">Lecture 11</span> Providers and Databases</h1>
+<p>This lecture provides an in-depth discussion of working with <a href="https://developer.android.com/training/basics/data-storage/databases.html"><strong>Databases</strong></a> and <a href="https://developer.android.com/guide/topics/providers/content-providers.html"><strong>Content Providers</strong></a> in Android. <em>Accessing</em> Content Providers (via a Loader) was discussed in a <a href="loaders.html#loaders">previous lecture</a>. This lecture will instead talk about how to make your own database and a Provider for it.</p>
+<p>Databases are appropriate when you want to store structured data <em>locally</em> on the device (e.g., not on the cloud, which may require expensive network transactions as well as user accounts), but that data has greater scale or complexity than is appropriate for a SharedPreferences XML file—that is, you need to store more than just key-value pairs.</p>
+<p class="alert alert-info">
+This lecture references code found at <a href="https://github.com/info448/lecture11-databases" class="uri">https://github.com/info448/lecture11-databases</a>. Note that while the starter code accesses the device’s User Dictionary, which is only available on API 22 (Lollipop) <em>or earlier</em>, the rest of the tutorial replaces that provider and will work on any version of Android.
+</p>
+<div id="review-providers-and-loaders" class="section level2">
+<h2><span class="header-section-number">11.1</span> Review: Providers and Loaders</h2>
+<p>As discussed previously, a <strong>Content Provider</strong> is an abstraction for a source of structured data (like a database, but also possibly files, internet resources, etc). It acts as an interface for interacting with that data, supporting the developing in reading, adding to, updating, or deleting data from the source (e.g., the basic <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> operations).</p>
+<p>We previously demonstrated how to access structure data—specifically the User Dictionary—via a Content Provider using a <a href="https://developer.android.com/guide/components/loaders.html">Loader</a>. You can read this example to review how to utilize an existing Provider:</p>
+<ul>
+<li><p>The application displays a <code>ListView</code>, which is backed by a <code>SimpleCursorAdapter</code>. This adapter takes a “Cursor” (think: a “pointer” or an Iterator—also a list of data that has been loaded <em>into memory</em>) and connects each item to a View on the screen. This View shows the word (<code>WORD</code>) and the “frequency”/prominence (<code>FREQUENCY</code>) of that word.</p></li>
+<li><p>In order to get this list of items into memory from data store itself (to perform the <strong>read</strong> operation), we set up a <code>Loader</code>. The Loader fetches 3 “columns” (attributes) from the data store: <code>_ID</code>, <code>WORD</code>, and <code>FREQUENCY</code>; the <code>_ID</code> field is <em>not</em> shown on the View, but the Loader needs that to keep track of the displayed items). We do not utilize any selection or sorting criteria, though we could add them in if we wanted.</p>
+<p>The loader fetches (<strong><em>queries</em></strong>) data from the data store to load it into memory. It then tells the Adapter to take that loaded data and display it in the View. By using a Loader for this process, we gain two benefits: (1) the data is loaded into memory <em>on a background thread</em> (not the UI Thread), and (2) the data is <em>automatically reloaded</em> when the data store’s content changes.</p></li>
+<li><p>The example also supports the <strong>create</strong> and <strong>update</strong> operations (by clicking the “Add Word” button and the individual word entries, respectively). These operations work by constructing a <code>ContentValues</code> object (similar to a <code>Bundle</code>, but for Content Providers) that contains the attribute values for the new provider entry. We then use the <code>ContentResolver</code> to <code>insert()</code> or <code>update()</code> these values into the Provider (indicated by its URI).</p></li>
+</ul>
+<p>To review: the Content Provider acts as the data store, abstracting information at some location (e.g., in a database). The Loader grabs a bunch of rows and columns from that database, and hands it to the Adapter. The Adapter takes a subset of those rows and columns and puts them in the ListView so that they display to the user. User interaction allows us to add or modify the data in that database.</p>
+</div>
+<div id="sqlite-databases" class="section level2">
+<h2><span class="header-section-number">11.2</span> SQLite Databases</h2>
+<p>Content Providers can abstract all kinds of data stores (files, urls, etc.). They abstract these as a <em>structured information</em> similar to a database… and in fact the most common kind of store they represent is a <a href="https://en.wikipedia.org/wiki/Relational_database_management_system">relational database</a> (specifically, an <a href="https://en.wikipedia.org/wiki/SQLite">SQLite database</a>). Android <a href="https://developer.android.com/guide/topics/data/data-storage.html#db">comes with an API</a> for creating an querying a database; these databases are stored on <a href="https://developer.android.com/guide/topics/data/data-storage.html#filesInternal"><em>internal storage</em></a> meaning that each application can have its own private database (or multiple databases, in fact)!</p>
+<p class="alert alert-info">
+If you have worked with <code>SQL</code> or another relational database system (e.g., in the iSchool’s INFO 340 course), this interaction will seem familiar. If you’ve never worked with a database, the simplest explanation is to think of them as a spreadsheet (like in an Excel file) where you manipulate <em>rows</em> of data given a set of pre-defined <em>columns</em>. <a href="https://en.wikipedia.org/wiki/SQL">SQL</a> (Structured Query Language) is its own command language for working with these spreadsheets; we’ll see some samples of those queries in this lecture. SQLite is a “flavor” (version) of SQL; the full SQLite spec can be found <a href="http://sqlite.org/lang.html">here</a>. A short tutorial (borrowed from Google) is also available in the code repository.
+</p>
+<p>In this lecture, we will build our own database of words (separate from the User Dictionary—and so which will work on API 23+) that we can access through a Content Provider. We will simply change <em>which</em> “data store” is being accessed; the rest of the application’s interface will remain the same. This will let us demonstrate how to put together a Content Provider from scratch. We will start by setting up the database, and then implementing the <code>ContentProvider</code> that abstracts it.</p>
+<ul>
+<li>Setting up a database is somewhat wordy and round-about, though it does not involve many new concepts.</li>
+</ul>
+<p>The step to effectively utilizing a database in Android is to create a class (e.g., <code>WordDatabase</code>) to act as a “namespace” for the various pieces of our database. This class will not be instantiated (and so can even have a <code>private</code> default constructor). For time considerations, the beginnings of the class are included in the lecture starter code.</p>
+<p>The <code>WordDatabase</code> class will contain a number of <em>constants</em>:</p>
+<ul>
+<li><code>DATABASE_NAME</code> to refer to the name of the database file stored on the device (e.g., <code>words.db</code>)</li>
+<li><code>DATABASE_VERSION</code> to refer to the current version number of our database’s schema. This is used more for supporting <a href="https://en.wikipedia.org/wiki/Schema_migration">migrations</a> like if we want to update our database later.</li>
+</ul>
+<p>The class also includes constants that define the database’s <strong>schema</strong> or <strong>contract</strong>. This is so that other classes (e.g., the <code>ContentProvider</code> and the <code>MainActivity</code>) can refer to column names consistently without having to remember or even know the specific text we utilize in the database. This is similar to how we used the variable <code>UserDictionary.Words.WORD</code> rather than the String value <code>&quot;word&quot;</code>. By convention, we define this schema as a separate <em><code>static</code> nested class</em> (e.g., <code>WordEntry</code>), to keep things organized. This class contains the constants to hold the column names:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">static</span> <span class="kw">class</span> WordEntry <span class="kw">implements</span> BaseColumns {
+     <span class="co">//class cannot be instantiated</span>
+     <span class="kw">private</span> <span class="fu">WordEntry</span>(){}
+
+     <span class="kw">public</span> <span class="dt">static</span> <span class="dt">final</span> String TABLE_NAME = <span class="st">&quot;words&quot;</span>;
+     <span class="kw">public</span> <span class="dt">static</span> <span class="dt">final</span> String COL_WORD = <span class="st">&quot;word&quot;</span>;
+     <span class="kw">public</span> <span class="dt">static</span> <span class="dt">final</span> String COL_COUNT = <span class="st">&quot;count&quot;</span>;
+}</code></pre></div>
+<ul>
+<li><p>The class implements <a href="https://developer.android.com/reference/android/provider/BaseColumns.html"><code>BaseColumns</code></a>, which lets it inherit a few framework specific constants for free—in particular, the <code>_ID</code> variable which Content Providers rely on the database to have as a primary key.</p></li>
+<li><p>We create a different nested class for each table in the database (sheet in a spreadsheet). This allows us to use Java-style namespacing (dot notation) to refer to different tables in a single database.</p></li>
+</ul>
+<p>Once we have defined the schema, we are ready to create and work with the database. In order to help us do this, we’re going to use a class called <a href="https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html"><code>SQLiteOpenHelper</code></a><a href="#fn40" class="footnoteRef" id="fnref40"><sup>40</sup></a>. This class offers a set of methods to help manage the database being created and upgraded (e.g., for migrations). Specifically, we will will <em>subclass</em> <code>SQLiteOpenHelper</code>, creating another nested class that represents the specific helper for our database.</p>
+<p>The subclass has a constructor that takes in a <code>Context</code>, and then “passes up” the database name and version to the parent class.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="fu">DatabaseHelper</span>(Context context){
+    <span class="kw">super</span>(context, DATABASE_NAME, <span class="kw">null</span>, DATABASE_VERSION);
+}</code></pre></div>
+<p><code>SQLiteOpenHelper</code> also has two <code>abstract</code> methods (event callbacks) that we need to implement: what happens when the database is <em>created</em>, and what happens when the database is <em>upgraded</em>.</p>
+<p>When the database is first created, we’ll need to actually create the table to hold our words. This involves sending it an <code>SQL</code> command to create the table! This has been provided as a constant in the starter code.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> String CREATE_TASKS_TABLE =
+    <span class="st">&quot;CREATE TABLE &quot;</span> + WordEntry.<span class="fu">TABLE_NAME</span> + <span class="st">&quot;(&quot;</span> +
+        WordEntry.<span class="fu">_ID</span> + <span class="st">&quot; INTEGER PRIMARY KEY AUTOINCREMENT&quot;</span> + <span class="st">&quot;, &quot;</span>+
+        WordEntry.<span class="fu">COL_WORD</span> + <span class="st">&quot; TEXT&quot;</span> + <span class="st">&quot;,&quot;</span>+
+        WordEntry.<span class="fu">COL_COUNT</span> + <span class="st">&quot; INTEGER&quot;</span> +
+      <span class="st">&quot;)&quot;</span>;
+
+<span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> String DROP_TASKS_TABLE =
+    <span class="st">&quot;DROP TABLE IF EXISTS &quot;</span>+ WordEntry.<span class="fu">TABLE_NAME</span>;</code></pre></div>
+<ul>
+<li>We can do the same for dropping (deleting) the table as well.</li>
+<li>This is the only <code>SQL</code> you will need in this tutorial!</li>
+</ul>
+<p>We can run these <code>SQL</code> statements by using the <code>execSQL()</code> method, called on the <a href="http://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html"><code>SQLiteDatabase</code></a> object that is passed to these callbacks. Note that this method runs a “raw” SQL query (one that doesn’t return anything, so not <code>SELECT</code>), without any kind of checks against SQL injection attacks. But since we’re hard-coding the information to run, it’s not a problem. Aside from this situation, you should <strong><em>never</em></strong> use this method.</p>
+<ul>
+<li><p>We can also use the <code>insert()</code> method to add some sample words to the database (similar to how we used the Content Provider), for clarity when testing:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ContentValues sample1 = <span class="kw">new</span> <span class="fu">ContentValues</span>();
+sample1.<span class="fu">put</span>(WordEntry.<span class="fu">COL_WORD</span>, <span class="st">&quot;Embiggen&quot;</span>);
+sample1.<span class="fu">put</span>(WordEntry.<span class="fu">COL_COUNT</span>, <span class="dv">0</span>);
+db.<span class="fu">insert</span>(WordEntry.<span class="fu">TABLE_NAME</span>, <span class="kw">null</span>, sample1);</code></pre></div>
+<p>The second parameter to <code>.insert()</code> is a <code>nullColumnHack</code>, which is a column to explicitly put a <code>NULL</code> value into if you don’t provide any other values (since you can’t insert an empty row).</p></li>
+<li><p>In the <code>onUpdate()</code> callback, we’ll just “drop” the table and recreate it (by calling <code>onCreate()</code>). In a production system, this would involve migration logic.</p></li>
+</ul>
+<p>If we want to interact with this database in <code>MainActivity</code>, we can initialize the <code>DatabaseHelper</code> object (which will create the database <em>if needed</em>) and then use that helper to fetch the database we want to query (using <code>getReadableDatabase()</code>).</p>
+<ul>
+<li>Note that querying a database could take a long time, and so we should <em>not</em> be doing it on the UI Thread… this example is simply for testing.</li>
+</ul>
+<p>We can check that our database is set up correctly in one of two ways:</p>
+<ul>
+<li><p>We can directly explore the SQLite database that is on your device by using <code>adb</code> and the <code>sqlite3</code> tool. See <a href="http://developer.android.com/tools/help/sqlite3.html">this link</a> for more details.</p>
+<pre><code>$ adb -s emulator-5554 shell
+# sqlite3 /data/data/edu.uw.package.name/databases/words.db
+# sqlite&gt; select * from words;
+# sqlite&gt; .exit</code></pre></li>
+<li><p>We can call a <code>query()</code> method on our <code>SQLiteDatabase</code>, and log out the results. A <code>SQLiteQueryBuilder</code> can offer some help if our query is going to be complex (e.g,. with <code>JOIN</code>):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">SQLiteQueryBuilder builder = <span class="kw">new</span> <span class="fu">SQLiteQueryBuilder</span>();
+builder.<span class="fu">setTables</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">TABLE_NAME</span>); <span class="co">//set the table to use</span>
+
+Cursor results = builder.<span class="fu">query</span>(
+        db,
+        <span class="kw">new</span> String[] {WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">COL_WORD</span>, WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">COL_COUNT</span>},
+        <span class="kw">null</span>, <span class="kw">null</span>, <span class="kw">null</span>, <span class="kw">null</span>, <span class="kw">null</span>); <span class="co">//5 nulls!</span>
+
+<span class="kw">while</span>(results.<span class="fu">moveToNext</span>()) {
+    String word = results.<span class="fu">getString</span>(results.<span class="fu">getColumnIndexOrThrow</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">COL_WORD</span>));
+    <span class="dt">int</span> freq = results.<span class="fu">getInt</span>(results.<span class="fu">getColumnIndexOrThrow</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">COL_COUNT</span>));
+    Log.<span class="fu">v</span>(TAG, <span class="st">&quot;&#39;&quot;</span>+word+<span class="st">&quot;&#39; (&quot;</span>+freq+<span class="st">&quot;)&quot;</span>);
+}</code></pre></div>
+<ul>
+<li>This is the exact same Cursor processing work used when logging out the clicked item, but using our column names instead!</li>
+<li>We could even remove the Loader call and just pass in this query directly to the Adapter, if we wanted to display our database in the list.</li>
+</ul></li>
+</ul>
+<p>Voila, we have a database that we can call methods on to access!</p>
+</div>
+<div id="implementing-a-contentprovider" class="section level2">
+<h2><span class="header-section-number">11.3</span> Implementing a ContentProvider</h2>
+<p>We don’t want to do this database creation and querying on the main thread (because it may take a while). And since we also want to easily let our <code>ListView</code> update when the database changes, we we like to be able to use a Loader to access this database. In order to use a Loader, we need to wrap the database in a <code>ContentProvider</code>.</p>
+<p class="alert alert-info">
+There are a lot of steps and a lot of code involved in making a <code>ContentProvider</code>, and most of them are “boilerplate” for most databases. So much so that there is <a href="https://developer.android.com/guide/topics/providers/content-provider-creating.html#ContentProvider">thorough example code</a> in the Google documentation, which you can copy-and-paste from as needed.
+</p>
+<p>We’ll start by creating another class that extends <code>ContentProvider</code> (<em>can you understand why?</em>). Since this will have a lot of abstract methods we’ll need to fill in, so we can actually use one of Android Studio’s generators via <code>New &gt; Other &gt; Content Provider</code> to help us along (I normally say not to use these, but with the <code>ContentProvider</code> it’s not too messy).</p>
+<p>We will have to specify an <a href="https://developer.android.com/guide/topics/providers/content-provider-creating.html#ContentURI"><strong>authority</strong></a> for the Provider. This acts as a unique, Android-internal “name” for the database (to indicate which it is, or who “owns” it). This is the “name” by which others will be able to refer to our particular Provider. This is thus sort of like a package name—and in fact, we usually use the package name with an extra <code>.provider</code> attached as the authority name.</p>
+<p>Also notice that an entry for this <code>&lt;provider&gt;</code> has been added to the <code>Manifest</code>, including the authority name. <code>android:enabled</code> means the Provider can be instantiated, and <code>android:exported</code> means it is available to other applications.</p>
+<div id="uris-and-types" class="section level3 unnumbered">
+<h3>URIs and Types</h3>
+<p>The most important piece of a <code>ContentProvider</code> (that makes it more than just helper methods for a database) is how it can be accessed at a particular <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier"><strong>URI</strong></a>. So the first thing we need to do is specify this URI for our provider.</p>
+<ul>
+<li><p>We’ll actually want to specify <em>multiple</em> URIs. This is because each piece of content we provide (each record in the database!) is itself a distinct <em>resource</em>, and thus should have its own URI. As such, we need to design a <strong>schema</strong> for the URIs so that we know how to refer to each kind of content offered by our provider.</p>
+<p>Designing a URI schema is like designing a URL structure for a website; this will feel familiar to specifying <em>routes</em> for a web application.</p></li>
+</ul>
+<p>The most common URI approach for Content Providers is to give each resource we provide a URI of the format:</p>
+<pre><code>content://authority/resource/id</code></pre>
+<ul>
+<li>This URI indicates that it is an identifier for a particular provider (the <code>authority</code>), which has a particular <code>resource</code> type (think: which database table of information), which may have a particular resource <code>id</code> (think: the ID of the record in the table)</li>
+<li>Leaving off the <code>id</code> would refer to the entire table, or rather the “list” of resources. So really we have two different “categories” of URIs: the whole list, and an individual resource within that list. Both have the same “base”, but will need to be handled slightly differently.</li>
+<li>See <a href="https://developer.android.com/guide/topics/providers/content-provider-creating.html#ContentURI">designing content URIs</a> for more discussion on how to structure these.</li>
+</ul>
+<p>We will define these URIs piece-wise using constants (of course). One for the <em>authority</em>, one for the <em>resource type</em> (which happens to be the name of the database table, but doesn’t need to be), and finally the overall Content URI (parsed into a <code>Uri</code> object):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">final</span> Uri CONTENT_URI =
+    Uri.<span class="fu">parse</span>(<span class="st">&quot;content://&quot;</span> + AUTHORITY + <span class="st">&quot;/&quot;</span>+WORD_RESOURCE);</code></pre></div>
+<p>But we also need to handle both types of resources: the “list” of words, and the individual words themselves. To enable this, we’re going to use a class called a <a href="https://developer.android.com/reference/android/content/UriMatcher.html"><code>UriMatcher</code></a>. This class provides a <em>mapping</em> between URIs and the actual “type” of data we’re interested in (either lists or word objects). This will help us do “routing” work, without needing to parse the path of the URI ourselves.</p>
+<ul>
+<li><p>We’ll represent the “type” or “kind” with <code>int</code> constants (like enums), allowing us to easily refer to “which” kind of resource we’re talking about.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//integer values representing each supported resource Uri</span>
+<span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">int</span> WORD_LIST_URI = <span class="dv">1</span>; <span class="co">// /words</span>
+<span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">int</span> WORD_SINGLE_URI = <span class="dv">2</span>;<span class="co">// /words/:id</span></code></pre></div>
+<ul>
+<li>So if you give me a <code>/words</code> URI, I can tell you that you’re interested in “resource kind #1”</li>
+</ul></li>
+</ul>
+<p>We want to make a a <code>static UriMatcher</code> object (like a constant) that we can use to do the mapping… but because it takes more than one line to set this up (we add an entry for each mapping), we need to put it inside a <code>static</code> block so that all this code is run together at the class level (not per instance):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> UriMatcher sUriMatcher; <span class="co">//for handling Uri requests</span>
+<span class="dt">static</span> {
+    <span class="co">//setup mapping between URIs and IDs</span>
+    sUriMatcher = <span class="kw">new</span> <span class="fu">UriMatcher</span>(UriMatcher.<span class="fu">NO_MATCH</span>);
+    sUriMatcher.<span class="fu">addURI</span>(AUTHORITY, WORD_RESOURCE, WORD_LIST_URI);
+    sUriMatcher.<span class="fu">addURI</span>(AUTHORITY, WORD_RESOURCE + <span class="st">&quot;/#&quot;</span>, WORD_SINGLE_URI);
+}</code></pre></div>
+<ul>
+<li>Note the wildcard <code>#</code>, meaning “any number” (after the slash) will “match” this URI.</li>
+</ul>
+<p>We can then figure out which “kind” of task by using the <code>UriMatcher#match(uri)</code> method, which will return the “kind” <code>int</code> that matches the given Uri.</p>
+<p>As an example of this, let’s fill in the <code>getType()</code> method. The purpose of this method is to allow the ContentProvider to let whoever queries it know the <a href="https://en.wikipedia.org/wiki/Media_type">MIME Type</a> (media type) of the resource a URI is accessing. This lets the program specify whether the content provided by the Content Provider is an image, text, music, or some other type.</p>
+<ul>
+<li><p>The type we’re going to give back is a <code>Cursor</code> (list of rows in a table), so we’ll specify <a href="http://developer.android.com/guide/topics/providers/content-provider-creating.html#TableMIMETypes">MIME Types for that</a>:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> String <span class="fu">getType</span>(Uri uri) {
+    <span class="kw">switch</span>(sUriMatcher.<span class="fu">match</span>(uri)){
+        <span class="kw">case</span> WORD_LIST_URI:
+            <span class="kw">return</span> <span class="st">&quot;vnd.android.cursor.dir/&quot;</span>+AUTHORITY+<span class="st">&quot;.&quot;</span>+WORD_RESOURCE;
+        <span class="kw">case</span> WORD_SINGLE_URI:
+            <span class="kw">return</span> <span class="st">&quot;vnd.android.cursor.item/&quot;</span>+AUTHORITY+<span class="st">&quot;.&quot;</span>+WORD_RESOURCE;
+        <span class="kw">default</span>:
+            <span class="kw">throw</span> <span class="kw">new</span> IllegalArgumentException(<span class="st">&quot;Unknown URI &quot;</span>+uri);
+    }
+}</code></pre></div>
+<ul>
+<li><code>vnd</code> stands for “vendor specific”—in this case, a format specific to Android.</li>
+</ul></li>
+</ul>
+</div>
+<div id="query-methods" class="section level3 unnumbered">
+<h3>Query Methods</h3>
+<p>Once all of the URIs are specified, we can start responding to requests for content at those URIs. Specifically, when a request for content at a URI comes in, we’re going to fetch data from the <em>database</em> we made earlier and then return that data. We handle these “requests” through 4 different methods: <code>query()</code>, <code>insert()</code>, <code>update()</code>, and <code>delete()</code> (mirroring the CRUD operations, drawing on standard SQL query names). We will fill in those methods to have them fetch and return the database data.</p>
+<p>First, we need to get access to the database (through a helper), just as we did in the <code>MainActivity</code>. We’ll instantiate the <code>DatabaseHelper</code> in the <code>ContentProvider#onCreate()</code> callback, saving that helper as an instance variable to reference later. Then in the CRUD methods (which will be executed <em>in a background thread</em>), we can call <code>getWriteableDatabase()</code> to get access to that database.</p>
+<p>We will start with implementing the <strong>query()</strong> method. Basically, we need to do the same query we used in <code>MainActivity</code>—though can pass in the extra query parameters (e.g., <code>projection</code>, <code>selection</code>, <code>sortOrder</code>) instead of always having them be <code>null</code> or defined manually.</p>
+<p>However, we also need to be able to handle both types of resources that our Provider serves (lists or single words). We can use the <code>UriMatcher</code> to determine how to adjust our query: for example, by using the <code>UriBuilder#appendWhere()</code> method to add a <code>WHERE</code> clause to our SQL selection:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">switch</span>(sUriMatcher.<span class="fu">match</span>(uri)){
+    <span class="kw">case</span> WORD_LIST_URI: <span class="co">//all words</span>
+      <span class="kw">break</span>; <span class="co">//no change</span>
+    <span class="kw">case</span> WORD_SINGLE_URI: <span class="co">//single word</span>
+      builder.<span class="fu">appendWhere</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">_ID</span> + <span class="st">&quot;=&quot;</span> + uri.<span class="fu">getLastPathSegment</span>()); <span class="co">//restrict to that item</span>
+    <span class="kw">default</span>:
+      <span class="kw">throw</span> <span class="kw">new</span> IllegalArgumentException(<span class="st">&quot;Unknown URI &quot;</span>+uri);
+}</code></pre></div>
+<p>We’ll then just return the <code>Cursor</code> that we get as a result of the query.</p>
+<p>But there is also one more piece. We want to make sure that the Loader that is reading from our Content Provider (that loaded this <code>Cursor</code> object) is notified of any changes to the results of its query. This will allow the Loader to “automatically” query for new content if any of the data <em>at that URI</em> changes.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">cursor.<span class="fu">setNotificationUri</span>(<span class="fu">getContext</span>().<span class="fu">getContentResolver</span>(), uri);</code></pre></div>
+<p>With this step in place, we can go back to our <code>MainActivity</code> and swap all the column names and URIs for our own custom <code>WordProvider</code>! Rerun the app… and voila, we see our own list of words!</p>
+<p>We can do basically the same thing to support <strong><code>insert()</code></strong> and <strong><code>update()</code></strong> to enable all of our use cases.</p>
+<ul>
+<li><p>Use the <code>UriMatcher</code> to make to only respond to proper Uris—you can’t insert into a single record, and you can’t update the entire list.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span>(sUriMatcher.<span class="fu">match</span>(uri) != WORD_LIST_URI) {
+  <span class="kw">throw</span> <span class="kw">new</span> IllegalArgumentException(<span class="st">&quot;Unknown URI &quot;</span>+uri);
+}</code></pre></div></li>
+<li><p>For <code>insert()</code>, it is also possible to make sure that no “empty” entries are added to the database, and to return the result if the insertion is successful:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span>(!values.<span class="fu">containsKey</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">COL_WORD</span>)){
+  values.<span class="fu">put</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">COL_WORD</span>, <span class="st">&quot;&quot;</span>);
+}
+<span class="kw">if</span>(!values.<span class="fu">containsKey</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">COL_COUNT</span>)){
+    values.<span class="fu">put</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">COL_COUNT</span>, <span class="dv">0</span>);
+}
+
+<span class="dt">long</span> rowId = db.<span class="fu">insert</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">TABLE_NAME</span>, <span class="kw">null</span>, values);
+<span class="kw">if</span> (rowId &gt; <span class="dv">0</span>) { <span class="co">//if successful</span>
+    Uri wordUri = ContentUris.<span class="fu">withAppendedId</span>(CONTENT_URI, rowId);
+    <span class="fu">getContext</span>().<span class="fu">getContentResolver</span>().<span class="fu">notifyChange</span>(wordUri, <span class="kw">null</span>);
+    <span class="kw">return</span> wordUri; <span class="co">//return the URI for the entry</span>
+}
+<span class="kw">throw</span> <span class="kw">new</span> SQLException(<span class="st">&quot;Failed to insert row into &quot;</span> + uri);</code></pre></div></li>
+<li><p>The <code>update()</code> method can be somewhat awkward because we need to basically add our <code>id</code> restriction to the user-given selection args:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> count;
+<span class="kw">switch</span> (sUriMatcher.<span class="fu">match</span>(uri)) {
+  <span class="kw">case</span> WORD_LIST_URI:
+    count = db.<span class="fu">update</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">TABLE_NAME</span>, values, selection, selectionArgs); <span class="co">//just pass in params</span>
+    <span class="kw">break</span>;
+  <span class="kw">case</span> WORD_SINGLE_URI:
+    String wordId = uri.<span class="fu">getLastPathSegment</span>();
+    count = db.<span class="fu">update</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">TABLE_NAME</span>, values, WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">_ID</span> + <span class="st">&quot;=&quot;</span> + wordId <span class="co">//select by id</span>
+          + (!TextUtils.<span class="fu">isEmpty</span>(selection) ? <span class="st">&quot; AND (&quot;</span> + selection + &#39;)&#39; : <span class="st">&quot;&quot;</span>), selectionArgs); <span class="co">//apply params</span>
+    <span class="kw">break</span>;
+  <span class="kw">default</span>:
+    <span class="kw">throw</span> <span class="kw">new</span> IllegalArgumentException(<span class="st">&quot;Unknown URI &quot;</span> + uri);
+}
+<span class="kw">if</span> (count &gt; <span class="dv">0</span>) {
+  <span class="fu">getContext</span>().<span class="fu">getContentResolver</span>().<span class="fu">notifyChange</span>(uri, <span class="kw">null</span>);
+  <span class="kw">return</span> count;
+}
+<span class="kw">throw</span> <span class="kw">new</span> SQLException(<span class="st">&quot;Failed to update row &quot;</span> + uri);</code></pre></div></li>
+</ul>
+<p>But in the end, we have a working ContentProvider that supports the same behaviors as the built in User Dictionary (well, except for <code>delete()</code>). We can now store data in our own database and easily access it off the UI Thread for use in things like ListViews. This is great for if you want to track and store any kind of structured information in your apps.</p>
+
+</div>
+</div>
+</div>
+
+
+
+<!-- Check AppCompat stuff
+     Clarify inheritance example (i.e., with "alert")
+     Implement solution
+ -->
+</div>
+<div class="footnotes">
+<hr />
+<ol start="40">
+<li id="fn40"><p><a href="https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html" class="uri">https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html</a><a href="databases.html#fnref40">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="files-and-permissions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="styles-themes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["github", "facebook", "twitter", "google"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/info448/book/edit/master/databases-providers.Rmd",
+"text": "Edit"
+},
+"download": ["android-development.pdf", "android-development.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
