@@ -307,6 +307,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="B.1" data-path="java-swing.html"><a href="java-swing.html#events"><i class="fa fa-check"></i><b>B.1</b> Events</a></li>
 <li class="chapter" data-level="B.2" data-path="java-swing.html"><a href="java-swing.html#layouts-and-composites"><i class="fa fa-check"></i><b>B.2</b> Layouts and Composites</a></li>
 </ul></li>
+<li class="chapter" data-level="C" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>C</b> Publishing</a><ul>
+<li class="chapter" data-level="C.1" data-path="publishing.html"><a href="publishing.html#signing-an-app"><i class="fa fa-check"></i><b>C.1</b> Signing an App</a><ul>
+<li><a href="publishing.html#release-.apk">Release <code>.apk</code></a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -562,28 +567,24 @@ You can use one of the many icons built into the Android, referenced as <code>&q
 <li>For reference, I recommend looking at the <a href="http://developer.android.com/reference/android/support/v7/widget/ShareActionProvider.html">class documentation</a> for how to set this up (it’s much clearer than the training docs).</li>
 </ul>
 <p>We’ll start by adding another item to our menu’s XML. This will look like other items, except it will have an extra field <code>app:actionProviderClass</code> indicating that this item is an Action Provider (a widget that provides some actions)</p>
-<pre><code>```xml
-&lt;item
-    android:id=&quot;@+id/menu_item_share&quot;
-    android:title=&quot;Share&quot;
-    app:showAsAction=&quot;ifRoom&quot;
-    app:actionProviderClass=&quot;android.support.v7.widget.ShareActionProvider&quot;
-    /&gt;
-```</code></pre>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;item</span>
+<span class="ot">    android:id=</span><span class="st">&quot;@+id/menu_item_share&quot;</span>
+<span class="ot">    android:title=</span><span class="st">&quot;Share&quot;</span>
+<span class="ot">    app:showAsAction=</span><span class="st">&quot;ifRoom&quot;</span>
+<span class="ot">    app:actionProviderClass=</span><span class="st">&quot;android.support.v7.widget.ShareActionProvider&quot;</span>
+    <span class="kw">/&gt;</span></code></pre></div>
 <p>We’ll then add the item to our menu in <code>onCreateOptionsMenu()</code></p>
-<pre><code>```java
-MenuItem item = menu.findItem(R.id.menu_item_share);
-ShareActionProvider shareProvider = (ShareActionProvider)MenuItemCompat.getActionProvider(item);
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">MenuItem item = menu.<span class="fu">findItem</span>(R.<span class="fu">id</span>.<span class="fu">menu_item_share</span>);
+ShareActionProvider shareProvider = (ShareActionProvider)MenuItemCompat.<span class="fu">getActionProvider</span>(item);
 
-Intent intent = new Intent(Intent.ACTION_DIAL);
-intent.setData(Uri.parse(&quot;tel:206-685-1622&quot;));
+Intent intent = <span class="kw">new</span> <span class="fu">Intent</span>(Intent.<span class="fu">ACTION_DIAL</span>);
+intent.<span class="fu">setData</span>(Uri.<span class="fu">parse</span>(<span class="st">&quot;tel:206-685-1622&quot;</span>));
 
-shareProvider.setShareIntent(intent);
-```
-
-- We get access to the item using `findItem()` (similar to `findViewById()`), and then cast it to a `ShareActonProvider` (make sure you&#39;re using the support version!)
-
-- We can then specify an _Implicit Intent_ that we want that &quot;Share Button&quot; to be able to perform. This would commonly use the `ACTION_SEND` action (like for sharing a picture or text), but we&#39;ll use the `DIAL` action because we have a couple of dialers but don&#39;t actually have many `SEND` responders on the emulator.</code></pre>
+shareProvider.<span class="fu">setShareIntent</span>(intent);</code></pre></div>
+<ul>
+<li><p>We get access to the item using <code>findItem()</code> (similar to <code>findViewById()</code>), and then cast it to a <code>ShareActonProvider</code> (make sure you’re using the support version!)</p></li>
+<li><p>We can then specify an <em>Implicit Intent</em> that we want that “Share Button” to be able to perform. This would commonly use the <code>ACTION_SEND</code> action (like for sharing a picture or text), but we’ll use the <code>DIAL</code> action because we have a couple of dialers but don’t actually have many <code>SEND</code> responders on the emulator.</p></li>
+</ul>
 <p>The Menu item will then list a dropdown with all of the different Activities that <code>resolve</code> to handling that implicit intent! And we’ve now deeply combined Intents and Menus!</p>
 </div>
 <div id="context-menus" class="section level3 unnumbered">
