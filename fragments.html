@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-10-15">
+<meta name="date" content="2017-11-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
 <link rel="prev" href="material-design.html">
-<link rel="next" href="styles-themes.html">
+<link rel="next" href="intents.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -164,7 +164,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="activities.html"><a href="activities.html#context"><i class="fa fa-check"></i><b>3.3</b> Context</a></li>
 <li class="chapter" data-level="3.4" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>3.4</b> Multiple Activities</a><ul>
-<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#intents"><i class="fa fa-check"></i>Intents</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#activity-intents"><i class="fa fa-check"></i>Intents</a></li>
 <li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i>Back &amp; Tasks</a></li>
 <li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i>Up Navigation</a></li>
 </ul></li>
@@ -203,23 +203,94 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#dialogfragments"><i class="fa fa-check"></i>DialogFragments</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="intents.html"><a href="intents.html"><i class="fa fa-check"></i><b>7</b> Intents</a><ul>
+<li class="chapter" data-level="7.1" data-path="intents.html"><a href="intents.html#intents-for-another-activity-explicit"><i class="fa fa-check"></i><b>7.1</b> Intents for Another Activity (Explicit)</a><ul>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#extras"><i class="fa fa-check"></i>Extras</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="intents.html"><a href="intents.html#intents-for-another-app-implicit"><i class="fa fa-check"></i><b>7.2</b> Intents for Another App (Implicit)</a></li>
+<li class="chapter" data-level="7.3" data-path="intents.html"><a href="intents.html#intents-for-a-response"><i class="fa fa-check"></i><b>7.3</b> Intents for a Response</a></li>
+<li class="chapter" data-level="7.4" data-path="intents.html"><a href="intents.html#listening-for-intents"><i class="fa fa-check"></i><b>7.4</b> Listening for Intents</a></li>
+<li class="chapter" data-level="7.5" data-path="intents.html"><a href="intents.html#broadcasts-and-receivers"><i class="fa fa-check"></i><b>7.5</b> Broadcasts and Receivers</a></li>
+<li class="chapter" data-level="7.6" data-path="intents.html"><a href="intents.html#menus"><i class="fa fa-check"></i><b>7.6</b> Menus</a><ul>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#action-views"><i class="fa fa-check"></i>Action Views</a></li>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#context-menus"><i class="fa fa-check"></i>Context Menus</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="intents.html"><a href="intents.html#an-intent-example-sms"><i class="fa fa-check"></i><b>7.7</b> An Intent Example: SMS</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="notifications-settings.html"><a href="notifications-settings.html"><i class="fa fa-check"></i><b>8</b> Notifications &amp; Settings</a><ul>
+<li class="chapter" data-level="8.1" data-path="notifications-settings.html"><a href="notifications-settings.html#dialogs-1"><i class="fa fa-check"></i><b>8.1</b> Dialogs</a><ul>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#dialogfragments-1"><i class="fa fa-check"></i>DialogFragments</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="notifications-settings.html"><a href="notifications-settings.html#notifications"><i class="fa fa-check"></i><b>8.2</b> Notifications</a></li>
+<li class="chapter" data-level="8.3" data-path="notifications-settings.html"><a href="notifications-settings.html#settings"><i class="fa fa-check"></i><b>8.3</b> Settings</a><ul>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#sharedpreferences"><i class="fa fa-check"></i>SharedPreferences</a></li>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#preference-settings"><i class="fa fa-check"></i>Preference Settings</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="loaders.html"><a href="loaders.html"><i class="fa fa-check"></i><b>9</b> Providers and Loaders</a><ul>
+<li class="chapter" data-level="9.1" data-path="loaders.html"><a href="loaders.html#content-providers-intro"><i class="fa fa-check"></i><b>9.1</b> Content Providers</a></li>
+<li class="chapter" data-level="9.2" data-path="loaders.html"><a href="loaders.html#cursors"><i class="fa fa-check"></i><b>9.2</b> Cursors</a></li>
+<li class="chapter" data-level="9.3" data-path="loaders.html"><a href="loaders.html#loaders"><i class="fa fa-check"></i><b>9.3</b> Loaders</a></li>
+<li class="chapter" data-level="9.4" data-path="loaders.html"><a href="loaders.html#other-provider-actions"><i class="fa fa-check"></i><b>9.4</b> Other Provider Actions</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="files-and-permissions.html"><a href="files-and-permissions.html"><i class="fa fa-check"></i><b>10</b> Files and Permissions</a><ul>
+<li class="chapter" data-level="10.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#file-storage-locations"><i class="fa fa-check"></i><b>10.1</b> File Storage Locations</a></li>
+<li class="chapter" data-level="10.2" data-path="files-and-permissions.html"><a href="files-and-permissions.html#permissions"><i class="fa fa-check"></i><b>10.2</b> Permissions</a></li>
+<li class="chapter" data-level="10.3" data-path="files-and-permissions.html"><a href="files-and-permissions.html#external-storage"><i class="fa fa-check"></i><b>10.3</b> External Storage</a></li>
+<li class="chapter" data-level="10.4" data-path="files-and-permissions.html"><a href="files-and-permissions.html#internal-storage-cache"><i class="fa fa-check"></i><b>10.4</b> Internal Storage &amp; Cache</a></li>
+<li class="chapter" data-level="10.5" data-path="files-and-permissions.html"><a href="files-and-permissions.html#example-saving-pictures"><i class="fa fa-check"></i><b>10.5</b> Example: Saving Pictures</a></li>
+<li class="chapter" data-level="10.6" data-path="files-and-permissions.html"><a href="files-and-permissions.html#sharing-files"><i class="fa fa-check"></i><b>10.6</b> Sharing Files</a><ul>
+<li class="chapter" data-level="" data-path="files-and-permissions.html"><a href="files-and-permissions.html#bonus-sharing-with-a-fileprovider"><i class="fa fa-check"></i>Bonus: Sharing with a FileProvider</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>11</b> Providers and Databases</a><ul>
+<li class="chapter" data-level="11.1" data-path="databases.html"><a href="databases.html#review-providers-and-loaders"><i class="fa fa-check"></i><b>11.1</b> Review: Providers and Loaders</a></li>
+<li class="chapter" data-level="11.2" data-path="databases.html"><a href="databases.html#sqlite-databases"><i class="fa fa-check"></i><b>11.2</b> SQLite Databases</a></li>
+<li class="chapter" data-level="11.3" data-path="databases.html"><a href="databases.html#implementing-a-contentprovider"><i class="fa fa-check"></i><b>11.3</b> Implementing a ContentProvider</a><ul>
+<li class="chapter" data-level="" data-path="databases.html"><a href="databases.html#uris-and-types"><i class="fa fa-check"></i>URIs and Types</a></li>
+<li class="chapter" data-level="" data-path="databases.html"><a href="databases.html#query-methods"><i class="fa fa-check"></i>Query Methods</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="location.html"><a href="location.html"><i class="fa fa-check"></i><b>12</b> Location</a><ul>
+<li class="chapter" data-level="12.1" data-path="location.html"><a href="location.html#localization-techniques"><i class="fa fa-check"></i><b>12.1</b> Localization Techniques</a><ul>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#gps"><i class="fa fa-check"></i>GPS</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#cell-tower-localization"><i class="fa fa-check"></i>Cell Tower Localization</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#wifi-localization"><i class="fa fa-check"></i>WiFi Localization</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#representing-location"><i class="fa fa-check"></i>Representing Location</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="location.html"><a href="location.html#android-location"><i class="fa fa-check"></i><b>12.2</b> Android Location</a><ul>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#google-play-services"><i class="fa fa-check"></i>Google Play Services</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#accessing-location"><i class="fa fa-check"></i>Accessing Location</a></li>
+</ul></li>
+</ul></li>
 <li class="part"><span><b>II Additional Topics (Labs)</b></span></li>
-<li class="chapter" data-level="7" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>7</b> Styles &amp; Themes</a><ul>
-<li class="chapter" data-level="7.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>7.1</b> Defining Styles</a><ul>
+<li class="chapter" data-level="13" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>13</b> Styles &amp; Themes</a><ul>
+<li class="chapter" data-level="13.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>13.1</b> Defining Styles</a><ul>
 <li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#style-inheritance"><i class="fa fa-check"></i>Style Inheritance</a></li>
 <li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#built-in-styles"><i class="fa fa-check"></i>Built-in Styles</a></li>
 <li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#styles-for-text-views"><i class="fa fa-check"></i>Styles for Text Views</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>7.2</b> Themes</a><ul>
+<li class="chapter" data-level="13.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>13.2</b> Themes</a><ul>
 <li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#material-themes"><i class="fa fa-check"></i>Material Themes</a></li>
 <li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#theme-attributes"><i class="fa fa-check"></i>Theme Attributes</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html"><i class="fa fa-check"></i><b>8</b> Fragments: ViewPager</a><ul>
-<li class="chapter" data-level="8.1" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>8.1</b> Define a SearchFragment</a></li>
-<li class="chapter" data-level="8.2" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>8.2</b> Add the ViewPager and Adapter</a></li>
-<li class="chapter" data-level="8.3" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>8.3</b> Add User Interaction</a></li>
+<li class="chapter" data-level="14" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html"><i class="fa fa-check"></i><b>14</b> Fragments: ViewPager</a><ul>
+<li class="chapter" data-level="14.1" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>14.1</b> Define a SearchFragment</a></li>
+<li class="chapter" data-level="14.2" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>14.2</b> Add the ViewPager and Adapter</a></li>
+<li class="chapter" data-level="14.3" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>14.3</b> Add User Interaction</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="bluetooth.html"><a href="bluetooth.html"><i class="fa fa-check"></i><b>15</b> Bluetooth</a></li>
+<li class="chapter" data-level="16" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>16</b> Maps</a><ul>
+<li class="chapter" data-level="16.1" data-path="maps.html"><a href="maps.html#create-a-map-activity"><i class="fa fa-check"></i><b>16.1</b> Create a Map Activity</a><ul>
+<li class="chapter" data-level="" data-path="maps.html"><a href="maps.html#getting-an-api-key"><i class="fa fa-check"></i>Getting an API Key</a></li>
+<li class="chapter" data-level="16.1.1" data-path="maps.html"><a href="maps.html#the-supportmapfragment"><i class="fa fa-check"></i><b>16.1.1</b> The <code class="unnumbered">SupportMapFragment</code></a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="maps.html"><a href="maps.html#specifying-the-user-interface"><i class="fa fa-check"></i><b>16.2</b> Specifying the User Interface</a></li>
+<li class="chapter" data-level="16.3" data-path="maps.html"><a href="maps.html#markers-and-drawings"><i class="fa fa-check"></i><b>16.3</b> Markers and Drawings</a><ul>
+<li class="chapter" data-level="" data-path="maps.html"><a href="maps.html#drawing-shapes"><i class="fa fa-check"></i>Drawing Shapes</a></li>
+</ul></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="java-review.html"><a href="java-review.html"><i class="fa fa-check"></i><b>A</b> Java Review</a><ul>
@@ -235,6 +306,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Java Swing Framework</a><ul>
 <li class="chapter" data-level="B.1" data-path="java-swing.html"><a href="java-swing.html#events"><i class="fa fa-check"></i><b>B.1</b> Events</a></li>
 <li class="chapter" data-level="B.2" data-path="java-swing.html"><a href="java-swing.html#layouts-and-composites"><i class="fa fa-check"></i><b>B.2</b> Layouts and Composites</a></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>C</b> Publishing</a><ul>
+<li class="chapter" data-level="C.1" data-path="publishing.html"><a href="publishing.html#signing-an-app"><i class="fa fa-check"></i><b>C.1</b> Signing an App</a><ul>
+<li><a href="publishing.html#release-.apk">Release <code>.apk</code></a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -508,14 +584,6 @@ The truth is that Dialogs are not very commonly used in Android (compare to othe
 </div>
 </div>
 </div>
-
-
-
-<!-- Check AppCompat stuff
-     Clarify inheritance example (i.e., with "alert")
-     Implement solution
- -->
-</div>
 <div class="footnotes">
 <hr />
 <ol start="19">
@@ -533,7 +601,7 @@ The truth is that Dialogs are not very commonly used in Android (compare to othe
         </div>
       </div>
 <a href="material-design.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="styles-themes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="intents.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

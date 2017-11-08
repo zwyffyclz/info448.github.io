@@ -12,7 +12,7 @@
   <meta property="og:title" content="Android Development: Lecture Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info448.github.io/" />
-  
+  <meta property="og:image" content="https://info448.github.io/img/android_icon_transparent.png" />
   <meta property="og:description" content="Lecture Notes for INFO 448: Android Development." />
   <meta name="github-repo" content="info448/book" />
 
@@ -20,20 +20,20 @@
   <meta name="twitter:title" content="Android Development: Lecture Notes" />
   
   <meta name="twitter:description" content="Lecture Notes for INFO 448: Android Development." />
-  
+  <meta name="twitter:image" content="https://info448.github.io/img/android_icon_transparent.png" />
 
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-09-08">
+<meta name="date" content="2017-11-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
-  
-<link rel="prev" href="providers-and-loaders.html">
-<link rel="next" href="files-and-permissions.html">
+  <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
+<link rel="prev" href="files-and-permissions.html">
+<link rel="next" href="location.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -117,220 +117,180 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="part"><span><b>I Lectures</b></span></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#android-history"><i class="fa fa-check"></i><b>1.1</b> Android History</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#android-versions"><i class="fa fa-check"></i><b>1.1.1</b> Android Versions</a></li>
-<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#legal-battles"><i class="fa fa-check"></i><b>1.1.2</b> Legal Battles</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#android-versions"><i class="fa fa-check"></i>Android Versions</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#legal-battles"><i class="fa fa-check"></i>Legal Battles</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#android-architecture-and-code"><i class="fa fa-check"></i><b>1.2</b> Android Architecture and Code</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#programming-languages"><i class="fa fa-check"></i><b>1.2.1</b> Programming Languages</a></li>
-<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#building-apps"><i class="fa fa-check"></i><b>1.2.2</b> Building Apps</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#building-apps"><i class="fa fa-check"></i><b>1.2</b> Building Apps</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#running-the-app"><i class="fa fa-check"></i>Running the App</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#development-tools"><i class="fa fa-check"></i><b>1.3</b> Development Tools</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#hardware"><i class="fa fa-check"></i><b>1.3.1</b> Hardware</a></li>
-<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#software"><i class="fa fa-check"></i><b>1.3.2</b> Software</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#app-source-code"><i class="fa fa-check"></i><b>1.3</b> App Source Code</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#xml-resources"><i class="fa fa-check"></i>XML Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#the-manifest"><i class="fa fa-check"></i>The Manifest</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#java-activities"><i class="fa fa-check"></i>Java Activities</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#gradle-scripts"><i class="fa fa-check"></i>Gradle Scripts</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#hello-world"><i class="fa fa-check"></i><b>1.4</b> Hello World</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#the-emulator"><i class="fa fa-check"></i><b>1.4.1</b> The Emulator</a></li>
-<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#project-contents"><i class="fa fa-check"></i><b>1.4.2</b> Project Contents</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#logging-adb"><i class="fa fa-check"></i><b>1.4</b> Logging &amp; ADB</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#log-methods"><i class="fa fa-check"></i>Log Methods</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#logcat"><i class="fa fa-check"></i>Logcat</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#toast"><i class="fa fa-check"></i>Toast</a></li>
 </ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#adding-interaction"><i class="fa fa-check"></i><b>1.5</b> Adding Interaction</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="activities.html"><a href="activities.html"><i class="fa fa-check"></i><b>2</b> Activities and Logging</a><ul>
-<li class="chapter" data-level="2.1" data-path="activities.html"><a href="activities.html#making-activities"><i class="fa fa-check"></i><b>2.1</b> Making Activities</a></li>
-<li class="chapter" data-level="2.2" data-path="activities.html"><a href="activities.html#the-activity-lifecycle"><i class="fa fa-check"></i><b>2.2</b> The Activity Lifecycle</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="activities.html"><a href="activities.html#overriding-the-callback-methods"><i class="fa fa-check"></i><b>2.2.1</b> Overriding the Callback Methods</a></li>
+<li class="chapter" data-level="2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html"><i class="fa fa-check"></i><b>2</b> Resources and Layouts</a><ul>
+<li class="chapter" data-level="2.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#resources"><i class="fa fa-check"></i><b>2.1</b> Resources</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#r"><i class="fa fa-check"></i>R</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#alternative-resources"><i class="fa fa-check"></i>Alternative Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="activities.html"><a href="activities.html#logging-adb"><i class="fa fa-check"></i><b>2.3</b> Logging &amp; ADB</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="activities.html"><a href="activities.html#log-methods"><i class="fa fa-check"></i><b>2.3.1</b> Log Methods</a></li>
-<li class="chapter" data-level="2.3.2" data-path="activities.html"><a href="activities.html#logcat"><i class="fa fa-check"></i><b>2.3.2</b> Logcat</a></li>
+<li class="chapter" data-level="2.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views"><i class="fa fa-check"></i><b>2.2</b> Views</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#view-properties"><i class="fa fa-check"></i>View Properties</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views-and-java"><i class="fa fa-check"></i>Views and Java</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#practice"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="activities.html"><a href="activities.html#basic-events"><i class="fa fa-check"></i><b>2.4</b> Basic Events</a></li>
-<li class="chapter" data-level="2.5" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>2.5</b> Multiple Activities</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="activities.html"><a href="activities.html#intents-and-context"><i class="fa fa-check"></i><b>2.5.1</b> Intents and Context</a></li>
+<li class="chapter" data-level="2.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#layouts"><i class="fa fa-check"></i><b>2.3</b> Layouts</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#linearlayout"><i class="fa fa-check"></i>LinearLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#relativelayout"><i class="fa fa-check"></i>RelativeLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#constraintlayout"><i class="fa fa-check"></i>ConstraintLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#other-layouts"><i class="fa fa-check"></i>Other Layouts</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#combining-and-inflating-layouts"><i class="fa fa-check"></i>Combining and Inflating Layouts</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i><b>2.6</b> Back &amp; Tasks</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i><b>2.6.1</b> Up Navigation</a></li>
+<li class="chapter" data-level="2.4" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#inputs"><i class="fa fa-check"></i><b>2.4</b> Inputs</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="activities.html"><a href="activities.html"><i class="fa fa-check"></i><b>3</b> Activities</a><ul>
+<li class="chapter" data-level="3.1" data-path="activities.html"><a href="activities.html#making-activities"><i class="fa fa-check"></i><b>3.1</b> Making Activities</a></li>
+<li class="chapter" data-level="3.2" data-path="activities.html"><a href="activities.html#the-activity-lifecycle"><i class="fa fa-check"></i><b>3.2</b> The Activity Lifecycle</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#overriding-the-callback-methods"><i class="fa fa-check"></i>Overriding the Callback Methods</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#saving-and-restoring-activity-state"><i class="fa fa-check"></i>Saving and Restoring Activity State</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html"><i class="fa fa-check"></i><b>3</b> Resources and Layouts</a><ul>
-<li class="chapter" data-level="3.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#resources"><i class="fa fa-check"></i><b>3.1</b> Resources</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#alternative-resources"><i class="fa fa-check"></i><b>3.1.1</b> Alternate Resources</a></li>
-<li class="chapter" data-level="3.1.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#xml-details"><i class="fa fa-check"></i><b>3.1.2</b> XML Details</a></li>
-<li class="chapter" data-level="3.1.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#r"><i class="fa fa-check"></i><b>3.1.3</b> R</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views"><i class="fa fa-check"></i><b>3.2</b> Views</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#view-properties"><i class="fa fa-check"></i><b>3.2.1</b> View Properties</a></li>
-<li class="chapter" data-level="3.2.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#practice"><i class="fa fa-check"></i><b>3.2.2</b> Practice</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#layouts"><i class="fa fa-check"></i><b>3.3</b> Layouts</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#linearlayout"><i class="fa fa-check"></i><b>3.3.1</b> LinearLayout</a></li>
-<li class="chapter" data-level="3.3.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#relativelayout"><i class="fa fa-check"></i><b>3.3.2</b> RelativeLayout</a></li>
-<li class="chapter" data-level="3.3.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#constraintlayout"><i class="fa fa-check"></i><b>3.3.3</b> ConstraintLayout</a></li>
-<li class="chapter" data-level="3.3.4" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#other-layouts"><i class="fa fa-check"></i><b>3.3.4</b> Other Layouts</a></li>
-<li class="chapter" data-level="3.3.5" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#combining-and-inflating-layouts"><i class="fa fa-check"></i><b>3.3.5</b> Combining and Inflating Layouts</a></li>
+<li class="chapter" data-level="3.3" data-path="activities.html"><a href="activities.html#context"><i class="fa fa-check"></i><b>3.3</b> Context</a></li>
+<li class="chapter" data-level="3.4" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>3.4</b> Multiple Activities</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#activity-intents"><i class="fa fa-check"></i>Intents</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i>Back &amp; Tasks</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i>Up Navigation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-views.html"><a href="data-views.html"><i class="fa fa-check"></i><b>4</b> Data-Driven Views</a><ul>
-<li class="chapter" data-level="4.1" data-path="data-views.html"><a href="data-views.html#inputs"><i class="fa fa-check"></i><b>4.1</b> Inputs</a></li>
-<li class="chapter" data-level="4.2" data-path="data-views.html"><a href="data-views.html#listviews-and-adapters"><i class="fa fa-check"></i><b>4.2</b> ListViews and Adapters</a></li>
-<li class="chapter" data-level="4.3" data-path="data-views.html"><a href="data-views.html#network-data"><i class="fa fa-check"></i><b>4.3</b> Network Data</a></li>
+<li class="chapter" data-level="4.1" data-path="data-views.html"><a href="data-views.html#listviews-and-adapters"><i class="fa fa-check"></i><b>4.1</b> ListViews and Adapters</a></li>
+<li class="chapter" data-level="4.2" data-path="data-views.html"><a href="data-views.html#networking-with-volley"><i class="fa fa-check"></i><b>4.2</b> Networking with Volley</a><ul>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#using-volley"><i class="fa fa-check"></i>Using Volley</a></li>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#requestqueue-singletons"><i class="fa fa-check"></i>RequestQueue Singletons</a></li>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#downloading-images"><i class="fa fa-check"></i>Downloading Images</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="material-design.html"><a href="material-design.html"><i class="fa fa-check"></i><b>5</b> Material Design</a><ul>
-<li class="chapter" data-level="5.1" data-path="material-design.html"><a href="material-design.html#resources-1"><i class="fa fa-check"></i><b>5.1</b> Resources:</a></li>
+<li class="chapter" data-level="5.1" data-path="material-design.html"><a href="material-design.html#the-material-design-language"><i class="fa fa-check"></i><b>5.1</b> The Material Design Language</a></li>
+<li class="chapter" data-level="5.2" data-path="material-design.html"><a href="material-design.html#material-styles-icons"><i class="fa fa-check"></i><b>5.2</b> Material Styles &amp; Icons</a></li>
+<li class="chapter" data-level="5.3" data-path="material-design.html"><a href="material-design.html#design-support-libraries"><i class="fa fa-check"></i><b>5.3</b> Design Support Libraries</a><ul>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#widgets"><i class="fa fa-check"></i>Widgets</a></li>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#coordinator-layout"><i class="fa fa-check"></i>Coordinator Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="material-design.html"><a href="material-design.html#animations"><i class="fa fa-check"></i><b>5.4</b> Animations</a><ul>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#property-animation"><i class="fa fa-check"></i>Property Animation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="fragments.html"><a href="fragments.html"><i class="fa fa-check"></i><b>6</b> Fragments</a><ul>
 <li class="chapter" data-level="6.1" data-path="fragments.html"><a href="fragments.html#creating-a-fragment"><i class="fa fa-check"></i><b>6.1</b> Creating a Fragment</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="fragments.html"><a href="fragments.html#activity-to-fragment-communication"><i class="fa fa-check"></i><b>6.1.1</b> Activity-to-Fragment Communication</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#activity-to-fragment-communication"><i class="fa fa-check"></i>Activity-to-Fragment Communication</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="fragments.html"><a href="fragments.html#dynamic-fragments"><i class="fa fa-check"></i><b>6.2</b> Dynamic Fragments</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="fragments.html"><a href="fragments.html#instantiating-fragments"><i class="fa fa-check"></i><b>6.2.1</b> Instantiating Fragments</a></li>
-<li class="chapter" data-level="6.2.2" data-path="fragments.html"><a href="fragments.html#transactions"><i class="fa fa-check"></i><b>6.2.2</b> Transactions</a></li>
-<li class="chapter" data-level="6.2.3" data-path="fragments.html"><a href="fragments.html#inter-fragment-communication"><i class="fa fa-check"></i><b>6.2.3</b> Inter-Fragment Communication</a></li>
-<li class="chapter" data-level="6.2.4" data-path="fragments.html"><a href="fragments.html#the-back-stack"><i class="fa fa-check"></i><b>6.2.4</b> The Back Stack</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#instantiating-fragments"><i class="fa fa-check"></i>Instantiating Fragments</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#transactions"><i class="fa fa-check"></i>Transactions</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#inter-fragment-communication"><i class="fa fa-check"></i>Inter-Fragment Communication</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#the-back-stack"><i class="fa fa-check"></i>The Back Stack</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="fragments.html"><a href="fragments.html#dialogs"><i class="fa fa-check"></i><b>6.3</b> Dialogs</a><ul>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#dialogfragments"><i class="fa fa-check"></i>DialogFragments</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="intents.html"><a href="intents.html"><i class="fa fa-check"></i><b>7</b> Intents</a><ul>
 <li class="chapter" data-level="7.1" data-path="intents.html"><a href="intents.html#intents-for-another-activity-explicit"><i class="fa fa-check"></i><b>7.1</b> Intents for Another Activity (Explicit)</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="intents.html"><a href="intents.html#extras"><i class="fa fa-check"></i><b>7.1.1</b> Extras</a></li>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#extras"><i class="fa fa-check"></i>Extras</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="intents.html"><a href="intents.html#intents-for-another-app-implicit"><i class="fa fa-check"></i><b>7.2</b> Intents for Another App (Implicit)</a></li>
 <li class="chapter" data-level="7.3" data-path="intents.html"><a href="intents.html#intents-for-a-response"><i class="fa fa-check"></i><b>7.3</b> Intents for a Response</a></li>
 <li class="chapter" data-level="7.4" data-path="intents.html"><a href="intents.html#listening-for-intents"><i class="fa fa-check"></i><b>7.4</b> Listening for Intents</a></li>
 <li class="chapter" data-level="7.5" data-path="intents.html"><a href="intents.html#broadcasts-and-receivers"><i class="fa fa-check"></i><b>7.5</b> Broadcasts and Receivers</a></li>
-<li class="chapter" data-level="7.6" data-path="intents.html"><a href="intents.html#an-example-sms"><i class="fa fa-check"></i><b>7.6</b> An Example: SMS</a></li>
-<li class="chapter" data-level="7.7" data-path="intents.html"><a href="intents.html#shareactionprovider"><i class="fa fa-check"></i><b>7.7</b> ShareActionProvider</a></li>
+<li class="chapter" data-level="7.6" data-path="intents.html"><a href="intents.html#menus"><i class="fa fa-check"></i><b>7.6</b> Menus</a><ul>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#action-views"><i class="fa fa-check"></i>Action Views</a></li>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#context-menus"><i class="fa fa-check"></i>Context Menus</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="ui-components.html"><a href="ui-components.html"><i class="fa fa-check"></i><b>8</b> UI Components</a><ul>
-<li class="chapter" data-level="8.1" data-path="ui-components.html"><a href="ui-components.html#the-action-bar"><i class="fa fa-check"></i><b>8.1</b> The Action Bar</a></li>
-<li class="chapter" data-level="8.2" data-path="ui-components.html"><a href="ui-components.html#menus"><i class="fa fa-check"></i><b>8.2</b> Menus</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="ui-components.html"><a href="ui-components.html#context-menus"><i class="fa fa-check"></i><b>8.2.1</b> Context Menus</a></li>
+<li class="chapter" data-level="7.7" data-path="intents.html"><a href="intents.html#an-intent-example-sms"><i class="fa fa-check"></i><b>7.7</b> An Intent Example: SMS</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="ui-components.html"><a href="ui-components.html#dialogs"><i class="fa fa-check"></i><b>8.3</b> Dialogs</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="ui-components.html"><a href="ui-components.html#dialogfragments"><i class="fa fa-check"></i><b>8.3.1</b> DialogFragments</a></li>
+<li class="chapter" data-level="8" data-path="notifications-settings.html"><a href="notifications-settings.html"><i class="fa fa-check"></i><b>8</b> Notifications &amp; Settings</a><ul>
+<li class="chapter" data-level="8.1" data-path="notifications-settings.html"><a href="notifications-settings.html#dialogs-1"><i class="fa fa-check"></i><b>8.1</b> Dialogs</a><ul>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#dialogfragments-1"><i class="fa fa-check"></i>DialogFragments</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="ui-components.html"><a href="ui-components.html#toasts"><i class="fa fa-check"></i><b>8.4</b> Toasts</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="ui-components-ii.html"><a href="ui-components-ii.html"><i class="fa fa-check"></i><b>9</b> UI Components II</a><ul>
-<li class="chapter" data-level="9.1" data-path="ui-components-ii.html"><a href="ui-components-ii.html#notifications"><i class="fa fa-check"></i><b>9.1</b> Notifications</a></li>
-<li class="chapter" data-level="9.2" data-path="ui-components-ii.html"><a href="ui-components-ii.html#settings"><i class="fa fa-check"></i><b>9.2</b> Settings</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="ui-components-ii.html"><a href="ui-components-ii.html#sharedpreferences"><i class="fa fa-check"></i><b>9.2.1</b> SharedPreferences</a></li>
-<li class="chapter" data-level="9.2.2" data-path="ui-components-ii.html"><a href="ui-components-ii.html#preference-settings"><i class="fa fa-check"></i><b>9.2.2</b> Preference Settings</a></li>
+<li class="chapter" data-level="8.2" data-path="notifications-settings.html"><a href="notifications-settings.html#notifications"><i class="fa fa-check"></i><b>8.2</b> Notifications</a></li>
+<li class="chapter" data-level="8.3" data-path="notifications-settings.html"><a href="notifications-settings.html#settings"><i class="fa fa-check"></i><b>8.3</b> Settings</a><ul>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#sharedpreferences"><i class="fa fa-check"></i>SharedPreferences</a></li>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#preference-settings"><i class="fa fa-check"></i>Preference Settings</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html"><i class="fa fa-check"></i><b>10</b> Providers and Loaders</a><ul>
-<li class="chapter" data-level="10.1" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#content-providers-intro"><i class="fa fa-check"></i><b>10.1</b> Content Providers</a></li>
-<li class="chapter" data-level="10.2" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#cursors"><i class="fa fa-check"></i><b>10.2</b> Cursors</a></li>
-<li class="chapter" data-level="10.3" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#loaders"><i class="fa fa-check"></i><b>10.3</b> Loaders</a></li>
-<li class="chapter" data-level="10.4" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#other-provider-actions"><i class="fa fa-check"></i><b>10.4</b> Other Provider Actions</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#adding-words"><i class="fa fa-check"></i><b>10.4.1</b> Adding Words</a></li>
+<li class="chapter" data-level="9" data-path="loaders.html"><a href="loaders.html"><i class="fa fa-check"></i><b>9</b> Providers and Loaders</a><ul>
+<li class="chapter" data-level="9.1" data-path="loaders.html"><a href="loaders.html#content-providers-intro"><i class="fa fa-check"></i><b>9.1</b> Content Providers</a></li>
+<li class="chapter" data-level="9.2" data-path="loaders.html"><a href="loaders.html#cursors"><i class="fa fa-check"></i><b>9.2</b> Cursors</a></li>
+<li class="chapter" data-level="9.3" data-path="loaders.html"><a href="loaders.html#loaders"><i class="fa fa-check"></i><b>9.3</b> Loaders</a></li>
+<li class="chapter" data-level="9.4" data-path="loaders.html"><a href="loaders.html#other-provider-actions"><i class="fa fa-check"></i><b>9.4</b> Other Provider Actions</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="files-and-permissions.html"><a href="files-and-permissions.html"><i class="fa fa-check"></i><b>10</b> Files and Permissions</a><ul>
+<li class="chapter" data-level="10.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#file-storage-locations"><i class="fa fa-check"></i><b>10.1</b> File Storage Locations</a></li>
+<li class="chapter" data-level="10.2" data-path="files-and-permissions.html"><a href="files-and-permissions.html#permissions"><i class="fa fa-check"></i><b>10.2</b> Permissions</a></li>
+<li class="chapter" data-level="10.3" data-path="files-and-permissions.html"><a href="files-and-permissions.html#external-storage"><i class="fa fa-check"></i><b>10.3</b> External Storage</a></li>
+<li class="chapter" data-level="10.4" data-path="files-and-permissions.html"><a href="files-and-permissions.html#internal-storage-cache"><i class="fa fa-check"></i><b>10.4</b> Internal Storage &amp; Cache</a></li>
+<li class="chapter" data-level="10.5" data-path="files-and-permissions.html"><a href="files-and-permissions.html#example-saving-pictures"><i class="fa fa-check"></i><b>10.5</b> Example: Saving Pictures</a></li>
+<li class="chapter" data-level="10.6" data-path="files-and-permissions.html"><a href="files-and-permissions.html#sharing-files"><i class="fa fa-check"></i><b>10.6</b> Sharing Files</a><ul>
+<li class="chapter" data-level="" data-path="files-and-permissions.html"><a href="files-and-permissions.html#bonus-sharing-with-a-fileprovider"><i class="fa fa-check"></i>Bonus: Sharing with a FileProvider</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>11</b> Databases and Providers</a><ul>
+<li class="chapter" data-level="11" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>11</b> Providers and Databases</a><ul>
 <li class="chapter" data-level="11.1" data-path="databases.html"><a href="databases.html#review-providers-and-loaders"><i class="fa fa-check"></i><b>11.1</b> Review: Providers and Loaders</a></li>
 <li class="chapter" data-level="11.2" data-path="databases.html"><a href="databases.html#sqlite-databases"><i class="fa fa-check"></i><b>11.2</b> SQLite Databases</a></li>
-<li class="chapter" data-level="11.3" data-path="databases.html"><a href="databases.html#implementing-contentprovider"><i class="fa fa-check"></i><b>11.3</b> Implementing <code>ContentProvider</code></a><ul>
-<li class="chapter" data-level="11.3.1" data-path="databases.html"><a href="databases.html#uris-and-types"><i class="fa fa-check"></i><b>11.3.1</b> URIs and Types</a></li>
-<li class="chapter" data-level="11.3.2" data-path="databases.html"><a href="databases.html#query-methods"><i class="fa fa-check"></i><b>11.3.2</b> Query Methods</a></li>
+<li class="chapter" data-level="11.3" data-path="databases.html"><a href="databases.html#implementing-a-contentprovider"><i class="fa fa-check"></i><b>11.3</b> Implementing a ContentProvider</a><ul>
+<li class="chapter" data-level="" data-path="databases.html"><a href="databases.html#uris-and-types"><i class="fa fa-check"></i>URIs and Types</a></li>
+<li class="chapter" data-level="" data-path="databases.html"><a href="databases.html#query-methods"><i class="fa fa-check"></i>Query Methods</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="files-and-permissions.html"><a href="files-and-permissions.html"><i class="fa fa-check"></i><b>12</b> Files and Permissions</a><ul>
-<li class="chapter" data-level="12.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#file-storage-locations"><i class="fa fa-check"></i><b>12.1</b> File Storage Locations</a></li>
-<li class="chapter" data-level="12.2" data-path="files-and-permissions.html"><a href="files-and-permissions.html#permissions"><i class="fa fa-check"></i><b>12.2</b> Permissions</a></li>
-<li class="chapter" data-level="12.3" data-path="files-and-permissions.html"><a href="files-and-permissions.html#external-storage"><i class="fa fa-check"></i><b>12.3</b> External Storage</a></li>
-<li class="chapter" data-level="12.4" data-path="files-and-permissions.html"><a href="files-and-permissions.html#internal-storage-cache"><i class="fa fa-check"></i><b>12.4</b> Internal Storage &amp; Cache</a></li>
-<li class="chapter" data-level="12.5" data-path="files-and-permissions.html"><a href="files-and-permissions.html#example-saving-pictures"><i class="fa fa-check"></i><b>12.5</b> Example: Saving Pictures</a></li>
-<li class="chapter" data-level="12.6" data-path="files-and-permissions.html"><a href="files-and-permissions.html#sharing-files"><i class="fa fa-check"></i><b>12.6</b> Sharing Files</a><ul>
-<li class="chapter" data-level="12.6.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#bonus-sharing-with-a-fileprovider"><i class="fa fa-check"></i><b>12.6.1</b> Bonus: Sharing with a <code>FileProvider</code></a></li>
+<li class="chapter" data-level="12" data-path="location.html"><a href="location.html"><i class="fa fa-check"></i><b>12</b> Location</a><ul>
+<li class="chapter" data-level="12.1" data-path="location.html"><a href="location.html#localization-techniques"><i class="fa fa-check"></i><b>12.1</b> Localization Techniques</a><ul>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#gps"><i class="fa fa-check"></i>GPS</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#cell-tower-localization"><i class="fa fa-check"></i>Cell Tower Localization</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#wifi-localization"><i class="fa fa-check"></i>WiFi Localization</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#representing-location"><i class="fa fa-check"></i>Representing Location</a></li>
 </ul></li>
+<li class="chapter" data-level="12.2" data-path="location.html"><a href="location.html#android-location"><i class="fa fa-check"></i><b>12.2</b> Android Location</a><ul>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#google-play-services"><i class="fa fa-check"></i>Google Play Services</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#accessing-location"><i class="fa fa-check"></i>Accessing Location</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="location.html"><a href="location.html"><i class="fa fa-check"></i><b>13</b> Location</a><ul>
-<li class="chapter" data-level="13.1" data-path="location.html"><a href="location.html#localization-techniques"><i class="fa fa-check"></i><b>13.1</b> Localization Techniques</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="location.html"><a href="location.html#gps"><i class="fa fa-check"></i><b>13.1.1</b> GPS</a></li>
-<li class="chapter" data-level="13.1.2" data-path="location.html"><a href="location.html#cell-tower-localization"><i class="fa fa-check"></i><b>13.1.2</b> Cell Tower Localization</a></li>
-<li class="chapter" data-level="13.1.3" data-path="location.html"><a href="location.html#wifi-localization"><i class="fa fa-check"></i><b>13.1.3</b> WiFi Localization</a></li>
-<li class="chapter" data-level="13.1.4" data-path="location.html"><a href="location.html#representing-location"><i class="fa fa-check"></i><b>13.1.4</b> Representing Location</a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="location.html"><a href="location.html#android-location"><i class="fa fa-check"></i><b>13.2</b> Android Location</a><ul>
-<li class="chapter" data-level="13.2.1" data-path="location.html"><a href="location.html#google-play-services"><i class="fa fa-check"></i><b>13.2.1</b> Google Play Services</a></li>
-<li class="chapter" data-level="13.2.2" data-path="location.html"><a href="location.html#accessing-location"><i class="fa fa-check"></i><b>13.2.2</b> Accessing Location</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="services.html"><a href="services.html"><i class="fa fa-check"></i><b>14</b> Services</a><ul>
-<li class="chapter" data-level="14.1" data-path="services.html"><a href="services.html#intentservices"><i class="fa fa-check"></i><b>14.1</b> IntentServices</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="services.html"><a href="services.html#the-service-lifecycle"><i class="fa fa-check"></i><b>14.1.1</b> The Service Lifecycle</a></li>
-</ul></li>
-<li class="chapter" data-level="14.2" data-path="services.html"><a href="services.html#example-a-music-service"><i class="fa fa-check"></i><b>14.2</b> Example: A Music Service</a><ul>
-<li class="chapter" data-level="14.2.1" data-path="services.html"><a href="services.html#mediaplayer"><i class="fa fa-check"></i><b>14.2.1</b> MediaPlayer</a></li>
-<li class="chapter" data-level="14.2.2" data-path="services.html"><a href="services.html#creating-a-service"><i class="fa fa-check"></i><b>14.2.2</b> Creating a Service</a></li>
-</ul></li>
-<li class="chapter" data-level="14.3" data-path="services.html"><a href="services.html#foreground-services"><i class="fa fa-check"></i><b>14.3</b> Foreground Services</a></li>
-<li class="chapter" data-level="14.4" data-path="services.html"><a href="services.html#bound-services"><i class="fa fa-check"></i><b>14.4</b> Bound Services</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="sensors.html"><a href="sensors.html"><i class="fa fa-check"></i><b>15</b> Sensors</a><ul>
-<li class="chapter" data-level="15.1" data-path="sensors.html"><a href="sensors.html#motion-sensors"><i class="fa fa-check"></i><b>15.1</b> Motion Sensors</a><ul>
-<li class="chapter" data-level="15.1.1" data-path="sensors.html"><a href="sensors.html#accessing-sensors"><i class="fa fa-check"></i><b>15.1.1</b> Accessing Sensors</a></li>
-<li class="chapter" data-level="15.1.2" data-path="sensors.html"><a href="sensors.html#composite-sensors"><i class="fa fa-check"></i><b>15.1.2</b> Composite Sensors</a></li>
-</ul></li>
-<li class="chapter" data-level="15.2" data-path="sensors.html"><a href="sensors.html#rotation"><i class="fa fa-check"></i><b>15.2</b> Rotation</a><ul>
-<li class="chapter" data-level="15.2.1" data-path="sensors.html"><a href="sensors.html#coordinates"><i class="fa fa-check"></i><b>15.2.1</b> Coordinates</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>16</b> Animation and Graphics</a><ul>
-<li class="chapter" data-level="16.1" data-path="animation.html"><a href="animation.html#drawing-graphics"><i class="fa fa-check"></i><b>16.1</b> Drawing Graphics</a><ul>
-<li class="chapter" data-level="16.1.1" data-path="animation.html"><a href="animation.html#custom-views"><i class="fa fa-check"></i><b>16.1.1</b> Custom Views</a></li>
-<li class="chapter" data-level="16.1.2" data-path="animation.html"><a href="animation.html#surfaceviews"><i class="fa fa-check"></i><b>16.1.2</b> SurfaceViews</a></li>
-</ul></li>
-<li class="chapter" data-level="16.2" data-path="animation.html"><a href="animation.html#touch-and-gestures"><i class="fa fa-check"></i><b>16.2</b> Touch and Gestures</a><ul>
-<li class="chapter" data-level="16.2.1" data-path="animation.html"><a href="animation.html#advanced-gestures"><i class="fa fa-check"></i><b>16.2.1</b> Advanced Gestures</a></li>
-</ul></li>
-<li class="chapter" data-level="16.3" data-path="animation.html"><a href="animation.html#property-animation"><i class="fa fa-check"></i><b>16.3</b> Property Animation</a></li>
 </ul></li>
 <li class="part"><span><b>II Additional Topics (Labs)</b></span></li>
-<li class="chapter" data-level="17" data-path="accessibility.html"><a href="accessibility.html"><i class="fa fa-check"></i><b>17</b> Accessibility</a><ul>
-<li class="chapter" data-level="17.1" data-path="accessibility.html"><a href="accessibility.html#universal-usability"><i class="fa fa-check"></i><b>17.1</b> Universal Usability</a></li>
-<li class="chapter" data-level="17.2" data-path="accessibility.html"><a href="accessibility.html#implementing-accessibility"><i class="fa fa-check"></i><b>17.2</b> Implementing Accessibility</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="accessibility.html"><a href="accessibility.html#supporting-vision-impairment"><i class="fa fa-check"></i><b>17.2.1</b> Supporting Vision Impairment</a></li>
-<li class="chapter" data-level="17.2.2" data-path="accessibility.html"><a href="accessibility.html#supporting-alternative-inputs"><i class="fa fa-check"></i><b>17.2.2</b> Supporting Alternative Inputs</a></li>
-<li class="chapter" data-level="17.2.3" data-path="accessibility.html"><a href="accessibility.html#supporting-internationalization"><i class="fa fa-check"></i><b>17.2.3</b> Supporting Internationalization</a></li>
-<li class="chapter" data-level="17.2.4" data-path="accessibility.html"><a href="accessibility.html#further-testing"><i class="fa fa-check"></i><b>17.2.4</b> Further Testing</a></li>
+<li class="chapter" data-level="13" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>13</b> Styles &amp; Themes</a><ul>
+<li class="chapter" data-level="13.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>13.1</b> Defining Styles</a><ul>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#style-inheritance"><i class="fa fa-check"></i>Style Inheritance</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#built-in-styles"><i class="fa fa-check"></i>Built-in Styles</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#styles-for-text-views"><i class="fa fa-check"></i>Styles for Text Views</a></li>
 </ul></li>
+<li class="chapter" data-level="13.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>13.2</b> Themes</a><ul>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#material-themes"><i class="fa fa-check"></i>Material Themes</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#theme-attributes"><i class="fa fa-check"></i>Theme Attributes</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>18</b> Styles &amp; Themes</a><ul>
-<li class="chapter" data-level="18.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>18.1</b> Defining Styles</a><ul>
-<li class="chapter" data-level="18.1.1" data-path="styles-themes.html"><a href="styles-themes.html#style-inheritance"><i class="fa fa-check"></i><b>18.1.1</b> Style Inheritance</a></li>
-<li class="chapter" data-level="18.1.2" data-path="styles-themes.html"><a href="styles-themes.html#built-in-styles"><i class="fa fa-check"></i><b>18.1.2</b> Built-in Styles</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>18.2</b> Themes</a><ul>
-<li class="chapter" data-level="18.2.1" data-path="styles-themes.html"><a href="styles-themes.html#material-themes"><i class="fa fa-check"></i><b>18.2.1</b> Material Themes</a></li>
-<li class="chapter" data-level="18.2.2" data-path="styles-themes.html"><a href="styles-themes.html#theme-attributes"><i class="fa fa-check"></i><b>18.2.2</b> Theme Attributes</a></li>
+<li class="chapter" data-level="14" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html"><i class="fa fa-check"></i><b>14</b> Fragments: ViewPager</a><ul>
+<li class="chapter" data-level="14.1" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>14.1</b> Define a SearchFragment</a></li>
+<li class="chapter" data-level="14.2" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>14.2</b> Add the ViewPager and Adapter</a></li>
+<li class="chapter" data-level="14.3" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>14.3</b> Add User Interaction</a></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="bluetooth.html"><a href="bluetooth.html"><i class="fa fa-check"></i><b>15</b> Bluetooth</a></li>
+<li class="chapter" data-level="16" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>16</b> Maps</a><ul>
+<li class="chapter" data-level="16.1" data-path="maps.html"><a href="maps.html#create-a-map-activity"><i class="fa fa-check"></i><b>16.1</b> Create a Map Activity</a><ul>
+<li class="chapter" data-level="" data-path="maps.html"><a href="maps.html#getting-an-api-key"><i class="fa fa-check"></i>Getting an API Key</a></li>
+<li class="chapter" data-level="16.1.1" data-path="maps.html"><a href="maps.html#the-supportmapfragment"><i class="fa fa-check"></i><b>16.1.1</b> The <code class="unnumbered">SupportMapFragment</code></a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html"><i class="fa fa-check"></i><b>19</b> Fragments: ViewPager</a><ul>
-<li class="chapter" data-level="19.1" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>19.1</b> Define a SearchFragment</a></li>
-<li class="chapter" data-level="19.2" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>19.2</b> Add the ViewPager and Adapter</a></li>
-<li class="chapter" data-level="19.3" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>19.3</b> Add User Interaction</a></li>
+<li class="chapter" data-level="16.2" data-path="maps.html"><a href="maps.html#specifying-the-user-interface"><i class="fa fa-check"></i><b>16.2</b> Specifying the User Interface</a></li>
+<li class="chapter" data-level="16.3" data-path="maps.html"><a href="maps.html#markers-and-drawings"><i class="fa fa-check"></i><b>16.3</b> Markers and Drawings</a><ul>
+<li class="chapter" data-level="" data-path="maps.html"><a href="maps.html#drawing-shapes"><i class="fa fa-check"></i>Drawing Shapes</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="bluetooth.html"><a href="bluetooth.html"><i class="fa fa-check"></i><b>20</b> Bluetooth</a></li>
-<li class="chapter" data-level="21" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>21</b> Maps</a><ul>
-<li class="chapter" data-level="21.1" data-path="maps.html"><a href="maps.html#create-a-map-activity"><i class="fa fa-check"></i><b>21.1</b> Create a Map Activity</a><ul>
-<li class="chapter" data-level="21.1.1" data-path="maps.html"><a href="maps.html#getting-an-api-key"><i class="fa fa-check"></i><b>21.1.1</b> Getting an API Key</a></li>
-<li class="chapter" data-level="21.1.2" data-path="maps.html"><a href="maps.html#the-supportmapfragment"><i class="fa fa-check"></i><b>21.1.2</b> The <code>SupportMapFragment</code></a></li>
-</ul></li>
-<li class="chapter" data-level="21.2" data-path="maps.html"><a href="maps.html#specifying-the-user-interface"><i class="fa fa-check"></i><b>21.2</b> Specifying the User Interface</a></li>
-<li class="chapter" data-level="21.3" data-path="maps.html"><a href="maps.html#markers-and-drawings"><i class="fa fa-check"></i><b>21.3</b> Markers and Drawings</a><ul>
-<li class="chapter" data-level="21.3.1" data-path="maps.html"><a href="maps.html#drawing-shapes"><i class="fa fa-check"></i><b>21.3.1</b> Drawing Shapes</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="22" data-path="memory.html"><a href="memory.html"><i class="fa fa-check"></i><b>22</b> Memory Management</a><ul>
-<li class="chapter" data-level="22.1" data-path="memory.html"><a href="memory.html#memory-allocation"><i class="fa fa-check"></i><b>22.1</b> Memory Allocation</a></li>
-<li class="chapter" data-level="22.2" data-path="memory.html"><a href="memory.html#the-memory-monitor"><i class="fa fa-check"></i><b>22.2</b> The Memory Monitor</a><ul>
-<li class="chapter" data-level="22.2.1" data-path="memory.html"><a href="memory.html#garbage-collection"><i class="fa fa-check"></i><b>22.2.1</b> Garbage Collection</a></li>
-</ul></li>
-<li class="chapter" data-level="22.3" data-path="memory.html"><a href="memory.html#memory-leaks"><i class="fa fa-check"></i><b>22.3</b> Memory Leaks</a></li>
-</ul></li>
-<li class="chapter" data-level="23" data-path="multi-touch.html"><a href="multi-touch.html"><i class="fa fa-check"></i><b>23</b> Multi-Touch</a><ul>
-<li class="chapter" data-level="23.1" data-path="multi-touch.html"><a href="multi-touch.html#identifying-fingers"><i class="fa fa-check"></i><b>23.1</b> Identifying Fingers</a></li>
-<li class="chapter" data-level="23.2" data-path="multi-touch.html"><a href="multi-touch.html#drawing-touches"><i class="fa fa-check"></i><b>23.2</b> Drawing Touches</a></li>
-<li class="chapter" data-level="23.3" data-path="multi-touch.html"><a href="multi-touch.html#moving-fingers"><i class="fa fa-check"></i><b>23.3</b> Moving Fingers</a></li>
-<li class="chapter" data-level="23.4" data-path="multi-touch.html"><a href="multi-touch.html#other-multi-touch-gestures"><i class="fa fa-check"></i><b>23.4</b> Other Multi-Touch Gestures</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="java-review.html"><a href="java-review.html"><i class="fa fa-check"></i><b>A</b> Java Review</a><ul>
@@ -343,30 +303,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="A.7" data-path="java-review.html"><a href="java-review.html#generics"><i class="fa fa-check"></i><b>A.7</b> Generics</a></li>
 <li class="chapter" data-level="A.8" data-path="java-review.html"><a href="java-review.html#nested-classes"><i class="fa fa-check"></i><b>A.8</b> Nested Classes</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Swing Framework</a><ul>
+<li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Java Swing Framework</a><ul>
 <li class="chapter" data-level="B.1" data-path="java-swing.html"><a href="java-swing.html#events"><i class="fa fa-check"></i><b>B.1</b> Events</a></li>
 <li class="chapter" data-level="B.2" data-path="java-swing.html"><a href="java-swing.html#layouts-and-composites"><i class="fa fa-check"></i><b>B.2</b> Layouts and Composites</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="java-threads-http.html"><a href="java-threads-http.html"><i class="fa fa-check"></i><b>C</b> Threads and HTTP Requests</a><ul>
-<li class="chapter" data-level="C.1" data-path="java-threads-http.html"><a href="java-threads-http.html#concurrency"><i class="fa fa-check"></i><b>C.1</b> Concurrency</a><ul>
-<li class="chapter" data-level="C.1.1" data-path="java-threads-http.html"><a href="java-threads-http.html#an-example-algorithm-races"><i class="fa fa-check"></i><b>C.1.1</b> An Example: Algorithm Races!</a></li>
-<li class="chapter" data-level="C.1.2" data-path="java-threads-http.html"><a href="java-threads-http.html#threading-the-race"><i class="fa fa-check"></i><b>C.1.2</b> Threading the Race</a></li>
-</ul></li>
-<li class="chapter" data-level="C.2" data-path="java-threads-http.html"><a href="java-threads-http.html#http-requests"><i class="fa fa-check"></i><b>C.2</b> HTTP Requests</a></li>
-</ul></li>
-<li class="chapter" data-level="D" data-path="kotlin.html"><a href="kotlin.html"><i class="fa fa-check"></i><b>D</b> Special Topics: Kotlin</a><ul>
-<li class="chapter" data-level="D.1" data-path="kotlin.html"><a href="kotlin.html#kotlin-syntax"><i class="fa fa-check"></i><b>D.1</b> Kotlin Syntax</a><ul>
-<li class="chapter" data-level="D.1.1" data-path="kotlin.html"><a href="kotlin.html#variables"><i class="fa fa-check"></i><b>D.1.1</b> Variables</a></li>
-<li class="chapter" data-level="D.1.2" data-path="kotlin.html"><a href="kotlin.html#functions"><i class="fa fa-check"></i><b>D.1.2</b> Functions</a></li>
-<li class="chapter" data-level="D.1.3" data-path="kotlin.html"><a href="kotlin.html#classes"><i class="fa fa-check"></i><b>D.1.3</b> Classes</a></li>
-</ul></li>
-<li class="chapter" data-level="D.2" data-path="kotlin.html"><a href="kotlin.html#kotlin-for-android"><i class="fa fa-check"></i><b>D.2</b> Kotlin for Android</a><ul>
-<li class="chapter" data-level="D.2.1" data-path="kotlin.html"><a href="kotlin.html#the-android-extension"><i class="fa fa-check"></i><b>D.2.1</b> The Android Extension</a></li>
-<li class="chapter" data-level="D.2.2" data-path="kotlin.html"><a href="kotlin.html#anko"><i class="fa fa-check"></i><b>D.2.2</b> Anko</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="E" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>E</b> Publishing</a><ul>
-<li class="chapter" data-level="E.1" data-path="publishing.html"><a href="publishing.html#signing-an-app"><i class="fa fa-check"></i><b>E.1</b> Signing an App</a><ul>
+<li class="chapter" data-level="C" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>C</b> Publishing</a><ul>
+<li class="chapter" data-level="C.1" data-path="publishing.html"><a href="publishing.html#signing-an-app"><i class="fa fa-check"></i><b>C.1</b> Signing an App</a><ul>
 <li><a href="publishing.html#release-.apk">Release <code>.apk</code></a></li>
 </ul></li>
 </ul></li>
@@ -391,31 +333,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="databases" class="section level1">
-<h1><span class="header-section-number">Lecture 11</span> Databases and Providers</h1>
-<p class="alert alert-danger">
-This chapter is out of date and will be updated soon.
-</p>
-<p>This lecture provides an in-depth discussion of working with <a href="https://developer.android.com/training/basics/data-storage/databases.html"><strong>Databases</strong></a> and <a href="https://developer.android.com/guide/topics/providers/content-providers.html"><strong>Content Providers</strong></a> in Android. <em>Accessing</em> Content Providers (via a Loader) was discussed in a <a href="providers-and-loaders.html#content-providers-intro">previous lecture</a>. This lecture will instead talk about how to make your own database and a provider for it.</p>
-<p>Databases are appropriate when you want to store data <em>locally</em> on the device (e.g., not on the cloud, which may require expensive network transactions as well as user accounts), but that data has greater scale or complexity than is appropriate for a SharedPreferences XML file—that is, you need to store more than just key-value pairs.</p>
+<h1><span class="header-section-number">Lecture 11</span> Providers and Databases</h1>
+<p>This lecture provides an in-depth discussion of working with <a href="https://developer.android.com/training/basics/data-storage/databases.html"><strong>Databases</strong></a> and <a href="https://developer.android.com/guide/topics/providers/content-providers.html"><strong>Content Providers</strong></a> in Android. <em>Accessing</em> Content Providers (via a Loader) was discussed in a <a href="loaders.html#loaders">previous lecture</a>. This lecture will instead talk about how to make your own database and a Provider for it.</p>
+<p>Databases are appropriate when you want to store structured data <em>locally</em> on the device (e.g., not on the cloud, which may require expensive network transactions as well as user accounts), but that data has greater scale or complexity than is appropriate for a SharedPreferences XML file—that is, you need to store more than just key-value pairs.</p>
 <p class="alert alert-info">
-This lecture references code found at <a href="https://github.com/info448-s17/lecture17-databases" class="uri">https://github.com/info448-s17/lecture17-databases</a>.
-</p>
-<p class="alert alert-warning">
-Note that the intial version of this program accesses the device’s User Dictionary, which is only available to on API 22 (Lollipop) <em>or earlier</em>. The tutorial does support all versions of Android.
+This lecture references code found at <a href="https://github.com/info448/lecture11-databases" class="uri">https://github.com/info448/lecture11-databases</a>. Note that while the starter code accesses the device’s User Dictionary, which is only available on API 22 (Lollipop) <em>or earlier</em>, the rest of the tutorial replaces that provider and will work on any version of Android.
 </p>
 <div id="review-providers-and-loaders" class="section level2">
 <h2><span class="header-section-number">11.1</span> Review: Providers and Loaders</h2>
 <p>As discussed previously, a <strong>Content Provider</strong> is an abstraction for a source of structured data (like a database, but also possibly files, internet resources, etc). It acts as an interface for interacting with that data, supporting the developing in reading, adding to, updating, or deleting data from the source (e.g., the basic <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> operations).</p>
-<p>The lecture reference code demonstrates again how to access and modify structured data—specifically the User Dictionary—via a Content Provider using a <a href="https://developer.android.com/guide/components/loaders.html">Loader</a>. You can read this example to review how to utilize an existing Provider:</p>
+<p>We previously demonstrated how to access structure data—specifically the User Dictionary—via a Content Provider using a <a href="https://developer.android.com/guide/components/loaders.html">Loader</a>. You can read this example to review how to utilize an existing Provider:</p>
 <ul>
-<li><p>The application displays a <code>ListView</code>, which is backed by a <code>SimpleCursorAdapter</code>. This adapter takes a “cursor” (think: a “pointer” or an Iterator—also a list of data that has been loaded <em>into memory</em>) and connects each item to a View on the screen. This View shows the word (<code>WORD</code>) and the “frequency”/prominence (<code>FREQUENCY</code>) of that word.</p></li>
+<li><p>The application displays a <code>ListView</code>, which is backed by a <code>SimpleCursorAdapter</code>. This adapter takes a “Cursor” (think: a “pointer” or an Iterator—also a list of data that has been loaded <em>into memory</em>) and connects each item to a View on the screen. This View shows the word (<code>WORD</code>) and the “frequency”/prominence (<code>FREQUENCY</code>) of that word.</p></li>
 <li><p>In order to get this list of items into memory from data store itself (to perform the <strong>read</strong> operation), we set up a <code>Loader</code>. The Loader fetches 3 “columns” (attributes) from the data store: <code>_ID</code>, <code>WORD</code>, and <code>FREQUENCY</code>; the <code>_ID</code> field is <em>not</em> shown on the View, but the Loader needs that to keep track of the displayed items). We do not utilize any selection or sorting criteria, though we could add them in if we wanted.</p>
 <p>The loader fetches (<strong><em>queries</em></strong>) data from the data store to load it into memory. It then tells the Adapter to take that loaded data and display it in the View. By using a Loader for this process, we gain two benefits: (1) the data is loaded into memory <em>on a background thread</em> (not the UI Thread), and (2) the data is <em>automatically reloaded</em> when the data store’s content changes.</p></li>
-<li><p>The example also supports the <strong>create</strong> operation: by clicking the “Add Word” button, we can <strong><em>insert</em></strong> a new entry into the data store represented by the Content Provider. We construct a <code>ContentValues</code> object (similar to a <code>Bundle</code>, but for Content Providers) that contains the attribute values for the new provider entry. We then use the <code>ContentResolver</code> to <code>insert()</code> this item into the Provider (indicated by its URI).</p></li>
-<li><p>Finally, the example supports the <strong>update</strong> operation: by clicking the on an item in the list, we can <strong><em>update</em></strong> that entry in the data store (increasing the word’s frequency). We get the Cursor containing the items from the AdapterView, with the “pointer” of that iterator set to the item that was clicked on. We then again use the <code>ContentResolver</code> to <code>update()</code> the item with the a ContentValues bundle of the fields we wish to change.</p>
-<ul>
-<li>Note that we make sure to update only that particular item by specifying the <em>URI of that item</em>. We do this by constructing a new URI representing/identifying that item, effectively by appending <code>&quot;/:id&quot;</code> to the URI. This means that we don’t need to use the selection criteria (though we could do that as well).</li>
-</ul></li>
+<li><p>The example also supports the <strong>create</strong> and <strong>update</strong> operations (by clicking the “Add Word” button and the individual word entries, respectively). These operations work by constructing a <code>ContentValues</code> object (similar to a <code>Bundle</code>, but for Content Providers) that contains the attribute values for the new provider entry. We then use the <code>ContentResolver</code> to <code>insert()</code> or <code>update()</code> these values into the Provider (indicated by its URI).</p></li>
 </ul>
 <p>To review: the Content Provider acts as the data store, abstracting information at some location (e.g., in a database). The Loader grabs a bunch of rows and columns from that database, and hands it to the Adapter. The Adapter takes a subset of those rows and columns and puts them in the ListView so that they display to the user. User interaction allows us to add or modify the data in that database.</p>
 </div>
@@ -429,13 +361,13 @@ If you have worked with <code>SQL</code> or another relational database system (
 <ul>
 <li>Setting up a database is somewhat wordy and round-about, though it does not involve many new concepts.</li>
 </ul>
-<p>The step to effectively utilizing a database in Android is to create a class (e.g., <code>WordDatabase</code>) to act as a “namespace” for the various pieces of our database. This class will not be instantiated (and so could even have a <code>private</code> default constructor).</p>
+<p>The step to effectively utilizing a database in Android is to create a class (e.g., <code>WordDatabase</code>) to act as a “namespace” for the various pieces of our database. This class will not be instantiated (and so can even have a <code>private</code> default constructor). For time considerations, the beginnings of the class are included in the lecture starter code.</p>
 <p>The <code>WordDatabase</code> class will contain a number of <em>constants</em>:</p>
 <ul>
 <li><code>DATABASE_NAME</code> to refer to the name of the database file stored on the device (e.g., <code>words.db</code>)</li>
 <li><code>DATABASE_VERSION</code> to refer to the current version number of our database’s schema. This is used more for supporting <a href="https://en.wikipedia.org/wiki/Schema_migration">migrations</a> like if we want to update our database later.</li>
 </ul>
-<p>We’re then going to specify constants that define the database’s <strong>schema</strong> or <strong>contract</strong>. This is so that other classes (e.g., the <code>ContentProvider</code> and the <code>MainActivity</code>) can refer to column names consistently without having to remember or even know the specific text we utilize in the database. This is similar to how we used the variable <code>UserDictionary.Words.WORD</code> rather than the String value <code>&quot;word&quot;</code>. By convention, we define this schema as a separate <em><code>static</code> nested class</em> (e.g., <code>WordEntry</code>), to keep things organized. This class contains the constants to hold the column names:</p>
+<p>The class also includes constants that define the database’s <strong>schema</strong> or <strong>contract</strong>. This is so that other classes (e.g., the <code>ContentProvider</code> and the <code>MainActivity</code>) can refer to column names consistently without having to remember or even know the specific text we utilize in the database. This is similar to how we used the variable <code>UserDictionary.Words.WORD</code> rather than the String value <code>&quot;word&quot;</code>. By convention, we define this schema as a separate <em><code>static</code> nested class</em> (e.g., <code>WordEntry</code>), to keep things organized. This class contains the constants to hold the column names:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">static</span> <span class="kw">class</span> WordEntry <span class="kw">implements</span> BaseColumns {
      <span class="co">//class cannot be instantiated</span>
      <span class="kw">private</span> <span class="fu">WordEntry</span>(){}
@@ -445,16 +377,16 @@ If you have worked with <code>SQL</code> or another relational database system (
      <span class="kw">public</span> <span class="dt">static</span> <span class="dt">final</span> String COL_COUNT = <span class="st">&quot;count&quot;</span>;
 }</code></pre></div>
 <ul>
-<li><p>The class implements <a href="https://developer.android.com/reference/android/provider/BaseColumns.html"><code>BaseColumns</code></a>, which lets it inherit a few framework specific constants for free—in particular, the <code>_ID</code> variable which Content Providers rely on the database to have.</p></li>
+<li><p>The class implements <a href="https://developer.android.com/reference/android/provider/BaseColumns.html"><code>BaseColumns</code></a>, which lets it inherit a few framework specific constants for free—in particular, the <code>_ID</code> variable which Content Providers rely on the database to have as a primary key.</p></li>
 <li><p>We create a different nested class for each table in the database (sheet in a spreadsheet). This allows us to use Java-style namespacing (dot notation) to refer to different tables in a single database.</p></li>
 </ul>
-<p>Once we have defined the schema, we are ready to create and work with the database. In order to help us do this, we’re going to use a class called <a href="https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html"><code>SQLiteOpenHelper</code></a>. This class offers a set of methods to help manage the database being created and upgraded (e.g., for migrations). Specifically, we will will <em>subclass</em> <code>SQLiteOpenHelper</code>, creating another nested class that represents the specific helper for our database.</p>
+<p>Once we have defined the schema, we are ready to create and work with the database. In order to help us do this, we’re going to use a class called <a href="https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html"><code>SQLiteOpenHelper</code></a><a href="#fn40" class="footnoteRef" id="fnref40"><sup>40</sup></a>. This class offers a set of methods to help manage the database being created and upgraded (e.g., for migrations). Specifically, we will will <em>subclass</em> <code>SQLiteOpenHelper</code>, creating another nested class that represents the specific helper for our database.</p>
 <p>The subclass has a constructor that takes in a <code>Context</code>, and then “passes up” the database name and version to the parent class.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="fu">DatabaseHelper</span>(Context context){
     <span class="kw">super</span>(context, DATABASE_NAME, <span class="kw">null</span>, DATABASE_VERSION);
 }</code></pre></div>
-<p><code>SQLiteOpenHelper</code> also has two <code>abstract</code> methods (event callbacks) that we need to implemet: what happens when the database is <em>created</em>, and what happens when the database is <em>upgraded</em>.</p>
-<p>When the database is first created, we’ll need to actually create the table to hold our words. This involves sending it an <code>SQL</code> command to create the table! We’ll write this out as yet another constant for readability.</p>
+<p><code>SQLiteOpenHelper</code> also has two <code>abstract</code> methods (event callbacks) that we need to implement: what happens when the database is <em>created</em>, and what happens when the database is <em>upgraded</em>.</p>
+<p>When the database is first created, we’ll need to actually create the table to hold our words. This involves sending it an <code>SQL</code> command to create the table! This has been provided as a constant in the starter code.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> String CREATE_TASKS_TABLE =
     <span class="st">&quot;CREATE TABLE &quot;</span> + WordEntry.<span class="fu">TABLE_NAME</span> + <span class="st">&quot;(&quot;</span> +
         WordEntry.<span class="fu">_ID</span> + <span class="st">&quot; INTEGER PRIMARY KEY AUTOINCREMENT&quot;</span> + <span class="st">&quot;, &quot;</span>+
@@ -466,16 +398,17 @@ If you have worked with <code>SQL</code> or another relational database system (
     <span class="st">&quot;DROP TABLE IF EXISTS &quot;</span>+ WordEntry.<span class="fu">TABLE_NAME</span>;</code></pre></div>
 <ul>
 <li>We can do the same for dropping (deleting) the table as well.</li>
-<li>This is the only <code>SQL</code> we will write in this tutorial.</li>
+<li>This is the only <code>SQL</code> you will need in this tutorial!</li>
 </ul>
-<p>We can run these <code>SQL</code> statements by using the <code>execSQL()</code> method, called on the <a href="http://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html"><code>SQLiteDatabase</code></a> object that is passed to these callbacks. Note that this runs a “raw” SQL query (that doesn’t return anything, so not <code>SELECT</code>), without any kind of checks against SQL injection attacks. But since we’re hard-coding the information to run, it’s not a problem. Aside from this situation, you should <strong><em>never</em></strong> use this method.</p>
+<p>We can run these <code>SQL</code> statements by using the <code>execSQL()</code> method, called on the <a href="http://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html"><code>SQLiteDatabase</code></a> object that is passed to these callbacks. Note that this method runs a “raw” SQL query (one that doesn’t return anything, so not <code>SELECT</code>), without any kind of checks against SQL injection attacks. But since we’re hard-coding the information to run, it’s not a problem. Aside from this situation, you should <strong><em>never</em></strong> use this method.</p>
 <ul>
 <li><p>We can also use the <code>insert()</code> method to add some sample words to the database (similar to how we used the Content Provider), for clarity when testing:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ContentValues sample1 = <span class="kw">new</span> <span class="fu">ContentValues</span>();
 sample1.<span class="fu">put</span>(WordEntry.<span class="fu">COL_WORD</span>, <span class="st">&quot;Embiggen&quot;</span>);
 sample1.<span class="fu">put</span>(WordEntry.<span class="fu">COL_COUNT</span>, <span class="dv">0</span>);
-db.<span class="fu">insert</span>(WordEntry.<span class="fu">TABLE_NAME</span>, <span class="kw">null</span>, sample1);</code></pre></div></li>
-<li><p>In the <code>onUpdate()</code> callback, we’ll just “drop” the table and recreate it (by calling <code>onCreate()</code>).</p></li>
+db.<span class="fu">insert</span>(WordEntry.<span class="fu">TABLE_NAME</span>, <span class="kw">null</span>, sample1);</code></pre></div>
+<p>The second parameter to <code>.insert()</code> is a <code>nullColumnHack</code>, which is a column to explicitly put a <code>NULL</code> value into if you don’t provide any other values (since you can’t insert an empty row).</p></li>
+<li><p>In the <code>onUpdate()</code> callback, we’ll just “drop” the table and recreate it (by calling <code>onCreate()</code>). In a production system, this would involve migration logic.</p></li>
 </ul>
 <p>If we want to interact with this database in <code>MainActivity</code>, we can initialize the <code>DatabaseHelper</code> object (which will create the database <em>if needed</em>) and then use that helper to fetch the database we want to query (using <code>getReadableDatabase()</code>).</p>
 <ul>
@@ -488,7 +421,7 @@ db.<span class="fu">insert</span>(WordEntry.<span class="fu">TABLE_NAME</span>, 
 # sqlite3 /data/data/edu.uw.package.name/databases/words.db
 # sqlite&gt; select * from words;
 # sqlite&gt; .exit</code></pre></li>
-<li><p>We can call a <code>query()</code> method on our <code>SQLiteDatabase</code>, and log out the results. A <code>SQLiteQueryBuilder</code> can offer some help if our query was going to be complex (e.g,. with <code>JOIN</code>):</p>
+<li><p>We can call a <code>query()</code> method on our <code>SQLiteDatabase</code>, and log out the results. A <code>SQLiteQueryBuilder</code> can offer some help if our query is going to be complex (e.g,. with <code>JOIN</code>):</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">SQLiteQueryBuilder builder = <span class="kw">new</span> <span class="fu">SQLiteQueryBuilder</span>();
 builder.<span class="fu">setTables</span>(WordDatabase.<span class="fu">WordEntry</span>.<span class="fu">TABLE_NAME</span>); <span class="co">//set the table to use</span>
 
@@ -509,26 +442,26 @@ Cursor results = builder.<span class="fu">query</span>(
 </ul>
 <p>Voila, we have a database that we can call methods on to access!</p>
 </div>
-<div id="implementing-contentprovider" class="section level2">
-<h2><span class="header-section-number">11.3</span> Implementing <code>ContentProvider</code></h2>
+<div id="implementing-a-contentprovider" class="section level2">
+<h2><span class="header-section-number">11.3</span> Implementing a ContentProvider</h2>
 <p>We don’t want to do this database creation and querying on the main thread (because it may take a while). And since we also want to easily let our <code>ListView</code> update when the database changes, we we like to be able to use a Loader to access this database. In order to use a Loader, we need to wrap the database in a <code>ContentProvider</code>.</p>
 <p class="alert alert-info">
-There are a lot of steps and a lot of code involved inmaking a <code>ContentProvider</code>, and most of them are “boilerplate” for most databases. So much so that there is <a href="https://developer.android.com/guide/topics/providers/content-provider-creating.html#ContentProvider">thorough example code</a> in the Google documentation, which you can copy-and-paste from as needed.
+There are a lot of steps and a lot of code involved in making a <code>ContentProvider</code>, and most of them are “boilerplate” for most databases. So much so that there is <a href="https://developer.android.com/guide/topics/providers/content-provider-creating.html#ContentProvider">thorough example code</a> in the Google documentation, which you can copy-and-paste from as needed.
 </p>
 <p>We’ll start by creating another class that extends <code>ContentProvider</code> (<em>can you understand why?</em>). Since this will have a lot of abstract methods we’ll need to fill in, so we can actually use one of Android Studio’s generators via <code>New &gt; Other &gt; Content Provider</code> to help us along (I normally say not to use these, but with the <code>ContentProvider</code> it’s not too messy).</p>
 <p>We will have to specify an <a href="https://developer.android.com/guide/topics/providers/content-provider-creating.html#ContentURI"><strong>authority</strong></a> for the Provider. This acts as a unique, Android-internal “name” for the database (to indicate which it is, or who “owns” it). This is the “name” by which others will be able to refer to our particular Provider. This is thus sort of like a package name—and in fact, we usually use the package name with an extra <code>.provider</code> attached as the authority name.</p>
 <p>Also notice that an entry for this <code>&lt;provider&gt;</code> has been added to the <code>Manifest</code>, including the authority name. <code>android:enabled</code> means the Provider can be instantiated, and <code>android:exported</code> means it is available to other applications.</p>
-<div id="uris-and-types" class="section level3">
-<h3><span class="header-section-number">11.3.1</span> URIs and Types</h3>
+<div id="uris-and-types" class="section level3 unnumbered">
+<h3>URIs and Types</h3>
 <p>The most important piece of a <code>ContentProvider</code> (that makes it more than just helper methods for a database) is how it can be accessed at a particular <a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier"><strong>URI</strong></a>. So the first thing we need to do is specify this URI for our provider.</p>
 <ul>
-<li>We’ll actually want to specify <em>multiple</em> URIs. This is because each piece of content we provide (each record in the database!) is itself a distinct <em>resource</em>, and thus should have its own URI. Thus we need to design a <strong>schema</strong> for the URIs so that we know how to refer to each kind of content offered by our provider.</li>
+<li><p>We’ll actually want to specify <em>multiple</em> URIs. This is because each piece of content we provide (each record in the database!) is itself a distinct <em>resource</em>, and thus should have its own URI. As such, we need to design a <strong>schema</strong> for the URIs so that we know how to refer to each kind of content offered by our provider.</p>
+<p>Designing a URI schema is like designing a URL structure for a website; this will feel familiar to specifying <em>routes</em> for a web application.</p></li>
 </ul>
-<p>Designing a URI schema is like designing a URL structure for a website; this will feel familiar to specifying <em>routes</em> for a web application.</p>
 <p>The most common URI approach for Content Providers is to give each resource we provide a URI of the format:</p>
 <pre><code>content://authority/resource/id</code></pre>
 <ul>
-<li>This URI indicates that it is a identifier for a particular provider (the <code>authority</code>), which has a particular <code>resource</code> type (think: which database table of information), which may have a particular resource <code>id</code> (think: the ID of the record in the table)</li>
+<li>This URI indicates that it is an identifier for a particular provider (the <code>authority</code>), which has a particular <code>resource</code> type (think: which database table of information), which may have a particular resource <code>id</code> (think: the ID of the record in the table)</li>
 <li>Leaving off the <code>id</code> would refer to the entire table, or rather the “list” of resources. So really we have two different “categories” of URIs: the whole list, and an individual resource within that list. Both have the same “base”, but will need to be handled slightly differently.</li>
 <li>See <a href="https://developer.android.com/guide/topics/providers/content-provider-creating.html#ContentURI">designing content URIs</a> for more discussion on how to structure these.</li>
 </ul>
@@ -537,7 +470,7 @@ There are a lot of steps and a lot of code involved inmaking a <code>ContentProv
     Uri.<span class="fu">parse</span>(<span class="st">&quot;content://&quot;</span> + AUTHORITY + <span class="st">&quot;/&quot;</span>+WORD_RESOURCE);</code></pre></div>
 <p>But we also need to handle both types of resources: the “list” of words, and the individual words themselves. To enable this, we’re going to use a class called a <a href="https://developer.android.com/reference/android/content/UriMatcher.html"><code>UriMatcher</code></a>. This class provides a <em>mapping</em> between URIs and the actual “type” of data we’re interested in (either lists or word objects). This will help us do “routing” work, without needing to parse the path of the URI ourselves.</p>
 <ul>
-<li><p>We’ll represent the “type” or “kind” with <code>int</code> constants, allwoing us to easily refer to “which” kind of resource we’re talking about.</p>
+<li><p>We’ll represent the “type” or “kind” with <code>int</code> constants (like enums), allowing us to easily refer to “which” kind of resource we’re talking about.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//integer values representing each supported resource Uri</span>
 <span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">int</span> WORD_LIST_URI = <span class="dv">1</span>; <span class="co">// /words</span>
 <span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">int</span> WORD_SINGLE_URI = <span class="dv">2</span>;<span class="co">// /words/:id</span></code></pre></div>
@@ -545,7 +478,7 @@ There are a lot of steps and a lot of code involved inmaking a <code>ContentProv
 <li>So if you give me a <code>/words</code> URI, I can tell you that you’re interested in “resource kind #1”</li>
 </ul></li>
 </ul>
-<p>We want to make a a <code>static UriMatcher</code> object (like a constant) that we can use to do the mapping… but because it takes more than one line to set this up (we add an entry for each mapping), we need to put it inside a <code>static</code> block so that all this code is run together:</p>
+<p>We want to make a a <code>static UriMatcher</code> object (like a constant) that we can use to do the mapping… but because it takes more than one line to set this up (we add an entry for each mapping), we need to put it inside a <code>static</code> block so that all this code is run together at the class level (not per instance):</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">private</span> <span class="dt">static</span> <span class="dt">final</span> UriMatcher sUriMatcher; <span class="co">//for handling Uri requests</span>
 <span class="dt">static</span> {
     <span class="co">//setup mapping between URIs and IDs</span>
@@ -575,12 +508,12 @@ There are a lot of steps and a lot of code involved inmaking a <code>ContentProv
 </ul></li>
 </ul>
 </div>
-<div id="query-methods" class="section level3">
-<h3><span class="header-section-number">11.3.2</span> Query Methods</h3>
+<div id="query-methods" class="section level3 unnumbered">
+<h3>Query Methods</h3>
 <p>Once all of the URIs are specified, we can start responding to requests for content at those URIs. Specifically, when a request for content at a URI comes in, we’re going to fetch data from the <em>database</em> we made earlier and then return that data. We handle these “requests” through 4 different methods: <code>query()</code>, <code>insert()</code>, <code>update()</code>, and <code>delete()</code> (mirroring the CRUD operations, drawing on standard SQL query names). We will fill in those methods to have them fetch and return the database data.</p>
 <p>First, we need to get access to the database (through a helper), just as we did in the <code>MainActivity</code>. We’ll instantiate the <code>DatabaseHelper</code> in the <code>ContentProvider#onCreate()</code> callback, saving that helper as an instance variable to reference later. Then in the CRUD methods (which will be executed <em>in a background thread</em>), we can call <code>getWriteableDatabase()</code> to get access to that database.</p>
 <p>We will start with implementing the <strong>query()</strong> method. Basically, we need to do the same query we used in <code>MainActivity</code>—though can pass in the extra query parameters (e.g., <code>projection</code>, <code>selection</code>, <code>sortOrder</code>) instead of always having them be <code>null</code> or defined manually.</p>
-<p>However, we also need to be able to handle both types of resources that our Provider serves (lists or single words). We can use the <code>UriMatcher</code> to determine how to adjust our query: for example, by using the <code>UriBuilder#appendWhere()</code> method to add a “selection” argument:</p>
+<p>However, we also need to be able to handle both types of resources that our Provider serves (lists or single words). We can use the <code>UriMatcher</code> to determine how to adjust our query: for example, by using the <code>UriBuilder#appendWhere()</code> method to add a <code>WHERE</code> clause to our SQL selection:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">switch</span>(sUriMatcher.<span class="fu">match</span>(uri)){
     <span class="kw">case</span> WORD_LIST_URI: <span class="co">//all words</span>
       <span class="kw">break</span>; <span class="co">//no change</span>
@@ -639,13 +572,19 @@ There are a lot of steps and a lot of code involved inmaking a <code>ContentProv
 </div>
 </div>
 </div>
+<div class="footnotes">
+<hr />
+<ol start="40">
+<li id="fn40"><p><a href="https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html" class="uri">https://developer.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html</a><a href="databases.html#fnref40">↩</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="providers-and-loaders.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="files-and-permissions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="files-and-permissions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="location.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -674,10 +613,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info48/book/edit/master/databases-providers.Rmd",
+"link": "https://github.com/info448/book/edit/master/databases-providers.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["android-development.pdf", "android-development.epub"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -686,17 +625,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

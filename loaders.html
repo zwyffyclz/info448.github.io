@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
-<link rel="prev" href="java-swing.html">
-
+<link rel="prev" href="notifications-settings.html">
+<link rel="next" href="files-and-permissions.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -332,106 +332,157 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="publishing" class="section level1">
-<h1><span class="header-section-number">C</span> Publishing</h1>
-<p>This short chapter discusses how to publish your Android application, producing a version of the app that can be shared with others. In particular, it explains how to <a href="https://developer.android.com/studio/publish/app-signing.html">cryptographically sign your app</a> and build it so it can be installed by people who are not using Android Studio.</p>
-<p>Before you actually distribute your application, you should make sure it is fully ready to be published. Google provides an <a href="https://developer.android.com/studio/publish/preparing.html">excellent list</a> of things to do before releasing your application, as well as a more detailed <a href="https://developer.android.com/distribute/best-practices/launch/launch-checklist.html">checklist</a> for releasing an app on the Play Store.</p>
-<ul>
-<li>Particularly common tasks include: removing extraneous Logging commands, and checking for accessibility and localization.</li>
-</ul>
-<p>Once you have completed these steps, you are ready to build and sign your app.</p>
-<div id="signing-an-app" class="section level2">
-<h2><span class="header-section-number">C.1</span> Signing an App</h2>
-<p>As described in <a href="introduction.html#building-apps">lecture 1</a>, building an Android application involves compiling Java and XML code into DVM bytecode, and then packing this code (along with assets and graphics) into a <code>.apk</code> file.</p>
-<p>But in order to install this <code>.apk</code> file onto a device, it needs to be <strong>cryptographically signed</strong> though the inclusion of a <a href="https://en.wikipedia.org/wiki/Public-key_cryptography"><strong>public-key certificate</strong></a>. This <a href="https://en.wikipedia.org/wiki/Digital_signature">certificate</a> corresponds with a <em>private key</em> (a secret code) held by you (the developer). Because each public-key cert is associated with a code only you as the developer knows (similar to a password), it is able to act as an identifying <em>signature</em> for your app: only you know the secret password, so only you are able to provide this particular certificate. Thus by <em>signing</em> the <code>.apk</code> with your signature, you are marking the package as being developed by you and not someone else—just like a signature on a check. Android uses these signatures as a security feature to ensure that any future updates come from the same person (no malicious app updates!), as well as to help verify the source of an installed package.</p>
-<ul>
-<li>The secret <em>private keys</em> are stored on your computer in <code>.keystore</code> files (think: a database of private keys). You may have multiple different keystores on your machine.</li>
-</ul>
-<p>By default, when you build and run an app in Android Studio, the IDE automatically generates a <strong>debug certificate</strong> for you to sign your application with. This certificate is not secure (it’s an automatically generated password!) so isn’t trustworthy for app stores (like the Play Store)… but it is sufficient for being able to install and run your application through Android Studio.</p>
-<ul>
-<li><p>By default, keys are stored in the <code>~/.android</code> folder on Mac and Linux, and the <code>C:\Users\USER_NAME\.android\</code> folder on Windows. You can view the debug key (e.g., on Mac) using the command:</p>
-<pre><code>keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android</code></pre>
-<ul>
-<li><p>The <code>-alias</code> is a name of the particular certificate, and the <code>-storepass</code> and <code>keypass</code> arguments are literal passwords associated with the store (database) and certificate (in the database) respectively. The fact that this store is password protected is what makes it secret and accessible only to the developer.</p></li>
-<li><p>Scroll down to see the “Certificate fingerprints”; for example, the <code>SHA1</code> certificate is used when getting a <a href="https://developers.google.com/maps/documentation/android-api/signup">Google Maps API key</a>.</p></li>
-</ul></li>
-<li><p>Importantly, each computer running Android Studio will produce it’s own unique <em>debug certificate</em>. That means that the “signature” identifying your app will different for every different computer: even if it has the same package and the same source code, Android will consider it a “different” program because it was built (in debug mode) on a different machine. This is particularly important when things like API keys (e.g., for Google Maps) are linked to a particular digital signature; it means that <em>each</em> development machine would need to have its unique signature associated with the API!</p></li>
-</ul>
-<p>In addition to the automatically generated <em>debug certificates</em>, you can sign apps with your own generated <strong>release certificate</strong>. This is a certificate not automatically created by Android Studio, but is still associated with a secret “password” that only you know. These certificates are also stored in a <code>.keystore</code> file, which is created and password-protected by the developer. Because this keystore is kept secret and locked, only the developer is able to sign the built <code>.apk</code> with a verifiable signature, thereby ensuring that any updates to the application must have come from that developer.</p>
-<p class="alert">
-I like to think of <em>debug certificates</em> as like cheap, easily-reproducible Bic pens, and <em>release certificates</em> like fancy golden quills. When multiple developers are working on an app, each will be signing their testing versions with their own cheap Bics. But when it comes to releasing the project, you need to get out the expensive golden quill to do the signing. The validity of an app is dependent on which “pen” is used to sign it. (In this metaphor, the <code>.keystore</code> file is a pen case).
+<div id="loaders" class="section level1">
+<h1><span class="header-section-number">Lecture 9</span> Providers and Loaders</h1>
+<p>This lecture discusses how to access data from a <strong>Content Provider</strong> using a <a href="https://developer.android.com/guide/components/loaders.html"><strong>Loader</strong></a>. A <em>Content Provider</em> is an abstraction of a database or other data store, allowing us easily and systematically work with that data in Java (rather than in a separate data manipulation language such as SQL). A <em>Loader</em> is then used to efficiently perform this data access in the background (off the UI Thread), while also easily connecting that data to Views. This lecture discusses how to use a Loader to access the data in an existing Content Provider; a <a href="databases.html#databases">later lecture</a> details how to create Content Providers from scratch.</p>
+<p class="alert alert-info">
+This lecture references code found at <a href="https://github.com/info448/lecture09-loaders" class="uri">https://github.com/info448/lecture09-loaders</a>. Note that this demo accesses the device’s User Dictionary, which is only available to general apps on API 22 (Lollipop) <strong>or earlier</strong>. This tutorial thus does not support all versions of Android. You can instead use an emulator running API 22 or earlier.
 </p>
-<div id="release-.apk" class="section level3 unnumbered">
-<h3>Release <code>.apk</code></h3>
-<p>In order to generate a shareable <strong>release <code>.apk</code></strong>, you will need to produce a <em>release certificate</em> to sign the app with, then build and sign the <code>.apk</code> with that certificate.</p>
-<p>Android studio makes it easy to <a href="https://developer.android.com/studio/publish/app-signing.html#release-mode">sign a release build</a> (follow the link for more details and examples). In short, select <code>Build &gt; Generate Signed APK</code> from the menu, and follow the wizard’s instructions!</p>
+<div id="content-providers-intro" class="section level2">
+<h2><span class="header-section-number">9.1</span> Content Providers</h2>
+<p>The example starter code uses a <code>ListView</code> that shows a list of words. Recall that a <code>ListView</code> utilizes the <strong>model-view-controller</strong> architecture… and in this case, the “model” (data) is a hard-coded list of array of words. But there are other lists of words as well! Entire databases of words! Previous lectures have discussed how to use <em>network requests</em> to access online data APIs, but there are also databases (of words no less) built into your Android phone.</p>
+<p>For example, Android keeps track of the list of the spellings of “non-standard” words in what is called the <strong>User Dictionary</strong>. You can view this list on the device at <code>Settings &gt; Language &amp; Input &gt; Personal Dictionary</code>. You can even use this Settings interface to add new words to the dictionary (e.g., “embiggen”, “cromulent”, “covfefe”).</p>
+<p>Note that the User Dictionary keeps track of a <a href="https://developer.android.com/guide/topics/providers/content-provider-basics.html#ClientProvider"><strong>database</strong></a> of words. You can think of this database as being like a single SQL table: it’s a set of <em>entries</em> (rows) each of which have some <em>values</em> (columns). The primary key of the table is named (by convention) <strong><code>ID</code></strong>.</p>
+<p>Since this data is stored in (essentially) a simple SQL table, it is possible for us to access and modify it programmatically&amp;mash;moreover, the Android framework allows us to do this without needing to know or write SQL! For example, we can access this list of words in order to show them in the ListView.</p>
+<p class="alert alert-info">
+While you don’t need to know SQL to utilize a built-in database like the User Dictionary, it helps to have a passing familiarity with relational databases and their terminology to intuit about the organization of the data.
+</p>
+<p>To do this, we’ll need to request permission to access the database, just as we asked permission to access the Internet. Include the following in the <em>Manifest</em>:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;uses-permission</span><span class="ot"> android:name=</span><span class="st">&quot;android.permission.READ_USER_DICTIONARY&quot;</span><span class="kw">/&gt;</span></code></pre></div>
+<p>Although the words are stored in a database, we don’t know the <em>exact</em> format of this database (e.g., the exact table or column names, or even whether it is an SQL database or just a <code>.csv</code> file!). We want to avoid having to write code that only works with a specific format, especially as the words may be stored in different kinds of databases on different devices or across different versions of Android. (The Android framework does include support for working directly with a local <code>SQLite</code> database, as discussed in the next chapter).</p>
+<p>In order to avoid relying on the specific format of how some data is stored, Android offers an <strong><em>abstraction</em></strong> in the form of a <a href="https://developer.android.com/guide/topics/providers/content-providers.html"><strong>Content Provider</strong></a><a href="#fn36" class="footnoteRef" id="fnref36"><sup>36</sup></a>. A Content Provider offers an interface to interact with structured data, whether that data is stored in a database, in a file, in <em>multiple</em> files, online, or somewhere else. You can thus think of “a Content Provider” as meaning “a data source” (e.g., the source/provider of content)!</p>
 <ul>
-<li><p>You will be prompted for a location for the <code>.keystore</code> file to use (e.g., where to store your release pens). I recommend making a file somewhere in your user’s home directory (e.g., <code>~/android-release.jks</code>). Note that you can use the same private key (found in the keystore) for multiple apps.</p></li>
-<li><p>It is also possible to configure Android Studio to <a href="https://developer.android.com/studio/publish/app-signing.html#sign-auto">automatically</a> sign your application when building for release. Be sure you <a href="https://developer.android.com/studio/publish/app-signing.html#secure-shared-keystore">remove signing information</a> from your build files so your passwords don’t get uploaded to GitHub!</p></li>
+<li>It is possible to create your own Content Providers (described in a later chapter), but this lecture focuses purely on <em>utilizing</em> existing Providers.</li>
 </ul>
-<p>The built and signed <code>.apk</code> will be created in the destination folder you selected. This file can then be <a href="https://developer.android.com/studio/publish/index.html#publishing-release">shared</a>: uploaded to the Google Play Store, hosted on a web page, or emailed directly to someone to install.</p>
+<p>All Content Providers (data sources) have a <strong>URI</strong> (<a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">Universal Resource Identifier</a>, a generalization of a URL used for resources not necessarily on the Internet). It is possible to <em>query</em> this URI, similar in concept to how web APIs are accessed via queries to their URI endpoints. In particular, Content Provider URIs utilize the <strong><code>content://</code></strong> protocol (instead of <code>https://</code>), since the their data is accessed as via “content requests” rather than “HTTP requests”.</p>
+<p>The <code>URI</code> for the Dictionary’s content is defined by the constant <a href="https://developer.android.com/reference/android/provider/UserDictionary.Words.html"><code>UserDictionary.Words.CONTENT_URI</code></a>. We utilize constants to refer to URIs and paths to make it easier to refer to them and to generalize across devices that may have different directory structures.</p>
+<p>We are able to access this Content Provider via a <a href="https://developer.android.com/reference/android/content/ContentResolver.html"><code>ContentResolver</code></a>. This class provides methods for accessing the data in a provider (represented as a <code>ContentProvider</code> object). Each Context has a singleton ContentResolver, which is accessed via the <code>getContentResolver()</code> method (note that for a Fragment, the Context is the containing Activity). The ContentResolver’s methods support the basic <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> operations: <code>insert()</code> (create), <code>query()</code> (read), <code>update()</code>, and <code>delete()</code>.</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ContentResolver resolver = <span class="fu">getContentResolver</span>();</code></pre></div>
+<p>ContentResolver methods take multiple parameters, supporting the different options available in a generic SQL query. For example, consider the the <a href="https://developer.android.com/reference/android/content/ContentResolver.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)"><code>query()</code></a> method:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="fu">getContentResolver</span>().<span class="fu">query</span>(
+    uri,              <span class="co">// The content URI</span>
+    projection,      <span class="co">// The an array of columns to return for each row</span>
+    selectionClause  <span class="co">// Selection criteria (as an SQL WHERE clause)</span>
+    selectionArgs,   <span class="co">// An array of values that can be injected into the selection clause</span>
+    sortOrder);      <span class="co">// The sort order for the returned rows (as an SQL ORDER BY clause)</span></code></pre></div>
 <ul>
-<li>Note that installing <code>.apk</code> files from outside the Play Store—even when signed—requires the user to <a href="https://developer.android.com/studio/publish/index.html#unknown-sources">opt-in for apps from unknown sources</a>.</li>
+<li>This is basically a wrapper around an SQL <code>SELECT</code> statement! But each “part” of that statement are specified as parameter to this method.</li>
 </ul>
+<p>The <strong>projection</strong> is a <code>String[]</code> of all the “columns” (attributes) we want to fetch from the data source. This is what you’d put after <code>SELECT</code> in SQL. (Note we can pass in <code>null</code> to represent <code>SELECT *</code>, but that’s inefficient—better to give a list of everything).</p>
+<ul>
+<li><p>We can see what column names are available for the User Dictionary in <a href="http://developer.android.com/reference/android/provider/UserDictionary.Words.html"><code>UserDictionary.Words</code></a>. Again, these are defined as constants!</p></li>
+<li><p>Be sure to always select the <code>_ID</code> primary key: it will be needed later!</p></li>
+</ul>
+<p>The other parameters can be used to customize the <code>SELECT</code> statement. The “selection” (<code>WHERE</code>) clause needs to parameters: the second are values that will be escaped against <a href="https://en.wikipedia.org/wiki/SQL_injection">SQL injection attacks</a>. Passing <code>null</code> for any of these parameters will cause the clause to be ignored:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String[] projection = <span class="kw">new</span> String[] {
+    UserDictionary.<span class="fu">Words</span>.<span class="fu">WORD</span>,
+    UserDictionary.<span class="fu">Words</span>.<span class="fu">FREQUENCY</span>,
+    UserDictionary.<span class="fu">Words</span>.<span class="fu">_ID</span>
+};
+resolver.<span class="fu">query</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">CONTENT_URI</span>, projection, <span class="kw">null</span>, <span class="kw">null</span>, <span class="kw">null</span>);</code></pre></div>
+<p>So overall, the query is breaking apart the components SQL <code>SELECT</code> statement into different pieces as parameters to a method, so you don’t <em>quite</em> have to write the selection yourself. Moreover, this method <em>abstracts</em> the specific query language, allowing the same queries to be used on different formats of database (<code>SQLite</code>, <code>PostgreSQL</code>, files, etc).</p>
+</div>
+<div id="cursors" class="section level2">
+<h2><span class="header-section-number">9.2</span> Cursors</h2>
+<p>The <code>ContentResolver#query()</code> method returns a <a href="http://developer.android.com/reference/android/database/Cursor.html"><strong><code>Cursor</code></strong></a>. A <code>Cursor</code> provides an interface to the list of records in a database (e.g., those returned by the query). A <code>Cursor</code> also behaves like an <code>Iterator</code> in Java: it keeps track of which record is currently being accessed (e.g., what the <code>i</code> would be in a for loop). You can think of it as a “pointer” to a particular record, like the cursor on a screen.</p>
+<p>We call methods on the <code>Cursor</code> to specify which record we want it to “point” to, as well as to fetch values from the record object at that spot in the list. For example:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">cursor.<span class="fu">moveToFirst</span>(); <span class="co">//move to the first item</span>
+String field0 = cursor.<span class="fu">getString</span>(<span class="dv">0</span>); <span class="co">//get the first field (column you specified) as a String</span>
+String word = cursor.<span class="fu">getString</span>(cursor.<span class="fu">getColumnIndexOrThrow</span>(<span class="st">&quot;word&quot;</span>)); <span class="co">//get the &quot;word&quot; field as a String</span>
+cursor.<span class="fu">moveToNext</span>(); <span class="co">//go to the next item</span></code></pre></div>
+<p>The nice thing about <code>Cursors</code> though is that they can easily be fed into <code>AdapterViews</code> by using a <a href="http://developer.android.com/reference/android/widget/CursorAdapter.html"><code>CursorAdapter</code></a> (as opposed to the <code>ArrayAdapter</code> we’ve used previously). The <a href="http://developer.android.com/reference/android/widget/SimpleCursorAdapter.html"><strong><code>SimpleCursorAdapter</code></strong></a> is a concrete implementation that is almost as easy to use as an <code>ArrayAdapter</code>:</p>
+<p>You instantiate a new <code>SimpleCursorAdapter</code>, passing it:</p>
+<ol style="list-style-type: decimal">
+<li>A <code>Context</code> for loading resources</li>
+<li>A layout resource to inflate for each record</li>
+<li>A <code>Cursor</code> (which can be <code>null</code>)</li>
+<li>An array of column names to fetch from each entry in the Cursor (the <strong>projection</strong>, similar to before)</li>
+<li>A matching list of View resource <code>ids</code> (which should all be <code>TextViews</code>) to assign each column’s value to. This is the “mapping” that the Adapter will perform (from projection columns to TextView contents).</li>
+<li>Any additional option flags (<code>0</code> means no flags, and is the correct option for us).</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">adapter = <span class="kw">new</span> <span class="fu">SimpleCursorAdapter</span>(
+                <span class="kw">this</span>,
+                R.<span class="fu">layout</span>.<span class="fu">list_item_layout</span>, <span class="co">//item to inflate</span>
+                cursor, <span class="co">//cursor to show</span>
+                <span class="kw">new</span> String[] {UserDictionary.<span class="fu">Words</span>.<span class="fu">WORD</span>, UserDictionary.<span class="fu">Words</span>.<span class="fu">FREQUENCY</span>}, <span class="co">//fields to display</span>
+                <span class="kw">new</span> <span class="dt">int</span>[] {R.<span class="fu">id</span>.<span class="fu">txt_list_item</span>, R.<span class="fu">id</span>.<span class="fu">txt_item_freq</span>},                       <span class="co">//where to display them</span>
+                <span class="dv">0</span>); <span class="co">//flags</span></code></pre></div>
+<p>Then we can use this adapter for the ListView in place of the <code>ArrayAdapter</code>!</p>
+</div>
+<div id="loaders" class="section level2">
+<h2><span class="header-section-number">9.3</span> Loaders</h2>
+<p>In order to get the <code>Cursor</code> to pass into the adapter, we need to <code>.query()</code> the database. But we want to do this a lot in fact, every time the database updates, we’d like to be able to query it again so we can update the Adapter and have the changes show up! Additionally, accessing a database can be <em>slow</em> (it requires disk access, structuring and submitting SQL calls, and depending on the complexity of the database those queries can take time). Thus, as with network requests, we’d like to perform this query on a <em>background thread</em> so that it doesn’t block our application and cause it to stall.</p>
+<p>In order to automatically update your list with new data loaded on a background thread, we’re going to use a class called a <a href="https://developer.android.com/guide/components/loaders.html"><code>Loader</code></a>. This is basically a wrapper around <a href="https://developer.android.com/reference/android/os/AsyncTask.html"><code>ASyncTask</code></a> (described in a later chapter), but one that lets you execute a background task repeatedly <em>whenever the data source changes</em>. In particular, Android provides a <a href="http://developer.android.com/reference/android/content/CursorLoader.html"><code>CursorLoader</code></a> specifically used to load data from ContentProviders through Cursors—whenever the content changes, a new Cursor is produced which can be “swapped” into the adapter.</p>
+<p>To use a <code>CursorLoader</code>, we need to specify that our Activity implements the <a href="https://developer.android.com/reference/android/support/v4/app/LoaderManager.LoaderCallbacks.html"><code>LoaderManager.LoaderCallbacks&lt;Cursor&gt;</code></a> interface—basically saying that this fragment can react to Loader events.</p>
+<!-- - Loaders need to work with Fragments, unless the Activity subclasses [`FragmentActivity`](https://developer.android.com/reference/android/support/v4/app/FragmentActivity.html) (as `AppCompatActivity` does) and thereby provides the "Fragment" capabilities needed to use a `Loader`. So we can use Loaders in _our_ Activities or Fragments. -->
+<p>We will need to fill in the interfaces callback functions in order to use the <code>CursorLoader</code>:</p>
+<ul>
+<li><p>In <code>onCreateLoader()</code> we specify what the Loader should <em>do</em>. Here we will instantiate and return a <a href="https://developer.android.com/reference/android/content/CursorLoader.html#CursorLoader(android.content.Context, android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)"><code>new CursorLoader(...)</code></a> that queries the <code>ContentProvider</code>. This looks a lot like the <code>.query()</code> method we wrote earlier, but will run on a background thread!</p>
+<!-- Note that the callback is also passed an `int id`, which is used to refer to _which_ loader we want to create. This allows you to have multiple loaders (e.g., for multiple lists!) in a single application. --></li>
+<li><p>In the <code>onLoadFinished()</code> callback, we can use <code>swapCursor()</code> to swap passed in <code>Cursor</code> into our <code>SimpleCursorAdapter</code> in order to feed that model data into our controller (for display in the view). The framework handles any cleanup around the old Cursor.</p>
+<!-- You can call `loader.getId()` to determine which loader finished loading, if you need to determine what adapter to swap into. --></li>
+<li><p>In the <code>onLoaderReset()</code> callback, we can just swap in <code>null</code> for our Cursor, since there now is no content to show (the loaded data has been “reset”).</p></li>
+</ul>
+<p>Finally, in order to actually <em>start</em> our background loading, we’ll use the <code>getLoaderManager().initLoader(...)</code> method. This will cause the Android framework to request the creation of a new Loader (by our <code>onCreateLoader()</code> method), as well as start that Loader loading! (This uses a manager similar to <code>FragmentManager</code>, and is similar in flavor to <code>AsyncTask.execute()</code>).</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="fu">getSupportLoaderManager</span>().<span class="fu">initLoader</span>(<span class="dv">0</span>, <span class="kw">null</span>, <span class="kw">this</span>);</code></pre></div>
+<ul>
+<li>Use <code>getSupportLoaderManager()</code> if you’re using the support library (and calling from an Activity; a support library Fragment like we’ve been using only has the one manager, so you can just use <code>getLoaderManager()</code>).</li>
+</ul>
+<p>The first parameter to the <code>initLoader()</code> method is an id number for <em>which cursor you want to load</em>—what is passed in as the first param to <code>onCreateLoader()</code> (or is accessible via <code>Loader#getId()</code>). This allows you to have multiple Loaders using the same callback function (e.g., to handle multiple Loaders for multiple data sources). The second param is a <code>Bundle</code> of args, and the third is the <code>LoaderCallbacks</code> (e.g., who handles the results)!</p>
+<ul>
+<li>Note that you can use the <code>.restartLoader()</code> method to “recreate” the <code>CursorLoader</code> (without losing other references), such as if you want to change the arguments passed to it.</li>
+</ul>
+<p>And with that, we can fetch the words from our database on a background thread—and if we update the words (e.g., through the Language Settings) it will automatically update!</p>
+</div>
+<div id="other-provider-actions" class="section level2">
+<h2><span class="header-section-number">9.4</span> Other Provider Actions</h2>
+<p>The Content Resolver of course allows us to do more than just query and load the data: we can also add, update, or remove entries from the database.</p>
+<ul>
+<li><p>If we want to <em>modify</em> the contents of the User Dictionary, we will need permission:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;uses-permission</span><span class="ot"> android:name=</span><span class="st">&quot;android.permission.WRITE_USER_DICTIONARY&quot;</span><span class="kw">/&gt;</span></code></pre></div></li>
+</ul>
+<p>To <em>insert</em> (create) a new Word into the ContentProvider, we call the <code>.insert()</code> method on the <code>ContentResolver</code>. It is passed a <a href="http://developer.android.com/reference/android/content/ContentValues.html"><code>ContentValues</code></a> object, which is a HashMap almost exactly like a <code>Bundle</code> (but it only supports values that can be entered into Content Providers, e.g., no Parcelables).</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ContentValues newValues = <span class="kw">new</span> <span class="fu">ContentValues</span>();
+newValues.<span class="fu">put</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">WORD</span>, inputText.<span class="fu">getText</span>().<span class="fu">toString</span>());
+newValues.<span class="fu">put</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">FREQUENCY</span>, <span class="dv">100</span>);
+newValues.<span class="fu">put</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">APP_ID</span>, <span class="st">&quot;edu.uw.loaderdemo&quot;</span>);
+newValues.<span class="fu">put</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">LOCALE</span>, <span class="st">&quot;en_US&quot;</span>);
+
+Uri newUri = <span class="fu">getContentResolver</span>().<span class="fu">insert</span>(
+       UserDictionary.<span class="fu">Words</span>.<span class="fu">CONTENT_URI</span>,   <span class="co">// the user dictionary content URI!</span>
+       newValues                   <span class="co">// the values to insert</span>
+);</code></pre></div>
+<ul>
+<li>The <code>insert()</code> function returns the URI for the <em>newly inserted row</em>, e.g. if you want to be able to query and display that content later.</li>
+</ul>
+<p>A similar approach is used to <em>update</em> and modify an entry in the Content Provider: call the <code>.update()</code> method and pass in a <code>ContentValues</code> bundle of values to change:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ContentValues newValues = <span class="kw">new</span> <span class="fu">ContentValues</span>();
+newValues.<span class="fu">put</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">FREQUENCY</span>, newFrequency);
+
+<span class="fu">getContentResolver</span>().<span class="fu">update</span>(
+          ContentUris.<span class="fu">withAppendedId</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">CONTENT_URI</span>, id),
+          newValues,
+          <span class="kw">null</span>, <span class="kw">null</span>); <span class="co">//no selection</span></code></pre></div>
+<ul>
+<li>Note that we make sure to update only that particular item by specifying the <em>URI of that item</em>. We do this by constructing a new URI representing/identifying that item, effectively by appending <code>&quot;/:id&quot;</code> to the URI. This means that we don’t need to use the selection criteria (though we could do that as well).</li>
+</ul>
+<p>That covers how to utilize and interact with a Content Provider (as a <em>client</em> of that Provider). <a href="databases.html#databases">A later lecture</a> will cover how to implement a Provider for a custom database.</p>
 
 </div>
 </div>
+<div class="footnotes">
+<hr />
+<ol start="36">
+<li id="fn36"><p><a href="https://developer.android.com/guide/topics/providers/content-providers.html" class="uri">https://developer.android.com/guide/topics/providers/content-providers.html</a><a href="loaders.html#fnref36">↩</a></p></li>
+</ol>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="java-swing.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="notifications-settings.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="files-and-permissions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -460,7 +511,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info448/book/edit/master/publishing.Rmd",
+"link": "https://github.com/info448/book/edit/master/loaders.Rmd",
 "text": "Edit"
 },
 "download": ["android-development.pdf", "android-development.epub"],

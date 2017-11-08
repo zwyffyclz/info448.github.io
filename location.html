@@ -12,7 +12,7 @@
   <meta property="og:title" content="Android Development: Lecture Notes" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info448.github.io/" />
-  
+  <meta property="og:image" content="https://info448.github.io/img/android_icon_transparent.png" />
   <meta property="og:description" content="Lecture Notes for INFO 448: Android Development." />
   <meta name="github-repo" content="info448/book" />
 
@@ -20,20 +20,20 @@
   <meta name="twitter:title" content="Android Development: Lecture Notes" />
   
   <meta name="twitter:description" content="Lecture Notes for INFO 448: Android Development." />
-  
+  <meta name="twitter:image" content="https://info448.github.io/img/android_icon_transparent.png" />
 
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-09-08">
+<meta name="date" content="2017-11-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
-  
-<link rel="prev" href="files-and-permissions.html">
-<link rel="next" href="services.html">
+  <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
+<link rel="prev" href="databases.html">
+<link rel="next" href="styles-themes.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -117,220 +117,180 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="part"><span><b>I Lectures</b></span></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#android-history"><i class="fa fa-check"></i><b>1.1</b> Android History</a><ul>
-<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#android-versions"><i class="fa fa-check"></i><b>1.1.1</b> Android Versions</a></li>
-<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#legal-battles"><i class="fa fa-check"></i><b>1.1.2</b> Legal Battles</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#android-versions"><i class="fa fa-check"></i>Android Versions</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#legal-battles"><i class="fa fa-check"></i>Legal Battles</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#android-architecture-and-code"><i class="fa fa-check"></i><b>1.2</b> Android Architecture and Code</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#programming-languages"><i class="fa fa-check"></i><b>1.2.1</b> Programming Languages</a></li>
-<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#building-apps"><i class="fa fa-check"></i><b>1.2.2</b> Building Apps</a></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#building-apps"><i class="fa fa-check"></i><b>1.2</b> Building Apps</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#running-the-app"><i class="fa fa-check"></i>Running the App</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#development-tools"><i class="fa fa-check"></i><b>1.3</b> Development Tools</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#hardware"><i class="fa fa-check"></i><b>1.3.1</b> Hardware</a></li>
-<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#software"><i class="fa fa-check"></i><b>1.3.2</b> Software</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#app-source-code"><i class="fa fa-check"></i><b>1.3</b> App Source Code</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#xml-resources"><i class="fa fa-check"></i>XML Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#the-manifest"><i class="fa fa-check"></i>The Manifest</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#java-activities"><i class="fa fa-check"></i>Java Activities</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#gradle-scripts"><i class="fa fa-check"></i>Gradle Scripts</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#hello-world"><i class="fa fa-check"></i><b>1.4</b> Hello World</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#the-emulator"><i class="fa fa-check"></i><b>1.4.1</b> The Emulator</a></li>
-<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#project-contents"><i class="fa fa-check"></i><b>1.4.2</b> Project Contents</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#logging-adb"><i class="fa fa-check"></i><b>1.4</b> Logging &amp; ADB</a><ul>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#log-methods"><i class="fa fa-check"></i>Log Methods</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#logcat"><i class="fa fa-check"></i>Logcat</a></li>
+<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#toast"><i class="fa fa-check"></i>Toast</a></li>
 </ul></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#adding-interaction"><i class="fa fa-check"></i><b>1.5</b> Adding Interaction</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="activities.html"><a href="activities.html"><i class="fa fa-check"></i><b>2</b> Activities and Logging</a><ul>
-<li class="chapter" data-level="2.1" data-path="activities.html"><a href="activities.html#making-activities"><i class="fa fa-check"></i><b>2.1</b> Making Activities</a></li>
-<li class="chapter" data-level="2.2" data-path="activities.html"><a href="activities.html#the-activity-lifecycle"><i class="fa fa-check"></i><b>2.2</b> The Activity Lifecycle</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="activities.html"><a href="activities.html#overriding-the-callback-methods"><i class="fa fa-check"></i><b>2.2.1</b> Overriding the Callback Methods</a></li>
+<li class="chapter" data-level="2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html"><i class="fa fa-check"></i><b>2</b> Resources and Layouts</a><ul>
+<li class="chapter" data-level="2.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#resources"><i class="fa fa-check"></i><b>2.1</b> Resources</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#r"><i class="fa fa-check"></i>R</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#alternative-resources"><i class="fa fa-check"></i>Alternative Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="activities.html"><a href="activities.html#logging-adb"><i class="fa fa-check"></i><b>2.3</b> Logging &amp; ADB</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="activities.html"><a href="activities.html#log-methods"><i class="fa fa-check"></i><b>2.3.1</b> Log Methods</a></li>
-<li class="chapter" data-level="2.3.2" data-path="activities.html"><a href="activities.html#logcat"><i class="fa fa-check"></i><b>2.3.2</b> Logcat</a></li>
+<li class="chapter" data-level="2.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views"><i class="fa fa-check"></i><b>2.2</b> Views</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#view-properties"><i class="fa fa-check"></i>View Properties</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views-and-java"><i class="fa fa-check"></i>Views and Java</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#practice"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="activities.html"><a href="activities.html#basic-events"><i class="fa fa-check"></i><b>2.4</b> Basic Events</a></li>
-<li class="chapter" data-level="2.5" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>2.5</b> Multiple Activities</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="activities.html"><a href="activities.html#intents-and-context"><i class="fa fa-check"></i><b>2.5.1</b> Intents and Context</a></li>
+<li class="chapter" data-level="2.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#layouts"><i class="fa fa-check"></i><b>2.3</b> Layouts</a><ul>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#linearlayout"><i class="fa fa-check"></i>LinearLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#relativelayout"><i class="fa fa-check"></i>RelativeLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#constraintlayout"><i class="fa fa-check"></i>ConstraintLayout</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#other-layouts"><i class="fa fa-check"></i>Other Layouts</a></li>
+<li class="chapter" data-level="" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#combining-and-inflating-layouts"><i class="fa fa-check"></i>Combining and Inflating Layouts</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i><b>2.6</b> Back &amp; Tasks</a><ul>
-<li class="chapter" data-level="2.6.1" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i><b>2.6.1</b> Up Navigation</a></li>
+<li class="chapter" data-level="2.4" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#inputs"><i class="fa fa-check"></i><b>2.4</b> Inputs</a></li>
 </ul></li>
+<li class="chapter" data-level="3" data-path="activities.html"><a href="activities.html"><i class="fa fa-check"></i><b>3</b> Activities</a><ul>
+<li class="chapter" data-level="3.1" data-path="activities.html"><a href="activities.html#making-activities"><i class="fa fa-check"></i><b>3.1</b> Making Activities</a></li>
+<li class="chapter" data-level="3.2" data-path="activities.html"><a href="activities.html#the-activity-lifecycle"><i class="fa fa-check"></i><b>3.2</b> The Activity Lifecycle</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#overriding-the-callback-methods"><i class="fa fa-check"></i>Overriding the Callback Methods</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#saving-and-restoring-activity-state"><i class="fa fa-check"></i>Saving and Restoring Activity State</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html"><i class="fa fa-check"></i><b>3</b> Resources and Layouts</a><ul>
-<li class="chapter" data-level="3.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#resources"><i class="fa fa-check"></i><b>3.1</b> Resources</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#alternative-resources"><i class="fa fa-check"></i><b>3.1.1</b> Alternate Resources</a></li>
-<li class="chapter" data-level="3.1.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#xml-details"><i class="fa fa-check"></i><b>3.1.2</b> XML Details</a></li>
-<li class="chapter" data-level="3.1.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#r"><i class="fa fa-check"></i><b>3.1.3</b> R</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#views"><i class="fa fa-check"></i><b>3.2</b> Views</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#view-properties"><i class="fa fa-check"></i><b>3.2.1</b> View Properties</a></li>
-<li class="chapter" data-level="3.2.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#practice"><i class="fa fa-check"></i><b>3.2.2</b> Practice</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#layouts"><i class="fa fa-check"></i><b>3.3</b> Layouts</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#linearlayout"><i class="fa fa-check"></i><b>3.3.1</b> LinearLayout</a></li>
-<li class="chapter" data-level="3.3.2" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#relativelayout"><i class="fa fa-check"></i><b>3.3.2</b> RelativeLayout</a></li>
-<li class="chapter" data-level="3.3.3" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#constraintlayout"><i class="fa fa-check"></i><b>3.3.3</b> ConstraintLayout</a></li>
-<li class="chapter" data-level="3.3.4" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#other-layouts"><i class="fa fa-check"></i><b>3.3.4</b> Other Layouts</a></li>
-<li class="chapter" data-level="3.3.5" data-path="resources-and-layouts.html"><a href="resources-and-layouts.html#combining-and-inflating-layouts"><i class="fa fa-check"></i><b>3.3.5</b> Combining and Inflating Layouts</a></li>
+<li class="chapter" data-level="3.3" data-path="activities.html"><a href="activities.html#context"><i class="fa fa-check"></i><b>3.3</b> Context</a></li>
+<li class="chapter" data-level="3.4" data-path="activities.html"><a href="activities.html#multiple-activities"><i class="fa fa-check"></i><b>3.4</b> Multiple Activities</a><ul>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#activity-intents"><i class="fa fa-check"></i>Intents</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#back-tasks"><i class="fa fa-check"></i>Back &amp; Tasks</a></li>
+<li class="chapter" data-level="" data-path="activities.html"><a href="activities.html#up-navigation"><i class="fa fa-check"></i>Up Navigation</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="data-views.html"><a href="data-views.html"><i class="fa fa-check"></i><b>4</b> Data-Driven Views</a><ul>
-<li class="chapter" data-level="4.1" data-path="data-views.html"><a href="data-views.html#inputs"><i class="fa fa-check"></i><b>4.1</b> Inputs</a></li>
-<li class="chapter" data-level="4.2" data-path="data-views.html"><a href="data-views.html#listviews-and-adapters"><i class="fa fa-check"></i><b>4.2</b> ListViews and Adapters</a></li>
-<li class="chapter" data-level="4.3" data-path="data-views.html"><a href="data-views.html#network-data"><i class="fa fa-check"></i><b>4.3</b> Network Data</a></li>
+<li class="chapter" data-level="4.1" data-path="data-views.html"><a href="data-views.html#listviews-and-adapters"><i class="fa fa-check"></i><b>4.1</b> ListViews and Adapters</a></li>
+<li class="chapter" data-level="4.2" data-path="data-views.html"><a href="data-views.html#networking-with-volley"><i class="fa fa-check"></i><b>4.2</b> Networking with Volley</a><ul>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#using-volley"><i class="fa fa-check"></i>Using Volley</a></li>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#requestqueue-singletons"><i class="fa fa-check"></i>RequestQueue Singletons</a></li>
+<li class="chapter" data-level="" data-path="data-views.html"><a href="data-views.html#downloading-images"><i class="fa fa-check"></i>Downloading Images</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="material-design.html"><a href="material-design.html"><i class="fa fa-check"></i><b>5</b> Material Design</a><ul>
-<li class="chapter" data-level="5.1" data-path="material-design.html"><a href="material-design.html#resources-1"><i class="fa fa-check"></i><b>5.1</b> Resources:</a></li>
+<li class="chapter" data-level="5.1" data-path="material-design.html"><a href="material-design.html#the-material-design-language"><i class="fa fa-check"></i><b>5.1</b> The Material Design Language</a></li>
+<li class="chapter" data-level="5.2" data-path="material-design.html"><a href="material-design.html#material-styles-icons"><i class="fa fa-check"></i><b>5.2</b> Material Styles &amp; Icons</a></li>
+<li class="chapter" data-level="5.3" data-path="material-design.html"><a href="material-design.html#design-support-libraries"><i class="fa fa-check"></i><b>5.3</b> Design Support Libraries</a><ul>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#widgets"><i class="fa fa-check"></i>Widgets</a></li>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#coordinator-layout"><i class="fa fa-check"></i>Coordinator Layout</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="material-design.html"><a href="material-design.html#animations"><i class="fa fa-check"></i><b>5.4</b> Animations</a><ul>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#property-animation"><i class="fa fa-check"></i>Property Animation</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="material-design.html"><a href="material-design.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="fragments.html"><a href="fragments.html"><i class="fa fa-check"></i><b>6</b> Fragments</a><ul>
 <li class="chapter" data-level="6.1" data-path="fragments.html"><a href="fragments.html#creating-a-fragment"><i class="fa fa-check"></i><b>6.1</b> Creating a Fragment</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="fragments.html"><a href="fragments.html#activity-to-fragment-communication"><i class="fa fa-check"></i><b>6.1.1</b> Activity-to-Fragment Communication</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#activity-to-fragment-communication"><i class="fa fa-check"></i>Activity-to-Fragment Communication</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="fragments.html"><a href="fragments.html#dynamic-fragments"><i class="fa fa-check"></i><b>6.2</b> Dynamic Fragments</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="fragments.html"><a href="fragments.html#instantiating-fragments"><i class="fa fa-check"></i><b>6.2.1</b> Instantiating Fragments</a></li>
-<li class="chapter" data-level="6.2.2" data-path="fragments.html"><a href="fragments.html#transactions"><i class="fa fa-check"></i><b>6.2.2</b> Transactions</a></li>
-<li class="chapter" data-level="6.2.3" data-path="fragments.html"><a href="fragments.html#inter-fragment-communication"><i class="fa fa-check"></i><b>6.2.3</b> Inter-Fragment Communication</a></li>
-<li class="chapter" data-level="6.2.4" data-path="fragments.html"><a href="fragments.html#the-back-stack"><i class="fa fa-check"></i><b>6.2.4</b> The Back Stack</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#instantiating-fragments"><i class="fa fa-check"></i>Instantiating Fragments</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#transactions"><i class="fa fa-check"></i>Transactions</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#inter-fragment-communication"><i class="fa fa-check"></i>Inter-Fragment Communication</a></li>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#the-back-stack"><i class="fa fa-check"></i>The Back Stack</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="fragments.html"><a href="fragments.html#dialogs"><i class="fa fa-check"></i><b>6.3</b> Dialogs</a><ul>
+<li class="chapter" data-level="" data-path="fragments.html"><a href="fragments.html#dialogfragments"><i class="fa fa-check"></i>DialogFragments</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="intents.html"><a href="intents.html"><i class="fa fa-check"></i><b>7</b> Intents</a><ul>
 <li class="chapter" data-level="7.1" data-path="intents.html"><a href="intents.html#intents-for-another-activity-explicit"><i class="fa fa-check"></i><b>7.1</b> Intents for Another Activity (Explicit)</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="intents.html"><a href="intents.html#extras"><i class="fa fa-check"></i><b>7.1.1</b> Extras</a></li>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#extras"><i class="fa fa-check"></i>Extras</a></li>
 </ul></li>
 <li class="chapter" data-level="7.2" data-path="intents.html"><a href="intents.html#intents-for-another-app-implicit"><i class="fa fa-check"></i><b>7.2</b> Intents for Another App (Implicit)</a></li>
 <li class="chapter" data-level="7.3" data-path="intents.html"><a href="intents.html#intents-for-a-response"><i class="fa fa-check"></i><b>7.3</b> Intents for a Response</a></li>
 <li class="chapter" data-level="7.4" data-path="intents.html"><a href="intents.html#listening-for-intents"><i class="fa fa-check"></i><b>7.4</b> Listening for Intents</a></li>
 <li class="chapter" data-level="7.5" data-path="intents.html"><a href="intents.html#broadcasts-and-receivers"><i class="fa fa-check"></i><b>7.5</b> Broadcasts and Receivers</a></li>
-<li class="chapter" data-level="7.6" data-path="intents.html"><a href="intents.html#an-example-sms"><i class="fa fa-check"></i><b>7.6</b> An Example: SMS</a></li>
-<li class="chapter" data-level="7.7" data-path="intents.html"><a href="intents.html#shareactionprovider"><i class="fa fa-check"></i><b>7.7</b> ShareActionProvider</a></li>
+<li class="chapter" data-level="7.6" data-path="intents.html"><a href="intents.html#menus"><i class="fa fa-check"></i><b>7.6</b> Menus</a><ul>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#action-views"><i class="fa fa-check"></i>Action Views</a></li>
+<li class="chapter" data-level="" data-path="intents.html"><a href="intents.html#context-menus"><i class="fa fa-check"></i>Context Menus</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="ui-components.html"><a href="ui-components.html"><i class="fa fa-check"></i><b>8</b> UI Components</a><ul>
-<li class="chapter" data-level="8.1" data-path="ui-components.html"><a href="ui-components.html#the-action-bar"><i class="fa fa-check"></i><b>8.1</b> The Action Bar</a></li>
-<li class="chapter" data-level="8.2" data-path="ui-components.html"><a href="ui-components.html#menus"><i class="fa fa-check"></i><b>8.2</b> Menus</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="ui-components.html"><a href="ui-components.html#context-menus"><i class="fa fa-check"></i><b>8.2.1</b> Context Menus</a></li>
+<li class="chapter" data-level="7.7" data-path="intents.html"><a href="intents.html#an-intent-example-sms"><i class="fa fa-check"></i><b>7.7</b> An Intent Example: SMS</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="ui-components.html"><a href="ui-components.html#dialogs"><i class="fa fa-check"></i><b>8.3</b> Dialogs</a><ul>
-<li class="chapter" data-level="8.3.1" data-path="ui-components.html"><a href="ui-components.html#dialogfragments"><i class="fa fa-check"></i><b>8.3.1</b> DialogFragments</a></li>
+<li class="chapter" data-level="8" data-path="notifications-settings.html"><a href="notifications-settings.html"><i class="fa fa-check"></i><b>8</b> Notifications &amp; Settings</a><ul>
+<li class="chapter" data-level="8.1" data-path="notifications-settings.html"><a href="notifications-settings.html#dialogs-1"><i class="fa fa-check"></i><b>8.1</b> Dialogs</a><ul>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#dialogfragments-1"><i class="fa fa-check"></i>DialogFragments</a></li>
 </ul></li>
-<li class="chapter" data-level="8.4" data-path="ui-components.html"><a href="ui-components.html#toasts"><i class="fa fa-check"></i><b>8.4</b> Toasts</a></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="ui-components-ii.html"><a href="ui-components-ii.html"><i class="fa fa-check"></i><b>9</b> UI Components II</a><ul>
-<li class="chapter" data-level="9.1" data-path="ui-components-ii.html"><a href="ui-components-ii.html#notifications"><i class="fa fa-check"></i><b>9.1</b> Notifications</a></li>
-<li class="chapter" data-level="9.2" data-path="ui-components-ii.html"><a href="ui-components-ii.html#settings"><i class="fa fa-check"></i><b>9.2</b> Settings</a><ul>
-<li class="chapter" data-level="9.2.1" data-path="ui-components-ii.html"><a href="ui-components-ii.html#sharedpreferences"><i class="fa fa-check"></i><b>9.2.1</b> SharedPreferences</a></li>
-<li class="chapter" data-level="9.2.2" data-path="ui-components-ii.html"><a href="ui-components-ii.html#preference-settings"><i class="fa fa-check"></i><b>9.2.2</b> Preference Settings</a></li>
+<li class="chapter" data-level="8.2" data-path="notifications-settings.html"><a href="notifications-settings.html#notifications"><i class="fa fa-check"></i><b>8.2</b> Notifications</a></li>
+<li class="chapter" data-level="8.3" data-path="notifications-settings.html"><a href="notifications-settings.html#settings"><i class="fa fa-check"></i><b>8.3</b> Settings</a><ul>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#sharedpreferences"><i class="fa fa-check"></i>SharedPreferences</a></li>
+<li class="chapter" data-level="" data-path="notifications-settings.html"><a href="notifications-settings.html#preference-settings"><i class="fa fa-check"></i>Preference Settings</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html"><i class="fa fa-check"></i><b>10</b> Providers and Loaders</a><ul>
-<li class="chapter" data-level="10.1" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#content-providers-intro"><i class="fa fa-check"></i><b>10.1</b> Content Providers</a></li>
-<li class="chapter" data-level="10.2" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#cursors"><i class="fa fa-check"></i><b>10.2</b> Cursors</a></li>
-<li class="chapter" data-level="10.3" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#loaders"><i class="fa fa-check"></i><b>10.3</b> Loaders</a></li>
-<li class="chapter" data-level="10.4" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#other-provider-actions"><i class="fa fa-check"></i><b>10.4</b> Other Provider Actions</a><ul>
-<li class="chapter" data-level="10.4.1" data-path="providers-and-loaders.html"><a href="providers-and-loaders.html#adding-words"><i class="fa fa-check"></i><b>10.4.1</b> Adding Words</a></li>
+<li class="chapter" data-level="9" data-path="loaders.html"><a href="loaders.html"><i class="fa fa-check"></i><b>9</b> Providers and Loaders</a><ul>
+<li class="chapter" data-level="9.1" data-path="loaders.html"><a href="loaders.html#content-providers-intro"><i class="fa fa-check"></i><b>9.1</b> Content Providers</a></li>
+<li class="chapter" data-level="9.2" data-path="loaders.html"><a href="loaders.html#cursors"><i class="fa fa-check"></i><b>9.2</b> Cursors</a></li>
+<li class="chapter" data-level="9.3" data-path="loaders.html"><a href="loaders.html#loaders"><i class="fa fa-check"></i><b>9.3</b> Loaders</a></li>
+<li class="chapter" data-level="9.4" data-path="loaders.html"><a href="loaders.html#other-provider-actions"><i class="fa fa-check"></i><b>9.4</b> Other Provider Actions</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="files-and-permissions.html"><a href="files-and-permissions.html"><i class="fa fa-check"></i><b>10</b> Files and Permissions</a><ul>
+<li class="chapter" data-level="10.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#file-storage-locations"><i class="fa fa-check"></i><b>10.1</b> File Storage Locations</a></li>
+<li class="chapter" data-level="10.2" data-path="files-and-permissions.html"><a href="files-and-permissions.html#permissions"><i class="fa fa-check"></i><b>10.2</b> Permissions</a></li>
+<li class="chapter" data-level="10.3" data-path="files-and-permissions.html"><a href="files-and-permissions.html#external-storage"><i class="fa fa-check"></i><b>10.3</b> External Storage</a></li>
+<li class="chapter" data-level="10.4" data-path="files-and-permissions.html"><a href="files-and-permissions.html#internal-storage-cache"><i class="fa fa-check"></i><b>10.4</b> Internal Storage &amp; Cache</a></li>
+<li class="chapter" data-level="10.5" data-path="files-and-permissions.html"><a href="files-and-permissions.html#example-saving-pictures"><i class="fa fa-check"></i><b>10.5</b> Example: Saving Pictures</a></li>
+<li class="chapter" data-level="10.6" data-path="files-and-permissions.html"><a href="files-and-permissions.html#sharing-files"><i class="fa fa-check"></i><b>10.6</b> Sharing Files</a><ul>
+<li class="chapter" data-level="" data-path="files-and-permissions.html"><a href="files-and-permissions.html#bonus-sharing-with-a-fileprovider"><i class="fa fa-check"></i>Bonus: Sharing with a FileProvider</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>11</b> Databases and Providers</a><ul>
+<li class="chapter" data-level="11" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>11</b> Providers and Databases</a><ul>
 <li class="chapter" data-level="11.1" data-path="databases.html"><a href="databases.html#review-providers-and-loaders"><i class="fa fa-check"></i><b>11.1</b> Review: Providers and Loaders</a></li>
 <li class="chapter" data-level="11.2" data-path="databases.html"><a href="databases.html#sqlite-databases"><i class="fa fa-check"></i><b>11.2</b> SQLite Databases</a></li>
-<li class="chapter" data-level="11.3" data-path="databases.html"><a href="databases.html#implementing-contentprovider"><i class="fa fa-check"></i><b>11.3</b> Implementing <code>ContentProvider</code></a><ul>
-<li class="chapter" data-level="11.3.1" data-path="databases.html"><a href="databases.html#uris-and-types"><i class="fa fa-check"></i><b>11.3.1</b> URIs and Types</a></li>
-<li class="chapter" data-level="11.3.2" data-path="databases.html"><a href="databases.html#query-methods"><i class="fa fa-check"></i><b>11.3.2</b> Query Methods</a></li>
+<li class="chapter" data-level="11.3" data-path="databases.html"><a href="databases.html#implementing-a-contentprovider"><i class="fa fa-check"></i><b>11.3</b> Implementing a ContentProvider</a><ul>
+<li class="chapter" data-level="" data-path="databases.html"><a href="databases.html#uris-and-types"><i class="fa fa-check"></i>URIs and Types</a></li>
+<li class="chapter" data-level="" data-path="databases.html"><a href="databases.html#query-methods"><i class="fa fa-check"></i>Query Methods</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="files-and-permissions.html"><a href="files-and-permissions.html"><i class="fa fa-check"></i><b>12</b> Files and Permissions</a><ul>
-<li class="chapter" data-level="12.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#file-storage-locations"><i class="fa fa-check"></i><b>12.1</b> File Storage Locations</a></li>
-<li class="chapter" data-level="12.2" data-path="files-and-permissions.html"><a href="files-and-permissions.html#permissions"><i class="fa fa-check"></i><b>12.2</b> Permissions</a></li>
-<li class="chapter" data-level="12.3" data-path="files-and-permissions.html"><a href="files-and-permissions.html#external-storage"><i class="fa fa-check"></i><b>12.3</b> External Storage</a></li>
-<li class="chapter" data-level="12.4" data-path="files-and-permissions.html"><a href="files-and-permissions.html#internal-storage-cache"><i class="fa fa-check"></i><b>12.4</b> Internal Storage &amp; Cache</a></li>
-<li class="chapter" data-level="12.5" data-path="files-and-permissions.html"><a href="files-and-permissions.html#example-saving-pictures"><i class="fa fa-check"></i><b>12.5</b> Example: Saving Pictures</a></li>
-<li class="chapter" data-level="12.6" data-path="files-and-permissions.html"><a href="files-and-permissions.html#sharing-files"><i class="fa fa-check"></i><b>12.6</b> Sharing Files</a><ul>
-<li class="chapter" data-level="12.6.1" data-path="files-and-permissions.html"><a href="files-and-permissions.html#bonus-sharing-with-a-fileprovider"><i class="fa fa-check"></i><b>12.6.1</b> Bonus: Sharing with a <code>FileProvider</code></a></li>
+<li class="chapter" data-level="12" data-path="location.html"><a href="location.html"><i class="fa fa-check"></i><b>12</b> Location</a><ul>
+<li class="chapter" data-level="12.1" data-path="location.html"><a href="location.html#localization-techniques"><i class="fa fa-check"></i><b>12.1</b> Localization Techniques</a><ul>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#gps"><i class="fa fa-check"></i>GPS</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#cell-tower-localization"><i class="fa fa-check"></i>Cell Tower Localization</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#wifi-localization"><i class="fa fa-check"></i>WiFi Localization</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#representing-location"><i class="fa fa-check"></i>Representing Location</a></li>
 </ul></li>
+<li class="chapter" data-level="12.2" data-path="location.html"><a href="location.html#android-location"><i class="fa fa-check"></i><b>12.2</b> Android Location</a><ul>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#google-play-services"><i class="fa fa-check"></i>Google Play Services</a></li>
+<li class="chapter" data-level="" data-path="location.html"><a href="location.html#accessing-location"><i class="fa fa-check"></i>Accessing Location</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="location.html"><a href="location.html"><i class="fa fa-check"></i><b>13</b> Location</a><ul>
-<li class="chapter" data-level="13.1" data-path="location.html"><a href="location.html#localization-techniques"><i class="fa fa-check"></i><b>13.1</b> Localization Techniques</a><ul>
-<li class="chapter" data-level="13.1.1" data-path="location.html"><a href="location.html#gps"><i class="fa fa-check"></i><b>13.1.1</b> GPS</a></li>
-<li class="chapter" data-level="13.1.2" data-path="location.html"><a href="location.html#cell-tower-localization"><i class="fa fa-check"></i><b>13.1.2</b> Cell Tower Localization</a></li>
-<li class="chapter" data-level="13.1.3" data-path="location.html"><a href="location.html#wifi-localization"><i class="fa fa-check"></i><b>13.1.3</b> WiFi Localization</a></li>
-<li class="chapter" data-level="13.1.4" data-path="location.html"><a href="location.html#representing-location"><i class="fa fa-check"></i><b>13.1.4</b> Representing Location</a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="location.html"><a href="location.html#android-location"><i class="fa fa-check"></i><b>13.2</b> Android Location</a><ul>
-<li class="chapter" data-level="13.2.1" data-path="location.html"><a href="location.html#google-play-services"><i class="fa fa-check"></i><b>13.2.1</b> Google Play Services</a></li>
-<li class="chapter" data-level="13.2.2" data-path="location.html"><a href="location.html#accessing-location"><i class="fa fa-check"></i><b>13.2.2</b> Accessing Location</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="14" data-path="services.html"><a href="services.html"><i class="fa fa-check"></i><b>14</b> Services</a><ul>
-<li class="chapter" data-level="14.1" data-path="services.html"><a href="services.html#intentservices"><i class="fa fa-check"></i><b>14.1</b> IntentServices</a><ul>
-<li class="chapter" data-level="14.1.1" data-path="services.html"><a href="services.html#the-service-lifecycle"><i class="fa fa-check"></i><b>14.1.1</b> The Service Lifecycle</a></li>
-</ul></li>
-<li class="chapter" data-level="14.2" data-path="services.html"><a href="services.html#example-a-music-service"><i class="fa fa-check"></i><b>14.2</b> Example: A Music Service</a><ul>
-<li class="chapter" data-level="14.2.1" data-path="services.html"><a href="services.html#mediaplayer"><i class="fa fa-check"></i><b>14.2.1</b> MediaPlayer</a></li>
-<li class="chapter" data-level="14.2.2" data-path="services.html"><a href="services.html#creating-a-service"><i class="fa fa-check"></i><b>14.2.2</b> Creating a Service</a></li>
-</ul></li>
-<li class="chapter" data-level="14.3" data-path="services.html"><a href="services.html#foreground-services"><i class="fa fa-check"></i><b>14.3</b> Foreground Services</a></li>
-<li class="chapter" data-level="14.4" data-path="services.html"><a href="services.html#bound-services"><i class="fa fa-check"></i><b>14.4</b> Bound Services</a></li>
-</ul></li>
-<li class="chapter" data-level="15" data-path="sensors.html"><a href="sensors.html"><i class="fa fa-check"></i><b>15</b> Sensors</a><ul>
-<li class="chapter" data-level="15.1" data-path="sensors.html"><a href="sensors.html#motion-sensors"><i class="fa fa-check"></i><b>15.1</b> Motion Sensors</a><ul>
-<li class="chapter" data-level="15.1.1" data-path="sensors.html"><a href="sensors.html#accessing-sensors"><i class="fa fa-check"></i><b>15.1.1</b> Accessing Sensors</a></li>
-<li class="chapter" data-level="15.1.2" data-path="sensors.html"><a href="sensors.html#composite-sensors"><i class="fa fa-check"></i><b>15.1.2</b> Composite Sensors</a></li>
-</ul></li>
-<li class="chapter" data-level="15.2" data-path="sensors.html"><a href="sensors.html#rotation"><i class="fa fa-check"></i><b>15.2</b> Rotation</a><ul>
-<li class="chapter" data-level="15.2.1" data-path="sensors.html"><a href="sensors.html#coordinates"><i class="fa fa-check"></i><b>15.2.1</b> Coordinates</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="16" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>16</b> Animation and Graphics</a><ul>
-<li class="chapter" data-level="16.1" data-path="animation.html"><a href="animation.html#drawing-graphics"><i class="fa fa-check"></i><b>16.1</b> Drawing Graphics</a><ul>
-<li class="chapter" data-level="16.1.1" data-path="animation.html"><a href="animation.html#custom-views"><i class="fa fa-check"></i><b>16.1.1</b> Custom Views</a></li>
-<li class="chapter" data-level="16.1.2" data-path="animation.html"><a href="animation.html#surfaceviews"><i class="fa fa-check"></i><b>16.1.2</b> SurfaceViews</a></li>
-</ul></li>
-<li class="chapter" data-level="16.2" data-path="animation.html"><a href="animation.html#touch-and-gestures"><i class="fa fa-check"></i><b>16.2</b> Touch and Gestures</a><ul>
-<li class="chapter" data-level="16.2.1" data-path="animation.html"><a href="animation.html#advanced-gestures"><i class="fa fa-check"></i><b>16.2.1</b> Advanced Gestures</a></li>
-</ul></li>
-<li class="chapter" data-level="16.3" data-path="animation.html"><a href="animation.html#property-animation"><i class="fa fa-check"></i><b>16.3</b> Property Animation</a></li>
 </ul></li>
 <li class="part"><span><b>II Additional Topics (Labs)</b></span></li>
-<li class="chapter" data-level="17" data-path="accessibility.html"><a href="accessibility.html"><i class="fa fa-check"></i><b>17</b> Accessibility</a><ul>
-<li class="chapter" data-level="17.1" data-path="accessibility.html"><a href="accessibility.html#universal-usability"><i class="fa fa-check"></i><b>17.1</b> Universal Usability</a></li>
-<li class="chapter" data-level="17.2" data-path="accessibility.html"><a href="accessibility.html#implementing-accessibility"><i class="fa fa-check"></i><b>17.2</b> Implementing Accessibility</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="accessibility.html"><a href="accessibility.html#supporting-vision-impairment"><i class="fa fa-check"></i><b>17.2.1</b> Supporting Vision Impairment</a></li>
-<li class="chapter" data-level="17.2.2" data-path="accessibility.html"><a href="accessibility.html#supporting-alternative-inputs"><i class="fa fa-check"></i><b>17.2.2</b> Supporting Alternative Inputs</a></li>
-<li class="chapter" data-level="17.2.3" data-path="accessibility.html"><a href="accessibility.html#supporting-internationalization"><i class="fa fa-check"></i><b>17.2.3</b> Supporting Internationalization</a></li>
-<li class="chapter" data-level="17.2.4" data-path="accessibility.html"><a href="accessibility.html#further-testing"><i class="fa fa-check"></i><b>17.2.4</b> Further Testing</a></li>
+<li class="chapter" data-level="13" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>13</b> Styles &amp; Themes</a><ul>
+<li class="chapter" data-level="13.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>13.1</b> Defining Styles</a><ul>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#style-inheritance"><i class="fa fa-check"></i>Style Inheritance</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#built-in-styles"><i class="fa fa-check"></i>Built-in Styles</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#styles-for-text-views"><i class="fa fa-check"></i>Styles for Text Views</a></li>
 </ul></li>
+<li class="chapter" data-level="13.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>13.2</b> Themes</a><ul>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#material-themes"><i class="fa fa-check"></i>Material Themes</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#theme-attributes"><i class="fa fa-check"></i>Theme Attributes</a></li>
 </ul></li>
-<li class="chapter" data-level="18" data-path="styles-themes.html"><a href="styles-themes.html"><i class="fa fa-check"></i><b>18</b> Styles &amp; Themes</a><ul>
-<li class="chapter" data-level="18.1" data-path="styles-themes.html"><a href="styles-themes.html#defining-styles"><i class="fa fa-check"></i><b>18.1</b> Defining Styles</a><ul>
-<li class="chapter" data-level="18.1.1" data-path="styles-themes.html"><a href="styles-themes.html#style-inheritance"><i class="fa fa-check"></i><b>18.1.1</b> Style Inheritance</a></li>
-<li class="chapter" data-level="18.1.2" data-path="styles-themes.html"><a href="styles-themes.html#built-in-styles"><i class="fa fa-check"></i><b>18.1.2</b> Built-in Styles</a></li>
+<li class="chapter" data-level="" data-path="styles-themes.html"><a href="styles-themes.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="18.2" data-path="styles-themes.html"><a href="styles-themes.html#themes"><i class="fa fa-check"></i><b>18.2</b> Themes</a><ul>
-<li class="chapter" data-level="18.2.1" data-path="styles-themes.html"><a href="styles-themes.html#material-themes"><i class="fa fa-check"></i><b>18.2.1</b> Material Themes</a></li>
-<li class="chapter" data-level="18.2.2" data-path="styles-themes.html"><a href="styles-themes.html#theme-attributes"><i class="fa fa-check"></i><b>18.2.2</b> Theme Attributes</a></li>
+<li class="chapter" data-level="14" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html"><i class="fa fa-check"></i><b>14</b> Fragments: ViewPager</a><ul>
+<li class="chapter" data-level="14.1" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>14.1</b> Define a SearchFragment</a></li>
+<li class="chapter" data-level="14.2" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>14.2</b> Add the ViewPager and Adapter</a></li>
+<li class="chapter" data-level="14.3" data-path="fragment-viewpager.html"><a href="fragment-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>14.3</b> Add User Interaction</a></li>
 </ul></li>
+<li class="chapter" data-level="15" data-path="bluetooth.html"><a href="bluetooth.html"><i class="fa fa-check"></i><b>15</b> Bluetooth</a></li>
+<li class="chapter" data-level="16" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>16</b> Maps</a><ul>
+<li class="chapter" data-level="16.1" data-path="maps.html"><a href="maps.html#create-a-map-activity"><i class="fa fa-check"></i><b>16.1</b> Create a Map Activity</a><ul>
+<li class="chapter" data-level="" data-path="maps.html"><a href="maps.html#getting-an-api-key"><i class="fa fa-check"></i>Getting an API Key</a></li>
+<li class="chapter" data-level="16.1.1" data-path="maps.html"><a href="maps.html#the-supportmapfragment"><i class="fa fa-check"></i><b>16.1.1</b> The <code class="unnumbered">SupportMapFragment</code></a></li>
 </ul></li>
-<li class="chapter" data-level="19" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html"><i class="fa fa-check"></i><b>19</b> Fragments: ViewPager</a><ul>
-<li class="chapter" data-level="19.1" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#define-a-searchfragment"><i class="fa fa-check"></i><b>19.1</b> Define a SearchFragment</a></li>
-<li class="chapter" data-level="19.2" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#add-the-viewpager-and-adapter"><i class="fa fa-check"></i><b>19.2</b> Add the ViewPager and Adapter</a></li>
-<li class="chapter" data-level="19.3" data-path="fragments-viewpager.html"><a href="fragments-viewpager.html#add-user-interaction"><i class="fa fa-check"></i><b>19.3</b> Add User Interaction</a></li>
+<li class="chapter" data-level="16.2" data-path="maps.html"><a href="maps.html#specifying-the-user-interface"><i class="fa fa-check"></i><b>16.2</b> Specifying the User Interface</a></li>
+<li class="chapter" data-level="16.3" data-path="maps.html"><a href="maps.html#markers-and-drawings"><i class="fa fa-check"></i><b>16.3</b> Markers and Drawings</a><ul>
+<li class="chapter" data-level="" data-path="maps.html"><a href="maps.html#drawing-shapes"><i class="fa fa-check"></i>Drawing Shapes</a></li>
 </ul></li>
-<li class="chapter" data-level="20" data-path="bluetooth.html"><a href="bluetooth.html"><i class="fa fa-check"></i><b>20</b> Bluetooth</a></li>
-<li class="chapter" data-level="21" data-path="maps.html"><a href="maps.html"><i class="fa fa-check"></i><b>21</b> Maps</a><ul>
-<li class="chapter" data-level="21.1" data-path="maps.html"><a href="maps.html#create-a-map-activity"><i class="fa fa-check"></i><b>21.1</b> Create a Map Activity</a><ul>
-<li class="chapter" data-level="21.1.1" data-path="maps.html"><a href="maps.html#getting-an-api-key"><i class="fa fa-check"></i><b>21.1.1</b> Getting an API Key</a></li>
-<li class="chapter" data-level="21.1.2" data-path="maps.html"><a href="maps.html#the-supportmapfragment"><i class="fa fa-check"></i><b>21.1.2</b> The <code>SupportMapFragment</code></a></li>
-</ul></li>
-<li class="chapter" data-level="21.2" data-path="maps.html"><a href="maps.html#specifying-the-user-interface"><i class="fa fa-check"></i><b>21.2</b> Specifying the User Interface</a></li>
-<li class="chapter" data-level="21.3" data-path="maps.html"><a href="maps.html#markers-and-drawings"><i class="fa fa-check"></i><b>21.3</b> Markers and Drawings</a><ul>
-<li class="chapter" data-level="21.3.1" data-path="maps.html"><a href="maps.html#drawing-shapes"><i class="fa fa-check"></i><b>21.3.1</b> Drawing Shapes</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="22" data-path="memory.html"><a href="memory.html"><i class="fa fa-check"></i><b>22</b> Memory Management</a><ul>
-<li class="chapter" data-level="22.1" data-path="memory.html"><a href="memory.html#memory-allocation"><i class="fa fa-check"></i><b>22.1</b> Memory Allocation</a></li>
-<li class="chapter" data-level="22.2" data-path="memory.html"><a href="memory.html#the-memory-monitor"><i class="fa fa-check"></i><b>22.2</b> The Memory Monitor</a><ul>
-<li class="chapter" data-level="22.2.1" data-path="memory.html"><a href="memory.html#garbage-collection"><i class="fa fa-check"></i><b>22.2.1</b> Garbage Collection</a></li>
-</ul></li>
-<li class="chapter" data-level="22.3" data-path="memory.html"><a href="memory.html#memory-leaks"><i class="fa fa-check"></i><b>22.3</b> Memory Leaks</a></li>
-</ul></li>
-<li class="chapter" data-level="23" data-path="multi-touch.html"><a href="multi-touch.html"><i class="fa fa-check"></i><b>23</b> Multi-Touch</a><ul>
-<li class="chapter" data-level="23.1" data-path="multi-touch.html"><a href="multi-touch.html#identifying-fingers"><i class="fa fa-check"></i><b>23.1</b> Identifying Fingers</a></li>
-<li class="chapter" data-level="23.2" data-path="multi-touch.html"><a href="multi-touch.html#drawing-touches"><i class="fa fa-check"></i><b>23.2</b> Drawing Touches</a></li>
-<li class="chapter" data-level="23.3" data-path="multi-touch.html"><a href="multi-touch.html#moving-fingers"><i class="fa fa-check"></i><b>23.3</b> Moving Fingers</a></li>
-<li class="chapter" data-level="23.4" data-path="multi-touch.html"><a href="multi-touch.html#other-multi-touch-gestures"><i class="fa fa-check"></i><b>23.4</b> Other Multi-Touch Gestures</a></li>
 </ul></li>
 <li class="appendix"><span><b>Appendix</b></span></li>
 <li class="chapter" data-level="A" data-path="java-review.html"><a href="java-review.html"><i class="fa fa-check"></i><b>A</b> Java Review</a><ul>
@@ -343,30 +303,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="A.7" data-path="java-review.html"><a href="java-review.html#generics"><i class="fa fa-check"></i><b>A.7</b> Generics</a></li>
 <li class="chapter" data-level="A.8" data-path="java-review.html"><a href="java-review.html#nested-classes"><i class="fa fa-check"></i><b>A.8</b> Nested Classes</a></li>
 </ul></li>
-<li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Swing Framework</a><ul>
+<li class="chapter" data-level="B" data-path="java-swing.html"><a href="java-swing.html"><i class="fa fa-check"></i><b>B</b> Java Swing Framework</a><ul>
 <li class="chapter" data-level="B.1" data-path="java-swing.html"><a href="java-swing.html#events"><i class="fa fa-check"></i><b>B.1</b> Events</a></li>
 <li class="chapter" data-level="B.2" data-path="java-swing.html"><a href="java-swing.html#layouts-and-composites"><i class="fa fa-check"></i><b>B.2</b> Layouts and Composites</a></li>
 </ul></li>
-<li class="chapter" data-level="C" data-path="java-threads-http.html"><a href="java-threads-http.html"><i class="fa fa-check"></i><b>C</b> Threads and HTTP Requests</a><ul>
-<li class="chapter" data-level="C.1" data-path="java-threads-http.html"><a href="java-threads-http.html#concurrency"><i class="fa fa-check"></i><b>C.1</b> Concurrency</a><ul>
-<li class="chapter" data-level="C.1.1" data-path="java-threads-http.html"><a href="java-threads-http.html#an-example-algorithm-races"><i class="fa fa-check"></i><b>C.1.1</b> An Example: Algorithm Races!</a></li>
-<li class="chapter" data-level="C.1.2" data-path="java-threads-http.html"><a href="java-threads-http.html#threading-the-race"><i class="fa fa-check"></i><b>C.1.2</b> Threading the Race</a></li>
-</ul></li>
-<li class="chapter" data-level="C.2" data-path="java-threads-http.html"><a href="java-threads-http.html#http-requests"><i class="fa fa-check"></i><b>C.2</b> HTTP Requests</a></li>
-</ul></li>
-<li class="chapter" data-level="D" data-path="kotlin.html"><a href="kotlin.html"><i class="fa fa-check"></i><b>D</b> Special Topics: Kotlin</a><ul>
-<li class="chapter" data-level="D.1" data-path="kotlin.html"><a href="kotlin.html#kotlin-syntax"><i class="fa fa-check"></i><b>D.1</b> Kotlin Syntax</a><ul>
-<li class="chapter" data-level="D.1.1" data-path="kotlin.html"><a href="kotlin.html#variables"><i class="fa fa-check"></i><b>D.1.1</b> Variables</a></li>
-<li class="chapter" data-level="D.1.2" data-path="kotlin.html"><a href="kotlin.html#functions"><i class="fa fa-check"></i><b>D.1.2</b> Functions</a></li>
-<li class="chapter" data-level="D.1.3" data-path="kotlin.html"><a href="kotlin.html#classes"><i class="fa fa-check"></i><b>D.1.3</b> Classes</a></li>
-</ul></li>
-<li class="chapter" data-level="D.2" data-path="kotlin.html"><a href="kotlin.html#kotlin-for-android"><i class="fa fa-check"></i><b>D.2</b> Kotlin for Android</a><ul>
-<li class="chapter" data-level="D.2.1" data-path="kotlin.html"><a href="kotlin.html#the-android-extension"><i class="fa fa-check"></i><b>D.2.1</b> The Android Extension</a></li>
-<li class="chapter" data-level="D.2.2" data-path="kotlin.html"><a href="kotlin.html#anko"><i class="fa fa-check"></i><b>D.2.2</b> Anko</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="E" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>E</b> Publishing</a><ul>
-<li class="chapter" data-level="E.1" data-path="publishing.html"><a href="publishing.html#signing-an-app"><i class="fa fa-check"></i><b>E.1</b> Signing an App</a><ul>
+<li class="chapter" data-level="C" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>C</b> Publishing</a><ul>
+<li class="chapter" data-level="C.1" data-path="publishing.html"><a href="publishing.html#signing-an-app"><i class="fa fa-check"></i><b>C.1</b> Signing an App</a><ul>
 <li><a href="publishing.html#release-.apk">Release <code>.apk</code></a></li>
 </ul></li>
 </ul></li>
@@ -391,10 +333,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="location" class="section level1">
-<h1><span class="header-section-number">Lecture 13</span> Location</h1>
-<p class="alert alert-danger">
-This chapter is out of date and will be updated soon.
-</p>
+<h1><span class="header-section-number">Lecture 12</span> Location</h1>
 <p>This lecture discusses <strong>localization</strong>: the process for determining <em>location</em>. This is particularly important for Android, which is primarily intended as an operating system for <em>mobile</em> devices. What makes phones and tablets special, and different from desktops, is that they can and do move around. And this mobility makes means that a device’s position and location can matter <em>significantly</em> for how they are used; it’s a major part of what separates the functionality of Android apps from any other computer application. Indeed: localization gives apps the ability to create new kinds of user experiences, and to adjust their functionality to fit the user’s <em>context</em>, supporting <a href="https://en.wikipedia.org/wiki/Context_awareness">context-aware</a> applications.</p>
 <ul>
 <li><p>The classic example of context-awareness is having software determine if you are at home, in the office, or on a bus, and change its usage accordingly.</p>
@@ -406,38 +345,38 @@ This chapter is out of date and will be updated soon.
 </ul>
 <p>In short: localization can let us know about the user’s situation (though mobile phone location is <a href="http://dx.doi.org/10.1007/11853565_8">not necessarily</a> a proxy for user location).</p>
 <div id="localization-techniques" class="section level2">
-<h2><span class="header-section-number">13.1</span> Localization Techniques</h2>
+<h2><span class="header-section-number">12.1</span> Localization Techniques</h2>
 <p>Ubicomp researchers have been developing localization systems for <em>years</em>. A classical reference is a <a href="http://dx.doi.org/10.1109/2.940014">survey paper</a> by Jeff Hightower (who was getting his PhD in the CSE department at UW!)</p>
 <ul>
-<li>As an early example: the <em>Active Badge</em> (AT&amp;T) system had a name-badge emit an infrared message, that was picked up by sensors in a room to determine where the wearer was! This is room-level precision, bbut improvements and <em>triangulation</em> (calculating angles to what you see) got it down to about <em>10cm</em> precision. However, this system required a lot of infrastructure to be built into a particular room.</li>
+<li>As an early example: the <em>Active Badge</em> (AT&amp;T) system had a name-badge emit an infrared message, that was picked up by sensors in a room to determine where the wearer was! This is room-level precision, but improvements and <em>triangulation</em> (calculating angles to what you see) got it down to about <em>10cm</em> precision. However, this system required a lot of infrastructure to be built into a particular room.</li>
 </ul>
 <p>With Android, we’re usually interested in more general-purpose localization. Mobile devices use a couple of different kinds of localization (either independently or together).</p>
-<div id="gps" class="section level3">
-<h3><span class="header-section-number">13.1.1</span> GPS</h3>
-<p><strong>GPS</strong> is the most common, and what most people think of when they think of localization. <a href="https://en.wikipedia.org/wiki/Global_Positioning_System">GPS</a> stands for “Global Position System”—and yes, it can work anywhere on the globe.</p>
+<div id="gps" class="section level3 unnumbered">
+<h3>GPS</h3>
+<p><strong>GPS</strong> is the most common general-purpose localization technology, and what most people think of when they think of localization. <a href="https://en.wikipedia.org/wiki/Global_Positioning_System">GPS</a> stands for “Global Position System”—and yes, it can work anywhere on the globe.</p>
 <p>GPS’s functionality depends on satellites: 24 satellites in high orbit (not geo-synchronous) around the Earth. Satellites are distributed so that 4 to 12 are visible from any point on Earth at any time, and their locations are known with high precision. These satellites are each equipped with an atomic, synchronized clock that “ticks” every nanosecond. At every tick, the satellite broadcasts its current time and position. You can almost think of them as <em>really</em> loud alarm clocks.</p>
-<p>The thing in your phone (or your car, or your watch) that you call a “GPS” or a “GPS device” is actually a <em>GPS</em> <strong><em>receiver</em></strong>. It is able to listen for the messages broadcast by these satellites, and determine its position based on that information.</p>
-<p>First, the receiver calculates the <em>time of arrival</em> (TOA) based on its own clock and comparing time-codes from the satellites. It then uses the announced <em>time of transmission</em> (TOT; what the satellite was shouting) to calculate the <a href="https://en.wikipedia.org/wiki/Time_of_flight">time of flight</a>, or how long it took for the satellite’s message to reach the receiver. Because these messages are sent at (basically) the speed of light, the [time of flight] is equivalent to the distance from the satellite!</p>
+<p>The thing in your phone (or your car, or your watch) that you call a “GPS” or a “GPS device” is actually a <em>GPS</em> <strong><em>receiver</em></strong>. It is able to listen for the messages broadcast by these satellites, and determine its (the device’s) position based on that information.</p>
+<p>First, the receiver calculates the <em>time of arrival</em> (TOA) based on its own clock and comparing time-codes from the satellites. It then uses the announced <em>time of transmission</em> (TOT; what the satellite was shouting) to calculate the <a href="https://en.wikipedia.org/wiki/Time_of_flight">time of flight</a>, or how long it took for the satellite’s message to reach the receiver. Because these messages are sent at (basically) the speed of light, the <em>time of flight</em> is equivalent to the distance from the satellite!</p>
 <ul>
 <li>There is some other synchronization work that is done to make sure clocks are all the same, but we won’t go into that here.</li>
 </ul>
 <p>And once it has distances from the satellites, the receiver can use <a href="https://en.wikipedia.org/wiki/Trilateration">trilateration</a> to determine its position based on the satellites it “sees”. (Trilateration is like Triangulation, but relies on measuring distances rather than measuring angles. Basically, you construct three spheres of given radii, and then look to see where they intersect).</p>
 <p>GPS precision is generally about 5 meters (15 feet); however, by repeatedly calculating the receiver’s position (since the satellites tick every nanosecond), we can use <em>differential positioning</em> to extrapolate position with even higher precision, increasing precision to less than 1 meter! This is in part how Google can determine where you’re walking.</p>
-<p>While GPS is ubiquitous, scalable, and appropriate accurate, it does have some limitations. The biggest problem with GPS is that you need to be able to see the satellites! This means that GPS frequently doesn’t work indoors, as many building walls block the signals. Similarly, in highly urban areas (think downtown Seattle), the buildings can bounce the signal around and throw off the TOF calculations, making it harder to pinpoint position accurately.</p>
+<p>While GPS is ubiquitous, scalable, and sufficiently accurate, it does have some limitations. The biggest problem with GPS is that you need to be able to see the satellites! This means that GPS frequently doesn’t work indoors, as many building walls block the signals. Similarly, in highly urban areas (think downtown Seattle), the buildings can bounce the signal around and throw off the TOF calculations, making it harder to pinpoint position accurately.</p>
 <ul>
 <li>Additionally, receivers requires a lot of energy to constantly listen for the satellite messages. This means that utilizing the GPS can lead to a big hit on device battery life—which is of particular importance for mobile devices!</li>
 </ul>
 </div>
-<div id="cell-tower-localization" class="section level3">
-<h3><span class="header-section-number">13.1.2</span> Cell Tower Localization</h3>
+<div id="cell-tower-localization" class="section level3 unnumbered">
+<h3>Cell Tower Localization</h3>
 <p>But your phone can also give you a rough estimate of your location even <em>without</em> GPS. It does this through a couple of techniques, such as relying on the cell phone towers that provide the phone network service. This is also known as <a href="https://en.wikipedia.org/wiki/Mobile_phone_tracking#Network-based"><strong>GSM localization</strong></a> (Global System for Mobile Communications; the standard for cell phone communication used by many service providers). The location of these towers are known, so we can determine location based off them in a couple of ways:</p>
 <ul>
 <li><p>If you’re connected to a tower, you must be within range of it. So that gives you some measure of localization right off the bat. This would not be a very accurate measure though (you might be <em>anywhere</em> within that range).</p></li>
-<li><p>If you can see multiple towers (which important for “handoff” purposes, so your call doesn’t drop as you move), you can trilaterate the position between them (e.g., finding the possible overlapping area and picking a location in the middle of that). This can give accuracy within 50m in urban areas, with more towers producing better precision.</p></li>
+<li><p>If you can see multiple towers (which is important for “handoff” purposes, so your call doesn’t drop as you move), you can trilaterate the position between them (e.g., finding the possible overlapping area and picking a location in the middle of that). This can give accuracy within 50m in urban areas, with more towers producing better precision.</p></li>
 </ul>
 </div>
-<div id="wifi-localization" class="section level3">
-<h3><span class="header-section-number">13.1.3</span> WiFi Localization</h3>
+<div id="wifi-localization" class="section level3 unnumbered">
+<h3>WiFi Localization</h3>
 <p>But wait there’s more! What other kinds of communication antennas do you have in your phone? <strong>WiFi</strong>! As WiFi has became more popular, efforts have been made to identify the <em>location</em> of WiFi hotspots so that they too can be used for <a href="https://en.wikipedia.org/wiki/Wi-Fi_positioning_system">trilateration and localization</a>.</p>
 <p>This is often done through crowdsourced databases, with information gathered via <a href="https://en.wikipedia.org/wiki/Wardriving">war driving</a>. War driving involves driving around with a GPS receiver and a laptop, and simply recording what WiFi routers you see at what locations. This then all gets compiled into a database that can be queried—given that you see <em>these</em> routers, where must you be?</p>
 <ul>
@@ -446,11 +385,11 @@ This chapter is out of date and will be updated soon.
 <p>WiFi localization can then be combined with Cell Tower localization to produce a pretty good estimate of your location, even without GPS.</p>
 <p>And in fact, Google provides the ability to automatically use all of these different techniques, abstracted into a single method call!</p>
 <p class="alert alert-info">
-I want to flag that just like the old <em>Active Badge</em> systems, all of these localizations systems rely on some kind of existing infrastructure: GPS requires satellites; GSM requires cell towers, and WiFi needs the database of routers. All these systems require and react to the world around them, making localization influenced by the actual location as well, as well as both social and computational systems!
+I want to flag that just like the old <em>Active Badge</em> systems, all of these localizations systems rely on some kind of existing infrastructure: GPS requires satellites; GSM requires cell towers, and WiFi needs the database of routers. All these systems require and react to the world around them, making localization influenced by the actual location as well as both social and computational systems!
 </p>
 </div>
-<div id="representing-location" class="section level3">
-<h3><span class="header-section-number">13.1.4</span> Representing Location</h3>
+<div id="representing-location" class="section level3 unnumbered">
+<h3>Representing Location</h3>
 <p>So once we have a location, how do we represent it?</p>
 <p>First, note that there is a philosophical difference between a “place” and a “space.” A <strong>space</strong> is a location, but without any social connotations. For example, GPS coordinates, or Cartesian xy-coordinates will all indicate a “space.” A <strong>place</strong> on the other hand is somewhere that has social meaning: Mary Gates Hall; the University of Washington; my kitchen. Space is a computational construct; place is a human construct. When we talk about localization with a mobile device, we’ll be mostly talking about <em>space</em>. But often <em>place</em> is what we’re really interested in, and we may have to convert between the two (Google does provide a few ways to convert between the two, such as with its <a href="https://developers.google.com/places/">Places API</a>).</p>
 <p>Our space locations will generally be reported as two coordinates: <strong>Latitude</strong> and <strong>Longitude</strong>. (<strong>Altitude</strong> or height can also be reported, but that isn’t very relevant for us).</p>
@@ -458,26 +397,36 @@ I want to flag that just like the old <em>Active Badge</em> systems, all of thes
 <li><p><strong>Latitude</strong> (“lat”) is the <strong><em>angle</em></strong> between the equatorial plane and a line that passes through a point and the center of the Earth—the angle you have to go up the earth’s surface from the equator. Effectively, it’s a measure of “north/south”. Latitude is usually measured in <em>degrees north</em>, so going south of the equator gives a negative latitude (though this can be expressed positively as “degrees south”).</p></li>
 <li><p><strong>Longitude</strong> (“lng”) is the <strong><em>angle</em></strong> between the prime meridian plane and a line that passes through a point and the center of the Earth—the angle you have to go across the earth’s surface from the meridian. Effectively, it’s a measure of “east/west”. Latitude is measured in <em>degrees east</em>, so going east of the meridian. That mean that the western hemisphere has “negative longitude” (though this can be expressed as positive “degrees west”).</p></li>
 </ul>
-<p>As an example: <a href="https://www.google.com/search?q=uw+gps+coordinates">UW’s GPS Coordinates</a><a href="#fn34" class="footnoteRef" id="fnref34"><sup>34</sup></a> are N/W, so this would be expressed as N (positive) and E (negative).</p>
-<p>The distance between degrees and miles depends on where you you are (particularly for longitude—the curvature of the earth means that each degree has less space between it as you get closer to their “joining” at the poles). However, for a very rough sense of scale, in the American Northwest, .01 degrees corresponds with a distance of <em>about</em> a mile (again: this is not an accurate convertion, and is intended only for a sense of the “units”).</p>
+<p>As an example: <a href="https://www.google.com/search?q=uw+gps+coordinates">UW’s GPS Coordinates</a><a href="#fn41" class="footnoteRef" id="fnref41"><sup>41</sup></a> are N/W, so this would be expressed as N (positive) and E (negative).</p>
+<p>The distance between degrees and miles depends on where you you are (particularly for longitude—the curvature of the earth means that each degree has less space between it as you get closer to their “joining” at the poles). However, for a very rough sense of scale, in the American Northwest, .01 degrees corresponds with a distance of <em>about</em> a mile (again: this is not an accurate conversion, and is intended only for a sense of the “units”).</p>
 </div>
 </div>
 <div id="android-location" class="section level2">
-<h2><span class="header-section-number">13.2</span> Android Location</h2>
+<h2><span class="header-section-number">12.2</span> Android Location</h2>
 <p>The remainder of the lecture will discuss how to implement an app that is able to access the device’s location. This location will simply be displayed for now; connecting the location to a visual display (e.g., a <a href="maps.html#maps">map</a>) is left as an exercise to the reader.</p>
 <p class="alert alert-info">
-This lecture references code found at <a href="https://github.com/info448-s17/lecture11-location" class="uri">https://github.com/info448-s17/lecture11-location</a>.
+This lecture references code found at <a href="https://github.com/info448/lecture12-location" class="uri">https://github.com/info448/lecture12-location</a>.
 </p>
-<div id="google-play-services" class="section level3">
-<h3><span class="header-section-number">13.2.1</span> Google Play Services</h3>
+<div id="google-play-services" class="section level3 unnumbered">
+<h3>Google Play Services</h3>
 <p>In order to effectively access location, we first need to make sure we include the <a href="https://developers.google.com/android/guides/setup">Google Play Services</a>. These are a special set of libraries (similar to the support libraries) that provide additional functionality to Android. That functionality will include the location and mapping tools we’re interested in. (Much of this functionality was originally built into core Android, but Google has since been moving it into a separate app that can be more easily distributed and updated!)</p>
 <p>There are a few steps to including the Play Services library:</p>
 <ol style="list-style-type: decimal">
-<li><p>Make sure you’ve downloaded the proper library. Go to <code>Tools &gt; Android &gt; SDK Manager</code> to open up the manager for the various versions of Android installed. Under <code>SDK Tools</code>, select <code>Google Play Service</code> and <code>Google Play Repository</code> to download those.</p></li>
+<li><p>Modify the <strong><em>project-level</em></strong> <code>build.gradle</code> file to include a reference to <a href="https://developer.android.com/studio/build/dependencies.html#google-maven">Google’s Maven Repository</a></p>
+<pre><code>allprojects {
+    repositories {
+        jcenter()
+        // If you&#39;re using a version of Gradle lower than 4.1, you must instead use:
+        maven {
+            url &#39;https://maven.google.com&#39;
+        }
+    }
+}</code></pre>
+<p><em>Make sure you put this under <code>allprojects</code>, and not <code>buildscripts</code></em>!</p></li>
 <li><p>Make sure the device supports these services (e.g., that it’s a Google device and not an Amazon device). For the emulator, go to the <code>AVD Manager</code>, and confirm the <em>target</em> platform includes the <code>Google APIs</code>.</p></li>
 <li><p>Modify your <code>build.gradle</code> file so that you can get access to the Location classes. In the <strong><em>module-level</em></strong> <code>build.gradle</code> file, under <code>dependencies</code> add</p>
-<pre><code>compile &#39;com.google.android.gms:play-services-location:10.2.4&#39;</code></pre>
-<p>This will load in the location services (but not the other play services, which take up extra space and may require additinal API keys). Note that you can specify a different version of the services, as long as it is greater than <code>8.3.0</code>.</p></li>
+<pre><code>compile &#39;com.google.android.gms:play-services-location:11.4.2&#39;</code></pre>
+<p>This will load in the location services (but not the other play services, which take up extra space and may require additional API keys). Note that you can specify a different version of the services, as long as it is greater than <code>8.3.0</code>.</p></li>
 </ol>
 <p>Additionally, you’ll need to request permission to access the device’s location. There are two permission levels we can ask for: <code>ACCESS_COARSE_LOCATION</code> (for GSM/WiFi level precision), and <code>ACCESS_FINE_LOCATION</code> (for GPS level precision). We’ll use the later because we want GPS-level precision.</p>
 <p class="alert alert-warning">
@@ -487,7 +436,7 @@ This is a <strong>dangerous</strong> permission, so in Marshmallow we need to ma
 <ul>
 <li>There is a built-in <code>android.location</code> API (e.g., for non-Google based Android devices), but it’s not recommended practice and is harder to use.</li>
 </ul>
-<p>The first thing we need to do is get access to the API; we do this with a <a href="https://developers.google.com/android/reference/com/google/android/gms/common/api/GoogleApiClient"><code>GoogleApiClient</code></a> object. We construct this object in the <code>onCreate()</code> callback, using a <code>GoogleApiClient.Builder</code>:</p>
+<p>The first thing we need to do is get access to the API; we do this with a <a href="https://developers.google.com/android/reference/com/google/android/gms/common/api/GoogleApiClient"><code>GoogleApiClient</code></a> object. We construct this object in the Activity’s <code>onCreate()</code> callback, using a <code>GoogleApiClient.Builder</code>:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> (mGoogleApiClient == <span class="kw">null</span>) {
     mGoogleApiClient = <span class="kw">new</span> GoogleApiClient.<span class="fu">Builder</span>(<span class="kw">this</span>)
             .<span class="fu">addConnectionCallbacks</span>(<span class="kw">this</span>)
@@ -507,14 +456,17 @@ This is a <strong>dangerous</strong> permission, so in Marshmallow we need to ma
 }</code></pre></div>
 <p>This of course, will lead to our <code>onConnected()</code> callback being executed once the connection to the service is established.</p>
 </div>
-<div id="accessing-location" class="section level3">
-<h3><span class="header-section-number">13.2.2</span> Accessing Location</h3>
+<div id="accessing-location" class="section level3 unnumbered">
+<h3>Accessing Location</h3>
 <p>Once we have the the client connected to the service, we can start getting the location!</p>
-<p>To access the location, we’re going to use a class called the <a href="https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderApi">FusedLocationApi</a><a href="#fn35" class="footnoteRef" id="fnref35"><sup>35</sup></a>. This is a “unified” interface for accessing location. It fuses together all of the different ways of getting location, providing which-ever one best suits our specified needs. You can think of it as a “wrapper” around more detailed location services.</p>
+<p>To access the location, we’re going to use a class called the <a href="https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderApi">FusedLocationApi</a><a href="#fn42" class="footnoteRef" id="fnref42"><sup>42</sup></a>. This is a “unified” interface for accessing location. It fuses together all of the different ways of getting location, providing whichever one best suits our specified needs. You can think of it as a “wrapper” around more detailed location services.</p>
 <ul>
 <li>It will let us specify at a high level whether we want to trade accuracy for power consumption, rather than us needing to be explicit about that. And it will make decisions about what how best to fetch location given our stated needs and other contextual information.</li>
 </ul>
-<p>We’re going to specify this “high level” requirement using a <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest"><code>LocationRequest</code></a><a href="#fn36" class="footnoteRef" id="fnref36"><sup>36</sup></a> object, which represents the details of our request (e.g., how we want to have our phone search for it’s location).</p>
+<p class="alert alert-warning">
+This particular method for accessing the <code>FusedLocationApi</code> has been deprecated in preparation for Google Play Services v12 (which will be released in early 2018). See <a href="https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderClient"><code>FusedLocationProviderClient</code></a> for the updated API.
+</p>
+<p>We’re going to specify this “high level” requirement using a <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest"><code>LocationRequest</code></a><a href="#fn43" class="footnoteRef" id="fnref43"><sup>43</sup></a> object, which represents the details of our request (e.g., how we want to have our phone search for it’s location).</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">LocationRequest request = <span class="kw">new</span> <span class="fu">LocationRequest</span>();
 request.<span class="fu">setInterval</span>(<span class="dv">10000</span>);
 request.<span class="fu">setFastestInterval</span>(<span class="dv">5000</span>);
@@ -524,9 +476,9 @@ request.<span class="fu">setPriority</span>(LocationRequest.<span class="fu">PRI
 <li><p>We also specify the <a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest#constant-summary">priority</a>, which is the indicator to the FusedLocationApi about what kind of precision we want. <code>HIGH_ACCURACY</code> basically means GPS (trade power for accuracy!)</p></li>
 </ul>
 <p class="alert alert-warning">
-Before actually sending the request, check for run-time permissions! This will introduce <em>another</em> layout of callbacks: first you wait for the GoogleApiClient to connect in one callback, then you wait for permission to be granted in another!
+Before actually sending the request, check for run-time permissions! This will introduce <em>another</em> layout of callbacks: first you wait for the GoogleApiClient to connect in one callback, then you wait for permission to be granted in another! Remember to implement <code>onRequestPermissionResult</code>
 </p>
-<p>Once we have this request in place, we can send it off through the <code>FusedLocationApi</code>:</p>
+<p>Once we have this request in place, we can send it off through the <code>FusedLocationApi</code>.</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">LocationServices.<span class="fu">FusedLocationApi</span>.<span class="fu">requestLocationUpdates</span>(mGoogleApiClient, request, <span class="kw">this</span>);</code></pre></div>
 <ul>
 <li><p>The first parameter is going to be the <code>GoogleApiClient</code> object, and the second will be the request we just made. The third parameter for the <code>requestLocationUpdates()</code> method is a <code>LocationListener</code>—an object with a callback that can be executed when the location is updated (i.e., when we move). To provide this listener, we’ll make the <em>Activity</em> into one by implementing the interface and filling in the <code>onLocationChanged()</code> method.</p>
@@ -537,11 +489,11 @@ Before actually sending the request, check for run-time permissions! This will i
 textLng.<span class="fu">setText</span>(<span class="st">&quot;&quot;</span> + location.<span class="fu">getLongitude</span>());</code></pre></div></li>
 </ul></li>
 </ul>
-<p>It is possible to test this out (even when indoors) by using the emulator. Although the emulator doesn’t actually have a GPS receiver, it is possible to give it a “fake” location using the emulator’s options sidebar (where we previously sent SMS messages from). This allos us to “send” the phone a location, almost as if we as humans were the GPS receiver!</p>
+<p>It is possible to test this out (even when indoors) by using the emulator. Although the emulator doesn’t actually have a GPS receiver, it is possible to give it a “fake” location using the emulator’s options sidebar (where we previously sent SMS messages from). This allows us to “send” the phone a location, almost as if we as humans were the GPS receiver!</p>
 <ul>
 <li><p>You can test by giving the emulator UW’s coordinates (47.6550 N, -122.3080 E), and you can watch it update!</p>
 <ul>
-<li>Note that you may need to start up the <code>Maps</code> application to make sure the devices’s location settings are enabled and correct. See <a href="https://developer.android.com/training/location/change-location-settings.html">here</a> for how we can prompt for that ourselves (it’s a lot of repetitous code, so leaving it as exercise to the reader).</li>
+<li>Note that you may need to start up the <code>Maps</code> application to make sure the devices’s location settings are enabled and correct. See <a href="https://developer.android.com/training/location/change-location-settings.html">here</a> for how we can prompt for that ourselves (it’s a lot of repetitive code, so leaving it as exercise to the reader).</li>
 </ul></li>
 <li><p>The <code>FusedLocationApi</code> class also has a <code>setMockLocation()</code> method, which can allow you to programmatically define locations (e.g., you can make a button that changes your location). This can be useful for testing and debugging.</p></li>
 </ul>
@@ -549,7 +501,7 @@ textLng.<span class="fu">setText</span>(<span class="st">&quot;&quot;</span> + l
 <ul>
 <li>We start by creating and connecting to a <code>GoogleApiClient</code>, which is going to let us talk to the Play Services application running in the background of our phone.</li>
 <li>This may not be able to connect (or may take a moment), so we have a <em>asynchronous</em> callback for when it does.</li>
-<li>Once it connects (in that callback), we check to make sure we have permission to get location, asking for it if we don’t. This requires the user to make a decision, which may take some time, so we have <em>another</em> asynchronous callback for when we finally get permision.</li>
+<li>Once it connects (in that callback), we check to make sure we have permission to get location, asking for it if we don’t. This requires the user to make a decision, which may take some time, so we have <em>another</em> asynchronous callback for when we finally get permission.</li>
 <li>Once we have permission, we start up a repeated request for location updates. These updates may take some time to arrive, so we have <em>yet another</em> asynchronous callback for when they do!</li>
 <li>And when we get a location update, we finally update our View.</li>
 </ul>
@@ -558,12 +510,20 @@ textLng.<span class="fu">setText</span>(<span class="st">&quot;&quot;</span> + l
 </div>
 </div>
 </div>
+
+
+
+<!-- Check AppCompat stuff
+     Clarify inheritance example (i.e., with "alert")
+     Implement solution
+ -->
+</div>
 <div class="footnotes">
 <hr />
-<ol start="34">
-<li id="fn34"><p><a href="https://www.google.com/search?q=uw+gps+coordinates" class="uri">https://www.google.com/search?q=uw+gps+coordinates</a><a href="location.html#fnref34">↩</a></p></li>
-<li id="fn35"><p><a href="https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderApi" class="uri">https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderApi</a><a href="location.html#fnref35">↩</a></p></li>
-<li id="fn36"><p><a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest" class="uri">https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest</a><a href="location.html#fnref36">↩</a></p></li>
+<ol start="41">
+<li id="fn41"><p><a href="https://www.google.com/search?q=uw+gps+coordinates" class="uri">https://www.google.com/search?q=uw+gps+coordinates</a><a href="location.html#fnref41">↩</a></p></li>
+<li id="fn42"><p><a href="https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderApi" class="uri">https://developers.google.com/android/reference/com/google/android/gms/location/FusedLocationProviderApi</a><a href="location.html#fnref42">↩</a></p></li>
+<li id="fn43"><p><a href="https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest" class="uri">https://developers.google.com/android/reference/com/google/android/gms/location/LocationRequest</a><a href="location.html#fnref43">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -571,8 +531,8 @@ textLng.<span class="fu">setText</span>(<span class="st">&quot;&quot;</span> + l
           </div>
         </div>
       </div>
-<a href="files-and-permissions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="services.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="databases.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="styles-themes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -601,10 +561,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info48/book/edit/master/location.Rmd",
+"link": "https://github.com/info448/book/edit/master/location.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["android-development.pdf", "android-development.epub"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -613,17 +573,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
