@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-11-08">
+<meta name="date" content="2017-11-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -272,8 +272,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="services.html"><a href="services.html#the-service-lifecycle"><i class="fa fa-check"></i>The Service Lifecycle</a></li>
 </ul></li>
 <li class="chapter" data-level="13.3" data-path="services.html"><a href="services.html#example-a-music-service"><i class="fa fa-check"></i><b>13.3</b> Example: A Music Service</a><ul>
-<li class="chapter" data-level="13.3.1" data-path="services.html"><a href="services.html#mediaplayer"><i class="fa fa-check"></i><b>13.3.1</b> MediaPlayer</a></li>
-<li class="chapter" data-level="13.3.2" data-path="services.html"><a href="services.html#creating-a-service"><i class="fa fa-check"></i><b>13.3.2</b> Creating a Service</a></li>
+<li class="chapter" data-level="" data-path="services.html"><a href="services.html#mediaplayer"><i class="fa fa-check"></i>MediaPlayer</a></li>
+<li class="chapter" data-level="" data-path="services.html"><a href="services.html#creating-a-service"><i class="fa fa-check"></i>Creating a Service</a></li>
 </ul></li>
 <li class="chapter" data-level="13.4" data-path="services.html"><a href="services.html#foreground-services"><i class="fa fa-check"></i><b>13.4</b> Foreground Services</a></li>
 <li class="chapter" data-level="13.5" data-path="services.html"><a href="services.html#bound-services"><i class="fa fa-check"></i><b>13.5</b> Bound Services</a></li>
@@ -365,7 +365,7 @@ This lecture references code found at <a href="https://github.com/info448/lectur
 </p>
 <div id="threads-and-processes" class="section level2">
 <h2><span class="header-section-number">13.1</span> Threads and Processes</h2>
-<p>*Concurrency<strong> the process by which we have multiple <em>processes</em> (think: methods) running at the same time. This can be contrasted with processes that run </strong>serially**, or one after another.</p>
+<p><strong>Concurrency</strong> is the process by which we have multiple <em>processes</em> (think: methods) running at the same time. This can be contrasted with processes that run <strong>serially</strong>, or one after another.</p>
 <p>For example, if you call two methods one after the other, then the second method execute will “wait” for the first one to finished:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">void</span> <span class="fu">countUp</span>() {
     <span class="kw">for</span>(<span class="dt">int</span> i=<span class="dv">0</span>; i&lt;<span class="dv">1000</span>; i++){
@@ -466,7 +466,7 @@ Learning Android Development involves knowing about what classes exist, and can 
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">for</span>(<span class="dt">int</span> count=<span class="dv">0</span>; count&lt;=<span class="dv">10</span>; count++){
     Log.<span class="fu">v</span>(TAG, <span class="st">&quot;Count: &quot;</span>+count);
     <span class="kw">try</span> {
-        Thread.<span class="fu">sleep</span>(<span class="dv">5000</span>); <span class="co">//sleep for 5 seconds</span>
+        Thread.<span class="fu">sleep</span>(<span class="dv">2000</span>); <span class="co">//sleep for 2 seconds</span>
     } <span class="kw">catch</span> (InterruptedException e) {
         Thread.<span class="fu">currentThread</span>().<span class="fu">interrupt</span>();
     }
@@ -536,11 +536,11 @@ Learning Android Development involves knowing about what classes exist, and can 
 <div id="example-a-music-service" class="section level2">
 <h2><span class="header-section-number">13.3</span> Example: A Music Service</h2>
 <p>One of the classic uses for a background service is to play music, so we will use that as an example. It is possible to play music directly from an Activity, and the music will even keep playing as long as the Activity is alive. But remember that Activities are fragile, and can be destroyed at any moment (whether by us or by the system to save resources). So in order to keep our music playing even as we go about other tasks, we should <a href="http://developer.android.com/guide/topics/media/mediaplayer.html#mpandservices">use a Service</a>. Services have higher “priority” in the eyes of the Android system, and so don’t get sacrificed for resources as readily as normal Activities.</p>
-<div id="mediaplayer" class="section level3">
-<h3><span class="header-section-number">13.3.1</span> MediaPlayer</h3>
+<div id="mediaplayer" class="section level3 unnumbered">
+<h3>MediaPlayer</h3>
 <p>In order to make a music service, we need to briefly explain how to play music with <a href="https://developer.android.com/guide/topics/media/mediaplayer.html"><code>MediaPlayer</code></a>. This is the main API for playing sound and video (e.g., if you want to play <code>.mp3</code> files).</p>
 <p class="alert alert-info">
-Android actually has a toal of three (3) audio APIs! The <a href="https://developer.android.com/reference/android/media/SoundPool.html"><code>SoundPool</code></a> API is great for short sound effects that play simultaneously (though you need to do extra work to load those clips ahead of time), as with simple games. The <a href="http://developer.android.com/reference/android/media/AudioTrack.html"><code>AudioTrack</code></a> API allows you to play audio at a very low level (e.g., by “pushing” bytes to a stream). This is useful for generated Audio (like MIDI music) or if you’re trying to do some other kind of low-level stuff.
+Android actually has a total of three (3) audio APIs! The <a href="https://developer.android.com/reference/android/media/SoundPool.html"><code>SoundPool</code></a> API is great for short sound effects that play simultaneously (though you need to do extra work to load those clips ahead of time), such as for simple games. The <a href="http://developer.android.com/reference/android/media/AudioTrack.html"><code>AudioTrack</code></a> API allows you to play audio at a very low level (e.g., by “pushing” bytes to a stream). This is useful for generated Audio (like MIDI music) or if you’re trying to do some other kind of low-level stuff.
 </p>
 <p><code>MediaPlayer</code> is very simple to use, particularly when playing a locally defined resource (e.g., something in <code>res/raw/</code>). You simply use a factory to make a new <code>MediaPlayer</code> object, and then call <code>.play()</code> on it:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">MediaPlayer mediaPlayer = MediaPlayer.<span class="fu">create</span>(context, R.<span class="fu">raw</span>.<span class="fu">my_sound_file</span>);
@@ -551,7 +551,7 @@ mediaPlayer.<span class="fu">start</span>(); <span class="co">// no need to call
 </ul>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">mediaPlayer.<span class="fu">release</span>();
 mediaPlayer = <span class="kw">null</span>;</code></pre></div>
-<p>We can also implement and register a <code>MediaPlayer.OnCompletionListener</code> to handle when a song finishes playing.</p>
+<p>We can also implement and register a <code>MediaPlayer.OnCompletionListener</code> to do something when a song finishes playing.</p>
 <p>Finally, it is possible to use <code>MediaPlayer</code> to play files from a <code>ContentProvider</code> or even off the Internet!</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String url = <span class="st">&quot;http://........&quot;</span>; <span class="co">// your URL here</span>
 MediaPlayer mediaPlayer = <span class="kw">new</span> <span class="fu">MediaPlayer</span>();
@@ -562,8 +562,8 @@ mediaPlayer.<span class="fu">prepareAsync</span>(); <span class="co">//prepare m
 mediaPlayer.<span class="fu">setOnPreparedListener</span>(<span class="kw">this</span>); <span class="co">//handle when file is buffered</span>
 mediaPlayer.<span class="fu">start</span>();</code></pre></div>
 </div>
-<div id="creating-a-service" class="section level3">
-<h3><span class="header-section-number">13.3.2</span> Creating a Service</h3>
+<div id="creating-a-service" class="section level3 unnumbered">
+<h3>Creating a Service</h3>
 <p>In order to make our music service, we are going to subclass the <code>Service</code> class itself (<em>don’t forget to include the Service in the <code>Manifest</code></em>) and manually set up all the pieces. Specifically, we will fill in the lifecycle callbacks:</p>
 <ul>
 <li><code>onCreate()</code> we can include, though it doesn’t need to do anything.</li>
@@ -609,28 +609,28 @@ There are a couple of other details that you should handle if you’re making a 
 </div>
 <div id="bound-services" class="section level2">
 <h2><span class="header-section-number">13.5</span> Bound Services</h2>
-<p>As mentioned above, there are two “types” of Services: <strong>Started Services</strong> (Services launched with <code>startService()</code>) and <strong>Bound Services</strong>. A <a href="https://developer.android.com/guide/components/bound-services.html">Bound Service</a> is a Service that acts as the “server” in a client-server setup: it allows for client Activities to “connect” to it (<strong><em>bind it</em></strong>) and then exchange messages with—primarily by calling methods on the Service. These messages can even be <em>across processes</em>, allowing for <a href="https://en.wikipedia.org/wiki/Inter-process_communication">interprocess communication</a>! This is useful when you want interact with the Service from an Activity in some way (e.g., if we want to <code>pause()</code> our music), or if we want to make the service’s capabilities available to other applications.</p>
+<p>As mentioned above, there are two “types” of Services: <strong>Started Services</strong> (Services launched with <code>startService()</code>) and <strong>Bound Services</strong>. A <a href="https://developer.android.com/guide/components/bound-services.html">Bound Service</a> is a Service that acts as the “server” in a client-server setup: it allows for client Activities to “connect” to it (<strong><em>bind it</em></strong>) and then exchange messages with it—primarily by calling methods on the Service. These messages can even be <em>across processes</em>, allowing for <a href="https://en.wikipedia.org/wiki/Inter-process_communication">interprocess communication</a>! This is useful when you want interact with the Service from an Activity in some way (e.g., if we want to <code>pause()</code> our music), or if we want to make the service’s capabilities available to other applications.</p>
 <p>We make a Bound Service by having the Service implement and utilize the <strong><code>onBind()</code></strong> callback. This method returns an <code>IBinder</code> object (the <code>I</code> indicates that it’s an <em>Interface</em>, following a Java convention common in enterprise software). When Activities connect to this Service (using the <code>bindService()</code> method), this <code>IBinder</code> object is passed to them, and they can use it to get access to the Service process to call methods on it. Effectively, the binding process produces an <em>object</em> that represents that Service, so Activities can call methods on the Service without needing to send it Intents!</p>
 <p>As an example, let’s add the ability to “pause” the music being played as a bound service:</p>
 <p>The first thing we need to do is have our Service implement the <code>onBind()</code> method. To do this, we will need an <code>IBinder</code> object to return (that is: an object of a class that implements the <code>IBinder</code> interface). For “local services” (e.g., Services that are run <em>in the same process</em>), the easiest way to get an <code>IBinder</code> is to extend the <code>Binder</code> class:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">private</span> <span class="dt">final</span> IBinder mBinder = <span class="kw">new</span> <span class="fu">LocalBinder</span>(); <span class="co">//singleton instance variable</span>
-
-<span class="kw">public</span> <span class="kw">class</span> LocalBinder <span class="kw">extends</span> Binder { <span class="co">//implements IBinder</span>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> MyBinder <span class="kw">extends</span> Binder { <span class="co">//implements IBinder</span>
     <span class="co">//binder class methods will go here!</span>
-}</code></pre></div>
+}
+
+<span class="kw">private</span> <span class="dt">final</span> IBinder mBinder = <span class="kw">new</span> <span class="fu">MyBinder</span>(); <span class="co">//singleton instance variable</span></code></pre></div>
 <ul>
 <li>Our local version starts “empty” for now; we’ll add details below.</li>
 <li>We will just return this object from <code>onBind()</code>.</li>
 </ul>
-<p>Because the Activity is given a copy of this <code>LocalBinder</code> object, that class can be designed to support the Activity communicating with the Service in a couple of different ways:</p>
+<p>Because the Activity is given a copy of this <code>MyBinder</code> object, that class can be designed to support the Activity communicating with the Service in a couple of different ways:</p>
 <ol style="list-style-type: decimal">
-<li><p>The <code>IBinder</code> can provide <code>public</code> methods for the Activity to call. These methods can then access instance variables of the Service (since the <code>LocalBinder</code> is a nested class). This causes the <code>IBinder</code> to literally act as the “public interface” for the Service!</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//in LocalBinder</span>
+<li><p>The <code>IBinder</code> can provide <code>public</code> methods for the Activity to call. These methods can then access instance variables of the Service (since the <code>MyBinder</code> is a nested class). This causes the <code>IBinder</code> to literally act as the “public interface” for the Service!</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//in MyBinder</span>
 <span class="kw">public</span> String <span class="fu">getSongName</span>() {
     <span class="kw">return</span> songName; <span class="co">//access Service instance variable</span>
 }</code></pre></div></li>
 <li><p>The <code>IBinder</code> can provide access to the Service itself (via a getter that returns the <code>Service</code> object). The Activity can then call any public methods provided by that <code>Service</code> class.</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//in LocalBinder</span>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//in MyBinder</span>
 <span class="kw">public</span> MusicService <span class="fu">getService</span>() {
     <span class="co">// Return this instance of this Service so clients can call public methods on it!</span>
     <span class="kw">return</span> MusicService.<span class="fu">this</span>;
@@ -640,12 +640,12 @@ There are a couple of other details that you should handle if you’re making a 
 <p>In the Activity, we need to do a bit more work in order to interact with the bound Service. We bind to a Service using <a href="http://developer.android.com/reference/android/content/Context.html#bindService(android.content.Intent, android.content.ServiceConnection, int)"><code>bindService(Intent, ServiceConnection, flag)</code></a>. We can do this whenever we want the Service to be available (<code>onStart()</code> is a good option, so it is available when the Activity is active).</p>
 <ul>
 <li>The Intent parameter should be addressed to the Service we want to bind.</li>
-<li><p>The <code>ServiceConnection</code> parameter is a reference to an object that implements the <code>ServiceConnection</code> interface, providing callbacks that can be executed whe the Activity connects to the Service. We can have the Activity implement the interface, or create a separate anonymous class:</p>
+<li><p>The <code>ServiceConnection</code> parameter is a reference to an object that implements the <code>ServiceConnection</code> interface, providing callbacks that can be executed when the Activity connects to the Service. We can have the Activity implement the interface, or create a separate anonymous class:</p>
 <div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">/** Defines callbacks for service binding, passed to bindService() */</span>
 <span class="kw">private</span> ServiceConnection mConnection = <span class="kw">new</span> <span class="fu">ServiceConnection</span>() {
     <span class="kw">public</span> <span class="dt">void</span> <span class="fu">onServiceConnected</span>(ComponentName className, IBinder service) {
         <span class="co">// We&#39;ve bound to LocalService, cast the IBinder and get LocalService instance</span>
-        LocalBinder binder = (LocalBinder) service;
+        MyBinder binder = (MyBinder) service;
         mService = binder.<span class="fu">getService</span>();
         mBound = <span class="kw">true</span>;
     }
@@ -665,7 +665,7 @@ There are a couple of other details that you should handle if you’re making a 
     <span class="kw">super</span>.<span class="fu">onStop</span>();
 }</code></pre></div>
 <p class="alert alert-info">
-Keep in mind that binding a Service <strong>DOES NOT</strong> call <code>onStartCommand()</code>, but simply creates the Service and gives us access to it! Bound Services are not by defaul considered “started”, and are generally kept around by the OS as long as they are bound. If we do “start” a Bound Service (e.g., with <code>startService()</code>), we will need to remember to stop it later!
+Keep in mind that binding a Service <strong>DOES NOT</strong> call <code>onStartCommand()</code>, but simply creates the Service and gives us access to it! Bound Services are not by default considered “started”, and are generally kept around by the OS as long as they are bound. If we do “start” a Bound Service (e.g., with <code>startService()</code>), we will need to remember to stop it later!
 </p>
 <p>This example is just for <em>local services</em> (that are accessed within the same process—within the same Application). If we want the Service to be available to other processes (i.e., other Applications), we need to do more work. Specifically, we use <code>Handler</code> and <code>Messenger</code> objects to pass messages between these processes (similar to the example we did for passing messages between threads); for more details, see <a href="https://developer.android.com/guide/components/bound-services.html#Messenger">the example in the guide</a>, as well as the complete sample classes <a href="https://github.com/android/platform_development/blob/master/samples/ApiDemos/src/com/example/android/apis/app/MessengerService.java"><code>MessengerService</code></a> and <a href="https://github.com/android/platform_development/blob/master/samples/ApiDemos/src/com/example/android/apis/app/MessengerServiceActivities.java"><code>MessengerServiceActivities</code></a>.</p>
 
