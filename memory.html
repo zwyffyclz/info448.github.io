@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
-<link rel="prev" href="notifications-settings.html">
-<link rel="next" href="files-and-permissions.html">
+<link rel="prev" href="maps.html">
+<link rel="next" href="java-review.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -354,157 +354,115 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="loaders" class="section level1">
-<h1><span class="header-section-number">Lecture 9</span> Providers and Loaders</h1>
-<p>This lecture discusses how to access data from a <strong>Content Provider</strong> using a <a href="https://developer.android.com/guide/components/loaders.html"><strong>Loader</strong></a>. A <em>Content Provider</em> is an abstraction of a database or other data store, allowing us easily and systematically work with that data in Java (rather than in a separate data manipulation language such as SQL). A <em>Loader</em> is then used to efficiently perform this data access in the background (off the UI Thread), while also easily connecting that data to Views. This lecture discusses how to use a Loader to access the data in an existing Content Provider; a <a href="databases.html#databases">later lecture</a> details how to create Content Providers from scratch.</p>
+<div id="memory" class="section level1">
+<h1><span class="header-section-number">Lecture 18</span> Memory Management</h1>
+<p>Android is designed to run on <em>resource constrained</em> devices, and one of the most constrained resources is the device’s <a href="https://en.wikipedia.org/wiki/Computer_memory"><strong>memory</strong></a>. Because of this, a large part of the Android framework and how we interact with application components deals with how the system <a href="https://developer.android.com/topic/performance/memory.html">manages memory</a>, making sure sufficient memory is available for whatever the user wants to do.</p>
+<p>In this short tutorial, you will explore how the Android operating system handles memory, and learn how to use the <a href="https://developer.android.com/studio/profile/android-monitor.html">Android Monitor</a>’s <a href="https://developer.android.com/studio/profile/am-memory.html">Memory Monitor</a> to view your application’s memory usage and identify potential <a href="https://en.wikipedia.org/wiki/Memory_leak">memory leaks</a>.</p>
 <p class="alert alert-info">
-This lecture references code found at <a href="https://github.com/info448/lecture09-loaders" class="uri">https://github.com/info448/lecture09-loaders</a>. Note that this demo accesses the device’s User Dictionary, which is only available to general apps on API 22 (Lollipop) <strong>or earlier</strong>. This tutorial thus does not support all versions of Android. You can instead use an emulator running API 22 or earlier.
+The code for this tutorial can be found at <a href="https://github.com/info448/lab-memory" class="uri">https://github.com/info448/lab-memory</a>. Note that you will not be required to write much code for this lab; it is more about using the tools and inspecting the logged output to get a sense for how memory is handled in Android. You should be able to complete this tutorial on <em>either</em> the emulator or a physical device.
 </p>
-<div id="content-providers-intro" class="section level2">
-<h2><span class="header-section-number">9.1</span> Content Providers</h2>
-<p>The example starter code uses a <code>ListView</code> that shows a list of words. Recall that a <code>ListView</code> utilizes the <strong>model-view-controller</strong> architecture… and in this case, the “model” (data) is a hard-coded list of array of words. But there are other lists of words as well! Entire databases of words! Previous lectures have discussed how to use <em>network requests</em> to access online data APIs, but there are also databases (of words no less) built into your Android phone.</p>
-<p>For example, Android keeps track of the list of the spellings of “non-standard” words in what is called the <strong>User Dictionary</strong>. You can view this list on the device at <code>Settings &gt; Language &amp; Input &gt; Personal Dictionary</code>. You can even use this Settings interface to add new words to the dictionary (e.g., “embiggen”, “cromulent”, “covfefe”).</p>
-<p>Note that the User Dictionary keeps track of a <a href="https://developer.android.com/guide/topics/providers/content-provider-basics.html#ClientProvider"><strong>database</strong></a> of words. You can think of this database as being like a single SQL table: it’s a set of <em>entries</em> (rows) each of which have some <em>values</em> (columns). The primary key of the table is named (by convention) <strong><code>ID</code></strong>.</p>
-<p>Since this data is stored in (essentially) a simple SQL table, it is possible for us to access and modify it programmatically&amp;mash;moreover, the Android framework allows us to do this without needing to know or write SQL! For example, we can access this list of words in order to show them in the ListView.</p>
-<p class="alert alert-info">
-While you don’t need to know SQL to utilize a built-in database like the User Dictionary, it helps to have a passing familiarity with relational databases and their terminology to intuit about the organization of the data.
+<p class="alert alert-warning">
+This tutorial is based on Android Studio version 2.3.3. Android Studio 3.0 introduces a <a href="https://developer.android.com/studio/preview/features/android-profiler.html">different set of profiling tools</a>, though they should work in a similar way.
 </p>
-<p>To do this, we’ll need to request permission to access the database, just as we asked permission to access the Internet. Include the following in the <em>Manifest</em>:</p>
-<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;uses-permission</span><span class="ot"> android:name=</span><span class="st">&quot;android.permission.READ_USER_DICTIONARY&quot;</span><span class="kw">/&gt;</span></code></pre></div>
-<p>Although the words are stored in a database, we don’t know the <em>exact</em> format of this database (e.g., the exact table or column names, or even whether it is an SQL database or just a <code>.csv</code> file!). We want to avoid having to write code that only works with a specific format, especially as the words may be stored in different kinds of databases on different devices or across different versions of Android. (The Android framework does include support for working directly with a local <code>SQLite</code> database, as discussed in the next chapter).</p>
-<p>In order to avoid relying on the specific format of how some data is stored, Android offers an <strong><em>abstraction</em></strong> in the form of a <a href="https://developer.android.com/guide/topics/providers/content-providers.html"><strong>Content Provider</strong></a><a href="#fn36" class="footnoteRef" id="fnref36"><sup>36</sup></a>. A Content Provider offers an interface to interact with structured data, whether that data is stored in a database, in a file, in <em>multiple</em> files, online, or somewhere else. You can thus think of “a Content Provider” as meaning “a data source” (e.g., the source/provider of content)!</p>
-<ul>
-<li>It is possible to create your own Content Providers (described in a later chapter), but this lecture focuses purely on <em>utilizing</em> existing Providers.</li>
-</ul>
-<p>All Content Providers (data sources) have a <strong>URI</strong> (<a href="https://en.wikipedia.org/wiki/Uniform_Resource_Identifier">Universal Resource Identifier</a>, a generalization of a URL used for resources not necessarily on the Internet). It is possible to <em>query</em> this URI, similar in concept to how web APIs are accessed via queries to their URI endpoints. In particular, Content Provider URIs utilize the <strong><code>content://</code></strong> protocol (instead of <code>https://</code>), since the their data is accessed as via “content requests” rather than “HTTP requests”.</p>
-<p>The <code>URI</code> for the Dictionary’s content is defined by the constant <a href="https://developer.android.com/reference/android/provider/UserDictionary.Words.html"><code>UserDictionary.Words.CONTENT_URI</code></a>. We utilize constants to refer to URIs and paths to make it easier to refer to them and to generalize across devices that may have different directory structures.</p>
-<p>We are able to access this Content Provider via a <a href="https://developer.android.com/reference/android/content/ContentResolver.html"><code>ContentResolver</code></a>. This class provides methods for accessing the data in a provider (represented as a <code>ContentProvider</code> object). Each Context has a singleton ContentResolver, which is accessed via the <code>getContentResolver()</code> method (note that for a Fragment, the Context is the containing Activity). The ContentResolver’s methods support the basic <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a> operations: <code>insert()</code> (create), <code>query()</code> (read), <code>update()</code>, and <code>delete()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ContentResolver resolver = <span class="fu">getContentResolver</span>();</code></pre></div>
-<p>ContentResolver methods take multiple parameters, supporting the different options available in a generic SQL query. For example, consider the the <a href="https://developer.android.com/reference/android/content/ContentResolver.html#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)"><code>query()</code></a> method:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="fu">getContentResolver</span>().<span class="fu">query</span>(
-    uri,              <span class="co">// The content URI</span>
-    projection,      <span class="co">// The an array of columns to return for each row</span>
-    selectionClause  <span class="co">// Selection criteria (as an SQL WHERE clause)</span>
-    selectionArgs,   <span class="co">// An array of values that can be injected into the selection clause</span>
-    sortOrder);      <span class="co">// The sort order for the returned rows (as an SQL ORDER BY clause)</span></code></pre></div>
-<ul>
-<li>This is basically a wrapper around an SQL <code>SELECT</code> statement! But each “part” of that statement are specified as parameter to this method.</li>
-</ul>
-<p>The <strong>projection</strong> is a <code>String[]</code> of all the “columns” (attributes) we want to fetch from the data source. This is what you’d put after <code>SELECT</code> in SQL. (Note we can pass in <code>null</code> to represent <code>SELECT *</code>, but that’s inefficient—better to give a list of everything).</p>
-<ul>
-<li><p>We can see what column names are available for the User Dictionary in <a href="http://developer.android.com/reference/android/provider/UserDictionary.Words.html"><code>UserDictionary.Words</code></a>. Again, these are defined as constants!</p></li>
-<li><p>Be sure to always select the <code>_ID</code> primary key: it will be needed later!</p></li>
-</ul>
-<p>The other parameters can be used to customize the <code>SELECT</code> statement. The “selection” (<code>WHERE</code>) clause needs to parameters: the second are values that will be escaped against <a href="https://en.wikipedia.org/wiki/SQL_injection">SQL injection attacks</a>. Passing <code>null</code> for any of these parameters will cause the clause to be ignored:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String[] projection = <span class="kw">new</span> String[] {
-    UserDictionary.<span class="fu">Words</span>.<span class="fu">WORD</span>,
-    UserDictionary.<span class="fu">Words</span>.<span class="fu">FREQUENCY</span>,
-    UserDictionary.<span class="fu">Words</span>.<span class="fu">_ID</span>
-};
-resolver.<span class="fu">query</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">CONTENT_URI</span>, projection, <span class="kw">null</span>, <span class="kw">null</span>, <span class="kw">null</span>);</code></pre></div>
-<p>So overall, the query is breaking apart the components SQL <code>SELECT</code> statement into different pieces as parameters to a method, so you don’t <em>quite</em> have to write the selection yourself. Moreover, this method <em>abstracts</em> the specific query language, allowing the same queries to be used on different formats of database (<code>SQLite</code>, <code>PostgreSQL</code>, files, etc).</p>
+<div id="memory-allocation" class="section level2">
+<h2><span class="header-section-number">18.1</span> Memory Allocation</h2>
+<p>First, a short introduction to how memory is handled by a computer (including mobile computers):</p>
+<p>The basic idea is that your computer has some amount of storage space (in <a href="https://en.wikipedia.org/wiki/Random-access_memory">RAM</a>) dedicating to remembering all of the variables and objects that you create in your program. If you declare a new variable</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> number = <span class="dv">448</span>;</code></pre></div>
+<p>that value (<code>448</code>) is “written down” in memory so it can be used later. For example, this <code>int</code> takes up 32 bits, or 4 bytes, of memory. Every single variable you create takes up some amount of memory (see e.g., <a href="http://www.javamex.com/tutorials/memory/object_memory_usage.shtml">here</a>).</p>
+<p>This data is stored in a section of memory called the “<strong>heap</strong>”, which is the part of memory dedicated to <em>dynamic</em> memory (e.g., values that may only need to be remembered for a short time). You can think of the heap as a something like a giant <em>array</em> or <em>list</em> of bytes, a certain number of which are <strong>allocated</strong> (given) to each new value that needs to be stored. Thus if spots 0 through 100 in the heap are allocated, declaring a new variable may be allocated (placed) at spot 101.</p>
+<div class="figure">
+<img src="img/memory/allocation.png" alt="Example of memory allocation, from dynatrace.com." />
+<p class="caption">Example of memory allocation, from <a href="http://www.dynatrace.com/en/javabook/how-garbage-collection-works.html">dynatrace.com</a>.</p>
 </div>
-<div id="cursors" class="section level2">
-<h2><span class="header-section-number">9.2</span> Cursors</h2>
-<p>The <code>ContentResolver#query()</code> method returns a <a href="http://developer.android.com/reference/android/database/Cursor.html"><strong><code>Cursor</code></strong></a>. A <code>Cursor</code> provides an interface to the list of records in a database (e.g., those returned by the query). A <code>Cursor</code> also behaves like an <code>Iterator</code> in Java: it keeps track of which record is currently being accessed (e.g., what the <code>i</code> would be in a for loop). You can think of it as a “pointer” to a particular record, like the cursor on a screen.</p>
-<p>We call methods on the <code>Cursor</code> to specify which record we want it to “point” to, as well as to fetch values from the record object at that spot in the list. For example:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">cursor.<span class="fu">moveToFirst</span>(); <span class="co">//move to the first item</span>
-String field0 = cursor.<span class="fu">getString</span>(<span class="dv">0</span>); <span class="co">//get the first field (column you specified) as a String</span>
-String word = cursor.<span class="fu">getString</span>(cursor.<span class="fu">getColumnIndexOrThrow</span>(<span class="st">&quot;word&quot;</span>)); <span class="co">//get the &quot;word&quot; field as a String</span>
-cursor.<span class="fu">moveToNext</span>(); <span class="co">//go to the next item</span></code></pre></div>
-<p>The nice thing about <code>Cursors</code> though is that they can easily be fed into <code>AdapterViews</code> by using a <a href="http://developer.android.com/reference/android/widget/CursorAdapter.html"><code>CursorAdapter</code></a> (as opposed to the <code>ArrayAdapter</code> we’ve used previously). The <a href="http://developer.android.com/reference/android/widget/SimpleCursorAdapter.html"><strong><code>SimpleCursorAdapter</code></strong></a> is a concrete implementation that is almost as easy to use as an <code>ArrayAdapter</code>:</p>
-<p>You instantiate a new <code>SimpleCursorAdapter</code>, passing it:</p>
+<p><strong>Memory management</strong> thus involves answering two questions:</p>
 <ol style="list-style-type: decimal">
-<li>A <code>Context</code> for loading resources</li>
-<li>A layout resource to inflate for each record</li>
-<li>A <code>Cursor</code> (which can be <code>null</code>)</li>
-<li>An array of column names to fetch from each entry in the Cursor (the <strong>projection</strong>, similar to before)</li>
-<li>A matching list of View resource <code>ids</code> (which should all be <code>TextViews</code>) to assign each column’s value to. This is the “mapping” that the Adapter will perform (from projection columns to TextView contents).</li>
-<li>Any additional option flags (<code>0</code> means no flags, and is the correct option for us).</li>
+<li>Where do we put new values that we need to allocate memory for?</li>
+<li>What do we do with variables that we no longer need to remember?</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">adapter = <span class="kw">new</span> <span class="fu">SimpleCursorAdapter</span>(
-                <span class="kw">this</span>,
-                R.<span class="fu">layout</span>.<span class="fu">list_item_layout</span>, <span class="co">//item to inflate</span>
-                cursor, <span class="co">//cursor to show</span>
-                <span class="kw">new</span> String[] {UserDictionary.<span class="fu">Words</span>.<span class="fu">WORD</span>, UserDictionary.<span class="fu">Words</span>.<span class="fu">FREQUENCY</span>}, <span class="co">//fields to display</span>
-                <span class="kw">new</span> <span class="dt">int</span>[] {R.<span class="fu">id</span>.<span class="fu">txt_list_item</span>, R.<span class="fu">id</span>.<span class="fu">txt_item_freq</span>},                       <span class="co">//where to display them</span>
-                <span class="dv">0</span>); <span class="co">//flags</span></code></pre></div>
-<p>Then we can use this adapter for the ListView in place of the <code>ArrayAdapter</code>!</p>
+<p>Java (and by extension, Android) answers the second question in part by using what is called the <a href="https://plumbr.eu/handbook/garbage-collection-in-java"><strong>garbage collector</strong></a>. This is a system process that periodically “sweeps” (searches) for any values that are no longer being used—that is, the variables are out of scope or otherwise cannot be referenced. These values are then “garbage collected”: the space is <em>deallocated</em> so that future values can be placed there instead.</p>
+<ul>
+<li><p>Garbage collection is a bit like going through an apartment and marking rooms as “vacant” if no one lives there anymore.</p></li>
+<li><p>Java’s garbage collection means we don’t need to handle deallocating memory ourselves—unlike in languages such as <strong>C</strong> where you need to manually manage your own memory!</p></li>
+</ul>
+<p>The Android framework is structured so that when memory gets low, the system will <a href="https://developer.android.com/guide/topics/processes/process-lifecycle.html">destroy</a> any <em>stopped</em> Activities, thereby allowing them to be garbage collected (and freeing up the memory to be used by a different application). You’ll be able to see this process in action in the next section.</p>
 </div>
-<div id="loaders" class="section level2">
-<h2><span class="header-section-number">9.3</span> Loaders</h2>
-<p>In order to get the <code>Cursor</code> to pass into the adapter, we need to <code>.query()</code> the database. But we want to do this a lot in fact, every time the database updates, we’d like to be able to query it again so we can update the Adapter and have the changes show up! Additionally, accessing a database can be <em>slow</em> (it requires disk access, structuring and submitting SQL calls, and depending on the complexity of the database those queries can take time). Thus, as with network requests, we’d like to perform this query on a <em>background thread</em> so that it doesn’t block our application and cause it to stall.</p>
-<p>In order to automatically update your list with new data loaded on a background thread, we’re going to use a class called a <a href="https://developer.android.com/guide/components/loaders.html"><code>Loader</code></a>. This is basically a wrapper around <a href="https://developer.android.com/reference/android/os/AsyncTask.html"><code>ASyncTask</code></a> (described in a later chapter), but one that lets you execute a background task repeatedly <em>whenever the data source changes</em>. In particular, Android provides a <a href="http://developer.android.com/reference/android/content/CursorLoader.html"><code>CursorLoader</code></a> specifically used to load data from ContentProviders through Cursors—whenever the content changes, a new Cursor is produced which can be “swapped” into the adapter.</p>
-<p>To use a <code>CursorLoader</code>, we need to specify that our Activity implements the <a href="https://developer.android.com/reference/android/support/v4/app/LoaderManager.LoaderCallbacks.html"><code>LoaderManager.LoaderCallbacks&lt;Cursor&gt;</code></a> interface—basically saying that this fragment can react to Loader events.</p>
-<!-- - Loaders need to work with Fragments, unless the Activity subclasses [`FragmentActivity`](https://developer.android.com/reference/android/support/v4/app/FragmentActivity.html) (as `AppCompatActivity` does) and thereby provides the "Fragment" capabilities needed to use a `Loader`. So we can use Loaders in _our_ Activities or Fragments. -->
-<p>We will need to fill in the interfaces callback functions in order to use the <code>CursorLoader</code>:</p>
-<ul>
-<li><p>In <code>onCreateLoader()</code> we specify what the Loader should <em>do</em>. Here we will instantiate and return a <a href="https://developer.android.com/reference/android/content/CursorLoader.html#CursorLoader(android.content.Context, android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)"><code>new CursorLoader(...)</code></a> that queries the <code>ContentProvider</code>. This looks a lot like the <code>.query()</code> method we wrote earlier, but will run on a background thread!</p>
-<!-- Note that the callback is also passed an `int id`, which is used to refer to _which_ loader we want to create. This allows you to have multiple loaders (e.g., for multiple lists!) in a single application. --></li>
-<li><p>In the <code>onLoadFinished()</code> callback, we can use <code>swapCursor()</code> to swap passed in <code>Cursor</code> into our <code>SimpleCursorAdapter</code> in order to feed that model data into our controller (for display in the view). The framework handles any cleanup around the old Cursor.</p>
-<!-- You can call `loader.getId()` to determine which loader finished loading, if you need to determine what adapter to swap into. --></li>
-<li><p>In the <code>onLoaderReset()</code> callback, we can just swap in <code>null</code> for our Cursor, since there now is no content to show (the loaded data has been “reset”).</p></li>
-</ul>
-<p>Finally, in order to actually <em>start</em> our background loading, we’ll use the <code>getLoaderManager().initLoader(...)</code> method. This will cause the Android framework to request the creation of a new Loader (by our <code>onCreateLoader()</code> method), as well as start that Loader loading! (This uses a manager similar to <code>FragmentManager</code>, and is similar in flavor to <code>AsyncTask.execute()</code>).</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="fu">getSupportLoaderManager</span>().<span class="fu">initLoader</span>(<span class="dv">0</span>, <span class="kw">null</span>, <span class="kw">this</span>);</code></pre></div>
-<ul>
-<li>Use <code>getSupportLoaderManager()</code> if you’re using the support library (and calling from an Activity; a support library Fragment like we’ve been using only has the one manager, so you can just use <code>getLoaderManager()</code>).</li>
-</ul>
-<p>The first parameter to the <code>initLoader()</code> method is an id number for <em>which cursor you want to load</em>—what is passed in as the first param to <code>onCreateLoader()</code> (or is accessible via <code>Loader#getId()</code>). This allows you to have multiple Loaders using the same callback function (e.g., to handle multiple Loaders for multiple data sources). The second param is a <code>Bundle</code> of args, and the third is the <code>LoaderCallbacks</code> (e.g., who handles the results)!</p>
-<ul>
-<li>Note that you can use the <code>.restartLoader()</code> method to “recreate” the <code>CursorLoader</code> (without losing other references), such as if you want to change the arguments passed to it.</li>
-</ul>
-<p>And with that, we can fetch the words from our database on a background thread—and if we update the words (e.g., through the Language Settings) it will automatically update!</p>
+<div id="the-memory-monitor" class="section level2">
+<h2><span class="header-section-number">18.2</span> The Memory Monitor</h2>
+<p>Since we’re interested in the memory used by the application, you should enable and view the <a href="http://developer.android.com/tools/help/am-basics.html#displaying">Memory Monitor</a> provided by Android Studio. If you look at the bottom panel (the <code>Android Monitor</code> panel) where you normally see the <code>Logcat</code> results, you should see a tab called <code>Monitors</code>. Click on this to view the memory usage over time (you can ignore the other monitors for now).</p>
+<div class="figure">
+<img src="img/memory/am-androidmon2.png" alt="Android Memory Monitor (Google)" />
+<p class="caption">Android Memory Monitor (<a href="https://developer.android.com/images/tools/am-androidmon2.png">Google</a>)</p>
 </div>
-<div id="other-provider-actions" class="section level2">
-<h2><span class="header-section-number">9.4</span> Other Provider Actions</h2>
-<p>The Content Resolver of course allows us to do more than just query and load the data: we can also add, update, or remove entries from the database.</p>
+<p>The dark-blue section represents <strong>allocated</strong> memory (i.e., the amount of memory being used to store variables), while the light-blue section represents <strong>free</strong> memory (in this case, the amount of memory that the <em>application</em> is budgeted by the operating system). Each section also has a size in megabytes listed on the right. We’re primarily interested in the dark-blue <strong>allocated</strong> memory, but check in with the instructor if you have questions about the free memory.</p>
+<p>When you first start up the app, you should see that some memory has been allocated, but it shouldn’t be changing at all (since the <code>MainActivity</code> doesn’t create any new variables after it is created). But let’s change that!</p>
+<p>While watching the monitor, click on the <strong>“BLANK ACTIVITY”</strong> button to be taken to a new (blank) Activity. <strong><em>Did you see the bar go up?!</em></strong> This is because opening a new Activity required allocating additional memory for that Activity (particularly its Views, since it doesn’t do much else).</p>
 <ul>
-<li><p>If we want to <em>modify</em> the contents of the User Dictionary, we will need permission:</p>
-<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;uses-permission</span><span class="ot"> android:name=</span><span class="st">&quot;android.permission.WRITE_USER_DICTIONARY&quot;</span><span class="kw">/&gt;</span></code></pre></div></li>
+<li>Of course, the bar didn’t go up by much; that’s because this simple Activity doesn’t require a lot of memory. In practice, even a lot of <code>Buttons</code> and <code>TextViews</code> don’t require large amounts of memory.</li>
 </ul>
-<p>To <em>insert</em> (create) a new Word into the ContentProvider, we call the <code>.insert()</code> method on the <code>ContentResolver</code>. It is passed a <a href="http://developer.android.com/reference/android/content/ContentValues.html"><code>ContentValues</code></a> object, which is a HashMap almost exactly like a <code>Bundle</code> (but it only supports values that can be entered into Content Providers, e.g., no Parcelables).</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ContentValues newValues = <span class="kw">new</span> <span class="fu">ContentValues</span>();
-newValues.<span class="fu">put</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">WORD</span>, inputText.<span class="fu">getText</span>().<span class="fu">toString</span>());
-newValues.<span class="fu">put</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">FREQUENCY</span>, <span class="dv">100</span>);
-newValues.<span class="fu">put</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">APP_ID</span>, <span class="st">&quot;edu.uw.loaderdemo&quot;</span>);
-newValues.<span class="fu">put</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">LOCALE</span>, <span class="st">&quot;en_US&quot;</span>);
+<p>Navigate back to the <code>MainActivity</code>. You might see the memory allocation increase a little more, as restarting the Activity can cause the Views to need to be recreated.</p>
+<div id="garbage-collection" class="section level3 unnumbered">
+<h3>Garbage Collection</h3>
+<p>Let’s see how the Java (technically, Dalvik) virtual machine handles memory. From the <code>MainActivity</code>, click on the button to go to the <code>ProgressActivity</code>. This Activity will show the progress towards completing a number of undefined tasks (it’s just showing a bunch of <code>ProgressBar</code> Views, which use a bit more memory than standard buttons).</p>
+<ul>
+<li>When you visited this <code>Activity</code>, you should have seen the memory allocation jump up!</li>
+</ul>
+<p>Now try navigating back and forth between the <code>MainActivity</code> and the <code>ProgressActivity</code>. You should see the allocated memory continue to increase (since we need to keep recreating those spinners), getting closer and closer to the amount of “free” memory. Eventually, Android will decide that it’s out of memory, and will initiate <strong>garbage collection</strong>, deallocating the memory that has previously been used to create the old spinners which are no longer needed (because that <em>instance</em> of the Activity is gone).</p>
+<ul>
+<li><p>Android will sometimes increase the amount of free memory available as the app asks for more. This is normal.</p></li>
+<li><p>When the garbage collection occurs, you should see the amount of allocated memory suddenly drop. Those “cliffs” are the garbage collector running.</p></li>
+</ul>
+<p>There are actually different forms of garbage collection (which make different decisions about which values are “old enough” to be deallocated), and the one that you just triggered may not have collected everything. You can also use the memory monitor to <strong>manually</strong> initiate garbage collection—this is useful for checking if memory is <em>actually</em> being used, or just hasn’t been cleaned up yet.</p>
+<ul>
+<li><p>Manually initiate the garbage collection by clicking the <strong>“Initiate GC”</strong> button (<img src="img/memory/am-igc.png" title="From Google" alt="initiate GC" />) at the top of the memory monitor panel. <strong><em>What happens? Were there other values that could be cleaned up?</em></strong></p></li>
+<li><p>Note that in practice, you should <strong>not</strong> try to perform garbage collection on your own—let the system do its own work (it is optimized to make sure that the computer doesn’t slow down too much when trying to do cleanup, which requires additional processing). This button is purely for testing and inspection.</p></li>
+</ul>
+</div>
+</div>
+<div id="memory-leaks" class="section level2">
+<h2><span class="header-section-number">18.3</span> Memory Leaks</h2>
+<p>Android’s garbage collection does a fine job of cleaning up memory… assuming that it can correctly identify the values that aren’t being used. This can sometimes be tricky: Java decides that a value is eligible for garbage collection whenever there are no longer any <em>references</em> to that value (e.g., no variables are in scope). However, if you’re not careful it’s often easy to leave an extra reference floating around that you didn’t intend, thereby keeping the memory from being deallocated. This is referred to as a <strong>memory leak</strong> (because the amount of available space is “leaking” away).</p>
+<p>For example, consider the <code>BirdActivity</code> class, that you can view by clicking on the <strong>“BIRD ACTIVITY”</strong> button. This activity shows a relatively high-resolution image of a bird—when you open the Activity, you should see the amount of allocated memory jump up dramatically since we need to load that <code>Drawable</code> into memory.</p>
+<p>If you click on the BirdActivity’s button, you’ll be taken to (another) blank Activity. Since the bird image is no longer being shown, it should no longer be used and thus should be eligible for garbage collection. Hit the “Initiate GC” button again to request that Android sweep up and reclaim that memory. <strong><em>What happens?</em></strong></p>
+<p>You’ll notice that the large amount of memory allocated to the image doesn’t go away… it looks like the bird isn’t being garbage collected!</p>
+<ul>
+<li><p>Why not? Recall that when we start new Activities, old Activities are put on a <a href="https://developer.android.com/guide/components/activities/tasks-and-back-stack.html">back stack</a>, allowing us to be able to hit the “back” button and return to the previous Activity. This means that each Activity in the stack contains a reference to the previous ones… including the resources that they have loaded into memory! So there is in fact a reference to that image—it’s in the object that is stored on the backstack!</p></li>
+<li><p>This can be a problem. It means that because we have that history, the amount of memory available to our application is smaller even though we’re not actually looking at the pretty bird right now.</p></li>
+</ul>
+<p>We can fix this by utilizing the <code>Activity</code> lifecycle callbacks. Specifically, you can remove the reference to the image when the the <code>Activity</code> <strong>stops</strong>, and then reload the image when the <code>Activity</code> <strong>starts</strong> again.</p>
+<ul>
+<li><p><strong><em>For practice</em></strong>, in the <code>BirdActivity</code>, override the <code>onStop()</code> method. Inside this method, set the <code>ImageView</code>’s drawable to be <code>null</code>.</p></li>
+<li><p>Similarly, override the the <code>onStart()</code> method so it loads and displays the image when the <code>Activity</code> is (re)started. You can just move the relevant code from <code>onCreate()</code>.</p></li>
+</ul>
+<p>Once you’ve done this, try navigating to the <code>BirdActivity</code> and clicking the button to go to the <code>BlankBirdActivity</code>. Use the “Initiate GC” button to force a garbage collection sweep—<strong><em>does the image’s memory get cleaned up now?</em></strong></p>
+<ul>
+<li>While this does mean that we’re not using as much memory when the <code>Activity</code> isn’t shown, it does mean that returning to the <code>Activity</code> is <em>slightly</em> slower (since we need to reload the image). This is the fundamental trade-off in all of programming optimization: <em>use of space vs. use of time</em>.</li>
+</ul>
+<p>Now you should have a sense for how values in Android can influence memory usage. The main take-away is that you want to be careful to de-reference any object that take significant memory (like images or other media; this is why we released the <code>MediaPlayer</code> when discussing Services).</p>
+<ul>
+<li>Additionally: note that <code>static</code> variables are <em>never</em> de-referenced and so are <em>never</em> garbage-collected. Thus you want to avoid <code>static</code> variables for anything more complex than a <code>String</code> to avoid more memory leaks!</li>
+</ul>
+<p>Finally, if you use the memory monitor and see memory usage stacking up, that is not necessarily a memory leak or other problem: it could just be that the system hasn’t run garbage collection yet! A memory leak is when resources that <em>should</em> be able to be reclaimed cannot be—but as long as you keep variables local and de-reference large objects, you’ll be fine!</p>
+<p class="alert alert-info">
+Android Studio includes numerous other monitors for profiling the performance of your application. See <a href="https://developer.android.com/studio/profile/android-monitor.html">Android Monitor</a> and <a href="https://developer.android.com/topic/performance/index.html">Performance and Power</a> for more details. Additionally, <a href="https://developer.android.com/studio/preview/features/android-profiler.html">Android Studio 3</a> contains a new set of profiling tools (but the basic concepts work the same way).
+</p>
+<p class="alert alert-warning">
+Avoid pre-mature optimization! Make sure that you can get your app <em>working</em> first, and then utilize these tools to solve specific problems, such as slow performance.
+</p>
 
-Uri newUri = <span class="fu">getContentResolver</span>().<span class="fu">insert</span>(
-       UserDictionary.<span class="fu">Words</span>.<span class="fu">CONTENT_URI</span>,   <span class="co">// the user dictionary content URI!</span>
-       newValues                   <span class="co">// the values to insert</span>
-);</code></pre></div>
-<ul>
-<li>The <code>insert()</code> function returns the URI for the <em>newly inserted row</em>, e.g. if you want to be able to query and display that content later.</li>
-</ul>
-<p>A similar approach is used to <em>update</em> and modify an entry in the Content Provider: call the <code>.update()</code> method and pass in a <code>ContentValues</code> bundle of values to change:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ContentValues newValues = <span class="kw">new</span> <span class="fu">ContentValues</span>();
-newValues.<span class="fu">put</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">FREQUENCY</span>, newFrequency);
-
-<span class="fu">getContentResolver</span>().<span class="fu">update</span>(
-          ContentUris.<span class="fu">withAppendedId</span>(UserDictionary.<span class="fu">Words</span>.<span class="fu">CONTENT_URI</span>, id),
-          newValues,
-          <span class="kw">null</span>, <span class="kw">null</span>); <span class="co">//no selection</span></code></pre></div>
-<ul>
-<li>Note that we make sure to update only that particular item by specifying the <em>URI of that item</em>. We do this by constructing a new URI representing/identifying that item, effectively by appending <code>&quot;/:id&quot;</code> to the URI. This means that we don’t need to use the selection criteria (though we could do that as well).</li>
-</ul>
-<p>That covers how to utilize and interact with a Content Provider (as a <em>client</em> of that Provider). <a href="databases.html#databases">A later lecture</a> will cover how to implement a Provider for a custom database.</p>
-
 </div>
 </div>
-<div class="footnotes">
-<hr />
-<ol start="36">
-<li id="fn36"><p><a href="https://developer.android.com/guide/topics/providers/content-providers.html" class="uri">https://developer.android.com/guide/topics/providers/content-providers.html</a><a href="loaders.html#fnref36">↩</a></p></li>
-</ol>
+
+
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="notifications-settings.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="files-and-permissions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="maps.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="java-review.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -533,7 +491,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info448/book/edit/master/loaders.Rmd",
+"link": "https://github.com/info448/book/edit/master/memory.Rmd",
 "text": "Edit"
 },
 "download": ["android-development.pdf", "android-development.epub"],
