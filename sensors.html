@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
-<link rel="prev" href="styles-themes.html">
-<link rel="next" href="bluetooth.html">
+<link rel="prev" href="services.html">
+<link rel="next" href="styles-themes.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -363,82 +363,142 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="fragment-viewpager" class="section level1">
-<h1><span class="header-section-number">Lecture 16</span> Fragments: ViewPager</h1>
-<p>In this chapter, you will practice working with Fragments and layouts. Specifically, you will modify the Movie application from <a href="fragments.html#fragments">Lecture 6</a> so that it uses a <a href="https://developer.android.com/training/animation/screen-slide.html"><strong>ViewPager</strong></a>, an interactive View offered by the Android Support Library that will allow you to “page” (swipe) through different Fragments. You will modify the application so that the user can swipe through a “search” screen, the list of search results, and the details about a particular movie.</p>
+<div id="sensors" class="section level1">
+<h1><span class="header-section-number">Lecture 14</span> Sensors</h1>
+<p>This lecture discusses how to access and utilize hardware <a href="https://developer.android.com/guide/topics/sensors/sensors_overview.html"><strong>sensors</strong></a> built into Android devices. These sensors can be used to detect changes to the device (such as its <em>motion</em> via the <strong>accelerometer</strong>) or its surrounding environment (such as the weather via a <strong>thermometer</strong> or <strong>barometer</strong>). Additionally, the system is structured so you can develop and connect your own sensor hardware if needed—such as connecting to a medical device or some other kind of <a href="https://arstechnica.com/science/2017/04/underdog-team-wins-millions-in-competition-to-make-real-life-tricorder/">tricorder</a>.</p>
 <p class="alert alert-info">
-The code for this tutorial can be found at <a href="https://github.com/info448/lab-viewpager" class="uri">https://github.com/info448/lab-viewpager</a>. Note that it is also possible to complete this tutorial directly on top of the <code>complete</code> branch of the Lecture 6 demo code.
+This lecture references code found at <a href="https://github.com/info448/lecture14-sensors" class="uri">https://github.com/info448/lecture14-sensors</a>.
 </p>
-<p class="alert alert-warning">
-IMPORTANT NOTE: you should <strong>not</strong> modify the provided <code>MovieListFragment</code> or the <code>DetailFragment</code> classes (those Fragments are self-contained and so can be used in multiple layouts!). You will need to create one new Fragment though, and make substantial modifications to the <code>MainActivity</code>
-</p>
-<div id="define-a-searchfragment" class="section level2">
-<h2><span class="header-section-number">16.1</span> Define a SearchFragment</h2>
-<p>Your <code>ViewPager</code> will need to support three different Fragments. While the <code>MovieFragment</code> and <code>DetailFragment</code> have been defined already, you will need to create a third.</p>
-<p>Create a new Fragment called <strong><code>SearchFragment</code></strong> (use the <code>File &gt; New &gt; Fragment &gt; Fragment (Blank)</code> menu in Android Studio). Your <code>SearchFragment</code> will need to include the following components</p>
-<ol style="list-style-type: decimal">
-<li><p>The layout for the Fragment should contain the search <code>EditText</code> and <code>Button</code> <em>taken from</em> the <code>activity_main</code> layout. You can add some <code>layout_gravity</code> to center the inputs. You should also remove the <code>onClick</code> XML attribute, as click handling will be specified in the Java.</p></li>
-<li><p>In the <code>SearchFragment</code> class, be sure to define a <code>newInstance()</code> factory method. The method doesn’t need to take any arguments (and thus you don’t need to specify an argument bundle).</p>
+<div id="motion-sensors" class="section level2">
+<h2><span class="header-section-number">14.1</span> Motion Sensors</h2>
+<p>To continue to emphasize to <em>mobility</em> of Android devices (they can be picked up and moved, shook around, tossed in the air, etc.), this lecture will demonstrate how to use <strong>motion sensors</strong> to detect how an Android device is able to measure its movement. Nevertheless, Android does provide a general <em>framework</em> for interacting with any arbitrary sensor (whether built into the device or external to it); motion sensors are just one example.</p>
 <ul>
-<li>Typing <code>newInstance</code> will allow Android Studio to tab-complete the method!</li>
-</ul></li>
-<li><p>The <code>SearchFragment</code> will need to communicate with other Fragments, and thus you will need to define an <code>interface</code> (e.g., <code>OnSearchListener</code>) that the containing Activity can implement. This interface should support a single public method (e.g., <code>onSearchSubmitted(String searchTerm)</code>) which will allow the Fragment to pass the entered search term to the Activity.</p>
+<li>There are <a href="https://source.android.com/devices/sensors/sensor-types">many different sensor types</a><a href="#fn49" class="footnoteRef" id="fnref49"><sup>49</sup></a> defined by the Android framework. The interfaces for these sensors are defined by the Android Alliance rather than Google, since the interface needs to exist between hardware and software (so multiple stakeholders are involved).</li>
+</ul>
+<p>In particular, we’ll focus on using the <a href="https://developer.android.com/guide/topics/sensors/sensors_motion.html#sensors-motion-accel"><strong>accelerometer</strong></a>, which is used to detect <em>acceleration force</em> (e.g., how fast the device is moving in some direction). This sensor is found on most devices, and has the added benefit of being a relatively “low-powered” sensor—its ubiquity and low cost of usage makes it ideal for detecting motions!</p>
+<p>The accelerometer is an example of a <a href="http://developer.android.com/guide/topics/sensors/sensors_motion.html"><em>motion sensor</em></a>, which is used to detect how the device <em>moves</em> in space: tilting, shaking, rotating, or swinging. Motion sensors are related to but different from <a href="http://developer.android.com/guide/topics/sensors/sensors_position.html"><em>position sensors</em></a>, which determine where the device <em>is</em> in space: for example, the device’s current rotation, facing, or proximity to another object (e.g., someone’s face). Position sensors different from <em>location sensors</em> (like GPS) in that they measure position relative to the device rather than relative to the world.</p>
 <ul>
-<li>Remember to check that the containing Activity implements the interface in the Fragment’s <code>onAttach()</code> callback.</li>
-</ul></li>
-<li><p>Finally, in the <code>onCreateView()</code> callback, add a click listener to the button so that when it is clicked, it calls the <code>onSeachSubmitted()</code> callback function on the containing Activity (which you’ve established has that method!)</p>
+<li>It is also possible to detect motion using a <em>gravity sensor</em> (which measures the direction of gravity relative to the device), a <em>gyroscope</em> (measures the rate of spin of the device), or a number of other sensors. However, the accelerometer is the most common and can be used in combination with other sensors as needed.</li>
+</ul>
+<p>We do not need any special permissions to access the accelerometer. But because our app will rely on a certain piece of hardware that—while common—may not be present on every device, we will want to make sure that anyone installing our app (e.g., from the Play Store) has that hardware. We can specify this requirement in the <code>Manifest</code> with a <code>&lt;uses-feature&gt;</code> element:</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;uses-feature</span><span class="ot"> android:name=</span><span class="st">&quot;android.hardware.sensor.accelerometer&quot;</span>
+<span class="ot">              android:required=</span><span class="st">&quot;true&quot;</span> <span class="kw">/&gt;</span></code></pre></div>
 <ul>
-<li>Remember that you can call <code>findViewById()</code> on the <em>root view</em>.</li>
-</ul></li>
-</ol>
+<li>This declaration doesn’t actually prevent the user from installing the app, though it will cause the Play Store to list it as “incompatible”. Effectively, it’s just an extra note.</li>
+</ul>
+<div id="accessing-sensors" class="section level3 unnumbered">
+<h3>Accessing Sensors</h3>
+<p>In Android, we start working with sensors by using the <a href="https://developer.android.com/reference/android/hardware/SensorManager.html"><code>SensorManager</code></a><a href="#fn50" class="footnoteRef" id="fnref50"><sup>50</sup></a> class, which will tell us information about what sensors are available, as well as let us register listeners to record sensor readings. The class is actually a <em>Service</em> provided by the Android System which manages all of the external sensors—very similar to the <code>FragmentManager</code> used to track fragments and the <code>NotificationManager</code> used to track notifications. We can get a reference to the SensorManager object using:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">mSensorManager = (SensorManager)<span class="fu">getSystemService</span>(Context.<span class="fu">SENSOR_SERVICE</span>);</code></pre></div>
+<ul>
+<li>Just like how we accessed the Notification Service, we ask the Android System to “get” us a reference to the Sensor Service, which <em>is</em> a <code>SensorManager</code>.</li>
+</ul>
+<p>The <code>SensorManager</code> class provides a number of useful methods. For example, the <code>SensorManager#getSensorList(type)</code> method will return a list of sensors available to the device (the argument is the “type” of sensor to list; use <code>Sensor.TYPE_ALL</code> to see all sensors). The sensors are returned as a <code>List&lt;Sensor&gt;</code>—each <a href="https://developer.android.com/reference/android/hardware/Sensor.html"><code>Sensor</code></a><a href="#fn51" class="footnoteRef" id="fnref51"><sup>51</sup></a> object represents a particular sensor installed on the device. The <code>Sensor</code> class includes information like the sensor type (which is <em>not</em> represented via subclassing, because otherwise we couldn’t easily add our own types! Composition over inheritance).</p>
+<p>Devices may have multiple sensors of the same type; in order to access the “main” sensor, we use the <code>SensorManager#getDefaultSensor(type)</code> method. This method will return <code>null</code> if there is no sensor of that type (allowing us to check if the sensor even exists), or the “default” <code>Sensor</code> object of that type (as determined by the OS and manufacturer).</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">mSensor = mSensorManager.<span class="fu">getDefaultSensor</span>(Sensor.<span class="fu">TYPE_ACCELEROMETER</span>);</code></pre></div>
+<ul>
+<li>If no valid sensor is available, we can have the Activity close on its own by calling <code>finish()</code> on it.</li>
+</ul>
+<p>In order to get readings from the sensor, we need to <em>register a listener</em> for the event that occurs when a sensor sample is available. We can do this using the SensorManager:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">mSensorManager.<span class="fu">registerListener</span>(<span class="kw">this</span>, mSensor, SensorManager.<span class="fu">SENSOR_DELAY_NORMAL</span>);</code></pre></div>
+<ul>
+<li><p>The first parameter is a <code>SensorEventListener</code>, which will handle the callbacks when a <code>SensorEvent</code> (a reading) is produced. It is common to make the containing Activity the listener, and thus have it implement the interface and its two callbacks (described below).</p></li>
+<li><p>The second parameter is the sensor to listen to, and the third parameter is a flag indicating how often to sample the environment. <code>SENSOR_DELAY_NORMAL</code> corresponds to a 200,000 microsecond (200ms) delay between samples; use <code>SENSOR_DELAY_GAME</code> for a faster 20ms delay (e.g., if making a motion-based game).</p></li>
+<li><p><strong>Important</strong> be sure to <em>unregister</em> the listener in the Activity’s <code>onPause()</code> callback in order to “turn off” the sensor when it is not directly being used. Sensors can cause significant battery drain (even if the accelerometer is on the low end of that), so it is best to minimize resource usage. Equivalently, you can register the sensor in the <code>onResume()</code> function to have it start back up.</p></li>
+</ul>
+<p>We can utilize the sampled sensor information by filling in the <code>onSensorChanged(event)</code> callback. This callback is executed <em>whenever</em> a new sensor reading occurs (so possibly 50 times a second)! The <code>onAccuracyChanged()</code> method is used to handle when the sensor switches modes in some way; we will leave that blank for now.</p>
+<p>In the <code>onSensorChanged()</code> method, sensor readings are stored in the <code>sensorEvent.values</code> variable. This variable is an array of <code>floats</code>, but the size of the array and the meaning/range of its values are entirely depending on the sensor type that produced the event (which can be determined via the <code>sensorEvent.sensor.getType()</code> method).</p>
+<p>When working with the <strong>accelerometer</strong>, each element in the <code>float[]</code> is the acceleration force (in <span class="math inline">\(m/s^2\)</span>) along each of the three Cartesian <strong><em>axes</em></strong> (<code>x</code>, <code>y</code>, and <code>z</code> in order):</p>
+<div class="figure">
+<img src="img/sensors/axis_device.png" alt="Coordinate system (relative to a mobile device). Image from source.android.com." />
+<p class="caption">Coordinate system (relative to a mobile device). Image from source.android.com<a href="#fn52" class="footnoteRef" id="fnref52"><sup>52</sup></a>.</p>
 </div>
-<div id="add-the-viewpager-and-adapter" class="section level2">
-<h2><span class="header-section-number">16.2</span> Add the ViewPager and Adapter</h2>
-<p>Your <code>MainActivity</code> will need to contain a <a href="https://developer.android.com/reference/android/support/v4/view/ViewPager.html"><code>ViewPager</code></a> View (since all the other Views have been moved to Fragments!).</p>
-<p>Add a <code>android.support.v4.view.ViewPager</code> element in the <code>activity_main.xml</code> layout resource, finding this View in the Activity’s <code>onCreate()</code> callback. This will replace the previous <code>FrameLayout</code> that was used as a container.</p>
-<p>Just like with a <code>ListView</code>, a <code>ViewPager</code> requires a (custom) <strong>adapter</strong> in order to map from which “page” is shown to the Fragment that is rendered. Add a new inner class (e.g., <code>MoviePagerAdapter</code>) that subclasses <a href="https://developer.android.com/reference/android/support/v4/app/FragmentStatePagerAdapter.html"><code>FragmentStatePagerAdapter</code></a>.</p>
+</div>
+<div id="composite-sensors" class="section level3 unnumbered">
+<h3>Composite Sensors</h3>
+<p>If you Log out these coordinates while the phone sitting flat on a table (not moving), you will notice that the numbers are not all <code>0.0</code>. This is because <em>gravity</em> is always exerting an accelerating force, even when the device is at rest! Thus in order to determine the actual acceleration, we would need to “factor out” the force due to gravity. This requires a little bit of linear algebra; <a href="https://developer.android.com/guide/topics/sensors/sensors_motion.html#sensors-motion-accel">the Android documentation</a> has an example of the math (and an additional version can be found in <a href="https://github.com/android/platform_development/blob/master/samples/AccelerometerPlay/src/com/example/android/accelerometerplay/AccelerometerPlayActivity.java">the sample app</a>).</p>
+<p>However, an easier solution is to utilize a <em>second</em> sensor. For example, we can read the current force due to gravity from a <em>magnetometer</em> or a <em>gyroscope</em>, and then do some math to subtract that reading from the accelerometer.</p>
+<p>We can effectively combine these two sets of readings by listening not to the <em>accelerometer</em>, but to the <a href="https://source.android.com/devices/sensors/sensor-types.html#linear_acceleration"><strong><em>Linear acceleration</em></strong></a> sensor instead. This is an example of a <strong>composite sensor</strong>, a “virtual” sensor that combines readings from multiple pieces of hardware to produce useful results. Composite sensors allow us to query a single sensor for a set of data, even if that data is being synthesized from multiple other sensor components (similar to how the <code>FusedLocationApi</code> allows us to get location from multiple location receivers). For example, the <em>linear acceleration</em> sensor uses the <em>accelerometer</em> in combination with the <em>gyroscope</em> (or the <em>magnetometer</em> if there is no gyroscope). This sensor is thus able to sample the acceleration independent of gravity automatically.</p>
 <ul>
-<li><p>As in the <a href="https://developer.android.com/training/animation/screen-slide.html#viewpager">documentation example</a>, You will need to provide a constructor that takes in a (Support) <code>FragmentManager</code>, and calls the appropriate super constructor.</p></li>
-<li>The <code>getItem()</code> function returns <em>which</em> Fragment is shown for a particular page number. You should implement this function so that page 0 shows a <code>SearchFragment</code>, page 1 shows a <code>MovieListFragment</code>, and page 2 shows a <code>DetailsFragment</code>.
+<li><p>It is theoretically possible for a device to provide dedicated hardware for a composite sensor, but no distinction is made by the Android software. The source of the sensor readings is abstracted.</p></li>
+<li><p>Note that not all devices will have a <em>linear acceleration</em> sensor!</p></li>
+</ul>
+<p>Android provides many such compound sensors, and they are incredibly useful for simplifying sensor interactions.</p>
+</div>
+</div>
+<div id="rotation" class="section level2">
+<h2><span class="header-section-number">14.2</span> Rotation</h2>
+<p>Acceleration is all good and well, but it only detects motion when the phone is <em>moving</em>. If we tilt the phone to one side, it will measure that movement… but then the acceleration goes back to 0 since the phone has stopped moving. What if we want to detect something like the <strong>tilt</strong> of the device?</p>
+<p>The <em>gravity sensor</em> (<code>TYPE_GRAVITY</code>) can give this information indirectly by specifying the direction of gravity (which way is down), but it is a bit hard to parse meaning from the values. So a better option is to use a <a href="https://source.android.com/devices/sensors/sensor-types.html#rotation_vector"><strong>Rotation Vector Sensor</strong></a>. This is another <strong>composite</strong> (virtual) sensor that is used to determine the current rotation (angle) of the device by combining readings from the <em>accelerometer</em>, <em>magnetometer</em>, and <em>gyroscope</em>.</p>
+<p>After registering a listener for this sensor, we can see that the <code>onSensorChanged(event)</code> callback once again provides three <code>float</code> values from the sensed event. These values represent the phone’s rotation in <a href="https://en.wikipedia.org/wiki/Quaternion">quaternions</a>. This is a lovely but complex coordinate system (literally complex: it uses imaginary numbers to measure angles). Instead, we’d like to convert this into rotation values that we understand, such as the degrees of device <a href="https://en.wikipedia.org/wiki/Aircraft_principal_axes">roll, pitch, and yaw</a><a href="#fn53" class="footnoteRef" id="fnref53"><sup>53</sup></a>.</p>
 <ul>
-<li>You can declare each of these three Fragments as <strong>instance variables</strong>, then simply return them from this method.</li>
-<li>It’s okay to “hard-code” this logic for the purposes of this demonstration.</li>
-</ul></li>
-<li><p>The <code>getCount()</code> function returns how many pages the Pager supports. Note that you will need to include some logic for this: before a search has occurred, there is only one page! After the search, there are two pages (the search and the results), and after a result option is selected there are three pages (the search, the results, and the details).</p></li>
-<li><p>Finally, we will be “replacing” Fragments inside the Pager as the user interacts with the app (e.g., changing the <code>MovieListFragment</code> to one with different search results)—such as by changing the objects that the instance variables refer to. However, the ViewPager “preloads” adjacent Fragment pages as an optimization technique; thus it “caches” the Fragments and won’t actually load any updated Views.</p>
-<p>As a work-around, override the <code>getItemPosition()</code> function (which is called whenever the Pager needs to determine if an item’s position has changed):</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">int</span> <span class="fu">getItemPosition</span>(Object object) {
-    <span class="kw">return</span> POSITION_NONE;
+<li>Our approach will be somewhat round-about, but it is useful for understanding how the device measures and understands its motion.</li>
+</ul>
+<p>In computer systems, rotations are almost always stored as <a href="https://en.wikipedia.org/wiki/Matrix_(mathematics)"><strong>matrices</strong></a> (a mathematical structure that looks like a table of numbers). Matrices can be used to multiply <a href="https://en.wikipedia.org/wiki/Vector_(mathematics_and_physics)"><strong>vectors</strong></a> to produce a <em>new</em>, transformed vector—the matrix represents a (linear) mapping. Because a “direction” (e.g., the phone’s facing) is represented by a vector, that direction can be multiplied by a matrix to represent a “change” in the direction. A matrix that happens to correspond with a transformation that rotates a vector by some angle is called a <a href="https://en.wikipedia.org/wiki/Rotation_matrix"><strong>rotation matrix</strong></a>.</p>
+<div class="figure">
+<img src="img/sensors/rotation.png" alt="Derivation of a 2D rotation matrix." />
+<p class="caption">Derivation of a 2D rotation matrix.</p>
+</div>
+<ul>
+<li>You can actually use matrices to represent <em>any</em> affine transformation (including movement, skewing, scaling, etc)… and these transformations can be specified for things like animation. 30% of doing 3D Computer Graphics is simply understanding and working with these transformations.</li>
+</ul>
+<p>Luckily, we don’t actually need to know any of the math for deriving rotation matrices, as Android has a built-in method that will automatically produce a rotation matrix from a the rotation quaternion provided by the <em>rotation vector</em> sensor: <code>SensorManager.getRotationMatrixFromVector(targetMatrix, vector)</code></p>
+<ul>
+<li>This method takes in a <code>float[16]</code>, representing a 4x4 matrix (one dimensions for each axis <code>x</code>, <code>y</code>, and <code>z</code>, plus one dimension to represent the “origin” in the coordinate system. These are known as <a href="https://en.wikipedia.org/wiki/Homogeneous_coordinates">homogenous coordinates</a>). This array will be filled with the resulting values of the rotation matrix. The method doesn’t produce a <code>new</code> array because allocating memory is time-intensive—so you need to provide your own (ideally reused) array.</li>
+</ul>
+<p>A 4x4 rotation matrix may not <em>seem</em> like much of an improvement towards getting human-readable orientation angles. So as a second step we can use the <code>SensorManager.getOrientation(matrix, targetArray)</code> method to convert that rotation matrix into a set of <em>radian</em> values that are the angles the phone is rotated around each axis—thereby telling us the orientation. Note this method also takes a (reusable) <code>float[3]</code> as a parameter to contain the resulting angles.</p>
+<ul>
+<li><p>The resulting angles can be converted to degrees and outputted using some basic <code>Math</code> and <code>String</code> functions:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">String<span class="fu">.format</span>(<span class="st">&quot;</span><span class="ch">%.3f</span><span class="st">&quot;</span>,Math.<span class="fu">toDegrees</span>(orientation[<span class="dv">0</span>]))+<span class="st">&quot;</span><span class="ch">\u00B0</span><span class="st">&quot;</span> <span class="co">//include the degree symbol!</span></code></pre></div></li>
+</ul>
+<p>The <em>rotation vector</em> sensor works well enough, but another potential option in API 18+ is the <a href="https://source.android.com/devices/sensors/sensor-types.html#game_rotation_vector"><strong>Game rotation vector</strong></a> sensor. This <strong>compound</strong> sensor is almost exactly the same as the <code>ROTATION_VECTOR</code> sensor, but it does <em>not</em> use the magnetometer so is not influenced by magnetic fields. This means that rather than having “0” rotation be based on compass directions North and East, “0” rotation can be based on some other starting angle (determined by the gyroscope). This can be useful in certain situations where magnetic fields may introduce errors, but can also involve gyroscope-based sampling drift over time.</p>
+<ul>
+<li><p>We can easily swap this in, without changing most of our code. We can even check the API version dynamically in Java using:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span> (Build.<span class="fu">VERSION</span>.<span class="fu">SDK_INT</span> &gt;= Build.<span class="fu">VERSION_CODES</span>.<span class="fu">JELLY_BEAN_MR2</span>) {
+    <span class="co">//... API 18+</span>
 }</code></pre></div>
-<p>Note that this is a memory-intensive workaround (but works for demonstration purposes); for a cleaner solution, see <a href="http://stackoverflow.com/questions/7263291/viewpager-pageradapter-not-updating-the-view/8024557#8024557">this discussion</a>.</p></li>
+<p>This strategy is useful for any API dependent options, including external storage access and SMS support!</p></li>
 </ul>
-<p>Once you’ve defined the your adapter, instantiate it in the Activity’s <code>onCreate()</code> callback, and use <code>ViewPager#setAdapter()</code> to specify the Pager’s adapter.</p>
-<p>If you also instantiate a <code>SearchFragment</code> in the <code>onCreate()</code> callback, then you should be able to run the application and see that Fragment appear as a page (though there is nothing else to swipe to yet).</p>
-</div>
-<div id="add-user-interaction" class="section level2">
-<h2><span class="header-section-number">16.3</span> Add User Interaction</h2>
-<p>Finally, you will need to adjust the Fragment callback methods inside the Activity (e.g., <code>onSearchSubmitted()</code> and <code>onMovieSelected()</code>) so that they interact with the ViewPager. This will involve removing previous code (the ViewPager does not need to utilize FragmentTransactions).</p>
-<p>When the search term is submitted from the <code>SearchFragment</code>, your Activity should instantiate a new (potentially different) <code>MovieListFragment</code> result list for that search term. The PagerAdapter should return an appropriate page count depending on whether a result list has been instantiated or not.</p>
+<div id="coordinates" class="section level3 unnumbered">
+<h3>Coordinates</h3>
+<p>As illustrated above, motion sensors use a standard 3D Cartesian <a href="http://developer.android.com/guide/topics/sensors/sensors_overview.html#sensors-coords">coordinate system</a>, with the <code>x</code> and <code>y</code> axes matching what you expect on the screen (with the “origin” at the center of the phone), and the <code>z</code> coming <em>out</em> of the front of the device (following the <a href="https://en.wikipedia.org/wiki/Right-hand_rule">right-hand rule</a> as a proper coordinate system should). However, there are a few “gotchyas” to consider.</p>
+<p>For example, note that the values returned by the <code>getOrientation()</code> method are <em>not</em> in <code>x,y,z</code> order (but instead in <code>z</code>, <code>x</code>, <code>y</code> order)—and in fact represent rotations around the <code>-x</code> and <code>-z</code> axes. This is detailed in the <a href="https://developer.android.com/reference/android/hardware/SensorManager.html#getOrientation(float[], float[])">documentation</a>, and can be confirmed through testing. Thus you need to be careful about exactly what units you’re working with when accessing a particular sensor!</p>
+<p>Moreover, the coordinate system used by the sensors is based on the <em>device’s</em> <strong>frame of reference</strong>, not on the Activity or the software configuration! The <code>x</code> axis always goes across the “natural” orientation of the device (portrait mode for most devices, though landscape mode for some tablets), and rotating the device (e.g., into landscape mode) won’t actually change the coordinate system. This is because the sensors are responding to the <em>hardware’s</em> orientation, and not considering the software-based configuration.</p>
 <ul>
-<li>However, simply creating a different Fragment will not cause the Adapter to change—you need to let the Adapter know that the <em>model</em> it is adapting into a <em>view</em> has changed! You can do this by calling the <code>notifyDataSetChanged()</code> method on the adapter.</li>
+<li><p>One solution to dealing with multiple configurations is to use the <code>SensorManager#remapCoordinateSystem()</code> method to “remap” the rotation matrix. With this method, you specify <em>which</em> axes should be transformed into which other axes (e.g., which axes will become the new <code>x</code> and <code>y</code>), and then pass in a rotation matrix to adjust. You can then fetch the orientation from this rotation matrix as before. You can determine the device’s current orientation with <code>Display#getRotation()</code> method:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">Display display = ((WindowManager) <span class="fu">getSystemService</span>(Context.<span class="fu">WINDOW_SERVICE</span>)).<span class="fu">getDefaultDisplay</span>();
+display.<span class="fu">getRotation</span>();</code></pre></div></li>
+<li><p>It is also common for some motion-based applications (such as games or other graphical systems) to be restricted to a single configuration, so that you wouldn’t need to dynamically handle coordinate systems within a single device.</p></li>
 </ul>
-<p>After you’ve modified (and notified!) the Adapter, you can change which page is displayed using the <a href="https://developer.android.com/reference/android/support/v4/view/ViewPager.html#setCurrentItem(int)"><code>ViewPager#setCurrentItem()</code></a> method. This will let you take the user to the “results” page!</p>
-<p>Similarly, modify the movie selection callback so that when a movie is selected from the list, your Activity instantiates a new (potentially different) <code>DetailFragment</code>. Remember to notify the adapter that the data set has changed, and to change which page is currently shown.</p>
-<ul>
-<li>This will replace the previous behavior of the callback.</li>
-</ul>
-<p>Once you’ve made these changes, you should be able to search for movies, see the results, and view the details for movies. Swipe left and right to navigate between pages!</p>
-<!-- Remember to `commit` and `push` your changes to GitHub and submit this lab once completed. -->
 
 </div>
+</div>
+</div>
+
+
+
+<!-- Check AppCompat stuff
+     Clarify inheritance example (i.e., with "alert")
+     Implement solution
+ -->
+</div>
+<div class="footnotes">
+<hr />
+<ol start="49">
+<li id="fn49"><p><a href="https://source.android.com/devices/sensors/sensor-types.html" class="uri">https://source.android.com/devices/sensors/sensor-types.html</a><a href="sensors.html#fnref49">↩</a></p></li>
+<li id="fn50"><p><a href="https://developer.android.com/reference/android/hardware/SensorManager.html" class="uri">https://developer.android.com/reference/android/hardware/SensorManager.html</a><a href="sensors.html#fnref50">↩</a></p></li>
+<li id="fn51"><p><a href="http://developer.android.com/reference/android/hardware/Sensor.html" class="uri">http://developer.android.com/reference/android/hardware/Sensor.html</a><a href="sensors.html#fnref51">↩</a></p></li>
+<li id="fn52"><p><a href="https://developer.android.com/images/axis_device.png" class="uri">https://developer.android.com/images/axis_device.png</a><a href="sensors.html#fnref52">↩</a></p></li>
+<li id="fn53"><p><a href="https://en.wikipedia.org/wiki/Aircraft_principal_axes" class="uri">https://en.wikipedia.org/wiki/Aircraft_principal_axes</a><a href="sensors.html#fnref53">↩</a></p></li>
+</ol>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="styles-themes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bluetooth.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="services.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="styles-themes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -467,7 +527,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info448/book/edit/master/viewpager.Rmd",
+"link": "https://github.com/info448/book/edit/master/sensors.Rmd",
 "text": "Edit"
 },
 "download": ["android-development.pdf", "android-development.epub"],
