@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
-<link rel="prev" href="intents.html">
-<link rel="next" href="loaders.html">
+<link rel="prev" href="sensors.html">
+<link rel="next" href="styles-themes.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -377,208 +377,261 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="notifications-settings" class="section level1">
-<h1><span class="header-section-number">Lecture 8</span> Notifications &amp; Settings</h1>
-<p>This lecture discusses some additional user interface components common to Android applications: <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html"><strong>Notifications</strong></a>, <a href="https://developer.android.com/guide/topics/ui/settings.html"><strong>Settings Menus</strong></a>. and <a href="https://developer.android.com/guide/topics/ui/dialogs.html"><strong>Dialogs</strong></a> This lecture aims to provide <em>exposure</em> rather than complete coverage to these concepts; for more options and examples, see the official Android documentation.</p>
+<div id="graphics" class="section level1">
+<h1><span class="header-section-number">Lecture 15</span> Graphics and Touch</h1>
+<p>This lecture discusses some different ways to add “visual motion” (graphical animation) to Android applications. It covers <a href="https://developer.android.com/guide/topics/graphics/2d-graphics.html">2D drawing</a> with custom Views, <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html">Property Animations</a> (also used in Material effects), and how to handle <a href="https://developer.android.com/training/gestures/index.html">touch-based gestures</a>.</p>
 <p class="alert alert-info">
-This lecture references code found at <a href="https://github.com/info448/lecture08-notifications-settings" class="uri">https://github.com/info448/lecture08-notifications-settings</a>. <!--Note that this code builds upon the example developed in Lecture 8.-->
+This lecture references code found at <a href="https://github.com/info448/lecture15-graphics" class="uri">https://github.com/info448/lecture15-graphics</a>.
 </p>
-<div id="dialogs-1" class="section level2">
-<h2><span class="header-section-number">8.1</span> Dialogs</h2>
-<p>We have previously provided feedback to users via simple pop-ups such as <a href="https://developer.android.com/guide/topics/ui/notifiers/toasts.html">Toasts</a> or <a href="https://developer.android.com/training/snackbar/showing.html">Snackbars</a>. However, sometimes you would like to show a more complex “pop-up” View—perhaps one that requires additional interaction.</p>
-<p>A <a href="https://developer.android.com/guide/topics/ui/dialogs.html"><strong><em>Dialog</em></strong></a><a href="#fn28" class="footnoteRef" id="fnref28"><sup>28</sup></a> is a “pop-up” <a href="https://en.wikipedia.org/wiki/Modal_window">modal</a> (a view which doesn’t fill the screen) that either asks the user to make a decision or provides some additional information. At their most basic, Dialogs are similar to the <code>window.alert()</code> function and its variants used in JavaScript.</p>
-<p>There is a base <code>Dialog</code> class, but almost always we use a pre-defined subclass instead (similar to how we’ve use <code>AppCompatActivity</code>). <a href="https://developer.android.com/reference/android/support/v7/app/AlertDialog.html"><code>AlertDialog</code></a><a href="#fn29" class="footnoteRef" id="fnref29"><sup>29</sup></a> is the most common version: a simple message that includes buttons you can respond with (confirm, cancel, etc).</p>
-<p>We don’t actually instantiate an <code>AlertDialog</code> directly (in fact, it’s constructors are <code>protected</code> so inaccessible to us). Instead we use a helper <em>factory</em> class called an <a href="https://developer.android.com/reference/android/support/v7/app/AlertDialog.Builder.html"><code>AlertDialog.Builder</code></a>. There are a number of steps to use a builder to create a Dialog:</p>
+<div id="drawing-graphics" class="section level2">
+<h2><span class="header-section-number">15.1</span> Drawing Graphics</h2>
+<!-- //graphics, mostly looking at what is provided, maybe a _minor_ demo -->
+<p>Android provides a <a href="https://developer.android.com/guide/topics/graphics/2d-graphics.html">2D Graphics API</a> similar in both spirit and usage to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">HTML5 Canvas API</a>: it provides an <em>interface</em> by which the developer can <em>programmatically</em> generate 2D, raster-based images. This API can be used for drawing graphs, showing manipulated images, and even performing animations!</p>
+<p>As in HTML5, in Android this API is available via the <a href="https://developer.android.com/reference/android/graphics/Canvas.html"><code>Canvas</code></a><a href="#fn51" class="footnoteRef" id="fnref51"><sup>51</sup></a> class. Similar to the HTML5 <code>&lt;canvas&gt;</code> element or the Java SE <a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics2D.html"><code>Graphics2D</code></a> class, the Android <code>Canvas</code> provides a graphical “context” upon which the developer can “draw” rectangles, circles, and even images (<code>Bitmaps</code>) to be shown on the screen.</p>
+<div id="custom-views" class="section level3 unnumbered">
+<h3>Custom Views</h3>
+<p>In order to draw pictures, we need to have a View to draw on (which will provide the <code>Canvas</code> context). The easiest way to get this View is to create it ourselves: define a <strong>custom View</strong> which we can specify as having a “drawn” appearance. We can make our own special <code>View</code> by subclassing it (remember: <code>Buttons</code> and <code>EditTexts</code> are just subclasses of <code>View</code>!), and then filling in a callback function (<code>onDraw()</code>) that specifies how that <code>View</code> is rendered on the screen.</p>
+<p class="alert alert-info">
+The word <em>render</em> in this case means to “bring into being”, meaning to generate a graphical image and putting it on the screen.
+</p>
+<p>Customizing a <code>View</code> isn’t too hard, but to save time a complete example is provided in the lecture code in the form of the <code>DrawingView</code> class. Notes about this classes implementation are below:</p>
+<ul>
+<li><p>The class <code>extends View</code> to subclass the base <code>View</code> class.</p>
+<ul>
+<li>Also notice how we specify a custom view as a <code>&lt;view&gt;</code> element in the Layout XML, indicating the <code>class</code> attribute.</li>
+</ul></li>
+<li><p><code>View</code> has a number of different of constructors. We override them all, since each one is used by a different piece of the Android system (and thus we need to provide custom implementations for each). However, we’ll have each call the “last” one in order to actually do any setup.</p>
+<ul>
+<li>In the constructor we set up a <a href="http://developer.android.com/reference/android/graphics/Paint.html"><code>Paint</code></a>, which represents <em>how</em> we want to draw: color, stroke width, font-size, anti-aliasing options, etc. We’ll mostly use <code>Paint</code> objects for color.</li>
+</ul></li>
+<li><p>We override the <strong><code>onSizeChanged()</code></strong> callback, which will get executed when the <code>View</code> changes size. This occurs on inflation (which happens as part of an Activity’s <code>onCreate</code>, meaning the callback will be called on rotation). This callback can act a little bit like a Fragment’s <code>onCreateView()</code>, in that we can do work that is based on the created View at this point.</p></li>
+<li><p>We should also override the <strong><code>onMeasure()</code></strong> callback, as <a href="https://developer.android.com/guide/topics/ui/custom-components.html#custom">recommend</a> by the Android guides. This callback is used to specify how the View should be sized in response to its width or height being set as <code>wrap_content</code>. This is particularly important for making things like custom Buttons. However, our example will skip this for time and space, since the <code>DrawingView</code> is intended to always take up the entire screen.</p></li>
+<li><p>Finally, we override <strong><code>onDraw()</code></strong>, which is where the magic happens. This method gets called whenever the <code>View</code> needs to be displayed (like <code>paintComponent()</code> in the Swing framework). This callback is passed a <code>Canvas</code> object as a parameter, providing the context we can draw on!</p>
+<ul>
+<li>Like all other lifecycle callbacks: <strong>we never call <code>onDraw()</code>!!</strong> The Android UI system calls it for us!</li>
+</ul></li>
+</ul>
+<p>The provided <code>Canvas</code> can be drawn on in a couple of ways:</p>
+<ul>
+<li><p>We can call methods like <code>drawColor()</code> (to fill the background), <code>drawCircle()</code>, or <code>drawText()</code> to draw specific shapes or entities on it. These methods are similar in usage to the HTML5 Canvas.</p></li>
+<li><p>We can also draw a <a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><code>Bitmap</code></a>, which represents a graphics raster (e.g., a 2D array of pixels). If we have a <code>Bitmap</code>, we can set the colors of individual pixels (using <code>setPixel(x,y,color)</code>), and then draw the <code>Bitmap</code> onto the Canvas (thereby double-buffering!). This is useful for pixel-level drawing, or when you want to make more complex graphics or artwork.</p>
+<ul>
+<li>If you’ve used MS Paint, it’s the difference between the shape drawing options and the “zoomed in” pixel coloring.</li>
+</ul></li>
+</ul>
+<p>Note that we cause the <code>Canvas</code> to be “redrawn” (so our <code>onDraw()</code> method to be called) by calling <code>invalidate()</code> on the <code>View</code>: this causes Android to need to recreate it, thereby redrawing it. By repeatedly calling <code>invalidate()</code> we can do something approximating animation!</p>
+<ul>
+<li><p>We can do this via a recursive loop by calling <code>invalidate()</code> at the end of <code>onDraw()</code>. This lets us “request” that Android cause <code>onDraw()</code> to be called again once it is finished, but <strong>we don’t call it</strong>.</p></li>
+<li><p>As a demo, we can make the <code>Ball</code> slide off the screen by changing it’s position slightly:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ball.<span class="fu">cx</span> += ball.<span class="fu">dx</span>;
+ball.<span class="fu">cy</span> += ball.<span class="fu">dy</span>;</code></pre></div>
+<p>We can also add in wall collisions:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span>(ball.<span class="fu">cx</span> + ball.<span class="fu">radius</span> &gt; viewWidth) { <span class="co">//left bound</span>
+    ball.<span class="fu">cx</span> = viewWidth - ball.<span class="fu">radius</span>;
+    ball.<span class="fu">dx</span> *= -<span class="dv">1</span>;
+}
+<span class="kw">else</span> <span class="kw">if</span>(ball.<span class="fu">cx</span> - ball.<span class="fu">radius</span> &lt; <span class="dv">0</span>) { <span class="co">//right bound</span>
+    ball.<span class="fu">cx</span> = ball.<span class="fu">radius</span>;
+    ball.<span class="fu">dx</span> *= -<span class="dv">1</span>;
+}
+<span class="kw">else</span> <span class="kw">if</span>(ball.<span class="fu">cy</span> + ball.<span class="fu">radius</span> &gt; viewHeight) { <span class="co">//bottom bound</span>
+    ball.<span class="fu">cy</span> = viewHeight - ball.<span class="fu">radius</span>;
+    ball.<span class="fu">dy</span> *= -<span class="dv">1</span>;
+}
+<span class="kw">else</span> <span class="kw">if</span>(ball.<span class="fu">cy</span> - ball.<span class="fu">radius</span> &lt; <span class="dv">0</span>) { <span class="co">//top bound</span>
+    ball.<span class="fu">cy</span> = ball.<span class="fu">radius</span>;
+    ball.<span class="fu">dy</span> *= -<span class="dv">1</span>;
+}</code></pre></div></li>
+</ul>
+<div class="alert alert-info">
+<p>
+<em>Animation</em> is the process of “imparting life” (from the Latin <strong><em>“anima”</em></strong>). We tend to mean giving something <strong>motion</strong>—making an object appear to move over time. Consider what that means for how people understand “life”.
+</p>
+<p>
+Video animation involves showing a sequences of images over time. If the images go fast enough, then the human brain interprets them as being part of the same successive motion, and any objects in those images will be considered to be “moving”. Each image in this sequence is called a “frame”. Film tends to be 24 frames per second (<strong>fps</strong>), video is 29.97fps, and video games aim at 60fps. Any video running at at least 16fps will be perceived as mostly smooth motion.
+</p>
+<p>
+Hitting that 16fps can actually be pretty difficult, since determining <em>what</em> to draw is computationally expensive! If we’re calculating every pixel on a 600x800 display, that’s half a million pixels we have to calculate! At 60fps, that’s 28 million pixels per second. For scale, a 1Ghz processor can do 1 billion operations per second—so if each pixel requires 5 operations, we’re at 15% of our processor. This is part of why most graphical systems utilize a dedicated GPU (graphical processing unit)—it provides massive parallelization to speed up this process.
+</p>
+</div>
+</div>
+<div id="surfaceviews" class="section level3 unnumbered">
+<h3>SurfaceViews</h3>
+<p>Since all this calculation (at pixel-level detail) can take some time, we want to be careful it doesn’t block the UI thread! We’d like to instead do the drawing in the background. The rendering itself needs to occur on the UI Thread, but we want all of the <em>drawing logic</em> to occur on the background thread, so that the UI work is as fast as possible (think: hanging up a pre-printed poster rather than needing to print it entirely).</p>
+<ul>
+<li>However, an <code>AsyncTask</code> isn’t appropriate, because we want to do this repeatedly. Similarly, an <code>IntentService</code> may not be able to respond fast enough if we need to wait for the system to deliver Intents.</li>
+</ul>
+<p>Android provides a class that is specially designed for being “drawn” on a background thread: the <a href="https://developer.android.com/reference/android/view/SurfaceView.html"><strong><code>SurfaceView</code></strong></a>. Unlike basic <code>Views</code> that are somewhat ephemeral, a <code>SurfaceView</code> includes a dedicated drawing surface that we can interact with in a separate thread. It is designed to support this threading work without requiring <em>too</em> much synchronization code.</p>
+<p>These take even more work to setup, so a complete example (<code>DrawingSurfaceView</code>) is again provided in the lecture code:</p>
+<ul>
+<li><p>This class <code>extends SurfaceView</code> and <em>implements</em> <code>SurfaceHolder.Callback</code>. A <code>SurfaceHolder</code> is an object that “holds” (contains) the underlying drawable surface; somewhat similar to the <code>ViewHolder</code> pattern utilized with an Adapter. We interact with the <code>SurfaceView</code> through the holder to make sure that we’re <em>thread-safe</em>: that only one thread is interacting with the surface at a time.</p>
+<ul>
+<li>In general there will be two threads trading off use of the holder: our background thread that is drawing on the surface (“printing the poster”), and then UI thread that is showing the surface to the user (“hanging the printed poster”). You can think of the holder <em>as</em> the poster in this metaphor!</li>
+</ul></li>
+<li><p>We register the holder in the constructor with the provided <code>getHolder()</code> method, and register ourselves for callbacks when the holder changes. We also instantiate a new <code>Runnable</code>, which will represent the callback executed in a separate (background) thread to do the drawing.</p></li>
+<li><p>The <code>SurfaceHolder.Callback</code> interface requires methods about when the surface changes, and so we fill those in:</p>
+<ul>
+<li><code>onSurfaceCreated()</code> starts our background thread (because the surface has now been created)</li>
+<li><code>onSurfaceChanged()</code> ends up acting a lot like <code>onSizeChanged()</code> from the basic <code>DrawingView</code></li>
+<li><code>onSurfaceDestroyed()</code> stops the background thread in a “safe” way (code adapted from Google)</li>
+</ul></li>
+<li><p>If we look at the <code>Runnable</code>, it’s basically an infinite loop:</p>
 <ol style="list-style-type: decimal">
-<li><p>Instantiate a new builder for this particular dialog. The constructor takes in a <code>Context</code> under which to create the Dialog. Note that once the builder is initialized, you can create and recreate the same dialog with a single method call—that’s the benefit of using a factory.</p></li>
-<li><p>Call “setter” methods on the builder in order to specify the title, message, etc. for the dialog that will appear. This can be hard-coded text or a reference to an XML String resource (as a user-facing String, the later is more appropriate for published applications). Each setter method will return a reference to the builder, making it easy to chain them.</p></li>
-<li><p>Use appropriate setter methods to specify callbacks (via a <code>DialogInterface.OnClickListener</code>) for individual buttons. Note that the “positive” button normally has the text <code>&quot;OK&quot;</code>, but this can be customized.</p></li>
-<li><p>Finally, actually instantiate the <code>AlertDialog</code> with the <code>builder.create()</code> method, using the <strong><code>show()</code></strong> method to make the dialog appear on the screen!</p></li>
-</ol>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">AlertDialog.<span class="fu">Builder</span> builder = <span class="kw">new</span> AlertDialog.<span class="fu">Builder</span>(<span class="kw">this</span>);
-builder.<span class="fu">setTitle</span>(<span class="st">&quot;Alert!&quot;</span>)
-       .<span class="fu">setMessage</span>(<span class="st">&quot;Danger Will Robinson!&quot;</span>);
-builder.<span class="fu">setPositiveButton</span>(<span class="st">&quot;I see it!&quot;</span>, <span class="kw">new</span> DialogInterface.<span class="fu">OnClickListener</span>() {
-  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">onClick</span>(DialogInterface dialog, <span class="dt">int</span> id) {
-    <span class="co">// User clicked OK button</span>
-  }
-});
+<li>Grab the Surface’s <code>Canvas</code>, “locking” it so only used in this (background) thread.</li>
+<li>Draw on it.</li>
+<li>Then “push” the Canvas back out to the rest of the world, basically saying “we’re done drawing, you can show it to the user now”.</li>
+</ol></li>
+</ul>
+<p>Overall, this process will cause the Surface to “redraw” as fast as possible, all without blocking the UI thread! This is great for animation, which can be controlled and timed (e.g., in the <code>update()</code> helper method by only updating variables at a particular rate). Moreover, it provides a drawable surface that can be interacted with!</p>
+<p>And that gives us a drawable surface that we can interact with in the same way, using the same kind of movement/interaction logic.</p>
+<ul>
+<li>This demonstrates one way to create low-level game and animation logic using basic Java work; no specific game engines are required (though those exist as well).</li>
+</ul>
+</div>
+</div>
+<div id="touch-and-gestures" class="section level2">
+<h2><span class="header-section-number">15.2</span> Touch and Gestures</h2>
+<p>As this point we have some simple animation and movement, but we would like to make it more interactive. Our <code>View</code> takes up the entire screen so we don’t want to add buttons, but there are other options available.</p>
+<p>In particular, we can add <a href="http://developer.android.com/training/gestures/index.html">Touch Gestures</a>. Touch screens are a huge part of Android devices (and mobile devices in general, especially since the first iPhone) that are familiar to most users. We’ve already indirectly used the touch interface, with how we’ve had users click on buttons (theoretically using the touch screen). But here we’re interested in more than just button clicks, which really could come from anywhere. Instead, we’re interested in how we can react to <em>where</em> the user might touch the screen, and even the different ways the user might <em>caress</em> the screen: flings, drags, multi-touch, etc.</p>
+<p>Android devices automatically detect various touching interactions (that’s how buttons work); we can respond to these <strong>touch events</strong> by overriding the <code>onTouchEvent()</code> callback, which is executed whenever there something happens that involves the touch screen.</p>
+<ul>
+<li>For example, we can log out the event to see the kind of details it includes.</li>
+</ul>
+<p>There are <em>lots</em> of things that can cause <code>TouchEvents</code>, so much of our work involves trying to determine what <em>semantic</em> “gesture” the user made. Luckily, Android provides a number of utility methods and classes to help with this.</p>
+<p>The most basic is <code>MotionEvent#getActionMasked()</code>, which extracts the “action type” of the event from the motion that was recorded:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> action = motionEvent.<span class="fu">getActionMasked</span>(); <span class="co">//get action constant</span>
+<span class="dt">float</span> x = event.<span class="fu">getX</span>(); <span class="co">//get location of event</span>
+<span class="dt">float</span> y = event.<span class="fu">getY</span>() - <span class="fu">getSupportActionBar</span>().<span class="fu">getHeight</span>(); <span class="co">//closer to center...</span>
 
-AlertDialog dialog = builder.<span class="fu">create</span>();
-dialog.<span class="fu">show</span>();</code></pre></div>
-<p class="alert alert-info">
-An important part of learning to develop Android applications is being able to read the API to discover effective options. For example, can you read the <a href="https://developer.android.com/reference/android/support/v7/app/AlertDialog.Builder.html">AlertDialog.Builder API</a> and determine how to add a “cancel” button to the alert?
-</p>
-<p>While <code>AlertDialog</code> is the most common Dialog, Android supports other subclasses as well. For example, <a href="https://developer.android.com/reference/android/app/DatePickerDialog.html"><code>DatePickerDialog</code></a> and <a href="https://developer.android.com/reference/android/app/TimePickerDialog.html"><code>TimePickerDialog</code></a> provide pre-defined user interfaces for picking a date or a time respectively. See the <a href="https://developer.android.com/guide/topics/ui/controls/pickers.html">Pickers guide</a> for details about how to utilize these.</p>
-<div id="dialogfragments-1" class="section level3 unnumbered">
-<h3>DialogFragments</h3>
-<p>The process described above will create and show a Dialog, but that dialog has a few problems in how it interacts with the rest of the Android framework—namely with the lifecycle of the Activity in which it is embedded.</p>
-<p>For example, if the device changes configurations (e.g., is rotated from portrait to landscape) then the Activity is destroyed and re-created (it’s <code>onCreate()</code> method will be called again). But if this happens while a Dialog is being shown, then a <code>android.view.WindowLeaked</code> error will occur and the Dialog is lost!</p>
-<p>To avoid these problems, we need to have a way of giving that Dialog its own lifecycle which can interact with the the Activity’s lifecycle… sort of like making it a <em>modular</em> piece of an Activity…</p>
-<p>That’s right, we need to make it a Fragment! Specifically, we will use a subclass of Fragment called <a href="http://developer.android.com/guide/topics/ui/dialogs.html#DialogFragment"><code>DialogFragment</code></a>, which is a Fragment that displays as a modal dialog floating above the Activity (no extra work needed).</p>
-<p>Just like with previous Fragment examples, we’ll need to create our own subclass of <code>DialogFragment</code>. It’s often easiest to make this a <em>nested class</em> if the Dialog won’t be doing a lot of work (e.g., shows a simple confirmation).</p>
-<p>Rather than specifying a Fragment layout through <code>onCreateView()</code>, we can instead override the <code>onCreateDialog()</code> callback to specify a <code>Dialog</code> object that will provide the view hierarchy for the Fragment. This Dialog can be created with the <code>AlertDialog.Builder</code> class as before!</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="kw">class</span> MyDialogFragment <span class="kw">extends</span> DialogFragment {
-
-    <span class="kw">public</span> <span class="dt">static</span> MyDialogFragment <span class="fu">newInstance</span>() {
-        Bundle args = <span class="kw">new</span> <span class="fu">Bundle</span>();
-        MyDialogFragment fragment = <span class="kw">new</span> <span class="fu">MyDialogFragment</span>();
-        fragment.<span class="fu">setArguments</span>(args);
-        <span class="kw">return</span> fragment;
-    }
-
-    <span class="kw">public</span> Dialog <span class="fu">onCreateDialog</span>(Bundle savedInstanceState) {
-        AlertDialog.<span class="fu">Builder</span> builder = <span class="kw">new</span> AlertDialog.<span class="fu">Builder</span>(<span class="fu">getActivity</span>());
-        <span class="co">//...</span>
-        AlertDialog dialog = builder.<span class="fu">create</span>();
-        <span class="kw">return</span> dialog;
-    }
+<span class="kw">switch</span>(action) {
+  <span class="kw">case</span> (MotionEvent.<span class="fu">ACTION_DOWN</span>) : <span class="co">//put finger down</span>
+    <span class="co">//e.g., move ball</span>
+    view.<span class="fu">ball</span>.<span class="fu">cx</span> = x;
+    view.<span class="fu">ball</span>.<span class="fu">cy</span> = y;
+    <span class="kw">return</span> <span class="kw">true</span>;
+  <span class="kw">case</span> (MotionEvent.<span class="fu">ACTION_MOVE</span>) : <span class="co">//move finger</span>
+    <span class="co">//e.g., move ball</span>
+    view.<span class="fu">ball</span>.<span class="fu">cx</span> = x;
+    view.<span class="fu">ball</span>.<span class="fu">cy</span> = y;
+    <span class="kw">return</span> <span class="kw">true</span>;
+  <span class="kw">case</span> (MotionEvent.<span class="fu">ACTION_UP</span>) : <span class="co">//lift finger up</span>
+  <span class="kw">case</span> (MotionEvent.<span class="fu">ACTION_CANCEL</span>) : <span class="co">//aborted gesture</span>
+  <span class="kw">case</span> (MotionEvent.<span class="fu">ACTION_OUTSIDE</span>) : <span class="co">//outside bounds</span>
+  <span class="kw">default</span> :
+    <span class="kw">return</span> <span class="kw">super</span>.<span class="fu">onTouchEvent</span>(event);
 }</code></pre></div>
-<p>Finally, we can actually show this <code>DialogFragment</code> by instantiating it (remember to use a <code>newInstance()</code> factory method!) and then calling the <code>show()</code> method on it to make it show as a Dialog. The <code>show()</code> method takes in a <code>FragmentManager</code> used to manage this transaction. By using a DialogFragment, it is possible to change the device configuration (rotate the phone) and the Dialog is retained.</p>
-<p>Here’s the other neat trick: a <code>DialogFragment</code> is just a <code>Fragment</code>. That means we can use it <em>anywhere</em> we normally used Fragments… including embedding them into layouts! For example if you made a “DetailsFragment” subclass <code>DialogFragment</code> instead of <code>Fragment</code>, it would be able to be used in the exact same as before. It’s still a Fragment, just with extra features—one of which is a <code>show()</code> method that will show it as a Dialog!</p>
+<p>This lets us react to basic touching. For example, we can make it so that taps (<code>ACTION_DOWN</code>) will “teleport” the ball to where we click! We can also use the <code>ACTION_MOVE</code> events to let us drag the ball around.</p>
+<div id="advanced-gestures" class="section level3 unnumbered">
+<h3>Advanced Gestures</h3>
+<p>We can also detect and react to more complex gestures: long presses, double-taps, or “flings” (a flick or swipe on the screen). As these gestures, the Material Design specification details some <a href="https://www.google.com/design/spec/patterns/gestures.html#gestures-drag-swipe-or-fling-details">specific patterns</a> that you should consider when utilizing these interactions</p>
+<p>Android provides a <a href="https://developer.android.com/training/gestures/detector.html#detect"><code>GestureDetector</code></a> class that can be used to identify these actions. The easiest way to use this class—particularly when we’re interested in a particular gesture (like fling)—is to <em>extend</em> <code>GestureDetector.SimpleOnGestureListener</code> to make our own “listener” for gestures. We can then override the callbacks for the gestures we’re interested in responding to: e.g., <code>onFling()</code>.</p>
 <ul>
-<li>Use <code>setStyle(DialogFragment.STYLE_NO_TITLE, android.R.style.Theme_Holo_Light_Dialog)</code> to make the Fragment look a little more like a dialog.</li>
+<li>Note that the official documentation says we should also override the <code>onDown()</code> method and have it return <code>true</code> to indicate that we’ve “consumed” (handled) the event—similar to what we’ve done with OptionsMenus. If we return false from this method, then <em>“the system assumes that you want to ignore the rest of the gesture, and the other methods of GestureDetector.OnGestureListener never get called.”</em> However, in my testing the gesture detection works either way, but we’ll follow the spec for now.</li>
 </ul>
-<p class="alert alert-info">
-The truth is that Dialogs are not very commonly used in Android (compare to other GU systems). Apps are more likely to just dynamically change the Fragment or Activity being shown, rather than interrupt the user flow by creating a pop-up modal. And 80% of the Dialogs that <em>are</em> used are AlertDialogs. Nevertheless, it is worth being familiar with this process and the patterns it draws upon!
-</p>
+<p>We can instantiate a <code>GestureDetector</code> by passing in our listener into a <code>GestureDetectorCompat</code> constructor:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">mDetector = <span class="kw">new</span> <span class="fu">GestureDetectorCompat</span>(<span class="kw">this</span>, <span class="kw">new</span> <span class="fu">MyGestureListener</span>());</code></pre></div>
+<p>Then in the Activity’s <code>onTouchEvent()</code> callback, we can pass the event into the Gesture Detector to process:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">boolean</span> gesture = <span class="kw">this</span>.<span class="fu">mDetector</span>.<span class="fu">onTouchEvent</span>(event); <span class="co">//check gestures first!</span>
+<span class="kw">if</span>(gesture){
+  <span class="kw">return</span> <span class="kw">true</span>;
+}</code></pre></div>
+<ul>
+<li>Since the detector’s <code>onTouchEvent()</code> returns a <code>boolean</code> for whether or not a gesture was detected, we can check for whether we should otherwise handle the gesture ourselves.</li>
+</ul>
+<p>This gives us the ability to “fling” the Ball by taking the detected fling <em>velocity</em> and assigning that as the Ball’s velocity. Note that we need to negate the velocities since they are registered as “backwards” from the coordinates our drawing system is utilizing (though this doesn’t match the documented examples). Scaling down the velocity to 3% produce a reasonable Ball movement speed for me. We can also have the Ball slow down by 1% on each update so it drifts to a stop!</p>
+<!-- **** -->
 </div>
 </div>
-<div id="notifications" class="section level2">
-<h2><span class="header-section-number">8.2</span> Notifications</h2>
-<p>We can let the user know what is going on with the app by popping up a Toast or Dialog, but often we want to notify the user of something outside of the normal Activity UI (e.g., when the app isn’t running, or without getting in the way of other interactions). To do this, we can use <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html"><strong>Notifications</strong></a><a href="#fn30" class="footnoteRef" id="fnref30"><sup>30</sup></a>. These are specialized views that show up in the <em>notification area</em> (the icons at the top of the operating system display) and in the system’s <em>notification drawer</em>, which the user can get to at any point—even when outside the app—by swiping down on the screen.</p>
-<p>Android’s documentation for UI components is overall quite thorough and usable (after all, Google wants to make sure that developers can build effective apps, thereby making the platform worthwhile). And because there are so many different UI elements and they change all the time, in order to do real-world Android development you need to be able to read, synthesize, and apply this documentation. As such, this lecture will demonstrate how to utilize that documentation and apply it to create notifications. We will follow through the documentation to add a feature that when we click on the “notify” button, a notification will appear that reports how many times we’ve clicked that button.</p>
+<div id="property-animation" class="section level2">
+<h2><span class="header-section-number">15.3</span> Property Animation</h2>
+<p>We’ve seen how we can create animations simply by adjusting the drawing we do on each frame. This is great for games or other complex animations if we want to have <em>a lot</em> of control over our graphical layout… but sometimes we want to have some simpler, platform-specific effects (that run smoother!) Android actually involves a number of different animation systems that can be used within and <em>across</em> Views:</p>
 <ul>
-<li><p>To follow along this, open up the Notifications documentation at <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html" class="uri">https://developer.android.com/guide/topics/ui/notifiers/notifications.html</a>.</p></li>
-<li><p>Looking at the documentation we see an overview to start. There is also a link to the <a href="https://material.google.com/patterns/notifications.html">Notification Design Guide</a>, which is a good place to go to figure out how to design <em>effective</em> notifications.</p></li>
-<li><p>There is a lot of text about how to make a Notification… I personally prefer to work off of sample code, modifying it until I have something that does what I want. So I suggest scrolling down <strong>slowly</strong> until you find an example you can copy/paste in, or at least reference. Then you can scroll back up later to get more detail about how that code works. The table of contents is also useful for this.</p></li>
-<li><p>Eventually you’ll find a subsection <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#SimpleNotification">“Creating a Simple Notification”</a>, which sounds like a great place to start!</p></li>
+<li><p>We’ve previously talked about some <a href="https://developer.android.com/training/material/animations.html">Material Animations</a> built into the Material Design support library; in particular we discussed creating Activity transition. Android also includes a robust framework for <a href="https://developer.android.com/training/transitions/index.html">Scene Transitions</a> even outside of Material; see <a href="https://developer.android.com/training/animation/index.html">Adding Animations</a> for more details.</p></li>
+<li><p>Android also supports <a href="https://developer.android.com/guide/topics/graphics/opengl.html">OpenGL Animations</a> for doing 3D animated systems. This requires knowing the OpenGL API.</p></li>
 </ul>
-<p>The first part of creating this Notification is using <code>NotificationCompat.Builder</code> (use the <code>v4</code> support version; the <code>v7</code> is now deprecated). We saw this kind of Builder class with <code>AlertBuilder</code>, and the same concept applies here: it is a class used to construct the Notification for us. We call setters to specify the properties of the Notification. Going through those settings:</p>
+<p>In this section, we will discuss how to use <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html"><strong>Property Animation</strong></a>. This is a general animation framework in which you specify a start state for an Object <em>property</em> (attribute), an end state for that property, and a duration for the animation; the Android systems then changes the property from the start state to the end over that length of time—thereby producing animation!</p>
 <ul>
-<li><p>I don’t have a drawable resource to use for an icon, which makes me want to not include the icon specification. However, scrolling back up will reveal that a notification icon is <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Required">required</a>, so we will need to make one.</p>
-<p>We can produce an new Image Asset for the notification icon (<code>File &gt; New &gt; Image Asset</code>), just as we did previously with launcher icons and Material icons. Specify the “type” as <code>Notification</code>, give it an appropriate name, and pick a clipart of your choosing.</p></li>
-<li><p>We set the “title” and the content for the notification.</p></li>
-<li><p>Starting in API 26 (Oreo), we also are required to specify a <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#ManageChannels"><strong>notification channel</strong></a> (called a “notification category” in the user interface). These are used to help users manage notifications by grouping them together and allowing users to control the settings of that group—such as whether they are shown, what sounds they play, etc.</p>
-<p>Notification channels are identified by a String ID that is unique within the package. TODO….</p></li>
+<li><p>The change in property state over time (that is, at any given “frame”) is calculated using <a href="https://en.wikipedia.org/wiki/Interpolation"><strong>interpolation</strong></a>. This is basically a “weighted average” between the the start and end states, where the weight is determined by how close you are to the “start” or “end”. While we often use <em>linear interpolation</em> (so that being 70% across means the end gets 70% of the weight), it is also possible to use <em>non-linear interpolation</em>) (e.g., you need to get 70% across in for the end to have 50% of the weight).</p>
+<div class="figure">
+<img src="img/animation/interpolation.png" alt="Linearly interpolating colors" />
+<p class="caption">Linearly interpolating colors</p>
+</div></li>
 </ul>
-<p>The next line makes an Intent. We’ve done that too… but why create an Intent for a Notification? If we scroll up and look where <code>Intent</code> is referenced, we can find out about <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Actions">Notification Actions</a>, which specify what happens when the user clicks on the Notification. Usually this opens the relevant application, and since <code>Intents</code> are messages to open Activities, it makes sense that clicking a Notification would send an <code>Intent</code>.</p>
-<p>The example Notification is also using the a <a href="https://developer.android.com/reference/android/support/v4/app/TaskStackBuilder.html"><code>TaskStackBuilder</code></a> to <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#NotificationResponse">construct an “artificial” backstack</a>. This is used to specify, for example, that if the user clicks on the Notification and jumps to a “detail” view (say), they can still hit the back button to return to the “master” view, as if they had navigated to the “detail” view from a normal usage of the application.</p>
+<p>The main engine for doing this kind of interpolated animation in Android is the <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#value-animator"><code>ValueAnimator</code></a><a href="#fn52" class="footnoteRef" id="fnref52"><sup>52</sup></a> class. This class lets you specify the start state, end state, and animation duration. It will then be able to run through and calculate all of the “intermediate” values throughout the interpolated animation. The <code>ValueAnimator</code> class provides a number of static methods (e.g., <code>.ofInt()</code>, <code>.ofFloat()</code>, <code>.ofArgb()</code>) which creates “animators” for interpolating different <em>value types</em>. For example:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ValueAnimator animation = ValueAnimator.<span class="fu">ofFloat</span>(0f, 1f); <span class="co">//interpolate between 0 and 1</span>
+animation.<span class="fu">setDuration</span>(<span class="dv">1000</span>); <span class="co">//over 1000ms (1 second)</span>
+animation.<span class="fu">start</span>(); <span class="co">//run the animation</span></code></pre></div>
+<p>Of course, just performing this interpolation over time doesn’t produce any visible result—it’s changing the numbers, but those numbers don’t correspond to anything.</p>
+<p>We can access the interpolated values by registering a <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#listeners">listener</a> and overriding the callback we’re interested in observing (e.g., <code>onAnimationUpdate()</code> from <code>ValueAnimator.AnimatorUpdateListener</code>). But more commonly, we want to have our interpolated animation change the <em>property</em> of some object—for example, the color of a View, the position of an Button, or the instance variables of an object such as a <code>Ball</code>.</p>
+<p>We can do this easily using the <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#object-animator"><code>ObjectAnimator</code></a><a href="#fn53" class="footnoteRef" id="fnref53"><sup>53</sup></a> subclass. This subclass runs an animation just like the <code>ValueAnimator</code>, but has the built-in functionality to change a property of an object on each interpolated step. It does this by calling a <strong>setter</strong> for that property—thus the object needs to have a <a href="http://docs.oracle.com/javaee/6/tutorial/doc/gjbbp.html">setter method</a> for the property we want to animate:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//change the &quot;alpha&quot; property of foo: will call `foo.setAlpha(float)`</span>
+ObjectAnimator anim = ObjectAnimator.<span class="fu">ofFloat</span>(foo, <span class="st">&quot;alpha&quot;</span>, 0f, 1f);
+anim.<span class="fu">setDuration</span>(<span class="dv">1000</span>);
+anim.<span class="fu">start</span>();</code></pre></div>
 <ul>
-<li>We build this backstack not just with methods, but by integrating with the “parent-child” relationship we’ve otherwise set up between Activities (e.g., in the Manifest). In the Manifest, we had specified that <code>SecondActivity's</code> parent is <code>MainActivity</code>. This is what gave us the nice back button in the ActionBar. These sequence of <code>parentActivityName</code> attributes form a hierarchy that will be the “back navigation hierarchy.” We add the “endpoint” of the hierarchy to the builder using <code>addParentStack(MyResultActivity.class)</code>, and then finally put the <code>Intent</code> we actually want to use “on top” of the stack with <code>addNextIntent(resultIntent)</code>.</li>
+<li><p>This example will mutate the object by calling the <code>setAlpha()</code> method (the name of the method is generated from the property name following normal CamelCasing style).</p></li>
+<li><p>If the object lacks such a setter, such as because we are using a class provided by someone else, we can either make a “wrapper” which will call the appropriate mutating function, or just utilize a <code>ValueAnimator</code> with an appropriate listener.</p></li>
 </ul>
-<p>The <code>TaskStackBuilder</code> is then used to produce a [<code>PendingIntent</code>]((<a href="http://developer.android.com/reference/android/app/PendingIntent.html" class="uri">http://developer.android.com/reference/android/app/PendingIntent.html</a>). What’s a <code>PendingIntent</code>? The details are not <em>super</em> readable… It’s basically a wrapper around an <code>Intent</code> that we give to <strong>another</strong> class. Then when that class receives our <code>PendingIntent</code> and reacts to it, it can run the <code>Intent</code> (command) we sent with it as if that <code>Activity</code> were us (whew). The Intent is “pending” delivery/activation by another service.</p>
+<p>For example, we can use this approach to change the circle’s size or position using an interpolated animation (make it “pulse”).</p>
 <ul>
-<li><p>This is like when you ask a professor for a letter of recommendation, and you give them the stamped envelope (which you should always do!). When they get the packet, then can then send their letter using <em>your</em> envelop and stamp!</p>
-<ul>
-<li>Alternatively: “I am mailing you my car keys, when you get them you should come pick me up”.</li>
-</ul></li>
-<li><p>The <code>TaskStackBuilder</code> produces a <code>PendingIntent</code> that “wraps” around the <code>Intent</code> we actually want to send when the notification is clicked. So when we select the notification, the Notification Drawer service can open up that <code>PendingIntent</code> packet, pull out the <code>Intent</code> we want to send, and then mail it off. And this Intent that the Notification Drawer sends is to wake up our Activity, and it is sent with <em>our</em> permissions (rather than the Drawer’s permissions), as if we had sent it ourselves!</p>
-<p>While it is <em>possible</em> to instantiate a PendingIntent directly, we instead get the PendingIntent by calling the <code>TaskStackBuilder#getPendingIntent()</code> method to build an appropriate object. Pass the method an <em>ID</em> to refer to that request (like we’ve done when sending Intents for Results), and a flag <code>PendingIntent.FLAG_CURRENT_UPDATE</code> so that if we re-issue the PendingIntent it update the existing one instead of replacing it with a new pending action.</p>
-<p>We can then assign that <code>PendingIntent</code> to the <em>Notification</em> builder (with <code>setContentIntent()</code>).</p></li>
+<li>Note that we’re just changing the object property; the only reason we see the changed drawing is because Android is constantly refreshing our SurfaceView.</li>
 </ul>
-<p>Finally, we can use the <code>NotificationManager</code> (similar to the <code>FragmentManager</code>, <code>SmsManager</code>, etc.) to fetch the <em>notification service</em> (the “application” that handles all the notifications for the OS). We tell this manager to actually issue the built <code>Notification</code> object.</p>
+<p>The <code>ObjectAnimator</code> interpolator methods support a number of variations as well:</p>
 <ul>
-<li>We also pass the <code>notify()</code> method an <code>ID</code> number to refer to the particular Notification (not to the PendingIntent this time, but the Notification itself). Again, this will allow us to refer to and update that Notification later (as opposed to updating the PendingIntent for the Notification later).</li>
+<li><p>As long as the object has an appropriate <strong>getter</strong>, it is possible to only pass the Animator an ending value (indicating that the animation should interpolate “from current state to specified end state”)</p></li>
+<li><p>We can use <code>.setRepeatCount(ObjectAnimator.INFINITE)</code> and <code>.setRepeatMode(ObjectAnimator.REVERSE)</code> to cause it to repeat back and forth.</p></li>
 </ul>
-<p>This allows us to have working Notifications! We can click the button to launch a Notification, and then click on the Notification to be taken to our app, which has a working back stack!</p>
-<p>We can also <strong>update</strong> this notification later, and it’s really straightforward: we simply re-issue a Notification with the same <strong><code>ID</code></strong> number, and it will “replace” the previous one!</p>
+<p>If we want to include multiple animations in sequence, we can use an <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#choreography"><code>AnimatorSet</code></a>, which gives us methods used to specify the ordering:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//example from docs</span>
+ObjectAnimator animX = ObjectAnimator.<span class="fu">ofFloat</span>(obj, <span class="st">&quot;x&quot;</span>, 50f);
+ObjectAnimator animY = ObjectAnimator.<span class="fu">ofFloat</span>(obj, <span class="st">&quot;y&quot;</span>, 100f);
+AnimatorSet animSetXY = <span class="kw">new</span> <span class="fu">AnimatorSet</span>();
+animSetXY.<span class="fu">playTogether</span>(animX, animY);
+animSetXY.<span class="fu">start</span>();</code></pre></div>
+<p>AnimatorSet animations can get complicated, and we may want to reuse them. Thus best practice is to instead define them in XML as <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#declaring-xml">resources</a>. Animation resources are put inside the <code>/res/animator</code> directory (<strong>not</strong> the <code>/res/anim/</code> folder, which is for <a href="https://developer.android.com/guide/topics/graphics/view-animation.html">View Animations</a>).</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;set</span><span class="ot"> android:ordering=</span><span class="st">&quot;together&quot;</span><span class="kw">&gt;</span> <span class="co">&lt;!-- together is default --&gt;</span>
+  <span class="kw">&lt;objectAnimator</span>
+<span class="ot">           android:propertyName=</span><span class="st">&quot;x&quot;</span>
+<span class="ot">           android:duration=</span><span class="st">&quot;500&quot;</span>
+<span class="ot">           android:valueTo=</span><span class="st">&quot;400&quot;</span>
+<span class="ot">           android:valueType=</span><span class="st">&quot;intType&quot;</span><span class="kw">/&gt;</span>
+  <span class="co">&lt;!-- ... --&gt;</span>
+<span class="kw">&lt;/set&gt;</span></code></pre></div>
 <ul>
-<li>For example, we can have our text be based on some instance variable, and have the Notification track the number of clicks!</li>
+<li><p>See <a href="https://developer.android.com/guide/topics/resources/animation-resource.html#Property">Property Animation Resources</a><a href="#fn54" class="footnoteRef" id="fnref54"><sup>54</sup></a> for the full XML schema.</p></li>
+<li><p>Note that by defining animations as resources, it also means that we can easily have different device configurations use different animations (e.g., perhaps objects move faster on larger displays).</p></li>
 </ul>
-<p>You may notice that this notification doesn’t <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Heads-up">“pop up”</a> in a way you might expect. In order for a notification to visually intrude upon the user, its <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#Priority">priority</a> must be high enough (it needs to be <code>NotificationCompat.PRIORITY_HIGH</code> or higher) <strong>and</strong> because it needs to use either sound <em>or</em> vibration (it needs to be <em>really important</em> to get a heads-up pop).</p>
+<p>In order to utilize the XML, we will need to <strong>inflate</strong> the Animator resource, just as we have done with Layouts:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ObjectAnimator anim = (ObjectAnimator)AnimatorInflater.<span class="fu">loadAnimator</span>(context, R.<span class="fu">anim</span>.<span class="fu">my_animation</span>);
+anim.<span class="fu">setTarget</span>(myObject);
+anim.<span class="fu">start</span>();</code></pre></div>
+<p>Note that we can also use this same framework to animate changes to <code>Views</code>: Buttons, Images, etc. Views are objects and have properties (along with appropriate <em>getter</em> and <em>setter</em> methods), so we can use just an <code>ObjectAnimator</code>! See <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#views">Animating Views</a> for a list of properties we can change (a list that includes <code>x, y, rotation, alpha, scaleX, scaleY</code>, and others)</p>
+<p>To make this process even simpler, Android also provides a <code>ViewPropertyAnimator</code> class. This Animator is able to easily animate multiple properties together (at the same time), and does so in a much more efficient way. We can access this Animator via the <code>View#animate()</code> method. We then call relevant shortcut methods on this Animator to “add in” addition property animations to the animation set:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//animate x (to 100) and y (to 300) together!</span>
+myView.<span class="fu">animate</span>().<span class="fu">x</span>(<span class="dv">100</span>).<span class="fu">y</span>(<span class="dv">300</span>);</code></pre></div>
+<p>This allows you to easily specify moderately complex property animations for <code>View</code> objects.</p>
 <ul>
-<li>We can make the Notification vibrate by using the <a href="http://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html#setVibrate(long[])"><code>setVibrate()</code></a> method, passing it an array of times (in milliseconds) at which to turn vibration on and off.</li>
-<li>Pattern is <code>[delay, vibrate, sleep, vibrate, sleep, ...]</code> <!-- - Will need permission to produce a vibration: `<uses-permission android:name="android.permission.VIBRATE" />` --></li>
-<li>We can also assign a default sound with (e.g.) <code>builder.setSound(Settings.System.DEFAULT_NOTIFICATION_URI);</code></li>
-<li><p>See the <a href="http://developer.android.com/design/patterns/notifications.html#correctly_set_and_manage_notification_priority">design guide</a> for best practices on specifying Notification priority.</p></li>
-<li><p>As of API 26 (Oreo), the concept of “priority” has been deprecated in favor of “importance”. Importance is specified on a per-channel basis. See <a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html#CreateChannel">Creating a Notification Channel</a>.</p>
-<p>(Note that you can use an <code>if</code> statement to check which API version the phone is running to determine which code to run!)</p></li>
+<li>But really, if you want to animate layout changes on a modern device, you should use <a href="http://developer.android.com/training/transitions/index.html">transitions</a>, such as the ones we used with Material design.</li>
 </ul>
-<p>As always, there are a number of other pieces/details we can specify, but I leave those to you to look up in the documentation.</p>
-<p class="alert alert-info">
-As the course focuses on development, this lecture references but does <strong>not</strong> discuss the UI Design guidelines. For example: what kind of text should you put in your Notification? <em>When</em> should you choose to use a notification? Android has lots of guidance on these questions in their <a href="https://material.io/guidelines/patterns/notifications.html">design documentation</a>. Major HCI and Mobile Design guidelines apply here as well (e.g., make actions obvious, give feedback, avoid irreversible actions, etc.).
-</p>
-</div>
-<div id="settings" class="section level2">
-<h2><span class="header-section-number">8.3</span> Settings</h2>
-<p>The last topic of this lecture is to support letting the user decide whether clicking the button should create notifications or not. For example, maybe sometimes the user just want to see Toasts! The cleanest way to support this kind of user preference is to create some <a href="https://developer.android.com/guide/topics/ui/settings.html">Settings</a> using <code>Preferences</code>.</p>
-<div id="sharedpreferences" class="section level3 unnumbered">
-<h3>SharedPreferences</h3>
-<p><a href="https://developer.android.com/guide/topics/data/data-storage.html#pref"><strong>Shared Preferences</strong></a><a href="#fn31" class="footnoteRef" id="fnref31"><sup>31</sup></a> are one way that we can <strong>persist</strong> data in an application <em>across application launches</em>—that is, the data is stored on disk rather than just in memory, so will not be lost if the application is destroyed. SharedPreferences store <em>key-value pairs</em> of primitives (Strings, ints, etc), similar to what we’ve been putting in <code>Bundles</code>. This data will be stored across application sessions: if I save some data to the Preferences and close the app, it will be there when I come back.</p>
-<ul>
-<li><p>Preferences are stored in an <strong>XML File</strong> in the file system. Basically we save lists of key-value pairs as a basic XML tree in a plain-text file (similar to the <code>values</code> resource files we’ve created). Note that this is <em>not a resource</em>, rather it is a file that happens to also be structured as XML.</p></li>
-<li><p>SharedPreferences are not great for intricate or extensive structured data (since it only stores key-value pairs, and only primitives at that). Use other options for more complex data persistence, such as putting the data into a database or using the file system—both of which are discussed in later lectures.</p></li>
-</ul>
-<p class="alert alert-warning">
-Even though they are <em>called</em> “Preferences”, they not just for “user preferences”! We can persist any small bits of primitive data in a SharedPreferences file.
-</p>
-<p>We can get access to a SharedPreferences file using the <code>.getSharedPreferences(String, int)</code> method. The first parameter <code>String</code> is the name of the SharedPreference file we want to access (we can have multiple XML files; just use <code>getPreferences()</code> to use a single default). The second parameter <code>int</code> is a flag about whether other apps should have access to that file. <code>MODE_PRIVATE</code> (<code>0</code>) is the default, <code>MODE_WORLD_READABLE</code> and <code>MODE_WORLD_WRITEABLE</code> are the other options.</p>
-<p>We can edit this XML file by calling <code>.edit()</code> on the <code>SharedPreferences</code> object to get a <code>SharedPreferences.Editor</code>, which is a <code>Bundle</code>-esque object we can <code>put</code> values into.</p>
-<ul>
-<li>We need to call <code>.commit()</code> on the editor to save our changes to the file system!</li>
-</ul>
-<p>Finally, we can just call <code>get()</code> methods on the <code>SharedPreferences</code> object in order to fetch data out of it! The second parameter of these methods is a default value for if a preference doesn’t exist yet, making it easy to avoid <code>null</code> errors.</p>
-<p><strong>For practice</strong>, try saving the notification count in the Activity’s <code>onStop()</code> function, and retrieving it in <code>onCreate()</code>. This will allow you to persist the count even when the Activity is destroyed.</p>
-</div>
-<div id="preference-settings" class="section level3 unnumbered">
-<h3>Preference Settings</h3>
-<p>While a SharedPreferences file acts a generic data store, it is called Shared <em>Preferences</em> because it’s most commonly used for “user preferences”—e.g., the “Settings” for an app.</p>
-<ul>
-<li>Yes, the term “preferences” can be used to mean either “shared preferences” or “user preferences” (or both if they are the same thing!) depending on the context.</li>
-</ul>
-<p>A “User Preference Menu” is a user-facing element, so we’ll want to define it as an <a href="https://developer.android.com/guide/topics/ui/settings.html#DefiningPrefs">XML resource</a>. But we’re not going to try and create our own layout and interaction: instead we’re just going to define the list of <a href="https://developer.android.com/reference/android/preference/Preference.html"><code>Preferences</code></a><a href="#fn32" class="footnoteRef" id="fnref32"><sup>32</sup></a> themselves as a resource!</p>
-<ul>
-<li>We can create a new resource using Android Studio’s New Resource wizard. The “type” for this is actually just <code>XML</code> (generic), though our “root element” will be a <code>&lt;PreferenceScreen&gt;</code> (thanks intelligent defaults!). By convention, the preferences resource is named <code>preferences.xml</code>.</li>
-</ul>
-<p>Inside the <code>&lt;PreferenceScreen&gt;</code>, we add more elements: one to represent each preference we want to let the user adjust (or each “line” of the Settings screen). We can define different types of <code>Preference</code> objects, such as <code>&lt;CheckBoxPreference&gt;</code>, <code>&lt;EditTextPreference&gt;</code>, <code>&lt;SwitchPreference&gt;</code>, or <code>&lt;ListPreference&gt;</code> (for a dialog of radio buttons). There are a couple of other options as well; see the <a href="https://developer.android.com/reference/android/preference/Preference.html"><code>Preference</code></a> base class.</p>
-<ul>
-<li><p>These elements should include the following XML attributes (among others):</p>
-<ul>
-<li><code>android:key</code> the key to use when storing the preference in the SharedPreferences file</li>
-<li><code>android:title</code> a user-visible name for the Preference</li>
-<li><code>android:defaultvalue</code> a default value for the preference (use <code>true</code> or <code>false</code> for checkboxes).</li>
-<li>More options cam be found in the the <a href="https://developer.android.com/reference/android/preference/Preference.html#lattrs"><code>Preference</code></a> documentation.</li>
-</ul></li>
-<li><p>We can further divide these Preferences to organize them: we can place them inside a <code>PreferenceCategory</code> tag (with its own <code>title</code> and <code>key</code>) in order to group them together.</p></li>
-<li><p>Finally we can specify that our Preferences have multiple screens by nesting <code>PreferenceScreen</code> elements. This produces “subscreens” (like submenus): when we click on the item it will take us to the next screen.</p></li>
-</ul>
-<p class="alert alert-info">
-Note that a cleaner (but more labor-intensive) way to do this if you have <em>lots</em> of settings is to use <a href="http://developer.android.com/guide/topics/ui/settings.html#PreferenceHeaders"><code>preference-headers</code></a> which allows for better multi-pane layouts… but since we’re not making any apps with that many settings this process is left as exercise for the reader.
-</p>
-<p>Once we have the Preferences all defined in XML, we just need to show them in our application! Since the Settings will be their own screen, we’ll need to make another Activity (though it won’t need a layout!). To actually render the Preferences XML, we’ll use the <code>PreferenceFragment</code> class (a specialized Fragment for showing lists of <code>Preference</code> objects); it’s usually easies to create this as a nested class in the Activity.</p>
-<ul>
-<li><p>For the Fragment, we don’t need to specify an <code>onCreateView()</code> method, instead we’re just going to load that <code>Preference</code> resource in the <code>onCreate()</code> method using <code>addPreferencesFromResource(R.xml.preferences)</code>. This will cause the <code>PreferenceFragment</code> to create the appropriate layout!</p></li>
-<li><p>For the Activity, we just need to have it load that Fragment via a FragmentTransaction:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="fu">getFragmentManager</span>().<span class="fu">beginTransaction</span>()
-                .<span class="fu">replace</span>(android.<span class="fu">R</span>.<span class="fu">id</span>.<span class="fu">content</span>, <span class="kw">new</span> <span class="fu">SettingsFragment</span>())
-                .<span class="fu">commit</span>();</code></pre></div>
-<ul>
-<li><p>The Activity doesn’t even need to load a layout: just specify a transaction! But if we want to include other stuff (e.g., an ActionBar), we’d need to structure the Activity and its layout in more detail.</p></li>
-<li><p>Note that the container for our Fragment is <code>android.R.id.content</code>. This refers to the “root element” of the current View—basically what <code>setContentView()</code> is normally inflating into.</p></li>
-</ul></li>
-<li><p>There is a <code>PreferenceActivity</code> class as well, but the official recommendation is <strong>do not use it</strong>. Many of its methods are deprecated, and since we’re using Fragments via the support library, we should stick with the Fragment process.</p></li>
-</ul>
-<p>Finally, how do we interact with these settings? Here’s the trick: a <code>preferences</code> XML resource is <strong>automatically</strong> associated with a <code>SharedPreferences</code> file! And in fact, every time we adjust a setting in the <code>PreferenceFragment</code>, the values in that file are edited as well! In effect, the <code>PreferenceFragment</code> <em>automatically</em> edits the SharedPreferences based on the user interaction. We never need to write to the file ourselves, just read from it (and we read from it in the exact same way we read any other SharedPreferences file, as described above).</p>
-<p>The <code>preference</code> XML corresponds to the “default” <code>SharedPreferences</code> file, which we’ll access via:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">SharedPreferences sharedPref = PreferenceManager.<span class="fu">getDefaultSharedPreferences</span>(<span class="kw">this</span>);</code></pre></div>
-<ul>
-<li>And then we have this object we can fetch data from with <code>getString()</code>, <code>getBoolean()</code>, etc.</li>
-</ul>
-<p>This will allow us to check the preferences before we show a notification!</p>
-<p>That’s the basics of using Settings. For more details see the <a href="https://developer.android.com/guide/topics/ui/settings.html">documentation</a>, as well as the <a href="https://developer.android.com/design/patterns/settings.html">design guide</a> for best practices on how to organize your Settings.</p>
+<p>There are <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html">many more ways</a> to customize exactly what you want your animation to be. You can also look at <a href="https://android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/animation">official demos</a> for more examples of different styles of animation.</p>
 
 </div>
 </div>
+
+
+
+<!-- Check AppCompat stuff
+     Clarify inheritance example (i.e., with "alert")
+     Implement solution
+ -->
 </div>
 <div class="footnotes">
 <hr />
-<ol start="28">
-<li id="fn28"><p><a href="https://developer.android.com/guide/topics/ui/dialogs.html" class="uri">https://developer.android.com/guide/topics/ui/dialogs.html</a><a href="notifications-settings.html#fnref28">↩</a></p></li>
-<li id="fn29"><p><a href="https://developer.android.com/reference/android/support/v7/app/AlertDialog.html" class="uri">https://developer.android.com/reference/android/support/v7/app/AlertDialog.html</a><a href="notifications-settings.html#fnref29">↩</a></p></li>
-<li id="fn30"><p><a href="https://developer.android.com/guide/topics/ui/notifiers/notifications.html" class="uri">https://developer.android.com/guide/topics/ui/notifiers/notifications.html</a><a href="notifications-settings.html#fnref30">↩</a></p></li>
-<li id="fn31"><p><a href="https://developer.android.com/guide/topics/data/data-storage.html#pref" class="uri">https://developer.android.com/guide/topics/data/data-storage.html#pref</a><a href="notifications-settings.html#fnref31">↩</a></p></li>
-<li id="fn32"><p><a href="https://developer.android.com/reference/android/preference/Preference.html" class="uri">https://developer.android.com/reference/android/preference/Preference.html</a><a href="notifications-settings.html#fnref32">↩</a></p></li>
+<ol start="51">
+<li id="fn51"><p><a href="https://developer.android.com/reference/android/graphics/Canvas.html" class="uri">https://developer.android.com/reference/android/graphics/Canvas.html</a><a href="graphics.html#fnref51">↩</a></p></li>
+<li id="fn52"><p><a href="http://developer.android.com/guide/topics/graphics/prop-animation.html#value-animator" class="uri">http://developer.android.com/guide/topics/graphics/prop-animation.html#value-animator</a><a href="graphics.html#fnref52">↩</a></p></li>
+<li id="fn53"><p><a href="http://developer.android.com/guide/topics/graphics/prop-animation.html#object-animator" class="uri">http://developer.android.com/guide/topics/graphics/prop-animation.html#object-animator</a><a href="graphics.html#fnref53">↩</a></p></li>
+<li id="fn54"><p><a href="http://developer.android.com/guide/topics/resources/animation-resource.html#Property" class="uri">http://developer.android.com/guide/topics/resources/animation-resource.html#Property</a><a href="graphics.html#fnref54">↩</a></p></li>
 </ol>
 </div>
             </section>
@@ -586,8 +639,8 @@ Note that a cleaner (but more labor-intensive) way to do this if you have <em>lo
           </div>
         </div>
       </div>
-<a href="intents.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="loaders.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sensors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="styles-themes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -616,7 +669,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info448/book/edit/master/notifications-settings.Rmd",
+"link": "https://github.com/info448/book/edit/master/animation.Rmd",
 "text": "Edit"
 },
 "download": ["android-development.pdf", "android-development.epub"],
