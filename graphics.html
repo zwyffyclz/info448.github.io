@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-11-20">
+<meta name="date" content="2017-12-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -523,7 +523,7 @@ Hitting that 16fps can actually be pretty difficult, since determining <em>what<
 <p>This lets us react to basic touching. For example, we can make it so that taps (<code>ACTION_DOWN</code>) will “teleport” the ball to where we click! We can also use the <code>ACTION_MOVE</code> events to let us drag the ball around.</p>
 <div id="advanced-gestures" class="section level3 unnumbered">
 <h3>Advanced Gestures</h3>
-<p>We can also detect and react to more complex gestures: long presses, double-taps, or “flings” (a flick or swipe on the screen). As these gestures, the Material Design specification details some <a href="https://www.google.com/design/spec/patterns/gestures.html#gestures-drag-swipe-or-fling-details">specific patterns</a> that you should consider when utilizing these interactions</p>
+<p>We can also detect and react to more complex gestures: long presses, double-taps, or “flings” (a flick or swipe on the screen). As with basic gestures, the Material Design specification details some <a href="https://www.google.com/design/spec/patterns/gestures.html#gestures-drag-swipe-or-fling-details">specific patterns</a> that you should consider when utilizing these interactions.</p>
 <p>Android provides a <a href="https://developer.android.com/training/gestures/detector.html#detect"><code>GestureDetector</code></a> class that can be used to identify these actions. The easiest way to use this class—particularly when we’re interested in a particular gesture (like fling)—is to <em>extend</em> <code>GestureDetector.SimpleOnGestureListener</code> to make our own “listener” for gestures. We can then override the callbacks for the gestures we’re interested in responding to: e.g., <code>onFling()</code>.</p>
 <ul>
 <li>Note that the official documentation says we should also override the <code>onDown()</code> method and have it return <code>true</code> to indicate that we’ve “consumed” (handled) the event—similar to what we’ve done with OptionsMenus. If we return false from this method, then <em>“the system assumes that you want to ignore the rest of the gesture, and the other methods of GestureDetector.OnGestureListener never get called.”</em> However, in my testing the gesture detection works either way, but we’ll follow the spec for now.</li>
