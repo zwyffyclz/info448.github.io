@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/android_icon_transparent.png" type="image/x-icon">
-<link rel="prev" href="java-swing.html">
-
+<link rel="prev" href="sensors.html">
+<link rel="next" href="styles-themes.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -377,117 +377,270 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="publishing" class="section level1">
-<h1><span class="header-section-number">C</span> Publishing</h1>
-<p>This short chapter discusses how to publish your Android application, producing a version of the app that can be shared with others. In particular, it explains how to <a href="https://developer.android.com/studio/publish/app-signing.html">cryptographically sign your app</a> and build it so it can be installed by people who are not using Android Studio.</p>
-<p>Before you actually distribute your application, you should make sure it is fully ready to be published. Google provides an <a href="https://developer.android.com/studio/publish/preparing.html">excellent list</a> of things to do before releasing your application, as well as a more detailed <a href="https://developer.android.com/distribute/best-practices/launch/launch-checklist.html">checklist</a> for releasing an app on the Play Store.</p>
-<ul>
-<li>Particularly common tasks include: removing extraneous Logging commands, and checking for accessibility and localization.</li>
-</ul>
-<p>Once you have completed these steps, you are ready to build and sign your app.</p>
-<div id="signing-an-app" class="section level2">
-<h2><span class="header-section-number">C.1</span> Signing an App</h2>
-<p>As described in <a href="introduction.html#building-apps">lecture 1</a>, building an Android application involves compiling Java and XML code into DVM bytecode, and then packing this code (along with assets and graphics) into a <code>.apk</code> file.</p>
-<p>But in order to install this <code>.apk</code> file onto a device, it needs to be <strong>cryptographically signed</strong> though the inclusion of a <a href="https://en.wikipedia.org/wiki/Public-key_cryptography"><strong>public-key certificate</strong></a>. This <a href="https://en.wikipedia.org/wiki/Digital_signature">certificate</a> corresponds with a <em>private key</em> (a secret code) held by you (the developer). Because each public-key cert is associated with a code only you as the developer knows (similar to a password), it is able to act as an identifying <em>signature</em> for your app: only you know the secret password, so only you are able to provide this particular certificate. Thus by <em>signing</em> the <code>.apk</code> with your signature, you are marking the package as being developed by you and not someone else—just like a signature on a check. Android uses these signatures as a security feature to ensure that any future updates come from the same person (no malicious app updates!), as well as to help verify the source of an installed package.</p>
-<ul>
-<li>The secret <em>private keys</em> are stored on your computer in <code>.keystore</code> files (think: a database of private keys). You may have multiple different keystores on your machine.</li>
-</ul>
-<p>By default, when you build and run an app in Android Studio, the IDE automatically generates a <strong>debug certificate</strong> for you to sign your application with. This certificate is not secure (it’s an automatically generated password!) so isn’t trustworthy for app stores (like the Play Store)… but it is sufficient for being able to install and run your application through Android Studio.</p>
-<ul>
-<li><p>By default, keys are stored in the <code>~/.android</code> folder on Mac and Linux, and the <code>C:\Users\USER_NAME\.android\</code> folder on Windows. You can view the debug key (e.g., on Mac) using the command:</p>
-<pre><code>keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android</code></pre>
-<ul>
-<li><p>The <code>-alias</code> is a name of the particular certificate, and the <code>-storepass</code> and <code>keypass</code> arguments are literal passwords associated with the store (database) and certificate (in the database) respectively. The fact that this store is password protected is what makes it secret and accessible only to the developer.</p></li>
-<li><p>Scroll down to see the “Certificate fingerprints”; for example, the <code>SHA1</code> certificate is used when getting a <a href="https://developers.google.com/maps/documentation/android-api/signup">Google Maps API key</a>.</p></li>
-</ul></li>
-<li><p>Importantly, each computer running Android Studio will produce it’s own unique <em>debug certificate</em>. That means that the “signature” identifying your app will different for every different computer: even if it has the same package and the same source code, Android will consider it a “different” program because it was built (in debug mode) on a different machine. This is particularly important when things like API keys (e.g., for Google Maps) are linked to a particular digital signature; it means that <em>each</em> development machine would need to have its unique signature associated with the API!</p></li>
-</ul>
-<p>In addition to the automatically generated <em>debug certificates</em>, you can sign apps with your own generated <strong>release certificate</strong>. This is a certificate not automatically created by Android Studio, but is still associated with a secret “password” that only you know. These certificates are also stored in a <code>.keystore</code> file, which is created and password-protected by the developer. Because this keystore is kept secret and locked, only the developer is able to sign the built <code>.apk</code> with a verifiable signature, thereby ensuring that any updates to the application must have come from that developer.</p>
-<p class="alert">
-I like to think of <em>debug certificates</em> as like cheap, easily-reproducible Bic pens, and <em>release certificates</em> like fancy golden quills. When multiple developers are working on an app, each will be signing their testing versions with their own cheap Bics. But when it comes to releasing the project, you need to get out the expensive golden quill to do the signing. The validity of an app is dependent on which “pen” is used to sign it. (In this metaphor, the <code>.keystore</code> file is a pen case).
+<div id="graphics" class="section level1">
+<h1><span class="header-section-number">Lecture 15</span> Graphics and Touch</h1>
+<p>This lecture discusses some different ways to add “visual motion” (graphical animation) to Android applications. It covers <a href="https://developer.android.com/guide/topics/graphics/2d-graphics.html">2D drawing</a> with custom Views, <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html">Property Animations</a> (also used in Material effects), and how to handle <a href="https://developer.android.com/training/gestures/index.html">touch-based gestures</a>.</p>
+<p class="alert alert-info">
+This lecture references code found at <a href="https://github.com/info448/lecture15-graphics" class="uri">https://github.com/info448/lecture15-graphics</a>.
 </p>
-<div id="release-.apk" class="section level3 unnumbered">
-<h3>Release <code>.apk</code></h3>
-<p>In order to generate a shareable <strong>release <code>.apk</code></strong>, you will need to produce a <em>release certificate</em> to sign the app with, then build and sign the <code>.apk</code> with that certificate.</p>
-<p>Android studio makes it easy to <a href="https://developer.android.com/studio/publish/app-signing.html#release-mode">sign a release build</a> (follow the link for more details and examples). In short, select <code>Build &gt; Generate Signed APK</code> from the menu, and follow the wizard’s instructions!</p>
+<div id="drawing-graphics" class="section level2">
+<h2><span class="header-section-number">15.1</span> Drawing Graphics</h2>
+<!-- //graphics, mostly looking at what is provided, maybe a _minor_ demo -->
+<p>Android provides a <a href="https://developer.android.com/guide/topics/graphics/2d-graphics.html">2D Graphics API</a> similar in both spirit and usage to the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">HTML5 Canvas API</a>: it provides an <em>interface</em> by which the developer can <em>programmatically</em> generate 2D, raster-based images. This API can be used for drawing graphs, showing manipulated images, and even performing animations!</p>
+<p>As in HTML5, in Android this API is available via the <a href="https://developer.android.com/reference/android/graphics/Canvas.html"><code>Canvas</code></a><a href="#fn51" class="footnoteRef" id="fnref51"><sup>51</sup></a> class. Similar to the HTML5 <code>&lt;canvas&gt;</code> element or the Java SE <a href="https://docs.oracle.com/javase/8/docs/api/java/awt/Graphics2D.html"><code>Graphics2D</code></a> class, the Android <code>Canvas</code> provides a graphical “context” upon which the developer can “draw” rectangles, circles, and even images (<code>Bitmaps</code>) to be shown on the screen.</p>
+<div id="custom-views" class="section level3 unnumbered">
+<h3>Custom Views</h3>
+<p>In order to draw pictures, we need to have a View to draw on (which will provide the <code>Canvas</code> context). The easiest way to get this View is to create it ourselves: define a <strong>custom View</strong> which we can specify as having a “drawn” appearance. We can make our own special <code>View</code> by subclassing it (remember: <code>Buttons</code> and <code>EditTexts</code> are just subclasses of <code>View</code>!), and then filling in a callback function (<code>onDraw()</code>) that specifies how that <code>View</code> is rendered on the screen.</p>
+<p class="alert alert-info">
+The word <em>render</em> in this case means to “bring into being”, meaning to generate a graphical image and putting it on the screen.
+</p>
+<p>Customizing a <code>View</code> isn’t too hard, but to save time a complete example is provided in the lecture code in the form of the <code>DrawingView</code> class. Notes about this classes implementation are below:</p>
 <ul>
-<li><p>You will be prompted for a location for the <code>.keystore</code> file to use (e.g., where to store your release pens). I recommend making a file somewhere in your user’s home directory (e.g., <code>~/android-release.jks</code>). Note that you can use the same private key (found in the keystore) for multiple apps.</p></li>
-<li><p>It is also possible to configure Android Studio to <a href="https://developer.android.com/studio/publish/app-signing.html#sign-auto">automatically</a> sign your application when building for release. Be sure you <a href="https://developer.android.com/studio/publish/app-signing.html#secure-shared-keystore">remove signing information</a> from your build files so your passwords don’t get uploaded to GitHub!</p></li>
-</ul>
-<p>The built and signed <code>.apk</code> will be created in the destination folder you selected. This file can then be <a href="https://developer.android.com/studio/publish/index.html#publishing-release">shared</a>: uploaded to the Google Play Store, hosted on a web page, or emailed directly to someone to install.</p>
+<li><p>The class <code>extends View</code> to subclass the base <code>View</code> class.</p>
 <ul>
-<li>Note that installing <code>.apk</code> files from outside the Play Store—even when signed—requires the user to <a href="https://developer.android.com/studio/publish/index.html#unknown-sources">opt-in for apps from unknown sources</a>.</li>
+<li>Also notice how we specify a custom view as a <code>&lt;view&gt;</code> element in the Layout XML, indicating the <code>class</code> attribute.</li>
+</ul></li>
+<li><p><code>View</code> has a number of different of constructors. We override them all, since each one is used by a different piece of the Android system (and thus we need to provide custom implementations for each). However, we’ll have each call the “last” one in order to actually do any setup.</p>
+<ul>
+<li>In the constructor we set up a <a href="http://developer.android.com/reference/android/graphics/Paint.html"><code>Paint</code></a>, which represents <em>how</em> we want to draw: color, stroke width, font-size, anti-aliasing options, etc. We’ll mostly use <code>Paint</code> objects for color.</li>
+</ul></li>
+<li><p>We override the <strong><code>onSizeChanged()</code></strong> callback, which will get executed when the <code>View</code> changes size. This occurs on inflation (which happens as part of an Activity’s <code>onCreate</code>, meaning the callback will be called on rotation). This callback can act a little bit like a Fragment’s <code>onCreateView()</code>, in that we can do work that is based on the created View at this point.</p></li>
+<li><p>We should also override the <strong><code>onMeasure()</code></strong> callback, as <a href="https://developer.android.com/guide/topics/ui/custom-components.html#custom">recommend</a> by the Android guides. This callback is used to specify how the View should be sized in response to its width or height being set as <code>wrap_content</code>. This is particularly important for making things like custom Buttons. However, our example will skip this for time and space, since the <code>DrawingView</code> is intended to always take up the entire screen.</p></li>
+<li><p>Finally, we override <strong><code>onDraw()</code></strong>, which is where the magic happens. This method gets called whenever the <code>View</code> needs to be displayed (like <code>paintComponent()</code> in the Swing framework). This callback is passed a <code>Canvas</code> object as a parameter, providing the context we can draw on!</p>
+<ul>
+<li>Like all other lifecycle callbacks: <strong>we never call <code>onDraw()</code>!!</strong> The Android UI system calls it for us!</li>
+</ul></li>
 </ul>
+<p>The provided <code>Canvas</code> can be drawn on in a couple of ways:</p>
+<ul>
+<li><p>We can call methods like <code>drawColor()</code> (to fill the background), <code>drawCircle()</code>, or <code>drawText()</code> to draw specific shapes or entities on it. These methods are similar in usage to the HTML5 Canvas.</p></li>
+<li><p>We can also draw a <a href="https://developer.android.com/reference/android/graphics/Bitmap.html"><code>Bitmap</code></a>, which represents a graphics raster (e.g., a 2D array of pixels). If we have a <code>Bitmap</code>, we can set the colors of individual pixels (using <code>setPixel(x,y,color)</code>), and then draw the <code>Bitmap</code> onto the Canvas (thereby double-buffering!). This is useful for pixel-level drawing, or when you want to make more complex graphics or artwork.</p>
+<ul>
+<li>If you’ve used MS Paint, it’s the difference between the shape drawing options and the “zoomed in” pixel coloring.</li>
+</ul></li>
+</ul>
+<p>Note that we cause the <code>Canvas</code> to be “redrawn” (so our <code>onDraw()</code> method to be called) by calling <code>invalidate()</code> on the <code>View</code>: this causes Android to need to recreate it, thereby redrawing it. By repeatedly calling <code>invalidate()</code> we can do something approximating animation!</p>
+<ul>
+<li><p>We can do this via a recursive loop by calling <code>invalidate()</code> at the end of <code>onDraw()</code>. This lets us “request” that Android cause <code>onDraw()</code> to be called again once it is finished, but <strong>we don’t call it</strong>.</p></li>
+<li><p>As a demo, we can make the <code>Ball</code> slide off the screen by changing it’s position slightly:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ball.<span class="fu">cx</span> += ball.<span class="fu">dx</span>;
+ball.<span class="fu">cy</span> += ball.<span class="fu">dy</span>;</code></pre></div>
+<p>We can also add in wall collisions:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">if</span>(ball.<span class="fu">cx</span> + ball.<span class="fu">radius</span> &gt; viewWidth) { <span class="co">//left bound</span>
+    ball.<span class="fu">cx</span> = viewWidth - ball.<span class="fu">radius</span>;
+    ball.<span class="fu">dx</span> *= -<span class="dv">1</span>;
+}
+<span class="kw">else</span> <span class="kw">if</span>(ball.<span class="fu">cx</span> - ball.<span class="fu">radius</span> &lt; <span class="dv">0</span>) { <span class="co">//right bound</span>
+    ball.<span class="fu">cx</span> = ball.<span class="fu">radius</span>;
+    ball.<span class="fu">dx</span> *= -<span class="dv">1</span>;
+}
+<span class="kw">else</span> <span class="kw">if</span>(ball.<span class="fu">cy</span> + ball.<span class="fu">radius</span> &gt; viewHeight) { <span class="co">//bottom bound</span>
+    ball.<span class="fu">cy</span> = viewHeight - ball.<span class="fu">radius</span>;
+    ball.<span class="fu">dy</span> *= -<span class="dv">1</span>;
+}
+<span class="kw">else</span> <span class="kw">if</span>(ball.<span class="fu">cy</span> - ball.<span class="fu">radius</span> &lt; <span class="dv">0</span>) { <span class="co">//top bound</span>
+    ball.<span class="fu">cy</span> = ball.<span class="fu">radius</span>;
+    ball.<span class="fu">dy</span> *= -<span class="dv">1</span>;
+}</code></pre></div></li>
+</ul>
+<div class="alert alert-info">
+<p>
+<em>Animation</em> is the process of “imparting life” (from the Latin <strong><em>“anima”</em></strong>). We tend to mean giving something <strong>motion</strong>—making an object appear to move over time. Consider what that means for how people understand “life”.
+</p>
+<p>
+Video animation involves showing a sequences of images over time. If the images go fast enough, then the human brain interprets them as being part of the same successive motion, and any objects in those images will be considered to be “moving”. Each image in this sequence is called a “frame”. Film tends to be 24 frames per second (<strong>fps</strong>), video is 29.97fps, and video games aim at 60fps. Any video running at at least 16fps will be perceived as mostly smooth motion.
+</p>
+<p>
+Hitting that 16fps can actually be pretty difficult, since determining <em>what</em> to draw is computationally expensive! If we’re calculating every pixel on a 600x800 display, that’s half a million pixels we have to calculate! At 60fps, that’s 28 million pixels per second. For scale, a 1Ghz processor can do 1 billion operations per second—so if each pixel requires 5 operations, we’re at 15% of our processor. This is part of why most graphical systems utilize a dedicated GPU (graphical processing unit)—it provides massive parallelization to speed up this process.
+</p>
+</div>
+</div>
+<div id="surfaceviews" class="section level3 unnumbered">
+<h3>SurfaceViews</h3>
+<p>Since all this calculation (at pixel-level detail) can take some time, we want to be careful it doesn’t block the UI thread! We’d like to instead do the drawing in the background. The rendering itself needs to occur on the UI Thread, but we want all of the <em>drawing logic</em> to occur on the background thread, so that the UI work is as fast as possible (think: hanging up a pre-printed poster rather than needing to print it entirely).</p>
+<ul>
+<li>However, an <code>AsyncTask</code> isn’t appropriate, because we want to do this repeatedly. Similarly, an <code>IntentService</code> may not be able to respond fast enough if we need to wait for the system to deliver Intents.</li>
+</ul>
+<p>Android provides a class that is specially designed for being “drawn” on a background thread: the <a href="https://developer.android.com/reference/android/view/SurfaceView.html"><strong><code>SurfaceView</code></strong></a>. Unlike basic <code>Views</code> that are somewhat ephemeral, a <code>SurfaceView</code> includes a dedicated drawing surface that we can interact with in a separate thread. It is designed to support this threading work without requiring <em>too</em> much synchronization code.</p>
+<p>These take even more work to setup, so a complete example (<code>DrawingSurfaceView</code>) is again provided in the lecture code:</p>
+<ul>
+<li><p>This class <code>extends SurfaceView</code> and <em>implements</em> <code>SurfaceHolder.Callback</code>. A <code>SurfaceHolder</code> is an object that “holds” (contains) the underlying drawable surface; somewhat similar to the <code>ViewHolder</code> pattern utilized with an Adapter. We interact with the <code>SurfaceView</code> through the holder to make sure that we’re <em>thread-safe</em>: that only one thread is interacting with the surface at a time.</p>
+<ul>
+<li>In general there will be two threads trading off use of the holder: our background thread that is drawing on the surface (“printing the poster”), and then UI thread that is showing the surface to the user (“hanging the printed poster”). You can think of the holder <em>as</em> the poster in this metaphor!</li>
+</ul></li>
+<li><p>We register the holder in the constructor with the provided <code>getHolder()</code> method, and register ourselves for callbacks when the holder changes. We also instantiate a new <code>Runnable</code>, which will represent the callback executed in a separate (background) thread to do the drawing.</p></li>
+<li><p>The <code>SurfaceHolder.Callback</code> interface requires methods about when the surface changes, and so we fill those in:</p>
+<ul>
+<li><code>onSurfaceCreated()</code> starts our background thread (because the surface has now been created)</li>
+<li><code>onSurfaceChanged()</code> ends up acting a lot like <code>onSizeChanged()</code> from the basic <code>DrawingView</code></li>
+<li><code>onSurfaceDestroyed()</code> stops the background thread in a “safe” way (code adapted from Google)</li>
+</ul></li>
+<li><p>If we look at the <code>Runnable</code>, it’s basically an infinite loop:</p>
+<ol style="list-style-type: decimal">
+<li>Grab the Surface’s <code>Canvas</code>, “locking” it so only used in this (background) thread.</li>
+<li>Draw on it.</li>
+<li>Then “push” the Canvas back out to the rest of the world, basically saying “we’re done drawing, you can show it to the user now”.</li>
+</ol></li>
+</ul>
+<p>Overall, this process will cause the Surface to “redraw” as fast as possible, all without blocking the UI thread! This is great for animation, which can be controlled and timed (e.g., in the <code>update()</code> helper method by only updating variables at a particular rate). Moreover, it provides a drawable surface that can be interacted with!</p>
+<p>And that gives us a drawable surface that we can interact with in the same way, using the same kind of movement/interaction logic.</p>
+<ul>
+<li>This demonstrates one way to create low-level game and animation logic using basic Java work; no specific game engines are required (though those exist as well).</li>
+</ul>
+</div>
+</div>
+<div id="touch-and-gestures" class="section level2">
+<h2><span class="header-section-number">15.2</span> Touch and Gestures</h2>
+<p>As this point we have some simple animation and movement, but we would like to make it more interactive. Our <code>View</code> takes up the entire screen so we don’t want to add buttons, but there are other options available.</p>
+<p>In particular, we can add <a href="http://developer.android.com/training/gestures/index.html">Touch Gestures</a>. Touch screens are a huge part of Android devices (and mobile devices in general, especially since the first iPhone) that are familiar to most users. We’ve already indirectly used the touch interface, with how we’ve had users click on buttons (theoretically using the touch screen). But here we’re interested in more than just button clicks, which really could come from anywhere. Instead, we’re interested in how we can react to <em>where</em> the user might touch the screen, and even the different ways the user might <em>caress</em> the screen: flings, drags, multi-touch, etc.</p>
+<p>Android devices automatically detect various touching interactions (that’s how buttons work); we can respond to these <strong>touch events</strong> by overriding the <code>onTouchEvent()</code> callback, which is executed whenever there something happens that involves the touch screen.</p>
+<ul>
+<li>For example, we can log out the event to see the kind of details it includes.</li>
+</ul>
+<p>There are <em>lots</em> of things that can cause <code>TouchEvents</code>, so much of our work involves trying to determine what <em>semantic</em> “gesture” the user made. Luckily, Android provides a number of utility methods and classes to help with this.</p>
+<p>The most basic is <code>MotionEvent#getActionMasked()</code>, which extracts the “action type” of the event from the motion that was recorded:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">int</span> action = motionEvent.<span class="fu">getActionMasked</span>(); <span class="co">//get action constant</span>
+<span class="dt">float</span> x = event.<span class="fu">getX</span>(); <span class="co">//get location of event</span>
+<span class="dt">float</span> y = event.<span class="fu">getY</span>() - <span class="fu">getSupportActionBar</span>().<span class="fu">getHeight</span>(); <span class="co">//closer to center...</span>
+
+<span class="kw">switch</span>(action) {
+  <span class="kw">case</span> (MotionEvent.<span class="fu">ACTION_DOWN</span>) : <span class="co">//put finger down</span>
+    <span class="co">//e.g., move ball</span>
+    view.<span class="fu">ball</span>.<span class="fu">cx</span> = x;
+    view.<span class="fu">ball</span>.<span class="fu">cy</span> = y;
+    <span class="kw">return</span> <span class="kw">true</span>;
+  <span class="kw">case</span> (MotionEvent.<span class="fu">ACTION_MOVE</span>) : <span class="co">//move finger</span>
+    <span class="co">//e.g., move ball</span>
+    view.<span class="fu">ball</span>.<span class="fu">cx</span> = x;
+    view.<span class="fu">ball</span>.<span class="fu">cy</span> = y;
+    <span class="kw">return</span> <span class="kw">true</span>;
+  <span class="kw">case</span> (MotionEvent.<span class="fu">ACTION_UP</span>) : <span class="co">//lift finger up</span>
+  <span class="kw">case</span> (MotionEvent.<span class="fu">ACTION_CANCEL</span>) : <span class="co">//aborted gesture</span>
+  <span class="kw">case</span> (MotionEvent.<span class="fu">ACTION_OUTSIDE</span>) : <span class="co">//outside bounds</span>
+  <span class="kw">default</span> :
+    <span class="kw">return</span> <span class="kw">super</span>.<span class="fu">onTouchEvent</span>(event);
+}</code></pre></div>
+<p>This lets us react to basic touching. For example, we can make it so that taps (<code>ACTION_DOWN</code>) will “teleport” the ball to where we click! We can also use the <code>ACTION_MOVE</code> events to let us drag the ball around.</p>
+<div id="advanced-gestures" class="section level3 unnumbered">
+<h3>Advanced Gestures</h3>
+<p>We can also detect and react to more complex gestures: long presses, double-taps, or “flings” (a flick or swipe on the screen). As with basic gestures, the Material Design specification details some <a href="https://www.google.com/design/spec/patterns/gestures.html#gestures-drag-swipe-or-fling-details">specific patterns</a> that you should consider when utilizing these interactions.</p>
+<p>Android provides a <a href="https://developer.android.com/training/gestures/detector.html#detect"><code>GestureDetector</code></a> class that can be used to identify these actions. The easiest way to use this class—particularly when we’re interested in a particular gesture (like fling)—is to <em>extend</em> <code>GestureDetector.SimpleOnGestureListener</code> to make our own “listener” for gestures. We can then override the callbacks for the gestures we’re interested in responding to: e.g., <code>onFling()</code>.</p>
+<ul>
+<li>Note that the official documentation says we should also override the <code>onDown()</code> method and have it return <code>true</code> to indicate that we’ve “consumed” (handled) the event—similar to what we’ve done with OptionsMenus. If we return false from this method, then <em>“the system assumes that you want to ignore the rest of the gesture, and the other methods of GestureDetector.OnGestureListener never get called.”</em> However, in my testing the gesture detection works either way, but we’ll follow the spec for now.</li>
+</ul>
+<p>We can instantiate a <code>GestureDetector</code> by passing in our listener into a <code>GestureDetectorCompat</code> constructor:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">mDetector = <span class="kw">new</span> <span class="fu">GestureDetectorCompat</span>(<span class="kw">this</span>, <span class="kw">new</span> <span class="fu">MyGestureListener</span>());</code></pre></div>
+<p>Then in the Activity’s <code>onTouchEvent()</code> callback, we can pass the event into the Gesture Detector to process:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="dt">boolean</span> gesture = <span class="kw">this</span>.<span class="fu">mDetector</span>.<span class="fu">onTouchEvent</span>(event); <span class="co">//check gestures first!</span>
+<span class="kw">if</span>(gesture){
+  <span class="kw">return</span> <span class="kw">true</span>;
+}</code></pre></div>
+<ul>
+<li>Since the detector’s <code>onTouchEvent()</code> returns a <code>boolean</code> for whether or not a gesture was detected, we can check for whether we should otherwise handle the gesture ourselves.</li>
+</ul>
+<p>This gives us the ability to “fling” the Ball by taking the detected fling <em>velocity</em> and assigning that as the Ball’s velocity. Note that we need to negate the velocities since they are registered as “backwards” from the coordinates our drawing system is utilizing (though this doesn’t match the documented examples). Scaling down the velocity to 3% produce a reasonable Ball movement speed for me. We can also have the Ball slow down by 1% on each update so it drifts to a stop!</p>
+<!-- **** -->
+</div>
+</div>
+<div id="property-animation" class="section level2">
+<h2><span class="header-section-number">15.3</span> Property Animation</h2>
+<p>We’ve seen how we can create animations simply by adjusting the drawing we do on each frame. This is great for games or other complex animations if we want to have <em>a lot</em> of control over our graphical layout… but sometimes we want to have some simpler, platform-specific effects (that run smoother!) Android actually involves a number of different animation systems that can be used within and <em>across</em> Views:</p>
+<ul>
+<li><p>We’ve previously talked about some <a href="https://developer.android.com/training/material/animations.html">Material Animations</a> built into the Material Design support library; in particular we discussed creating Activity transition. Android also includes a robust framework for <a href="https://developer.android.com/training/transitions/index.html">Scene Transitions</a> even outside of Material; see <a href="https://developer.android.com/training/animation/index.html">Adding Animations</a> for more details.</p></li>
+<li><p>Android also supports <a href="https://developer.android.com/guide/topics/graphics/opengl.html">OpenGL Animations</a> for doing 3D animated systems. This requires knowing the OpenGL API.</p></li>
+</ul>
+<p>In this section, we will discuss how to use <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html"><strong>Property Animation</strong></a>. This is a general animation framework in which you specify a start state for an Object <em>property</em> (attribute), an end state for that property, and a duration for the animation; the Android systems then changes the property from the start state to the end over that length of time—thereby producing animation!</p>
+<ul>
+<li><p>The change in property state over time (that is, at any given “frame”) is calculated using <a href="https://en.wikipedia.org/wiki/Interpolation"><strong>interpolation</strong></a>. This is basically a “weighted average” between the the start and end states, where the weight is determined by how close you are to the “start” or “end”. While we often use <em>linear interpolation</em> (so that being 70% across means the end gets 70% of the weight), it is also possible to use <em>non-linear interpolation</em>) (e.g., you need to get 70% across in for the end to have 50% of the weight).</p>
+<div class="figure">
+<img src="img/animation/interpolation.png" alt="Linearly interpolating colors" />
+<p class="caption">Linearly interpolating colors</p>
+</div></li>
+</ul>
+<p>The main engine for doing this kind of interpolated animation in Android is the <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#value-animator"><code>ValueAnimator</code></a><a href="#fn52" class="footnoteRef" id="fnref52"><sup>52</sup></a> class. This class lets you specify the start state, end state, and animation duration. It will then be able to run through and calculate all of the “intermediate” values throughout the interpolated animation. The <code>ValueAnimator</code> class provides a number of static methods (e.g., <code>.ofInt()</code>, <code>.ofFloat()</code>, <code>.ofArgb()</code>) which creates “animators” for interpolating different <em>value types</em>. For example:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ValueAnimator animation = ValueAnimator.<span class="fu">ofFloat</span>(0f, 1f); <span class="co">//interpolate between 0 and 1</span>
+animation.<span class="fu">setDuration</span>(<span class="dv">1000</span>); <span class="co">//over 1000ms (1 second)</span>
+animation.<span class="fu">start</span>(); <span class="co">//run the animation</span></code></pre></div>
+<p>Of course, just performing this interpolation over time doesn’t produce any visible result—it’s changing the numbers, but those numbers don’t correspond to anything.</p>
+<p>We can access the interpolated values by registering a <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#listeners">listener</a> and overriding the callback we’re interested in observing (e.g., <code>onAnimationUpdate()</code> from <code>ValueAnimator.AnimatorUpdateListener</code>). But more commonly, we want to have our interpolated animation change the <em>property</em> of some object—for example, the color of a View, the position of an Button, or the instance variables of an object such as a <code>Ball</code>.</p>
+<p>We can do this easily using the <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#object-animator"><code>ObjectAnimator</code></a><a href="#fn53" class="footnoteRef" id="fnref53"><sup>53</sup></a> subclass. This subclass runs an animation just like the <code>ValueAnimator</code>, but has the built-in functionality to change a property of an object on each interpolated step. It does this by calling a <strong>setter</strong> for that property—thus the object needs to have a <a href="http://docs.oracle.com/javaee/6/tutorial/doc/gjbbp.html">setter method</a> for the property we want to animate:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//change the &quot;alpha&quot; property of foo: will call `foo.setAlpha(float)`</span>
+ObjectAnimator anim = ObjectAnimator.<span class="fu">ofFloat</span>(foo, <span class="st">&quot;alpha&quot;</span>, 0f, 1f);
+anim.<span class="fu">setDuration</span>(<span class="dv">1000</span>);
+anim.<span class="fu">start</span>();</code></pre></div>
+<ul>
+<li><p>This example will mutate the object by calling the <code>setAlpha()</code> method (the name of the method is generated from the property name following normal CamelCasing style).</p></li>
+<li><p>If the object lacks such a setter, such as because we are using a class provided by someone else, we can either make a “wrapper” which will call the appropriate mutating function, or just utilize a <code>ValueAnimator</code> with an appropriate listener.</p></li>
+</ul>
+<p>For example, we can use this approach to change the circle’s size or position using an interpolated animation (make it “pulse”).</p>
+<ul>
+<li>Note that we’re just changing the object property; the only reason we see the changed drawing is because Android is constantly refreshing our SurfaceView.</li>
+</ul>
+<p>The <code>ObjectAnimator</code> interpolator methods support a number of variations as well:</p>
+<ul>
+<li><p>As long as the object has an appropriate <strong>getter</strong>, it is possible to only pass the Animator an ending value (indicating that the animation should interpolate “from current state to specified end state”)</p></li>
+<li><p>We can use <code>.setRepeatCount(ObjectAnimator.INFINITE)</code> and <code>.setRepeatMode(ObjectAnimator.REVERSE)</code> to cause it to repeat back and forth.</p></li>
+</ul>
+<p>If we want to include multiple animations in sequence, we can use an <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#choreography"><code>AnimatorSet</code></a>, which gives us methods used to specify the ordering:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//example from docs</span>
+ObjectAnimator animX = ObjectAnimator.<span class="fu">ofFloat</span>(obj, <span class="st">&quot;x&quot;</span>, 50f);
+ObjectAnimator animY = ObjectAnimator.<span class="fu">ofFloat</span>(obj, <span class="st">&quot;y&quot;</span>, 100f);
+AnimatorSet animSetXY = <span class="kw">new</span> <span class="fu">AnimatorSet</span>();
+animSetXY.<span class="fu">playTogether</span>(animX, animY);
+animSetXY.<span class="fu">start</span>();</code></pre></div>
+<p>AnimatorSet animations can get complicated, and we may want to reuse them. Thus best practice is to instead define them in XML as <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#declaring-xml">resources</a>. Animation resources are put inside the <code>/res/animator</code> directory (<strong>not</strong> the <code>/res/anim/</code> folder, which is for <a href="https://developer.android.com/guide/topics/graphics/view-animation.html">View Animations</a>).</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;set</span><span class="ot"> android:ordering=</span><span class="st">&quot;together&quot;</span><span class="kw">&gt;</span> <span class="co">&lt;!-- together is default --&gt;</span>
+  <span class="kw">&lt;objectAnimator</span>
+<span class="ot">           android:propertyName=</span><span class="st">&quot;x&quot;</span>
+<span class="ot">           android:duration=</span><span class="st">&quot;500&quot;</span>
+<span class="ot">           android:valueTo=</span><span class="st">&quot;400&quot;</span>
+<span class="ot">           android:valueType=</span><span class="st">&quot;intType&quot;</span><span class="kw">/&gt;</span>
+  <span class="co">&lt;!-- ... --&gt;</span>
+<span class="kw">&lt;/set&gt;</span></code></pre></div>
+<ul>
+<li><p>See <a href="https://developer.android.com/guide/topics/resources/animation-resource.html#Property">Property Animation Resources</a><a href="#fn54" class="footnoteRef" id="fnref54"><sup>54</sup></a> for the full XML schema.</p></li>
+<li><p>Note that by defining animations as resources, it also means that we can easily have different device configurations use different animations (e.g., perhaps objects move faster on larger displays).</p></li>
+</ul>
+<p>In order to utilize the XML, we will need to <strong>inflate</strong> the Animator resource, just as we have done with Layouts:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java">ObjectAnimator anim = (ObjectAnimator)AnimatorInflater.<span class="fu">loadAnimator</span>(context, R.<span class="fu">anim</span>.<span class="fu">my_animation</span>);
+anim.<span class="fu">setTarget</span>(myObject);
+anim.<span class="fu">start</span>();</code></pre></div>
+<p>Note that we can also use this same framework to animate changes to <code>Views</code>: Buttons, Images, etc. Views are objects and have properties (along with appropriate <em>getter</em> and <em>setter</em> methods), so we can use just an <code>ObjectAnimator</code>! See <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html#views">Animating Views</a> for a list of properties we can change (a list that includes <code>x, y, rotation, alpha, scaleX, scaleY</code>, and others)</p>
+<p>To make this process even simpler, Android also provides a <code>ViewPropertyAnimator</code> class. This Animator is able to easily animate multiple properties together (at the same time), and does so in a much more efficient way. We can access this Animator via the <code>View#animate()</code> method. We then call relevant shortcut methods on this Animator to “add in” addition property animations to the animation set:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//animate x (to 100) and y (to 300) together!</span>
+myView.<span class="fu">animate</span>().<span class="fu">x</span>(<span class="dv">100</span>).<span class="fu">y</span>(<span class="dv">300</span>);</code></pre></div>
+<p>This allows you to easily specify moderately complex property animations for <code>View</code> objects.</p>
+<ul>
+<li>But really, if you want to animate layout changes on a modern device, you should use <a href="http://developer.android.com/training/transitions/index.html">transitions</a>, such as the ones we used with Material design.</li>
+</ul>
+<p>There are <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html">many more ways</a> to customize exactly what you want your animation to be. You can also look at <a href="https://android.googlesource.com/platform/development/+/master/samples/ApiDemos/src/com/example/android/apis/animation">official demos</a> for more examples of different styles of animation.</p>
 
 </div>
 </div>
+
+
+
+<!-- Check AppCompat stuff
+     Clarify inheritance example (i.e., with "alert")
+     Implement solution
+ -->
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div class="footnotes">
+<hr />
+<ol start="51">
+<li id="fn51"><p><a href="https://developer.android.com/reference/android/graphics/Canvas.html" class="uri">https://developer.android.com/reference/android/graphics/Canvas.html</a><a href="graphics.html#fnref51">↩</a></p></li>
+<li id="fn52"><p><a href="http://developer.android.com/guide/topics/graphics/prop-animation.html#value-animator" class="uri">http://developer.android.com/guide/topics/graphics/prop-animation.html#value-animator</a><a href="graphics.html#fnref52">↩</a></p></li>
+<li id="fn53"><p><a href="http://developer.android.com/guide/topics/graphics/prop-animation.html#object-animator" class="uri">http://developer.android.com/guide/topics/graphics/prop-animation.html#object-animator</a><a href="graphics.html#fnref53">↩</a></p></li>
+<li id="fn54"><p><a href="http://developer.android.com/guide/topics/resources/animation-resource.html#Property" class="uri">http://developer.android.com/guide/topics/resources/animation-resource.html#Property</a><a href="graphics.html#fnref54">↩</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="java-swing.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="sensors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="styles-themes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -516,7 +669,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info448/book/edit/master/publishing.Rmd",
+"link": "https://github.com/info448/book/edit/master/animation.Rmd",
 "text": "Edit"
 },
 "download": ["android-development.pdf", "android-development.epub"],
